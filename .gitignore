@@ -1,5 +1,6 @@
 /*
 !.gitignore
+!README.md
 
 
 # X-server
@@ -15,6 +16,8 @@
 
 # zsh
 !.zprofile
+!.zlogin
+!.zshenv
 !.zshrc
 
 # nano
@@ -27,10 +30,7 @@
 !.conkyrc
 
 #vscode
-#!/.vscode
-
-!.config/i3
-
+#!.vscode/
 
 # background
 !background.jpg
@@ -48,4 +48,3 @@
 !.config/ranger/
 !.config/rofi/
 !.config/terminator/
-
