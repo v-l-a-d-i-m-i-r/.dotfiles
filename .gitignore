@@ -1,0 +1,51 @@
+/*
+!.gitignore
+
+
+# X-server
+!.xinitrc
+!.Xauthority
+!.Xresources
+
+# bash 
+!.bash_history
+!.bash_logout
+!.bash_profile
+!.bashrc
+
+# zsh
+!.zprofile
+!.zshrc
+
+# nano
+!.nanorc
+
+# xxkb
+!.xxkbrc
+
+# conky
+!.conkyrc
+
+#vscode
+#!/.vscode
+
+!.config/i3
+
+
+# background
+!background.jpg
+
+## .config folder
+!.config/
+.config/*
+
+
+!.config/gsimplecal/
+!.config/i3/
+!.config/i3blocks/
+!.config/nitrogen/
+!.config/pcmanfm/
+!.config/ranger/
+!.config/rofi/
+!.config/terminator/
+

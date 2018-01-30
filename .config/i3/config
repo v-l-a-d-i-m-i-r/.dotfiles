@@ -1,0 +1,313 @@
+# i3 config file (v4)
+#
+# Please see https://i3wm.org/docs/userguide.html for a complete reference!
+
+set $mod Mod4
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+font pango:monospace 10
+
+# This font is widely installed, provides lots of unicode glyphs, right-to-left
+# text rendering and scalability on retina/hidpi displays (thanks to pango).
+#font pango:DejaVu Sans Mono 8
+
+# Before i3 v4.8, we used to recommend this one as the default:
+# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+# The font above is very space-efficient, that is, it looks good, sharp and
+# clear in small sizes. However, its unicode glyph coverage is limited, the old
+# X core fonts rendering does not support right-to-left and this being a bitmap
+# font, it doesn’t scale on retina/hidpi displays.
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+Return exec terminator
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# start dmenu (a program launcher)
+bindsym $mod+Tab workspace prev
+bindsym $mod+q   workspace next																		
+bindsym $mod+d exec rofi -show drun
+# bindsym $mod+Tab exec rofi -show window 
+
+# There also is the (new) i3-dmenu-desktop which only displays applications
+# shipping a .desktop file. It is a wrapper around dmenu, so you need that
+# installed.
+# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+
+# change focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+set $workspace1  "  1  "
+set $workspace2  "  2  "
+set $workspace3  "  3  "
+set $workspace4  "  4  "
+set $workspace5  "5: "
+set $workspace6  "6: "
+set $workspace7  "7: "
+set $workspace8  "8: "
+set $workspace9  "9: "
+set $workspace10 "10:"
+
+# run xprop to get the application info
+assign [class="Pcmanfm"] 	      $workspace5
+assign [class="Doublecmd"] 	    $workspace5
+assign [class="Gedit"] 	        $workspace6
+assign [class="Pamac-manager"]  $workspace7
+assign [class="Pamac-updater"]  $workspace7
+assign [class="Chromium"]       $workspace8
+assign [class="Firefox"]        $workspace8
+assign [class="QupZilla"]       $workspace8
+assign [class="Code"]           $workspace9
+assign [class="Tilda"]          $workspace10
+assign [class="URxvt"]          $workspace10
+assign [class="Sakura"]         $workspace10
+assign [class="Terminator"]     $workspace10
+assign [class="Xfce4-terminal"] $workspace10
+
+# switch to workspace
+bindsym $mod+1 workspace $workspace1
+bindsym $mod+2 workspace $workspace2
+bindsym $mod+3 workspace $workspace3
+bindsym $mod+4 workspace $workspace4
+bindsym $mod+5 workspace $workspace5
+bindsym $mod+6 workspace $workspace6
+bindsym $mod+7 workspace $workspace7
+bindsym $mod+8 workspace $workspace8
+bindsym $mod+9 workspace $workspace9
+bindsym $mod+0 workspace $workspace10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $workspace1
+bindsym $mod+Shift+2 move container to workspace $workspace2
+bindsym $mod+Shift+3 move container to workspace $workspace3
+bindsym $mod+Shift+4 move container to workspace $workspace4
+bindsym $mod+Shift+5 move container to workspace $workspace5
+bindsym $mod+Shift+6 move container to workspace $workspace6
+bindsym $mod+Shift+7 move container to workspace $workspace7
+bindsym $mod+Shift+8 move container to workspace $workspace8
+bindsym $mod+Shift+9 move container to workspace $workspace9
+bindsym $mod+Shift+0 move container to workspace $workspace10
+
+
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+  # These bindings trigger as soon as you enter the resize mode
+
+  # Pressing left will shrink the window’s width.
+  # Pressing right will grow the window’s width.
+  # Pressing up will shrink the window’s height.
+  # Pressing down will grow the window’s height.
+  bindsym j resize shrink width 10 px or 10 ppt
+  bindsym k resize grow height 10 px or 10 ppt
+  bindsym l resize shrink height 10 px or 10 ppt
+  bindsym semicolon resize grow width 10 px or 10 ppt
+
+  # same bindings, but for the arrow keys
+  bindsym Left resize shrink width 10 px or 10 ppt
+  bindsym Down resize grow height 10 px or 10 ppt
+  bindsym Up resize shrink height 10 px or 10 ppt
+  bindsym Right resize grow width 10 px or 10 ppt
+
+  # back to normal: Enter or Escape
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &\
+     eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg)
+
+exec_always --no-startup-id xbacklight -set 30
+exec_always nitrogen --set-scaled ~/background.jpg 
+# exec_always --no-startup-id hsetroot -solid "#2F343F"
+exec_always --no-startup-id compton
+exec_always --no-startup-id "synclient \
+  TapButton1=1 \
+  TapButton2=3 \
+  TapButton3=2 \
+  
+  VertTwoFingerScroll=1 \
+  HorizTwoFingersScroll=1 \
+  
+  TapAndDrugGesture=1 \
+"
+
+set $focus_border #1C528B
+
+set $dark_color      #2F343F
+set $mid_dark_color  #424652
+set $mid_color       #2B2E37
+set $mid_light_color #9DA5B4
+# set $light_color #9CA4B3
+# set $light_color #FFFFFF
+set $light_color     #CCCCCC
+
+
+set $focused_workspace_brd  #262627
+set $focused_workspace_bck  #262627
+set $focused_workspace_txt  #CCCCCC
+
+set $active_workspace_brd   #333333
+set $active_workspace_bck   #5f676a
+set $active_workspace_txt   #ffffff
+
+set $inactive_workspace_brd #262627
+set $inactive_workspace_bck #424446
+set $inactive_workspace_txt #cccccc
+
+set $urgent_workspace_brd   #2f343a
+set $urgent_workspace_bck   #2F343F
+set $urgent_workspace_txt   #FF970C
+
+set $binding_mode_brd       #2f343a
+set $binding_mode_bck       #900000
+set $binding_mode_txt       #ffffff
+
+set $bar_background #3c3e40
+
+#set $client_background #ffffff
+
+exec_always --no-startup-id conky
+exec_always --no-startup-id pulseaudio
+exec_always --no-startup-id xxkb
+exec_always --no-startup-id "sleep 10 && setxkbmap -layout \"us, ru\" -option \"grp:alt_shift_toggle\""
+exec_always --no-startup-id xfce4-power-manager
+exec_always --no-startup-id "sleep 8 && pa-applet"
+exec_always --no-startup-id "sleep 8 && nm-applet"
+exec_always --no-startup-id "sleep 8 && pamac-tray"
+
+bar {
+  status_command i3blocks
+  position top
+  tray_padding 0 px
+  
+  font pango: Awesome, Mono 12
+
+  colors {
+    background $bar_background
+    statusline $light_color
+    separator  $mid_light_color
+
+    #colorclass        #border                 #background             #text
+    focused_workspace  $focused_workspace_brd  $focused_workspace_bck  $focused_workspace_txt
+    active_workspace   $active_workspace_brd   $active_workspace_bck   $active_workspace_txt
+    inactive_workspace $inactive_workspace_brd $inactive_workspace_bck $inactive_workspace_txt
+    urgent_workspace   $urgent_workspace_brd   $urgent_workspace_bck   $urgent_workspace_txt
+    binding_mode       $binding_mode_brd       $binding_mode_bck       $binding_mode_txt
+  }
+}
+
+# class                 border     backgr.    text            indicator child_border
+#client.background       #ffffff
+client.focused          #262627   #262627   #cccccc   #262627   #262627	
+client.focused_inactive #262627   #262627   #cccccc   #262627   #262627
+client.unfocused        #424446   #424446   #cccccc   #262627   #262627
+client.urgent           #2f343a   #900000   #ffffff   #900000   #900000
+client.placeholder      #000000   #0c0c0c   #ffffff   #000000   #0c0c0c
+
+
+# hide_edge_borders both
+
+for_window [urgent="latest"] focus
+#for_window [class=".*"] border pixel 1
+#for_window [floating] title_format "%class - %title"
+new_window pixel 1
+new_float normal 0
+
+focus_on_window_activation focus
+
+bindsym $mod+Shift+Escape exec ~/.config/i3/i3exit.sh
+
+
+############### hooks ###############
+for_window [class="URxvt"]    focus
+#for_window [class="Code"]     border none, focus
+#for_window [class="QupZilla"] border none
+
+
+# workspace_layout tabbed
+# for_window [class=".*"] title_format "%class - %title"
+
+
+# /etc/X11/xorg.conf.d/00-keyboard.conf
+# Written by systemd-localed(8), read by systemd-localed and Xorg. It's
+# probably wise not to edit this file manually. Use localectl(1) to
+# instruct systemd-localed to update it.
+#Section "InputClass"
+        #Identifier "system-keyboard"
+        #MatchIsKeyboard "on"
+        #Option "XkbLayout" "us,ru"
+        #Option "XkbModel" "pc105"
+        #Option "XkbVariant" "-"
+        #Option "XkbOptions" "grp:alt_shift_toggle"
+#EndSection
+
+# gestures
+# bindsym $mod+Alt+Right workspace next
+# bindsym $mod+Alt+Left  workspace prev
+
+
+# URxvt*termName: rxvt-unicode
+# URxvt*imLocale: en_US.UTF-8
