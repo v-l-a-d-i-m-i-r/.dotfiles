@@ -8,3 +8,7 @@ dotfiles config user.name "<user name>"
 dotfiles config user.email "<user email>"
 
 dotfiles remote add origin <origin url>
+
+dotfiles commit -m "<message>"
+
+dotfiles push origin master
