@@ -6,8 +6,6 @@ source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 zstyle ':completion:*' menu select
 
 autoload -U colors && colors
-autoload -Uz compinit
-compinit
 
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
@@ -25,8 +23,13 @@ RPROMPT='$(git_super_status)'
 # nvm
 [ -z "$NVM_DIR" ] && export NVM_DIR="$HOME/.nvm"
 source /usr/share/nvm/nvm.sh
-# source /usr/share/nvm/bash_completion
 source /usr/share/nvm/install-nvm-exec
 
 # dotfiles
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
+# docker-compose completion
+# fpath=(~/.zsh/plugins/ $fpath)
+
+autoload -Uz compinit
+compinit -i
