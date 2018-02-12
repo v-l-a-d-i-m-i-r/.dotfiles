@@ -1,41 +1,3 @@
-startx
-startx
-gnome-settings-daemon
-/usr/bin/gnome-session
-/usr/bin/gn
-/usr/bin/qtconfig-qt4 
-/usr/bin/qtconfig-qt4 
-startx
-sudo pacman -S arc-kde
-man reflector
-/usr/bin/qtconfig-qt4 
-/usr/bin/qtconfig-qt4 
-reflector --verbose -l 200 -p http --sort rate --save /etc/pacman.d/mirrorlist
-sudo reflector --verbose -l 200 -p http --sort rate --save /etc/pacman.d/mirrorlist
-sudo pacman -S arc-kde
-sudo pacman -Suyy
-qt5ct 
-qtconfig-qt4 
-qtconfig-qt4 
-qtconfig-qt4 
-sudo nano /etc/environment 
-qtconfig-qt4 
-qt5ct 
-gtk
-gtk-chtheme
-gtk-chtheme
-qt5
-qt5ct 
-qt5ct 
-sudo nano /etc/environment 
-qtconfig-qt4 
-sudo gedit
-pkill xxkb
-xxkb
-xxkb
-xxkb
-xxkb
-xxkb
 xxkb
 xxkb
 xxkb
@@ -498,3 +460,41 @@ chsh -s /bin/zsh
 [vladimir@vladimir-pc ~]$ 
 [vladimir@vladimir-pc ~]$ 
 [vladimir@vladimir-pc ~]$ 
+cd /data/linux/arch-install/
+ls -la
+bash dotfiles.sh 
+sudo wifi-menu
+sudo wifi-menu
+ping www.google.com
+ping 8.8.8.8
+sudo systemctl stop NetworkManager
+sudo wifi-menu
+ping 8.8.8.8
+ping 8.8.8.8
+bash dotfiles.sh 
+ls -la ~
+nano dotfiles.sh 
+rm -rf ~/.dotfiles/
+bash dotfiles.sh 
+rm -rf ~/.dotfiles/
+nano dotfiles.sh 
+nano dotfiles.sh 
+bash dotfiles.sh 
+
+nano dotfiles.sh 
+rm -rf ~/.dotfiles/
+bash dotfiles.sh 
+ls -la ~
+rm -rf ~/.dotfiles/
+rm -rf ~/.dotfiles-backup/
+nano dotfiles.sh 
+bash dotfiles.sh 
+ls -la ~
+reboot
+chsh -l
+chsh /bin/zsh
+sudo chsh /bin/zsh
+man chsh
+sudo chsh -s /bin/zsh
+chsh -s /bin/zsh
+sudo chsh -s /bin/bash
