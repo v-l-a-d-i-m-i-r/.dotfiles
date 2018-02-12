@@ -1,6 +1,8 @@
 [global_config]
   inactive_color_offset = 0.707692307692
   tab_position = hidden
+  title_font = DejaVu Sans Semi-Condensed 12
+  title_use_system_font = False
 [keybindings]
 [layouts]
   [[default]]

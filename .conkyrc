@@ -48,7 +48,7 @@ show_graph_range no
 
 use_xft yes
 xftalpha 0.1
-xftfont Monospace:size=10
+xftfont Dejavu:size=12
 color0 CCCCCC
 color1 EAEAEA
 color2 CCCCCC

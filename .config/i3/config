@@ -6,11 +6,11 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 10
+# font pango:monospace 10
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
+font pango:DejaVu Sans Mono 12
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -241,9 +241,9 @@ exec_always --no-startup-id "sleep 8 && pamac-tray"
 bar {
   status_command i3blocks
   position top
-  tray_padding 0 px
+  tray_padding 2 px
   
-  font pango: Awesome, Mono 12
+  font pango: Awesome, DejaVu Sans Mono 12
 
   colors {
     background $bar_background
@@ -290,24 +290,5 @@ for_window [class="URxvt"]    focus
 # workspace_layout tabbed
 # for_window [class=".*"] title_format "%class - %title"
 
-
-# /etc/X11/xorg.conf.d/00-keyboard.conf
-# Written by systemd-localed(8), read by systemd-localed and Xorg. It's
-# probably wise not to edit this file manually. Use localectl(1) to
-# instruct systemd-localed to update it.
-#Section "InputClass"
-        #Identifier "system-keyboard"
-        #MatchIsKeyboard "on"
-        #Option "XkbLayout" "us,ru"
-        #Option "XkbModel" "pc105"
-        #Option "XkbVariant" "-"
-        #Option "XkbOptions" "grp:alt_shift_toggle"
-#EndSection
-
-# gestures
-# bindsym $mod+Alt+Right workspace next
-# bindsym $mod+Alt+Left  workspace prev
-
-
-# URxvt*termName: rxvt-unicode
-# URxvt*imLocale: en_US.UTF-8
+# terminator (ctrl shift +) fontsize +
+# terminator (ctrl +) fontsize -

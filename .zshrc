@@ -1,8 +1,6 @@
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/vladimir/.zshrc'
 
-source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-
 zstyle ':completion:*' menu select
 
 autoload -U colors && colors
