@@ -51,3 +51,16 @@
 !.config/ranger/
 !.config/rofi/
 !.config/terminator/
+
+!.config/xfce4
+.config/xfce4/*
+
+!.config/xfce4/xfconf/
+.config/xfce4/xfconf/xfce-perchannel-xml/*
+
+!.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-notifyd.xml
+!.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-power-manager.xml
+
+
+
+
