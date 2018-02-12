@@ -243,7 +243,7 @@ bar {
   position top
   tray_padding 2 px
   
-  font pango: Awesome, DejaVu Sans Mono 12
+  font pango: Awesome, DejaVu Sans Mono 14
 
   colors {
     background $bar_background

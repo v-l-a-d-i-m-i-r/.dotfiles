@@ -51,6 +51,7 @@
 !.config/ranger/
 !.config/rofi/
 !.config/terminator/
+!.config/Mousepad/
 
 !.config/xfce4
 .config/xfce4/*

@@ -12,5 +12,7 @@
     <property name="critical-power-action" type="uint" value="0"/>
     <property name="dpms-enabled" type="bool" value="false"/>
     <property name="brightness-on-battery" type="uint" value="9"/>
+    <property name="blank-on-ac" type="int" value="0"/>
+    <property name="blank-on-battery" type="int" value="0"/>
   </property>
 </channel>
