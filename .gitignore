@@ -35,6 +35,9 @@
 # background
 !background.jpg
 
+# gtk
+!.gtkrc-2.0
+
 ## .config folder
 !.config/
 .config/*
