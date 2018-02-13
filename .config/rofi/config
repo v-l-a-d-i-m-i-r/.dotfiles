@@ -1,5 +1,5 @@
 # https://gist.github.com/vKnmnn/7fffce11b93bba70216d73c69adf9680
-# rofi.font:              SFNS Display 13 
+#rofi.font:              SFNS Display 13 
 rofi.location:          0
 rofi.fullscreen:        true
 rofi.padding:           150
