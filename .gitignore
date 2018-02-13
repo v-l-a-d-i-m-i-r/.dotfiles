@@ -52,6 +52,7 @@
 !.config/rofi/
 !.config/terminator/
 !.config/Mousepad/
+!.config/gtk-3.0/
 
 !.config/xfce4
 .config/xfce4/*
