@@ -17,7 +17,7 @@
     background_darkness = 1.0
     background_type = transparent
     cursor_color = "#aaaaaa"
-    font = DejaVu Sans Mono 14
+    font = DejaVu Sans Mono 12
     icon_bell = False
     scroll_on_keystroke = False
     scrollback_infinite = True

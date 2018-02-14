@@ -53,6 +53,7 @@
 !.config/terminator/
 !.config/Mousepad/
 !.config/gtk-3.0/
+!.config/qt5ct/
 
 !.config/xfce4
 .config/xfce4/*
