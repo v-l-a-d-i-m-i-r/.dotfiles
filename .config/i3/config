@@ -92,7 +92,7 @@ bindsym $mod+a focus parent
 set $workspace1  "  1  "
 set $workspace2  "  2  "
 set $workspace3  "  3  "
-set $workspace4  "  4  "
+set $workspace4  "4: "
 set $workspace5  "5: "
 set $workspace6  "6: "
 set $workspace7  "7: "
@@ -101,8 +101,9 @@ set $workspace9  "9: "
 set $workspace10 "10:"
 
 # run xprop to get the application info
-assign [class="Pcmanfm"] 	      $workspace5
-assign [class="Doublecmd"] 	    $workspace5
+assign [class="Skype"] 	        $workspace4
+assign [class="Pcmanfm"] 	$workspace5
+assign [class="Doublecmd"] 	$workspace5
 assign [class="Gedit"] 	        $workspace6
 assign [class="Pamac-manager"]  $workspace7
 assign [class="Pamac-updater"]  $workspace7
@@ -282,9 +283,10 @@ bindsym $mod+Shift+Escape exec ~/.config/i3/i3exit.sh
 
 
 ############### hooks ###############
-for_window [class="URxvt"]    focus
+#for_window [class="URxvt"]    focus
 #for_window [class="Code"]     border none, focus
 #for_window [class="QupZilla"] border none
+for_window [class="Skype"] floating disable
 
 
 # workspace_layout tabbed

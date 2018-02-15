@@ -42,5 +42,8 @@ fi
 # localectl set-x11-keymap us,ru pc104 "" grp:alt_shift_toggle,grp_led:none
 # setxkbmap -layout "us,ru" -option "grp:alt_shift_toggle,grp_led:scroll"
 
+# disable touchpad while typing
+syndaemon -i 1 -d
+
 exec i3
 
