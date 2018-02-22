@@ -105,6 +105,7 @@ assign [class="Skype"] 	        $workspace4
 assign [class="Pcmanfm"] 	$workspace5
 assign [class="Doublecmd"] 	$workspace5
 assign [class="Gedit"] 	        $workspace6
+assign [class="Mousepad"] 	$workspace6
 assign [class="Pamac-manager"]  $workspace7
 assign [class="Pamac-updater"]  $workspace7
 assign [class="Chromium"]       $workspace8
