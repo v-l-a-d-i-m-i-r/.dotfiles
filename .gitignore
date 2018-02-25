@@ -37,6 +37,7 @@
 
 # gtk
 !.gtkrc-2.0
+!.gtlrc-2.0.mine
 
 ## .config folder
 !.config/

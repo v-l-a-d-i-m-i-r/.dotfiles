@@ -109,6 +109,7 @@ assign [class="Mousepad"] 	$workspace6
 assign [class="Pamac-manager"]  $workspace7
 assign [class="Pamac-updater"]  $workspace7
 assign [class="Chromium"]       $workspace8
+assign [class="Google-chrome"]  $workspace8
 assign [class="Firefox"]        $workspace8
 assign [class="QupZilla"]       $workspace8
 assign [class="Code"]           $workspace9
