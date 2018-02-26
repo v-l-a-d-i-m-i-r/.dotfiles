@@ -179,23 +179,9 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &\
-     eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg)
 
-exec_always --no-startup-id xbacklight -set 30
-exec_always nitrogen --set-scaled ~/background.jpg 
 # exec_always --no-startup-id hsetroot -solid "#2F343F"
-exec_always --no-startup-id compton
-exec_always --no-startup-id "synclient \
-  TapButton1=1 \
-  TapButton2=3 \
-  TapButton3=2 \
-  
-  VertTwoFingerScroll=1 \
-  HorizTwoFingersScroll=1 \
-  
-  TapAndDrugGesture=1 \
-"
+
 
 set $focus_border #1C528B
 
@@ -231,6 +217,15 @@ set $binding_mode_txt       #ffffff
 set $bar_background #3c3e40
 
 #set $client_background #ffffff
+
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &\
+  eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg)
+
+exec_always --no-startup-id xbacklight -set 30
+exec_always nitrogen --set-scaled ~/background.jpg
+# exec_always --no-startup-id hsetroot -solid "#2F343F"
+exec_always --no-startup-id xcompmgr
+exec_always --no-startup-id "synclient TapButton1=1 TapButton2=3 TapButton3=2 VertTwoFingerScroll=1 HorizTwoFingerScroll=1"
 
 exec_always --no-startup-id conky
 exec_always --no-startup-id pulseaudio
