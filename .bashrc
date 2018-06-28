@@ -10,3 +10,7 @@ PS1='[\u@\h \W]\$ '
 
 [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && startx
 source /usr/share/nvm/init-nvm.sh
+export http_proxy=''
+export https_proxy=''
+export ftp_proxy=''
+export socks_proxy=''

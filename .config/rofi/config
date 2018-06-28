@@ -1,5 +1,5 @@
 # https://gist.github.com/vKnmnn/7fffce11b93bba70216d73c69adf9680
-rofi.font:              DejaVu Sans 14
+rofi.font:              SF Pro Text Regilar 14
 rofi.location:          0
 rofi.fullscreen:        true
 rofi.padding:           150
@@ -15,7 +15,7 @@ rofi.eh: 1
 
 
 # icons
-# rofi.show-icons:         true
+rofi.show-icons:         true
 # rofi.drun-icon-theme:    Arc
 
 # modi
@@ -23,8 +23,9 @@ rofi.modi:              drun,run,window
 rofi.sidebar-mode: true
 
 
+# custom dark theme
 rofi.color-enabled:     true
-rofi.color-window:      argb:EE000000, argb:B3000000, argb:E6ffffff
+rofi.color-window:      argb:DE000000, argb:B3000000, argb:E6ffffff
 rofi.color-normal:      argb:00000000, argb:969896B3, argb:00000000, argb:00000000, argb:FFFFFFFF
 rofi.color-urgent:      argb:00282a2e, argb:FFcc6666, argb:00282a2e, argb:ffcc6666, argb:e61d1f21
 rofi.color-active:      argb:00282a2e, argb:FF81a2be, argb:00282a2e, argb:ff81a2be, argb:e61d1f21

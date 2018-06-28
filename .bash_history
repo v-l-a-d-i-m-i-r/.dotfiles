@@ -8,36 +8,6 @@ xxkb
 xxkb
 xxkb
 xxkb
-xxkb
-xxkb
-xxkb
-xxkb
-pkill xxkb
-xxkb
-xxkb
-xxkb
-xxkb
-xxkb
-xxkb
-xxkb
-xxkb
-xxkb
-xxkb
-xxkb
-xxkb
-xxkb
-xxkb
-xxkb
-xxkb
-xxkb
-xxkb
-xxkb
-xxkb
-xxkb
-xxkb
-xxkb
-xxkb
-xxkb
 pkill xxkb
 sudo gedit
 startx
@@ -498,3 +468,33 @@ man chsh
 sudo chsh -s /bin/zsh
 chsh -s /bin/zsh
 sudo chsh -s /bin/bash
+sudo systemctl start dhcpcd
+ping www.google.com
+git clone https://github.com/v-l-a-d-i-m-i-r/arch-install
+pacman -S git
+sudo pacman -S git
+git clone https://github.com/v-l-a-d-i-m-i-r/arch-install
+cd arch-install/
+bash yaourt.sh 
+ls -la
+cd package-query/
+makepkg -s --noconfirm
+ sudo pacman -U --noconfirm $(ls -la | grep pkg.tar)
+ls -la
+sudo pacman -U package-query-1.9-2-x86_64.pkg.tar.xz 
+cd ..
+package-query -v
+git clone https:// aur.archlinux.org/yaourt.git
+git clone https://aur.archlinux.org/yaourt.git
+cd yaourt
+makepkg -s --noconfirm
+sudo pacman -U yaourt-1.9-1-any.pkg.tar.xz 
+cd ..
+rm -rf package-query/ yaourt/
+ls -la
+bash desktop.sh 
+bash soft.sh 
+bash dotfiles.sh 
+chsh -l
+chsh -s /bin/zsh
+reboot

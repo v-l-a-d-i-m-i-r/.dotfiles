@@ -8,7 +8,7 @@
 !.Xauthority
 !.Xresources
 
-# bash 
+# bash
 !.bash_history
 !.bash_logout
 !.bash_profile
@@ -55,6 +55,8 @@
 !.config/Mousepad/
 !.config/gtk-3.0/
 !.config/qt5ct/
+!.config/compton/
+!.config/backgrounds/
 
 !.config/xfce4
 .config/xfce4/*
