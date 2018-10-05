@@ -1,19 +1,5 @@
 xxkb
 xxkb
-xxkb
-xxkb
-xxkb
-xxkb
-xxkb
-xxkb
-xxkb
-xxkb
-pkill xxkb
-sudo gedit
-startx
-pkill xxkb
-xxkb
-xxkb
 sudo gedit
 sudo gedit
 pkill xxkb
@@ -498,3 +484,17 @@ bash dotfiles.sh
 chsh -l
 chsh -s /bin/zsh
 reboot
+sudo sysctl start dhcpcd
+sudo sysctl start dhcpcd
+sudo systemctl start dhcpcd
+ping 8.8.8.8
+ping 8.8.8.8
+sudo pacman -S git
+git clone http://github.com/v-l-a-d-i-m-i-r/arch-install.git
+cd arch-install/
+bash yaourt.sh 
+yaourt --version
+sh desktop.sh 
+bash soft.sh 
+sh dotfiles.sh 
+sudo reboot
