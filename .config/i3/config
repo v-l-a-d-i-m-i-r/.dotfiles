@@ -102,6 +102,7 @@ set $workspace10 "10:"
 
 # run xprop to get the application info
 assign [class="Skype"] 	        $workspace4
+assign [class="Slack"] 	        $workspace4
 assign [class="Pcmanfm"] 	$workspace5
 assign [class="Thunar"] 	$workspace5
 assign [class="Doublecmd"] 	$workspace5
@@ -188,14 +189,16 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 exec_always --no-startup-id xbacklight -set 30
 exec_always nitrogen --set-scaled ~/.config/backgrounds/background-abstract-gray.jpg
 # exec_always --no-startup-id xcompmgr -c -C -t-5 -l-5 -r4.2 -o.55
+# exec_always --no-startup-id compton --config ~/.config/compton/compton.glx.conf
 exec_always --no-startup-id compton --config ~/.config/compton/compton.xr-glx-hybrid.conf
+# exec_always --no-startup-id compton --config ~/.config/compton/compton.conf
 exec_always --no-startup-id "synclient TapButton1=1 TapButton2=3 TapButton3=2 VertTwoFingerScroll=1 HorizTwoFingerScroll=1"
 
 exec_always --no-startup-id conky
 exec_always --no-startup-id "pulseaudio --kill && pulseaudio --start"
 # exec_always --no-startup-id xxkb
-exec_always --no-startup-id "sleep 10 && setxkbmap -layout us,ru -option grp:caps_toggle,grp_led:caps"
-# exec_always --no-startup-id qxkb
+# exec_always --no-startup-id "sleep 10 && setxkbmap -layout us,ru -option grp:caps_toggle,grp_led:caps"
+exec_always --no-startup-id qxkb
 exec_always --no-startup-id shutter --min_at_startup
 exec_always --no-startup-id "sleep 5 && xfce4-power-manager"
 exec_always --no-startup-id "sleep 5 && pa-applet"

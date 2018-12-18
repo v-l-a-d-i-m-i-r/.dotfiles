@@ -21,6 +21,5 @@
     icon_bell = False
     scroll_on_keystroke = False
     scrollback_infinite = True
-    scrollbar_position = hidden
     show_titlebar = False
     use_system_font = False
