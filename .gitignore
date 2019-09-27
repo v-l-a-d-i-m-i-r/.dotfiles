@@ -23,6 +23,9 @@
 # nano
 !.nanorc
 
+# vim
+!.vimrc
+
 # xxkb
 !.xxkbrc
 

@@ -8,6 +8,25 @@ autoload -U colors && colors
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
+
+# shift-arrow() {
+#   ((REGION_ACTIVE)) || zle set-mark-command
+#   zle $1
+# }
+# shift-left() shift-arrow backward-char
+# shift-right() shift-arrow forward-char
+# shift-up() shift-arrow up-line-or-history
+# shift-down() shift-arrow down-line-or-history
+# zle -N shift-left
+# zle -N shift-right
+# zle -N shift-up
+# zle -N shift-down
+
+# bindkey $terminfo[kLFT] shift-left
+# bindkey $terminfo[kRIT] shift-right
+# bindkey $terminfo[kri] shift-up
+# bindkey $terminfo[kind] shift-down
+
 #########################################################
 # # define commands to copy and paste x clipboard
 

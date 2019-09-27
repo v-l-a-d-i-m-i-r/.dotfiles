@@ -62,7 +62,7 @@ markup=none
 # # (defaults to 10 for 10%).
 # [disk]
 # label=HOME
-# #instance=/mnt/data
+# instance=/data
 # interval=30
 
 # # Network interface monitoring

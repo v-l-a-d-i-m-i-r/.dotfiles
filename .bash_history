@@ -1,35 +1,3 @@
-xxkb
-xxkb
-xxkb
-xxkb
-xxkb
-xxkb
-xxkb
-xxkb
-xxkb
-xxkb
-pkill xxkb
-sudo gedit
-startx
-pkill xxkb
-xxkb
-xxkb
-sudo gedit
-sudo gedit
-pkill xxkb
-vd661112
-xxkb
-xxkb
-xxkb
-xxkb
-xxkb
-startx
-htop
-libnotify
-notification-daemon
-sudo cp /usr/share/dunst/dunstrc ~/.config/dunst/dunstrc
-mkdir ~/.config/dunst
-sudo cp /usr/share/dunst/dunstrc ~/.config/dunst/dunstrc
 notify-osd
 notify
 notify-send --icon=gtk-info Test "This is a test"
@@ -498,3 +466,35 @@ bash dotfiles.sh
 chsh -l
 chsh -s /bin/zsh
 reboot
+sudo systemctl start dhcpcd
+ping 8.8.8.8
+cd arch-install
+cd projects/arch-install
+ls -la
+bash yaourt.sh 
+sudo nano yaourt.sh 
+ls -la
+rm -rf package-query/
+bash yaourt.sh 
+ls -la
+yaourt -v
+yaourt --version
+bash desktop.sh 
+nano desktop.sh 
+bash desktop.sh 
+bash soft.sh 
+nano soft.sh 
+bash soft.sh 
+bash dotfiles.sh 
+sudo reboot
+docker -v
+docker ps
+$SHELL
+echo $SHELL
+shutter -v
+sudo echo $USER
+sudo chsh -s /bin/zsh $USER
+echo $SHELL
+bash soft.sh 
+sudo gpasswd -a ${USER} docker
+sudo systemctl enable docker
