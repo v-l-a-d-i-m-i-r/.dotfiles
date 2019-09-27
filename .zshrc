@@ -204,8 +204,14 @@ alias docker-rm='/usr/bin/docker rm -f $(docker ps -a -q)'
 alias docker-rmi='/usr/bin/docker rmi -f $(docker images -q)'
 alias docker-image='docker run -v /var/run/docker.sock:/var/run/docker.sock --rm hub.docker.com/r/chenzj/dfimage'
 
+# Docker Compose
+alias dcd='/usr/bin/docker-compose down'
+alias dcub='/usr/bin/docker-compose up --build'
+
 # Git
 function gfcp() { git fetch origin $1 && git checkout $1 && git pull origin $1 }
+function ga() { git add $1 }
+function gcm() { git commit -m "$1" }
 
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`

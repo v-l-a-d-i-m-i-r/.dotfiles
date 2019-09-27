@@ -50,7 +50,7 @@ docker run --rm -ti -v .:/home alpine /bin/sh
 docker run --rm -ti -v ./:/home alpine /bin/sh
 docker run --rm -ti -v .:/home alpine /bin/sh
 exit
-docker-tray 
+docker-tray
 docker stat
 docker stats
 htop
@@ -64,7 +64,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 reboot
 dmesg | grep microcode
-poweroff 
+poweroff
 htop
 conky
 man xsetroot
@@ -129,30 +129,30 @@ reboot
 sudo grub-mkconfig
 sudo gedit /boot/grub/grub.cfg
 sudo update-grub
-wmtime 
+wmtime
 orage
-lalcal 
-buici-clock 
+lalcal
+buici-clock
 plasma5-applets-analog24hclock
-transparent-clock 
+transparent-clock
 grdc
 talking-clock
 talking-clock
 alltray -h
 alltray
-lalcal 
+lalcal
 alltray lalcal
 docker stats
 sudo gedit
-sudo gedit /etc/X11/xorg.conf.d/00-keyboard.conf 
-sudo gedit /etc/X11/xorg.conf.d/00-keyboard.conf 
+sudo gedit /etc/X11/xorg.conf.d/00-keyboard.conf
+sudo gedit /etc/X11/xorg.conf.d/00-keyboard.conf
 setxkbmap -layout "us, ru" -option "grp:alt_shift_toggle"
 setxkbmap -layout "us, ru" -option "grp:alt_shift_toggle"
 exit
 setxkbmap -layout "us, ru" -option "grp:alt_shift_toggle"
 synclient TapButton3=3
 synclient TapButton2=2
-xbacklight 
+xbacklight
 xprop
 yaourt -S opera --noconfirm
 yaourt -S opera
@@ -173,7 +173,7 @@ sudo pacman -Syyu --noconfirm
 sudo pacman -S opera
 nano /etc/pacman.d/mirrorlist
 node -v
-platformio 
+platformio
 node -v
 pio --help
 code /data/projects/platformio-test
@@ -183,7 +183,7 @@ npm -v
 nvm -v
 nvm -v
 echo 'source /usr/share/nvm/init-nvm.sh' >> ~/.bashrc
-firefox-quantum 
+firefox-quantum
 htop
 mc
 mc
@@ -191,21 +191,21 @@ mc
 mc
 mc
 startx
-firefox-quantum 
-firefox-quantum 
+firefox-quantum
+firefox-quantum
 yaourt -Suyy firefox-quantum
 yaourt -Suyy firefox-quantum --noconfirm
 yaourt -S firefox-quantum --noconfirm
-firefox-quantum 
+firefox-quantum
 synclient -l
 xdpyinfo | grep -B2 resolution
 xrandr --dpi
-xrandr 
+xrandr
 xrandr --dpi 96
 xrandr --dpi 144
 xrandr --dpi 200
 xrandr
-cat ~/arandr.sh 
+cat ~/arandr.sh
 xrandr --output VIRTUAL1 --off --output LVDS1 --primary --mode 2048x1200 --pos 0x0 --rotate normal --output VGA1 --off
 xrandr LVDS1 --dpi 48
 xrandr --output LVDS1 --dpi 48
@@ -230,7 +230,7 @@ modprobe cp210x
 sudo modprobe cp210x
 hdparm
 sudo hdparm -t /dev/sda
-mingetty 
+mingetty
 systemctl edit getty@tty1
 sudo systemctl edit getty@tty1
 cp /usr/lib/systemd/system/getty@.service /etc/systemd/system/autologin@.service
@@ -290,7 +290,7 @@ docker run --rm -ti node:8.4.0-alpine /bin/sh
 docker run --rm -ti alpine /bin/sh
 docker build -t ui .
 
-docker build -t --no-cache ui . 
+docker build -t --no-cache ui .
 docker build -t ui .
 docker build -t ui .
 docker build -t ui .
@@ -316,16 +316,16 @@ npm i
 npm run test
 pacman -S uxvrt
 sudo pacman -S uxvrt
-ajaxterm 
-qterminal 
-xterm 
-tmux 
+ajaxterm
+qterminal
+xterm
+tmux
 htop
 yaourt -S acestream-engine-i686
 yaourt -S acestream-engine-i686 --no-confirm
 yaourt -S acestream-engine-i686 --noconfirm
 mono -v
-popcorntime 
+popcorntime
 yaourt -S noxbit --noconfirm
 yaourt -Suyy
 yaourt -S noxbit --noconfirm
@@ -394,13 +394,13 @@ chsh -l
 chsh -s /bin/zsh
 chsh -l
 chsh -s /bin/zsh
-[vladimir@vladimir-pc ~]$ 
-[vladimir@vladimir-pc ~]$ 
-[vladimir@vladimir-pc ~]$ 
-[vladimir@vladimir-pc ~]$ 
+[vladimir@vladimir-pc ~]$
+[vladimir@vladimir-pc ~]$
+[vladimir@vladimir-pc ~]$
+[vladimir@vladimir-pc ~]$
 cd /data/linux/arch-install/
 ls -la
-bash dotfiles.sh 
+bash dotfiles.sh
 sudo wifi-menu
 sudo wifi-menu
 ping www.google.com
@@ -409,24 +409,24 @@ sudo systemctl stop NetworkManager
 sudo wifi-menu
 ping 8.8.8.8
 ping 8.8.8.8
-bash dotfiles.sh 
+bash dotfiles.sh
 ls -la ~
-nano dotfiles.sh 
+nano dotfiles.sh
 rm -rf ~/.dotfiles/
-bash dotfiles.sh 
+bash dotfiles.sh
 rm -rf ~/.dotfiles/
-nano dotfiles.sh 
-nano dotfiles.sh 
-bash dotfiles.sh 
+nano dotfiles.sh
+nano dotfiles.sh
+bash dotfiles.sh
 
-nano dotfiles.sh 
+nano dotfiles.sh
 rm -rf ~/.dotfiles/
-bash dotfiles.sh 
+bash dotfiles.sh
 ls -la ~
 rm -rf ~/.dotfiles/
 rm -rf ~/.dotfiles-backup/
-nano dotfiles.sh 
-bash dotfiles.sh 
+nano dotfiles.sh
+bash dotfiles.sh
 ls -la ~
 reboot
 chsh -l
@@ -443,49 +443,50 @@ pacman -S git
 sudo pacman -S git
 git clone https://github.com/v-l-a-d-i-m-i-r/arch-install
 cd arch-install/
-bash yaourt.sh 
+bash yaourt.sh
 ls -la
 cd package-query/
 makepkg -s --noconfirm
  sudo pacman -U --noconfirm $(ls -la | grep pkg.tar)
 ls -la
-sudo pacman -U package-query-1.9-2-x86_64.pkg.tar.xz 
+sudo pacman -U package-query-1.9-2-x86_64.pkg.tar.xz
 cd ..
 package-query -v
 git clone https:// aur.archlinux.org/yaourt.git
 git clone https://aur.archlinux.org/yaourt.git
 cd yaourt
 makepkg -s --noconfirm
-sudo pacman -U yaourt-1.9-1-any.pkg.tar.xz 
+sudo pacman -U yaourt-1.9-1-any.pkg.tar.xz
 cd ..
 rm -rf package-query/ yaourt/
 ls -la
-bash desktop.sh 
-bash soft.sh 
-bash dotfiles.sh 
+bash desktop.sh
+bash soft.sh
+bash dotfiles.sh
 chsh -l
 chsh -s /bin/zsh
 reboot
+<<<<<<< HEAD
 sudo systemctl start dhcpcd
 ping 8.8.8.8
 cd arch-install
 cd projects/arch-install
 ls -la
-bash yaourt.sh 
-sudo nano yaourt.sh 
+bash yaourt.sh
+sudo nano yaourt.sh
 ls -la
 rm -rf package-query/
-bash yaourt.sh 
+bash yaourt.sh
 ls -la
 yaourt -v
 yaourt --version
-bash desktop.sh 
-nano desktop.sh 
-bash desktop.sh 
-bash soft.sh 
-nano soft.sh 
-bash soft.sh 
-bash dotfiles.sh 
+bash desktop.sh
+nano desktop.sh
+bash desktop.sh
+bash soft.sh
+nano soft.sh
+bash soft.sh
+bash dotfiles.sh
 sudo reboot
 docker -v
 docker ps
@@ -495,6 +496,22 @@ shutter -v
 sudo echo $USER
 sudo chsh -s /bin/zsh $USER
 echo $SHELL
-bash soft.sh 
+bash soft.sh
 sudo gpasswd -a ${USER} docker
 sudo systemctl enable docker
+=======
+sudo sysctl start dhcpcd
+sudo sysctl start dhcpcd
+sudo systemctl start dhcpcd
+ping 8.8.8.8
+ping 8.8.8.8
+sudo pacman -S git
+git clone http://github.com/v-l-a-d-i-m-i-r/arch-install.git
+cd arch-install/
+bash yaourt.sh
+yaourt --version
+sh desktop.sh
+bash soft.sh
+sh dotfiles.sh
+sudo reboot
+>>>>>>> 7b61fa9d374058863d3761b594e9b81df7b9586f

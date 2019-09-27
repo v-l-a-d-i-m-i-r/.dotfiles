@@ -26,4 +26,5 @@
   <property name="expire-timeout" type="int" value="5"/>
   <property name="do-fadeout" type="bool" value="true"/>
   <property name="do-slideout" type="bool" value="true"/>
+  <property name="initial-opacity" type="double" value="1.000000"/>
 </channel>
