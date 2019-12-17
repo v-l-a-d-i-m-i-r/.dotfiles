@@ -5,6 +5,7 @@
     <property name="known_applications" type="array">
       <value type="string" value="Electron"/>
       <value type="string" value="Firefox"/>
+      <value type="string" value="flameshot"/>
       <value type="string" value="google-chrome"/>
       <value type="string" value="kalu"/>
       <value type="string" value="nm-applet"/>

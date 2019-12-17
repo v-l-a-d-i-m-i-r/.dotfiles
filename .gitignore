@@ -62,7 +62,7 @@
 !.config/backgrounds/
 
 !.config/qxkb.cfg
-!.config/qxkb.pid
+# !.config/qxkb.pid
 
 !.config/xfce4
 .config/xfce4/*

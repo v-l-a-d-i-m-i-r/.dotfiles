@@ -39,7 +39,7 @@ own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
 
 minimum_size 300 0
 stippled_borders 0
-update_interval 2.0
+update_interval 1.0
 uppercase no
 use_spacer none
 
@@ -48,7 +48,7 @@ show_graph_range no
 
 use_xft yes
 xftalpha 0.1
-xftfont Dejavu:size=12
+xftfont Dejavu:size=11
 # color0 CCCCCC
 # color1 EAEAEA
 color2 DFDFDE

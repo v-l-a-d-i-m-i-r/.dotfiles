@@ -60,7 +60,7 @@ bindkey "^[[1;5D" backward-word
 # zle -N zle-line-init
 
 # function select-char-right {
-#     if (( $marking != 1 )) 
+#     if (( $marking != 1 ))
 #     then
 #         marking=1
 #         zle set-mark-command
@@ -70,7 +70,7 @@ bindkey "^[[1;5D" backward-word
 # zle -N select-char-right
 
 # function select-char-left {
-#     if (( $marking != 1 )) 
+#     if (( $marking != 1 ))
 #     then
 #         marking=1
 #         zle set-mark-command
@@ -120,7 +120,7 @@ bindkey "^[[1;5D" backward-word
 # r-delregion() {
 #     if ((REGION_ACTIVE)) then
 #        zle kill-region
-#     else 
+#     else
 #        zle $1
 #     fi
 # }
@@ -203,6 +203,34 @@ alias docker-stop='/usr/bin/docker stop $(docker ps -a -q)'
 alias docker-rm='/usr/bin/docker rm -f $(docker ps -a -q)'
 alias docker-rmi='/usr/bin/docker rmi -f $(docker images -q)'
 alias docker-image='docker run -v /var/run/docker.sock:/var/run/docker.sock --rm hub.docker.com/r/chenzj/dfimage'
+function dockertags () {
+# https://stackoverflow.com/questions/28320134/how-can-i-list-all-tags-for-a-docker-image-on-a-remote-registry
+if [ $# -lt 1 ]
+then
+cat << HELP
+
+dockertags  --  list all tags for a Docker image on a remote registry.
+
+EXAMPLE:
+  - list all tags for ubuntu:
+    dockertags ubuntu
+
+  - list all php tags containing apache:
+    dockertags php apache
+
+HELP
+fi
+
+image="$1"
+tags=`wget -q https://registry.hub.docker.com/v1/repositories/${image}/tags -O -  | sed -e 's/[][]//g' -e 's/"//g' -e 's/ //g' | tr '}' '\n'  | awk -F: '{print $3}'`
+
+if [ -n "$2" ]
+then
+  tags=` echo "${tags}" | grep "$2" `
+fi
+
+echo "${tags}"
+}
 
 # Docker Compose
 alias dcd='/usr/bin/docker-compose down'

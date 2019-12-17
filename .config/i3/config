@@ -10,7 +10,7 @@ set $mod Mod4
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:SF Pro Text Regilar 13
+font pango:SF Pro Text Regilar 12
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -101,24 +101,16 @@ set $workspace9  "9: "
 set $workspace10 "10:"
 
 # run xprop to get the application info
-<<<<<<< HEAD
 assign [class="Skype"]          $workspace4
+assign [class="Slack"]         $workspace4
 assign [class="Telegram"]       $workspace4
+assign [class="Viber"]          $workspace4
 assign [class="Pcmanfm"]        $workspace5
 assign [class="Engrampa"]       $workspace5
 assign [class="Thunar"]         $workspace5
 assign [class="Doublecmd"]      $workspace5
 assign [class="Gedit"]          $workspace6
 assign [class="Mousepad"]       $workspace6
-=======
-assign [class="Skype"] 	        $workspace4
-assign [class="Slack"] 	        $workspace4
-assign [class="Pcmanfm"] 	$workspace5
-assign [class="Thunar"] 	$workspace5
-assign [class="Doublecmd"] 	$workspace5
-assign [class="Gedit"] 	        $workspace6
-assign [class="Mousepad"] 	$workspace6
->>>>>>> 7b61fa9d374058863d3761b594e9b81df7b9586f
 assign [class="Pamac-manager"]  $workspace7
 assign [class="Pamac-updater"]  $workspace7
 assign [class="Chromium"]       $workspace8
@@ -206,12 +198,13 @@ exec_always --no-startup-id xcompmgr -CcfF -I1 -O1 -D0 -t-3.5 -l-3.5 -r4.2 -o.5
 # exec_always --no-startup-id compton --config ~/.config/compton/compton.xr-glx-hybrid.conf
 # exec_always --no-startup-id "synclient TapButton1=1 TapButton2=3 TapButton3=2 VertTwoFingerScroll=1 HorizTwoFingerScroll=1"
 
-exec_always --no-startup-id conky
+# exec_always --no-startup-id conky
 exec_always --no-startup-id "pulseaudio --kill && pulseaudio --start"
 # exec_always --no-startup-id xxkb
 # exec_always --no-startup-id "sleep 10 && setxkbmap -layout us,ru -option grp:caps_toggle,grp_led:caps"
 exec_always --no-startup-id qxkb
 exec_always --no-startup-id shutter --min_at_startup
+exec_always --no-startup-id flameshot
 exec_always --no-startup-id "sleep 5 && xfce4-power-manager"
 exec_always --no-startup-id "sleep 5 && pa-applet"
 exec_always --no-startup-id "sleep 5 && nm-applet"
@@ -221,8 +214,8 @@ bar {
   i3bar_command i3bar
   status_command i3blocks
   position top
-  tray_padding 1 px
-  font pango: Awesome, SF Pro Text Regilar 13
+  tray_padding 0 px
+  font pango: Awesome, SF Pro Text Regilar 12
 
   colors {
     background #DFDFDE

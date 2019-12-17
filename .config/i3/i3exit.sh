@@ -119,6 +119,7 @@ menu=(
   [Suspend]="systemctl suspend"
   [Halt]="systemctl halt"
   [Lock]="${LOCKSCRIPT:-i3lock --color=${BG_COLOR#"#"}}"
+  # [Lock]="${LOCKSCRIPT:-i3lock-fancy }"
   [Logout]="i3-msg exit"
   [Cancel]=""
 )
