@@ -1,45 +1,3 @@
-notify-osd
-notify
-notify-send --icon=gtk-info Test "This is a test"
-startx
-startx
-startx
-htop
-htop
-startx
-sudo groupadd docker
-sudo gpasswd -a $USER docker
-docker -v
-sudo systemctl enable docker
-cd ..
-cd ..
-cd /data/
-mkdir projects
-cd /proc/
-cd /data/projects/
-mkdir
-mkdir docker-test
-cd docker-test/
-code
-code .
-docker build
-docker build .
-docker images
-docker run .
-docker images -a
-docker build .
-docker build .
-docker ps
-docker images
-docker run --rm -ti alpine /bin/sh
-docker build .
-docker run --rm -ti alpine /bin/sh
-docker build .
-docker run --rm -ti node /bin/sh
-docker build .
-docker run --rm -ti alpine /bin/sh
-docker build .
-docker build --no-cache .
 docker run --rm -ti alpine /bin/sh
 docker images
 docker build --no-cache .
@@ -515,3 +473,28 @@ bash soft.sh
 sh dotfiles.sh
 sudo reboot
 >>>>>>> 7b61fa9d374058863d3761b594e9b81df7b9586f
+sudo systemctl start dhcpcd
+ping www.google.com
+sh /data/projects/linux-install/arch/yaourt.sh 
+sh /data/projects/linux-install/arch/desktop.sh 
+sh /data/projects/linux-install/arch/desktop.sh 
+sudo systemctl enable NetworkManager
+sudo chsh -s /bin/zsh/ vladimir
+sudo chsh -s /bin/zsh/ vladimir
+sudo pacman -S zsh
+sudo chsh -s /bin/zsh/ vladimir
+sh /data/projects/linux-install/arch/desktop.sh 
+nano /data/projects/linux-install/arch/desktop.sh 
+yaourt -S ttf-font-awesome-4
+yaourt -S otf-san-francisco
+echp $SHELL
+echo $SHELL
+sudo chsh -s /bin/zsh/ vladimir
+nano /data/projects/linux-install/arch/dotfiles.sh 
+sh /data/projects/linux-install/arch/dotfiles.sh 
+reboot
+xcompmgr 
+yaourt -S google-chrome
+code ~/.config/i3/config
+zsh
+sudo chsh -s /usr/bin/zsh vladimir

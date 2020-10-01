@@ -1,7 +1,9 @@
 [global_config]
   inactive_color_offset = 0.707692307692
+  sticky = True
   tab_position = hidden
   title_font = DejaVu Sans Semi-Condensed 19
+  window_state = maximise
 [keybindings]
 [layouts]
   [[default]]
@@ -14,7 +16,7 @@
 [plugins]
 [profiles]
   [[default]]
-    background_darkness = 0.9
+    background_darkness = 1.0
     background_type = transparent
     cursor_color = "#aaaaaa"
     font = DejaVu Sans Mono 11

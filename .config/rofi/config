@@ -19,7 +19,8 @@ rofi.show-icons:         true
 # rofi.drun-icon-theme:    Arc
 
 # modi
-rofi.modi:              drun,run,window
+# rofi.modi:              drun,run,window
+rofi.modi:              drun
 rofi.sidebar-mode: true
 
 

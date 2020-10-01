@@ -188,6 +188,7 @@ RPROMPT='$(git_super_status)'
 [ -z "$NVM_DIR" ] && export NVM_DIR="$HOME/.nvm"
 source /usr/share/nvm/nvm.sh
 source /usr/share/nvm/install-nvm-exec
+nvm use default > /dev/null
 
 # dotfiles
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
@@ -203,7 +204,8 @@ alias docker-stop='/usr/bin/docker stop $(docker ps -a -q)'
 alias docker-rm='/usr/bin/docker rm -f $(docker ps -a -q)'
 alias docker-rmi='/usr/bin/docker rmi -f $(docker images -q)'
 alias docker-image='docker run -v /var/run/docker.sock:/var/run/docker.sock --rm hub.docker.com/r/chenzj/dfimage'
-function dockertags () {
+alias docker-stats='watch --interval 1 docker stats --no-stream'
+function docker-tags () {
 # https://stackoverflow.com/questions/28320134/how-can-i-list-all-tags-for-a-docker-image-on-a-remote-registry
 if [ $# -lt 1 ]
 then
@@ -240,6 +242,44 @@ alias dcub='/usr/bin/docker-compose up --build'
 function gfcp() { git fetch origin $1 && git checkout $1 && git pull origin $1 }
 function ga() { git add $1 }
 function gcm() { git commit -m "$1" }
+alias gpc='git push origin `git rev-parse --abbrev-ref HEAD`'
+
+# Terminal colors
+function colors() {
+  for i in {0..255} ; do
+    printf "\x1b[38;5;${i}m%3d " "${i}"
+    if (( $i == 15 )) || (( $i > 15 )) && (( ($i-15) % 12 == 0 )); then
+      echo;
+    fi
+  done
+
+  # for x in {0..8}; do
+  #   for i in {30..37}; do
+  #     for a in {40..47}; do
+  #       echo -ne "\e[$x;$i;$a""m\\\e[$x;$i;$a""m\e[0;37;40m "
+  #     done
+  #     echo
+  #   done
+  # done
+  # echo ""
+
+  echo -e "\033[0mNC (No color)"
+  echo -e "\033[1;37mWHITE\t\033[0;30mBLACK"
+  echo -e "\033[0;34mBLUE\t\033[1;34mLIGHT_BLUE"
+  echo -e "\033[0;32mGREEN\t\033[1;32mLIGHT_GREEN"
+  echo -e "\033[0;36mCYAN\t\033[1;36mLIGHT_CYAN"
+  echo -e "\033[0;31mRED\t\033[1;31mLIGHT_RED"
+  echo -e "\033[0;35mPURPLE\t\033[1;35mLIGHT_PURPLE"
+  echo -e "\033[0;33mYELLOW\t\033[1;33mLIGHT_YELLOW"
+  echo -e "\033[1;30mGRAY\t\033[0;37mLIGHT_GRAY"
+}
+
+# alias devs='git shortlog -sen'
+# alias l='git log --pretty=format:"%C(yellow)%h%C(reset)%<|(30)   %C(blue)%an%C(reset)%<|(47) %C(green)%ar%C(reset) %s%C(red)%d%C(reset)" --graph -16'
+# alias ls='git log --pretty=format:"%C(yellow)%h%C(reset)%<|(30)  %C(blue)%an%C(reset)%<|(47) %C(green)%ar%C(reset) %s%C(red)%d%C(reset)" --graph'
+# alias lf='git log --pretty=format:"%C(yellow)%h%C(reset) %s%C(red)%d%C(reset)%n%C(cyan)a%C(reset) %C(blue)%ae%C(reset) %C(green)%ar% / %ad%C(reset)%n%C(cyan)c%C(reset) %C(blue)%ce%C(reset) %C(green)%cr / %cd%C(reset)%n" --graph --date=local'
+# alias ll='git log --pretty=format:"%C(yellow)%h%C(reset) %s%C(red)%d%C(reset)%n%C(cyan)a%C(reset) %C(blue)%ae%C(reset) %C(green)%ar% / %ad%C(reset)%n%C(cyan)c%C(reset) %C(blue)%ce%C(reset) %C(green)%cr / %cd%C(reset)%n" --graph --date=local -8'
+# alias lg='git log --pretty=format:"%C(yellow)%h%C(reset)%<|(30)  %C(blue)%an%C(reset)%<|(47) %C(green)%ar%C(reset) %s%C(red)%d%C(reset)" -E -i --grep'
 
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`

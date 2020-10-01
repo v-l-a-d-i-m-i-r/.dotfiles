@@ -7,6 +7,8 @@
 !.xinitrc
 !.Xauthority
 !.Xresources
+!.Xresources.urxvt"
+!.Xresources.xft
 
 # bash
 !.bash_history
@@ -63,6 +65,7 @@
 
 !.config/qxkb.cfg
 # !.config/qxkb.pid
+!.config/redshift.conf
 
 !.config/xfce4
 .config/xfce4/*

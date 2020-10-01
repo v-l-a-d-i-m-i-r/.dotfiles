@@ -1,3 +1,9 @@
 grep atom
 open_with 
 open_with ccc
+set colorscheme solorized
+set colorscheme solarized
+htop
+rename
+cd /
+cd /data/projects/sf-platform/repos/sf-backend/

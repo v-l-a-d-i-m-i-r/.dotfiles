@@ -23,7 +23,7 @@ font pango:SF Pro Text Regilar 12
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec terminator
+bindsym $mod+Return exec urxvt
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -32,7 +32,6 @@ bindsym $mod+Shift+q kill
 bindsym $mod+Tab workspace prev
 bindsym $mod+q   workspace next
 bindsym $mod+d exec rofi -show drun
-# bindsym $mod+Tab exec rofi -show window
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
@@ -102,7 +101,7 @@ set $workspace10 "10:"
 
 # run xprop to get the application info
 assign [class="Skype"]          $workspace4
-assign [class="Slack"]         $workspace4
+assign [class="Slack"]          $workspace4
 assign [class="Telegram"]       $workspace4
 assign [class="Viber"]          $workspace4
 assign [class="Pcmanfm"]        $workspace5
@@ -125,6 +124,7 @@ assign [class="URxvt"]          $workspace10
 assign [class="Sakura"]         $workspace10
 assign [class="Terminator"]     $workspace10
 assign [class="Xfce4-terminal"] $workspace10
+assign [class="Tym"]            $workspace10
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -184,6 +184,7 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
+bindsym $mod+p exec --no-startup-id vlc --qt-start-minimized ~/vlc-playlist.xspf
 
 # sudo nano /etc/modprobe.d/iwlwifi-opt.conf
 
@@ -209,13 +210,14 @@ exec_always --no-startup-id "sleep 5 && xfce4-power-manager"
 exec_always --no-startup-id "sleep 5 && pa-applet"
 exec_always --no-startup-id "sleep 5 && nm-applet"
 exec_always --no-startup-id "sleep 5 && pamac-tray"
+exec_always --no-startup-id "sleep 5 && redshift-qt"
 
 bar {
   i3bar_command i3bar
   status_command i3blocks
   position top
   tray_padding 0 px
-  font pango: Awesome, SF Pro Text Regilar 12
+  font pango: Font Awesome, SF Pro Text Regilar 12
 
   colors {
     background #DFDFDE
@@ -243,8 +245,8 @@ bar {
 # client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
 # palette #555555 #aaaaaa #DFDFDE
-# class                 #border     #background  #text        #indicator   #child_border
-#client.background       #ffffff
+# class                   #border     #background  #text        #indicator   #child_border
+# client.background       #ffffff
 # client.focused          #555555     #555555      #DFDFDE      #555555      #555555
 # client.focused_inactive #aaaaaa     #aaaaaa      #DFDFDE      #aaaaaa      #aaaaaa
 # client.unfocused        #555555     #DFDFDE      #555555      #DFDFDE      #DFDFDE
@@ -273,10 +275,12 @@ bindsym $mod+Shift+Escape exec ~/.config/i3/i3exit.sh
 
 
 ############### hooks ###############
-#for_window [class="URxvt"]    focus
+for_window [class="URxvt"]     focus
+for_window [class="Viber"]     focus
 #for_window [class="Code"]     border none, focus
 #for_window [class="QupZilla"] border none
-#for_window [class="Skype"] floating disable
+#for_window [class="Skype"]    floating disable
+for_window [class="Terminator"]    floating disable
 
 
 # workspace_layout tabbed

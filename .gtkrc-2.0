@@ -3,7 +3,7 @@
 
 include "/home/vladimir/.gtkrc-2.0.mine"
 gtk-theme-name="Adwaita"
-gtk-icon-theme-name="Paper-Mono-Dark"
+gtk-icon-theme-name="Papirus-Light"
 gtk-font-name="SF Pro Text 11"
 gtk-cursor-theme-name="Adwaita"
 gtk-cursor-theme-size=0
