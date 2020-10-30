@@ -40,6 +40,9 @@
 # background
 !background.jpg
 
+# playlist
+!vlc-playlist.xspf
+
 # gtk
 !.gtkrc-2.0
 !.gtkrc-2.0.mine

@@ -138,7 +138,7 @@ function prepare_launcher() {
         -hlfg "${HLFG_COLOR}" -hlbg "${HLBG_COLOR}")
     launcher_exe="rofi"
     launcher_options=(-dmenu -i -lines "${menu_nrows}" -p "${ROFI_TEXT}" \
-        "${rofi_colors}" "${ROFI_OPTIONS[@]}")
+        "${rofi_colors}" "${ROFI_OPTIONS[@]}" -normal-window)
   elif [[ "$1" == "zenity" ]]; then
     launcher_exe="zenity"
     launcher_options=(--list --title="${ZENITY_TITLE}" --text="${ZENITY_TEXT}" \
