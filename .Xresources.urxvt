@@ -1,0 +1,102 @@
+! https://gist.github.com/JAEGER2K/704857196157d911c5df
+
+URxvt*urgentOnBell: true
+URxvt*utf8: 1
+URxvt*locale: 1
+
+
+URxvt.scrollBar: false
+URxvt*scrollTtyOutput:      false
+URxvt*scrollWithBuffer:     true
+URxvt*scrollTtyKeypress:    true
+
+URxvt*font:     xft:mono:medium:size=11
+URxvt.boldFont: xft:mono:bold:size=11
+! xterm*faceName: xft:mono:medium:size=11
+URxvt.letterSpace: -0.5
+URxvt.depth: 32
+!urxvt*background: rgba:0000/0000/0200/c800
+
+URxvt*termName: rxvt-unicode
+URxvt*imLocale: en_US.UTF-8
+
+URxvt.cursorBlink: true
+
+! xterm*dynamicColors: true
+! urxvt*dynamicColors: on
+
+
+!! Common Keybinds for Navigations
+URxvt.keysym.Shift-Up: command:\033]720;1\007
+URxvt.keysym.Shift-Down: command:\033]721;1\007
+URxvt.keysym.Control-Up: \033[1;5A
+URxvt.keysym.Control-Down: \033[1;5B
+URxvt.keysym.Control-Right: \033[1;5C
+URxvt.keysym.Control-Left: \033[1;5D
+
+!! Keycode fixes for Ctrl+direction in Vim
+!URxvt.keysym.C-Up:     \033[1;5A
+!URxvt.keysym.C-Down:   \033[1;5B
+!URxvt.keysym.C-Right:  \033[1;5C
+!URxvt.keysym.C-Left:   \033[1;5D
+!URxvt.keysym.C-Prior:  \033[5;5~
+!URxvt.keysym.C-Next:   \033[6;5~
+!URxvt.keysym.C-Home:   \033[7;5~
+!URxvt.keysym.C-End:    \033[8;5~
+
+URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select,resize-font
+URxvt.url-select.launcher:  /usr/bin/xdg-open
+URxvt.url-select.underline: true
+URxvt.keysym.M-u:           perl:url-select:select_next
+! URxvt.keysym.M-Escape:      perl:keyboard-select:activate
+! URxvt.keysym.M-s:           perl:keyboard-select:search
+
+URxvt.clipboard.autocopy: true
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
+URxvt.keysym.Control-Meta-c: builtin-string:
+URxvt.keysym.Control-Meta-v: builtin-string:
+
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+
+! Terminator color palette
+URxvt*background:         [75]#000000
+URxvt*foreground:         #AAAAAA
+URxvt*cursorColor:        #AAAAAA
+! foreground color for underline
+URxvt*colorUL:            #AAAAAA
+! line color for underline
+URxvt*underlineColor:     #AAAAAA
+
+! black dark/light
+URxvt*color0:             #2E3436
+URxvt*color8:             #555753
+
+! red dark/light
+URxvt*color1:             #CC0000
+URxvt*color9:             #EF2929
+
+! green dark/light
+URxvt*color2:             #4E9A06
+URxvt*color10:            #8AE234
+
+! yellow dark/light
+URxvt*color3:             #C4A000
+URxvt*color11:            #FCE94F
+
+! blue dark/light
+URxvt*color4:             #31609B
+URxvt*color12:            #729FCF
+
+! magenta dark/light
+URxvt*color5:             #75507B
+URxvt*color13:            #AD7FA8
+
+! cyan dark/light
+URxvt*color6:             #06989A
+URxvt*color14:            #34E2E2
+
+! white dark/light
+URxvt*color7:             #D3D7CF
+URxvt*color15:            #EEEEEC
