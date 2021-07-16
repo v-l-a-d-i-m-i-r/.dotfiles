@@ -1,43 +1,3 @@
-docker run --rm -ti alpine /bin/sh
-docker images
-docker build --no-cache .
-docker run --rm -ti alpine /bin/sh
-docker images
-docker images
-docker run --rm -ti -v .:/home alpine /bin/sh
-docker run --rm -ti -v ./:/home alpine /bin/sh
-docker run --rm -ti -v .:/home alpine /bin/sh
-exit
-docker-tray
-docker stat
-docker stats
-htop
-docker run --rm -ti -v .:/home alpine /bin/sh
-docker build .
-htop
-htop
-htop
-ls /etc/grub.d/
-grub-mkconfig -o /boot/grub/grub.cfg
-sudo grub-mkconfig -o /boot/grub/grub.cfg
-reboot
-dmesg | grep microcode
-poweroff
-htop
-conky
-man xsetroot
-xsetroot --version
-xsetroot -solid "#2F343F"
-usermod -aG log vladimir
-sudo usermod -aG log vladimir
-htop
-pkill conky
-pkill conky
-pkill conky
-conky
-conky
-conky
-nitrogen --set-scaled ~/background.jpg
 xsetroot -solid "#2F343F"
 man nitrogen
 nitrogen --set-color "#2F343F"
@@ -498,3 +458,43 @@ yaourt -S google-chrome
 code ~/.config/i3/config
 zsh
 sudo chsh -s /usr/bin/zsh vladimir
+sudo systemctl start dhcpcd
+ping 8.8.8.8
+ping 8.8.8.8
+cd /data/projects
+ls -la
+cd linux-install/
+cd arch/
+ls -la
+sh desktop.sh 
+sh pamac-aur.sh 
+sudo chmod -R 777 /data
+sh pamac-aur.sh 
+sh desktop.sh 
+vim desktop.sh 
+sudo pacman -S vim
+vim desktop.sh 
+sh desktop.sh 
+vim desktop.sh 
+sh desktop.sh 
+vim desktop.sh 
+sh desktop.sh 
+vim desktop.sh 
+sh desktop.sh 
+vim desktop.sh 
+sh desktop.sh 
+vim desktop.sh 
+sh desktop.sh 
+vim desktop.sh 
+sh desktop.sh 
+vim desktop.sh 
+sh desktop.sh 
+vim desktop.sh 
+sh desktop.sh 
+vim desktop.sh 
+sh desktop.sh 
+vim desktop.sh 
+sh desktop.sh 
+sh dotfiles.sh 
+sh soft.sh 
+sudo reboot

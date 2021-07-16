@@ -5,7 +5,9 @@ URxvt*utf8: 1
 URxvt*locale: 1
 
 
-URxvt.scrollBar: false
+URxvt.scrollBar: true
+URxvt*scrollBar_right:    true
+URxvt*scrollstyle:        plain
 URxvt*scrollTtyOutput:      false
 URxvt*scrollWithBuffer:     true
 URxvt*scrollTtyKeypress:    true
@@ -50,6 +52,9 @@ URxvt.url-select.underline: true
 URxvt.keysym.M-u:           perl:url-select:select_next
 ! URxvt.keysym.M-Escape:      perl:keyboard-select:activate
 ! URxvt.keysym.M-s:           perl:keyboard-select:search
+
+URxvt.keysym.Control-minus:     resize-font:smaller
+URxvt.keysym.Control-plus:      resize-font:bigger
 
 URxvt.clipboard.autocopy: true
 URxvt.keysym.Shift-Control-V: eval:paste_clipboard

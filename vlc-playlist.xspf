@@ -35,6 +35,86 @@
 				<vlc:id>4</vlc:id>
 			</extension>
 		</track>
+		<track>
+			<location>http://online.radioroks.ua/RadioROKS</location>
+			<title>Radio ROKS</title>
+			<creator> (Radio ROKS</creator>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>5</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>http://online.radioroks.ua/RadioROKS_Live</location>
+			<title>Radio ROKS</title>
+			<creator> (Radio ROKS</creator>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>6</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>http://online.radioroks.ua/RadioROKS_Ukr</location>
+			<title>Radio ROKS Ukrainian</title>
+			<creator> (Radio ROKS Óêðà¿íñüêèé Ðîê</creator>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>7</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>http://online.radioroks.ua/RadioROKS_Ukr_Live</location>
+			<title>Radio ROKS Ukrainian</title>
+			<creator> (Radio ROKS Óêðà¿íñüêèé Ðîê</creator>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>8</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>http://online.radioroks.ua/RadioROKS_NewRock</location>
+			<title>Radio ROKS New Rock</title>
+			<creator> (Radio ROKS New Rock</creator>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>9</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>http://online.radioroks.ua/RadioROKS_NewRock_Live</location>
+			<title>Radio ROKS New Rock</title>
+			<creator> (Radio ROKS New Rock</creator>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>10</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>http://online.radioroks.ua/RadioROKS_HardnHeavy</location>
+			<title>Radio ROKS Hard&#39;n&#39;Heavy</title>
+			<creator> (Radio ROKS Hard&#39;n&#39;Heavy</creator>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>11</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>http://online.radioroks.ua/RadioROKS_HardnHeavy_Live</location>
+			<title>Radio ROKS Hard&#39;n&#39;Heavy</title>
+			<creator> (Radio ROKS Hard&#39;n&#39;Heavy</creator>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>12</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>http://online.radioroks.ua/RadioROKS_Ballads</location>
+			<title>Radio ROKS Ballads</title>
+			<creator> (Radio ROKS Ballads</creator>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>13</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>http://online.radioroks.ua/RadioROKS_Ballads_Live</location>
+			<title>Radio ROKS Ballads</title>
+			<creator> (Radio ROKS Ballads</creator>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>14</vlc:id>
+			</extension>
+		</track>
 	</trackList>
 	<extension application="http://www.videolan.org/vlc/playlist/0">
 		<vlc:item tid="0"/>
@@ -42,5 +122,15 @@
 		<vlc:item tid="2"/>
 		<vlc:item tid="3"/>
 		<vlc:item tid="4"/>
+		<vlc:item tid="5"/>
+		<vlc:item tid="6"/>
+		<vlc:item tid="7"/>
+		<vlc:item tid="8"/>
+		<vlc:item tid="9"/>
+		<vlc:item tid="10"/>
+		<vlc:item tid="11"/>
+		<vlc:item tid="12"/>
+		<vlc:item tid="13"/>
+		<vlc:item tid="14"/>
 	</extension>
 </playlist>

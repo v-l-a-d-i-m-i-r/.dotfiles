@@ -3,6 +3,8 @@ export HISTSIZE=10000000
 export SAVEHIST=10000000
 setopt HIST_IGNORE_ALL_DUPS
 
+export KUBE_EDITOR="vim"
+
 export PATH="/usr/lib/ccache/bin/:$PATH"
 # export XDG_SESSION_TYPE="X11"
 export COMPOSE_DOCKER_CLI_BUILD=1

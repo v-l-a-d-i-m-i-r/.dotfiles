@@ -191,6 +191,7 @@ bindsym $mod+p exec --no-startup-id vlc --qt-start-minimized ~/vlc-playlist.xspf
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &\
   eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg)
 
+exec_always xset -b
 exec_always --no-startup-id xbacklight -set 30
 # exec_always nitrogen --set-scaled ~/.config/backgrounds/background-abstract-gray.jpg
 exec_always nitrogen --set-zoom-fill ~/.config/backgrounds/background-arch-gray.jpg

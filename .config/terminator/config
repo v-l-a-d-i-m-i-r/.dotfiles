@@ -1,27 +1,38 @@
 [global_config]
-  inactive_color_offset = 0.707692307692
-  sticky = True
-  tab_position = hidden
-  title_font = DejaVu Sans Semi-Condensed 19
   window_state = maximise
+  tab_position = hidden
+  sticky = True
+  inactive_color_offset = 0.707692307692
+  title_font = DejaVu Sans Semi-Condensed 19
 [keybindings]
-[layouts]
-  [[default]]
-    [[[child1]]]
-      parent = window0
-      type = Terminal
-    [[[window0]]]
-      parent = ""
-      type = Window
-[plugins]
 [profiles]
   [[default]]
-    background_darkness = 1.0
+    icon_bell = False
+    background_darkness = 0.9
     background_type = transparent
     cursor_color = "#aaaaaa"
     font = DejaVu Sans Mono 11
-    icon_bell = False
+    show_titlebar = False
     scroll_on_keystroke = False
     scrollback_infinite = True
-    show_titlebar = False
     use_system_font = False
+[layouts]
+  [[default]]
+    [[[child0]]]
+      type = Window
+      parent = ""
+      order = 0
+      position = 0:575
+      maximised = True
+      fullscreen = False
+      size = 1918, 504
+      title = /bin/zsh
+      last_active_term = 40823ad8-e1d7-4278-85a4-7d1d43ca6e96
+      last_active_window = True
+    [[[terminal1]]]
+      type = Terminal
+      parent = child0
+      order = 0
+      profile = default
+      uuid = 40823ad8-e1d7-4278-85a4-7d1d43ca6e96
+[plugins]
