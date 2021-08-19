@@ -4,7 +4,7 @@ URxvt*urgentOnBell: true
 URxvt*utf8: 1
 URxvt*locale: 1
 
-
+URxvt*saveline: 200000
 URxvt.scrollBar: true
 URxvt*scrollBar_right:    true
 URxvt*scrollstyle:        plain

@@ -3,36 +3,19 @@
 	<title>Playlist</title>
 	<trackList>
 		<track>
-			<location>http://audio-edge-3mayu.fra.h.radiomast.io/radioblues-flac</location>
-			<title>Radio BluesFlac</title>
+			<location>http://online.radioroks.ua/RadioROKS_Ballads</location>
+			<title>Radio ROKS Ballads</title>
+			<creator> (Radio ROKS Ballads</creator>
 			<extension application="http://www.videolan.org/vlc/playlist/0">
 				<vlc:id>0</vlc:id>
 			</extension>
 		</track>
 		<track>
-			<location>http://79.111.14.76:8002/electricblues</location>
+			<location>http://online.radioroks.ua/RadioROKS_Ballads_Live</location>
+			<title>Radio ROKS Ballads</title>
+			<creator> (Radio ROKS Ballads</creator>
 			<extension application="http://www.videolan.org/vlc/playlist/0">
 				<vlc:id>1</vlc:id>
-			</extension>
-		</track>
-		<track>
-			<location>http://79.111.14.76:8002/acousticblues</location>
-			<extension application="http://www.videolan.org/vlc/playlist/0">
-				<vlc:id>2</vlc:id>
-			</extension>
-		</track>
-		<track>
-			<location>http://play.organlive.com:7000/320</location>
-			<title>Organlive.com</title>
-			<extension application="http://www.videolan.org/vlc/playlist/0">
-				<vlc:id>3</vlc:id>
-			</extension>
-		</track>
-		<track>
-			<location>http://mscp2.live-streams.nl:8100/flac.flac</location>
-			<title>Hi Online</title>
-			<extension application="http://www.videolan.org/vlc/playlist/0">
-				<vlc:id>4</vlc:id>
 			</extension>
 		</track>
 		<track>
@@ -40,7 +23,7 @@
 			<title>Radio ROKS</title>
 			<creator> (Radio ROKS</creator>
 			<extension application="http://www.videolan.org/vlc/playlist/0">
-				<vlc:id>5</vlc:id>
+				<vlc:id>2</vlc:id>
 			</extension>
 		</track>
 		<track>
@@ -48,7 +31,7 @@
 			<title>Radio ROKS</title>
 			<creator> (Radio ROKS</creator>
 			<extension application="http://www.videolan.org/vlc/playlist/0">
-				<vlc:id>6</vlc:id>
+				<vlc:id>3</vlc:id>
 			</extension>
 		</track>
 		<track>
@@ -56,7 +39,7 @@
 			<title>Radio ROKS Ukrainian</title>
 			<creator> (Radio ROKS Óêðà¿íñüêèé Ðîê</creator>
 			<extension application="http://www.videolan.org/vlc/playlist/0">
-				<vlc:id>7</vlc:id>
+				<vlc:id>4</vlc:id>
 			</extension>
 		</track>
 		<track>
@@ -64,7 +47,7 @@
 			<title>Radio ROKS Ukrainian</title>
 			<creator> (Radio ROKS Óêðà¿íñüêèé Ðîê</creator>
 			<extension application="http://www.videolan.org/vlc/playlist/0">
-				<vlc:id>8</vlc:id>
+				<vlc:id>5</vlc:id>
 			</extension>
 		</track>
 		<track>
@@ -72,7 +55,7 @@
 			<title>Radio ROKS New Rock</title>
 			<creator> (Radio ROKS New Rock</creator>
 			<extension application="http://www.videolan.org/vlc/playlist/0">
-				<vlc:id>9</vlc:id>
+				<vlc:id>6</vlc:id>
 			</extension>
 		</track>
 		<track>
@@ -80,7 +63,7 @@
 			<title>Radio ROKS New Rock</title>
 			<creator> (Radio ROKS New Rock</creator>
 			<extension application="http://www.videolan.org/vlc/playlist/0">
-				<vlc:id>10</vlc:id>
+				<vlc:id>7</vlc:id>
 			</extension>
 		</track>
 		<track>
@@ -88,7 +71,7 @@
 			<title>Radio ROKS Hard&#39;n&#39;Heavy</title>
 			<creator> (Radio ROKS Hard&#39;n&#39;Heavy</creator>
 			<extension application="http://www.videolan.org/vlc/playlist/0">
-				<vlc:id>11</vlc:id>
+				<vlc:id>8</vlc:id>
 			</extension>
 		</track>
 		<track>
@@ -96,21 +79,38 @@
 			<title>Radio ROKS Hard&#39;n&#39;Heavy</title>
 			<creator> (Radio ROKS Hard&#39;n&#39;Heavy</creator>
 			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>9</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>http://audio-edge-3mayu.fra.h.radiomast.io/radioblues-flac</location>
+			<title>Radio BluesFlac</title>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>10</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>http://79.111.14.76:8002/electricblues</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>11</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>http://79.111.14.76:8002/acousticblues</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
 				<vlc:id>12</vlc:id>
 			</extension>
 		</track>
 		<track>
-			<location>http://online.radioroks.ua/RadioROKS_Ballads</location>
-			<title>Radio ROKS Ballads</title>
-			<creator> (Radio ROKS Ballads</creator>
+			<location>http://play.organlive.com:7000/320</location>
+			<title>Organlive.com</title>
 			<extension application="http://www.videolan.org/vlc/playlist/0">
 				<vlc:id>13</vlc:id>
 			</extension>
 		</track>
 		<track>
-			<location>http://online.radioroks.ua/RadioROKS_Ballads_Live</location>
-			<title>Radio ROKS Ballads</title>
-			<creator> (Radio ROKS Ballads</creator>
+			<location>http://mscp2.live-streams.nl:8100/flac.flac</location>
+			<title>Hi Online</title>
 			<extension application="http://www.videolan.org/vlc/playlist/0">
 				<vlc:id>14</vlc:id>
 			</extension>
