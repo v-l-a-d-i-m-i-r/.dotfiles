@@ -38,9 +38,11 @@ alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 # fpath=(~/.zsh/plugins/ $fpath)
 
 # Docker
+alias d='docker'
 alias docker-stop='/usr/bin/docker stop $(docker ps -a -q)'
 alias docker-rm='/usr/bin/docker rm -f $(docker ps -a -q)'
 alias docker-rmi='/usr/bin/docker rmi -f $(docker images -q)'
+alias docker-rmio='docker rmi $(docker images -f dangling=true -q)'
 alias docker-image='docker run -v /var/run/docker.sock:/var/run/docker.sock --rm hub.docker.com/r/chenzj/dfimage'
 alias docker-stats='watch --interval 1 docker stats --no-stream'
 function docker-tags () { curl -L -s https://registry.hub.docker.com/v1/repositories/$1/tags | jq -r '.[].name' }
@@ -98,6 +100,9 @@ do
 done
 }
 
+# tmux
+alias t='tmux '
+
 #Kowl
 function kowl() { docker run --rm -ti --network=host -p 8080:8080 -e KAFKA_BROKERS=$1 quay.io/cloudhut/kowl:master }
 
@@ -108,7 +113,7 @@ function myip() { ip route get 8.8.8.8 | grep -oP 'src \K[^ ]+' }
 alias sjq="jq -R 'fromjson? | select(type == \"object\")'"
 
 # Terminal colors
-function colors() {
+function showcolors() {
   for i in {0..255} ; do
     printf "\x1b[38;5;${i}m%3d " "${i}"
     if (( $i == 15 )) || (( $i > 15 )) && (( ($i-15) % 12 == 0 )); then

@@ -115,6 +115,22 @@
 				<vlc:id>14</vlc:id>
 			</extension>
 		</track>
+		<track>
+			<location>http://ais-edge23-dal02.cdnstream.com/1992_128.mp3</location>
+			<title>BluesMusicFan Radio</title>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>15</vlc:id>
+				<vlc:option>network-caching=1000</vlc:option>
+			</extension>
+		</track>
+		<track>
+			<location>http://62.169.211.13:8000/bluesradio</location>
+			<title>Blues Radio</title>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>16</vlc:id>
+				<vlc:option>network-caching=1000</vlc:option>
+			</extension>
+		</track>
 	</trackList>
 	<extension application="http://www.videolan.org/vlc/playlist/0">
 		<vlc:item tid="0"/>
@@ -132,5 +148,7 @@
 		<vlc:item tid="12"/>
 		<vlc:item tid="13"/>
 		<vlc:item tid="14"/>
+		<vlc:item tid="15"/>
+		<vlc:item tid="16"/>
 	</extension>
 </playlist>

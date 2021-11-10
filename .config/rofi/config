@@ -20,7 +20,7 @@ rofi.show-icons:         true
 
 # modi
 # rofi.modi:              drun,run,window
-rofi.modi:              drun
+rofi.modi:              run,window,drun
 rofi.sidebar-mode: true
 
 
