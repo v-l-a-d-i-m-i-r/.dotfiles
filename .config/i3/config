@@ -203,10 +203,10 @@ exec_always --no-startup-id xcompmgr -CcfF -I1 -O1 -D0 -t-3.5 -l-3.5 -r4.2 -o.5
 # exec_always --no-startup-id conky
 exec_always --no-startup-id "pulseaudio --kill && pulseaudio --start"
 # exec_always --no-startup-id xxkb
-# exec_always --no-startup-id "sleep 10 && setxkbmap -layout us,ru -option grp:caps_toggle,grp_led:caps"
-exec_always --no-startup-id qxkb
+exec_always --no-startup-id "setxkbmap -layout us,ru -option grp:caps_toggle,grp_led:caps"
+exec_always --no-startup-id gxkb
 exec_always --no-startup-id shutter --min_at_startup
-exec_always --no-startup-id flameshot
+exec_always --no-startup-id "sleep 10 && flameshot"
 exec_always --no-startup-id "sleep 5 && xfce4-power-manager"
 exec_always --no-startup-id "sleep 5 && pa-applet"
 exec_always --no-startup-id "sleep 5 && nm-applet"

@@ -13,20 +13,20 @@ XXkb.controls.focusout: yes
 #XXkb.button.enable: no
 
 # images
-XXkb.mainwindow.label.enable: no
-XXkb.mainwindow.geometry: 15x15+0+0
-XXkb.image.path: /usr/share/xxkb/
-XXkb.mainwindow.image.1: en15.xpm
-XXkb.mainwindow.image.2: ru15.xpm
-XXkb.mainwindow.image.3:
-XXkb.mainwindow.image.4:
+# XXkb.mainwindow.label.enable: no
+# XXkb.mainwindow.geometry: 15x15+0+0
+# XXkb.image.path: /usr/share/xxkb/
+# XXkb.mainwindow.image.1: en15.xpm
+# XXkb.mainwindow.image.2: ru15.xpm
+# XXkb.mainwindow.image.3:
+# XXkb.mainwindow.image.4:
 
 # text
-#XXkb.mainwindow.label.enable: yes
-#XXkb.mainwindow.geometry: 20x20+0+0
-#XXkb.mainwindow.label.background: #3C3E40
-#XXkb.mainwindow.label.foreground: #C1C1C1
-#XXkb.mainwindow.label.font: -misc-*-r-*-18-*
-#XXkb.mainwindow.label.text.1: EN
-#XXkb.mainwindow.label.text.2: RU
+XXkb.mainwindow.label.enable: yes
+XXkb.mainwindow.geometry: 20x20+0+0
+XXkb.mainwindow.label.background: #3C3E40
+XXkb.mainwindow.label.foreground: #C1C1C1
+XXkb.mainwindow.label.font: -misc-*-r-*-18-*
+XXkb.mainwindow.label.text.1: EN
+XXkb.mainwindow.label.text.2: RU
 
