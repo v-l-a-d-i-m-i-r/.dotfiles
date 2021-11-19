@@ -207,6 +207,7 @@ exec_always --no-startup-id "pulseaudio --kill && pulseaudio --start"
 exec_always --no-startup-id qxkb
 exec_always --no-startup-id shutter --min_at_startup
 exec_always --no-startup-id flameshot
+exec_always --no-startup-id kalu
 exec_always --no-startup-id "sleep 5 && xfce4-power-manager"
 exec_always --no-startup-id "sleep 5 && pa-applet"
 exec_always --no-startup-id "sleep 5 && nm-applet"
