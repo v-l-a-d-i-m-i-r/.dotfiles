@@ -10,7 +10,7 @@ set $mod Mod4
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:SF Pro Text Regilar 12
+font pango:Sans 12
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -117,7 +117,7 @@ assign [class="Google-chrome"]  $workspace8
 assign [class="Firefox"]        $workspace8
 assign [class="firefox"]        $workspace8
 assign [class="Opera"]          $workspace8
-assign [class="QupZilla"]       $workspace8
+assign [class="Falkon"]         $workspace8
 assign [class="Code"]           $workspace9
 assign [class="Tilda"]          $workspace10
 assign [class="URxvt"]          $workspace10
@@ -211,15 +211,15 @@ exec_always --no-startup-id "sleep 10 && flameshot"
 exec_always --no-startup-id "sleep 5 && xfce4-power-manager"
 exec_always --no-startup-id "sleep 5 && pa-applet"
 exec_always --no-startup-id "sleep 5 && nm-applet"
-exec_always --no-startup-id "sleep 5 && pamac-tray"
+# exec_always --no-startup-id "sleep 5 && pamac-tray"
 exec_always --no-startup-id "sleep 5 && redshift-qt"
 
 bar {
   i3bar_command i3bar
   status_command i3blocks
   position top
-  tray_padding 0 px
-  font pango: Font Awesome, SF Pro Text Regilar 12
+  tray_padding 1 px
+  font pango: Sans 12
 
   colors {
     background #DFDFDE
