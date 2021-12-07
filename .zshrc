@@ -18,7 +18,7 @@ source /usr/lib/zsh-git-prompt/zshrc.sh
 
 zstyle ':completion:*' menu select
 
-PROMPT='%F{yellow}[%f%F{green}%~%b%f%F{yellow}]%f '
+PROMPT='%F{red}[%f%F{yellow}%n@%m%f %F{green}%~%b%f%F{red}]%f '
 RPROMPT='$(git_super_status)'
 
 # kubectl
