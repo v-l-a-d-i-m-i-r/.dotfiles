@@ -59,9 +59,9 @@ alias kx='kubectx '
 alias kn='kubens '
 alias ke='kubectl exec -it '
 # get
-alias kg='kubectl get po '
-alias kgg='kubectl get po | grep '
-function kggw() { watch "kubectl get pod | grep $1" }
+alias kg='kubectl get po -o wide '
+alias kgg='kubectl get po -o wide | grep '
+function kggw() { watch "kubectl get pod -o wide | grep $1" }
 alias kgd='kubectl get deployment '
 alias kgdg='kubectl get deployment | grep '
 alias kgs='kubectl get services '
