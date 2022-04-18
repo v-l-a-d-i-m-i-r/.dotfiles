@@ -10,7 +10,7 @@ set $mod Mod4
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:Sans 12
+font pango:Sans 13
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -218,8 +218,8 @@ bar {
   i3bar_command i3bar
   status_command i3blocks
   position top
-  tray_padding 1 px
-  font pango: Sans 12
+  tray_padding 2 px
+  font pango: Sans 13
 
   colors {
     background #DFDFDE

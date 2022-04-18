@@ -12,8 +12,8 @@ URxvt*scrollTtyOutput:      false
 URxvt*scrollWithBuffer:     true
 URxvt*scrollTtyKeypress:    true
 
-URxvt*font:     xft:mono:medium:size=11
-URxvt.boldFont: xft:mono:bold:size=11
+URxvt*font:     xft:mono:medium:size=12
+URxvt.boldFont: xft:mono:bold:size=12
 ! xterm*faceName: xft:mono:medium:size=11
 URxvt.letterSpace: -0.5
 URxvt.depth: 32
