@@ -5,6 +5,7 @@
     <property name="known_applications" type="array">
       <value type="string" value="Argon"/>
       <value type="string" value="balena-etcher-electron"/>
+      <value type="string" value="blueman"/>
       <value type="string" value="Electron"/>
       <value type="string" value="falkon"/>
       <value type="string" value="Firefox"/>
