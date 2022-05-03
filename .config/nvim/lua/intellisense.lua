@@ -1,6 +1,9 @@
+-- yaourt -Sy typescript typescript-language-server vscode-langservers-extracted --noconfirm
+-- https://github.com/iamcco/diagnostic-languageserver
 local opts = { noremap=true, silent=true }
 local servers = {
-  'tsserver'
+  'tsserver',
+  'eslint',
 }
 
 -- Mappings.
@@ -93,3 +96,8 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
+require("trouble").setup {
+   -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    }

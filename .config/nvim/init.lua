@@ -3,6 +3,7 @@ require("mappings")
 require("plugins")
 require("darkplus-theme")
 require("intellisense")
+require("finder")
 
 vim.cmd[[let NERDTreeShowHidden=1]]
      vim.cmd[[let NERDTreeShowLineNumbers=1]]
@@ -32,7 +33,7 @@ require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all"
   ensure_installed = {
     "lua",
-    "rust",
+    "html",
     "typescript",
     "javascript",
     "tsx",
@@ -71,5 +72,4 @@ require'nvim-treesitter.configs'.setup {
 }
 
 require('colorizer').setup()
-
 
