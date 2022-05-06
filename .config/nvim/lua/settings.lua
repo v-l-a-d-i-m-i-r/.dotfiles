@@ -10,6 +10,7 @@ local options = {
   incsearch = true,
   swapfile = false,
   termguicolors = true,
+  cursorline = true,
 }
 
 for k, v in pairs(options) do

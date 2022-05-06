@@ -4,6 +4,7 @@ local opts = { noremap=true, silent=true }
 local servers = {
   'tsserver',
   'eslint',
+  'bashls',
 }
 
 -- Mappings.
@@ -52,6 +53,30 @@ for _, server in pairs(servers) do
     }
   }
 end
+  require('lspconfig').sumneko_lua.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    flags = {
+      -- This will be the default in neovim 0.7+
+      debounce_text_changes = 150,
+    },
+    settings = {
+      Lua = {
+        diagnostics = {
+          globals = { "vim" },
+        },
+        workspace = {
+          library = {
+            [vim.fn.expand "$VIMRUNTIME/lua"] = true,
+            [vim.fn.stdpath "config" .. "/lua"] = true,
+          },
+        },
+        telemetry = {
+          enable = false,
+        },
+      },
+    } ,
+  }
 
 -- luasnip setup
 local luasnip = require('luasnip')

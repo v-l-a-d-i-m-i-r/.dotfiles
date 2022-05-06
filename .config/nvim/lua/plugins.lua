@@ -2,7 +2,8 @@ local Plug = vim.fn['plug#']
 
 vim.call('plug#begin', '~/.config/nvim/plugged')
 
-Plug ('preservim/nerdtree', { on = 'NERDTreeToggle' })
+-- Plug ('preservim/nerdtree', { on = 'NERDTreeToggle' })
+Plug 'kyazdani42/nvim-tree.lua'
 
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ryanoasis/vim-devicons'
@@ -33,5 +34,8 @@ Plug 'folke/trouble.nvim'
 
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+
+Plug 'windwp/nvim-autopairs'
+Plug 'gpanders/editorconfig.nvim'
 
 vim.call('plug#end')

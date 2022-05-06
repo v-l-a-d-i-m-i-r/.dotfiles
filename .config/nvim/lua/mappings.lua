@@ -18,6 +18,8 @@ end
 -- Map leader to space
 vim.g.mapleader = ","
 
-map("n", "<C-n>", ":NERDTreeToggle<CR>", { silent = true })
-map("i", "jk", "<Esc>")
-map("v", "jk", "<Esc>")
+-- map("n", "<C-n>", ":NERDTreeToggle<CR>", { silent = true })
+
+map("n", "<C-n>", ":NvimTreeToggle<CR>", { silent = true })
+map("i", "fj", "<Esc>")
+map("v", "fj", "<Esc>")

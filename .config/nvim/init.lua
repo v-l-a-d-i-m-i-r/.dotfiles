@@ -6,10 +6,21 @@ require("intellisense")
 require("finder")
 
 vim.cmd[[let NERDTreeShowHidden=1]]
-     vim.cmd[[let NERDTreeShowLineNumbers=1]]
+vim.cmd[[let NERDTreeShowLineNumbers=1]]
+require'nvim-tree'.setup({
+  view = {
+    number = true,
+    relativenumber = true,
+  },
+  renderer = {
+    indent_markers = {
+      enable = true,
+    }
+  }
+})
 -- syntax on
 require('lualine').setup {
-  options = { 
+  options = {
     section_separators = '',
     component_separators = '',
     theme = "codedark"
@@ -17,8 +28,8 @@ require('lualine').setup {
 }
 require("bufferline").setup{
   options = {
-    numbers = "buffer_id",
-    show_buffer_icons = false,
+    numbers = "none",
+    show_buffer_icons = true,
     show_close_icon = false,
   },
 }
@@ -72,4 +83,4 @@ require'nvim-treesitter.configs'.setup {
 }
 
 require('colorizer').setup()
-
+require('nvim-autopairs').setup{}
