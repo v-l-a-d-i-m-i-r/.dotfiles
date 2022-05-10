@@ -11,6 +11,7 @@ local options = {
   swapfile = false,
   termguicolors = true,
   cursorline = true,
+  cursorcolumn = true,
 }
 
 for k, v in pairs(options) do

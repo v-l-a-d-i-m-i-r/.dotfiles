@@ -1,5 +1,14 @@
-vim.api.nvim_set_keymap('n', 'j', '<Plug>(faster_move_j)', {noremap=false, silent=true})
-vim.api.nvim_set_keymap('n', 'k', '<Plug>(faster_move_k)', {noremap=false, silent=true})
+-- local opts = { noremap = true, silent = true }
+-- -- local term_opts = { silent = true }
+-- -- Shorten function name
+-- local keymap = vim.api.nvim_set_keymap
+-- --Remap space as leader key
+-- keymap("", "<Space>", "<Nop>", opts)
+-- vim.g.mapleader = " "
+-- vim.g.maplocalleader = " "
+
+vim.api.nvim_set_keymap('n', 'j', '<Plug>(faster_move_j)', { noremap = false, silent = true })
+vim.api.nvim_set_keymap('n', 'k', '<Plug>(faster_move_k)', { noremap = false, silent = true })
 
 
 -- noremap <Up> <Nop>
@@ -16,10 +25,13 @@ local function map(mode, lhs, rhs, opts)
 end
 
 -- Map leader to space
-vim.g.mapleader = ","
+-- vim.g.mapleader = ","
 
 -- map("n", "<C-n>", ":NERDTreeToggle<CR>", { silent = true })
 
 map("n", "<C-n>", ":NvimTreeToggle<CR>", { silent = true })
 map("i", "fj", "<Esc>")
 map("v", "fj", "<Esc>")
+map("n", "<space>o", "o<Esc>")
+map("n", "<space>O", "O<Esc>")
+

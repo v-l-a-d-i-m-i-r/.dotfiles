@@ -4,6 +4,7 @@ require("plugins")
 require("darkplus-theme")
 require("intellisense")
 require("finder")
+require("trouble-config")
 
 vim.cmd[[let NERDTreeShowHidden=1]]
 vim.cmd[[let NERDTreeShowLineNumbers=1]]
