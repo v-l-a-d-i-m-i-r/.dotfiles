@@ -1,3 +1,4 @@
+-- :PlugSnapshot plug.snapshot
 local Plug = vim.fn['plug#']
 
 vim.call('plug#begin', '~/.config/nvim/plugged')
@@ -37,5 +38,7 @@ Plug 'nvim-telescope/telescope.nvim'
 
 Plug 'windwp/nvim-autopairs'
 Plug 'gpanders/editorconfig.nvim'
+
+Plug 'numToStr/Comment.nvim'
 
 vim.call('plug#end')

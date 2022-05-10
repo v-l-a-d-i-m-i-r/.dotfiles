@@ -85,3 +85,4 @@ require'nvim-treesitter.configs'.setup {
 
 require('colorizer').setup()
 require('nvim-autopairs').setup{}
+require('Comment').setup()

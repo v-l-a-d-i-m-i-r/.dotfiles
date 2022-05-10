@@ -33,7 +33,7 @@ nvm use default > /dev/null
 export NODE_PATH=$(realpath $(dirname $(nvm which current))/../lib/node_modules)
 
 # dotfiles
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias dots='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 # docker-compose completion
 # fpath=(~/.zsh/plugins/ $fpath)
