@@ -29,9 +29,11 @@ end
 
 -- map("n", "<C-n>", ":NERDTreeToggle<CR>", { silent = true })
 
-map("n", "<C-n>", ":NvimTreeToggle<CR>", { silent = true })
 map("i", "fj", "<Esc>")
 map("v", "fj", "<Esc>")
 map("n", "<space>o", "o<Esc>")
 map("n", "<space>O", "O<Esc>")
 
+-- Stay in indent mode
+vim.api.nvim_set_keymap("v", "<", "<gv", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", ">", ">gv", { noremap = true, silent = true })

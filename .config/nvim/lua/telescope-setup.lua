@@ -1,4 +1,11 @@
 local actions = require("telescope.actions")
+local keymap = vim.api.nvim_set_keymap
+local layout = {
+      sorting_strategy = "ascending",
+      layout_config = {
+        prompt_position = "top",
+      }
+    }
 
 require("telescope").setup({
   defaults = {
@@ -12,13 +19,15 @@ require("telescope").setup({
       },
     },
   },
+  pickers = {
+    find_files = layout,
+    live_grep = layout,
+  },
 })
 
--- nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
--- nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
 -- nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
 -- nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
 -- https://github.com/nvim-telescope/telescope.nvim/wiki/Configuration-Recipes
-vim.api.nvim_set_keymap('n', '<space>ff', '<cmd>lua require("telescope.builtin").find_files({ hidden = true })<cr>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<space>fg', '<cmd>lua require("telescope.builtin").live_grep()<cr>', {noremap = true})
+keymap('n', '<space>ff', '<cmd>lua require("telescope.builtin").find_files({ hidden = true })<cr>', { noremap = true })
+keymap('n', '<space>fg', '<cmd>lua require("telescope.builtin").live_grep()<cr>', { noremap = true })

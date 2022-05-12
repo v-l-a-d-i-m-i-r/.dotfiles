@@ -3,8 +3,6 @@ local Plug = vim.fn['plug#']
 
 vim.call('plug#begin', '~/.config/nvim/plugged')
 
--- Plug ('preservim/nerdtree', { on = 'NERDTreeToggle' })
-Plug 'kyazdani42/nvim-tree.lua'
 
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ryanoasis/vim-devicons'
@@ -30,6 +28,10 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
 Plug 'L3MON4D3/LuaSnip' -- Snippets plugin
+
+-- File tree
+-- Plug ('preservim/nerdtree', { on = 'NERDTreeToggle' })
+Plug 'kyazdani42/nvim-tree.lua'
 
 Plug 'folke/trouble.nvim'
 

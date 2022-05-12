@@ -21,6 +21,7 @@
 !.zlogin
 !.zshenv
 !.zshrc
+!zsh/
 
 # nano
 !.nanorc

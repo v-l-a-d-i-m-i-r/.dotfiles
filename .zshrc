@@ -16,7 +16,7 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/lib/zsh-git-prompt/zshrc.sh
 
-zstyle ':completion:*' menu select
+# zstyle ':completion:*' menu select
 
 PROMPT='%F{yellow}[%f%F{cyan}%n@%M%f %F{green}%~%b%f%F{yellow}]%f '
 RPROMPT='$(git_super_status)'
@@ -26,11 +26,17 @@ RPROMPT='$(git_super_status)'
 source <(kubectl completion zsh)
 
 # nvm
-[ -z "$NVM_DIR" ] && export NVM_DIR="$HOME/.nvm"
-source /usr/share/nvm/nvm.sh
-source /usr/share/nvm/install-nvm-exec
-nvm use default > /dev/null
-export NODE_PATH=$(realpath $(dirname $(nvm which current))/../lib/node_modules)
+# [ -z "$NVM_DIR" ] && export NVM_DIR="$HOME/.nvm"
+# source /usr/share/nvm/nvm.sh
+# # source /usr/share/nvm/install-nvm-exec
+# nvm use default > /dev/null
+# export NODE_PATH=$(realpath $(dirname $(nvm which current))/../lib/node_modules)
+#
+# function node () {
+#   echo "node"
+# }
+export NVM_LAZY=1
+source ./zsh/plugins/zsh-nvm.plugin.zsh
 
 # dotfiles
 alias dots='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
@@ -155,7 +161,9 @@ function showcolors() {
 [[ -f /data/projects/pos-datamanagement/node_modules/tabtab/.completions/serverless.zsh ]] && . /data/projects/pos-datamanagement/node_modules/tabtab/.completions/serverless.zsh
 # tabtab source for sls package
 # uninstall by removing these lines or running `tabtab uninstall sls`
-[[ -f /data/projects/pos-datamanagement/node_modules/tabtab/.completions/sls.zsh ]] && . /data/projects/pos-datamanagement/node_modules/tabtab/.completions/sls.zsh[[ /usr/bin/kubectl ]] && source <(kubectl completion zsh)
+[[ -f /data/projects/pos-datamanagement/node_modules/tabtab/.completions/sls.zsh ]] && . /data/projects/pos-datamanagement/node_modules/tabtab/.completions/sls.zsh
+
+[[ /usr/bin/kubectl ]] && source <(kubectl completion zsh)
 # -- START ACTIVESTATE DEFAULT RUNTIME ENVIRONMENT
 export PATH="/home/vladimir/.cache/activestate/bin:$PATH"
 # -- STOP ACTIVESTATE DEFAULT RUNTIME ENVIRONMENT
