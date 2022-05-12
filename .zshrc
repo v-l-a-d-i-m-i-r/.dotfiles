@@ -23,7 +23,7 @@ RPROMPT='$(git_super_status)'
 # precmd() { print "" }
 
 # kubectl
-source <(kubectl completion zsh)
+[[ /usr/bin/kubectl ]] && source <(kubectl completion zsh)
 
 # nvm
 # [ -z "$NVM_DIR" ] && export NVM_DIR="$HOME/.nvm"
