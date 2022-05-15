@@ -1,11 +1,7 @@
 -- yaourt -Sy typescript typescript-language-server vscode-langservers-extracted --noconfirm
 -- https://github.com/iamcco/diagnostic-languageserver
-local opts = { noremap=true, silent=true }
-local servers = {
-  'tsserver',
-  'eslint',
-  'bashls',
-}
+local lspconfig = require("lspconfig")
+local opts = { noremap = true, silent = true }
 
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -40,43 +36,41 @@ end
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
--- Use a loop to conveniently call 'setup' on multiple servers and
--- map buffer local keybindings when the language server attaches
-for _, server in pairs(servers) do
-  -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-  require('lspconfig')[server].setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    flags = {
-      -- This will be the default in neovim 0.7+
-      debounce_text_changes = 150,
-    }
-  }
-end
-  require('lspconfig').sumneko_lua.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    flags = {
-      -- This will be the default in neovim 0.7+
-      debounce_text_changes = 150,
-    },
-    settings = {
-      Lua = {
-        diagnostics = {
-          globals = { "vim" },
-        },
-        workspace = {
-          library = {
-            [vim.fn.expand "$VIMRUNTIME/lua"] = true,
-            [vim.fn.stdpath "config" .. "/lua"] = true,
-          },
-        },
-        telemetry = {
-          enable = false,
+lspconfig.sumneko_lua.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { "vim" },
+      },
+      workspace = {
+        library = {
+          [vim.fn.expand "$VIMRUNTIME/lua"] = true,
+          [vim.fn.stdpath "config" .. "/lua"] = true,
         },
       },
-    } ,
-  }
+      telemetry = {
+        enable = false,
+      },
+    },
+  },
+}
+
+lspconfig.tsserver.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+
+lspconfig.eslint.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+
+lspconfig.bashls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
 
 -- luasnip setup
 local luasnip = require('luasnip')
@@ -121,3 +115,21 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
+
+
+-- gray
+vim.cmd[[highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080]]
+-- blue
+vim.cmd[[highlight! CmpItemAbbrMatch guibg=NONE guifg=#569CD6]]
+vim.cmd[[highlight! CmpItemAbbrMatchFuzzy guibg=NONE guifg=#569CD6]]
+-- light blue
+vim.cmd[[highlight! CmpItemKindVariable guibg=NONE guifg=#9CDCFE]]
+vim.cmd[[highlight! CmpItemKindInterface guibg=NONE guifg=#9CDCFE]]
+vim.cmd[[highlight! CmpItemKindText guibg=NONE guifg=#9CDCFE]]
+-- pink
+vim.cmd[[highlight! CmpItemKindFunction guibg=NONE guifg=#C586C0]]
+vim.cmd[[highlight! CmpItemKindMethod guibg=NONE guifg=#C586C0]]
+-- front
+vim.cmd[[highlight! CmpItemKindKeyword guibg=NONE guifg=#D4D4D4]]
+vim.cmd[[highlight! CmpItemKindProperty guibg=NONE guifg=#D4D4D4]]
+vim.cmd[[highlight! CmpItemKindUnit guibg=NONE guifg=#D4D4D4]]

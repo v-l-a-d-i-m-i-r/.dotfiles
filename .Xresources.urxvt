@@ -12,10 +12,13 @@ URxvt*scrollTtyOutput:      false
 URxvt*scrollWithBuffer:     true
 URxvt*scrollTtyKeypress:    true
 
-URxvt*font:     xft:DejaVuSansMono Nerd Font Mono:style=Book,size=12
-URxvt.boldFont: xft:DejaVuSansMono Nerd Font Mono:style=Bold,pixelsize=12 
-URxvt.italicFont: xft:DejaVuSansMono Nerd Font Mono:style=Oblique,pixelsize=12 
-URxvt.boldItalicFont: xft:DejaVuSansMono Nerd Font Mono:style=Bold Oblique,pixelsize=12 
+! test font
+! printf '\e]710;%s\007' "xft:DejaVuSansMono Nerd Font Mono:size=14:style=Oblique"
+
+URxvt*font: xft:DejaVuSansMono Nerd Font Mono:style=Book:size=14
+URxvt.boldFont: xft:DejaVuSansMono Nerd Font Mono:style=Bold:size=14
+URxvt.italicFont: xft:DejaVuSansMono Nerd Font Mono:style=Oblique:size=14
+URxvt.boldItalicFont: xft:DejaVuSansMono Nerd Font Mono:style=Bold Oblique:size=14
 ! xterm*faceName: xft:mono:medium:size=11
 URxvt.letterSpace: -0.5
 URxvt.depth: 32

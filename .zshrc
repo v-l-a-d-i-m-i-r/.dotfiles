@@ -1,5 +1,5 @@
 # The following lines were added by compinstall
-zstyle :compinstall filename '/home/vladimir/.zshrc'
+zstyle :compinstall filename '~/.zshrc'
 
 zstyle ':completion:*' menu select
 
@@ -25,18 +25,8 @@ RPROMPT='$(git_super_status)'
 # kubectl
 [[ /usr/bin/kubectl ]] && source <(kubectl completion zsh)
 
-# nvm
-# [ -z "$NVM_DIR" ] && export NVM_DIR="$HOME/.nvm"
-# source /usr/share/nvm/nvm.sh
-# # source /usr/share/nvm/install-nvm-exec
-# nvm use default > /dev/null
-# export NODE_PATH=$(realpath $(dirname $(nvm which current))/../lib/node_modules)
-#
-# function node () {
-#   echo "node"
-# }
 export NVM_LAZY=1
-source ./zsh/plugins/zsh-nvm.plugin.zsh
+source ~/.config/zsh/plugins/zsh-nvm.plugin.zsh
 
 # dotfiles
 alias dots='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'

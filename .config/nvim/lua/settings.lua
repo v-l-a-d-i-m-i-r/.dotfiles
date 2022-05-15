@@ -1,4 +1,5 @@
 local options = {
+  title = true,
   encoding = "UTF-8",
   shiftwidth = 2,
   softtabstop = 2,

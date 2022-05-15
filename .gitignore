@@ -21,7 +21,6 @@
 !.zlogin
 !.zshenv
 !.zshrc
-!zsh/
 
 # nano
 !.nanorc
@@ -67,6 +66,7 @@
 !.config/compton/
 !.config/backgrounds/
 !.config/kalu/
+!.config/zsh/
 
 !.config/qxkb.cfg
 # !.config/qxkb.pid
