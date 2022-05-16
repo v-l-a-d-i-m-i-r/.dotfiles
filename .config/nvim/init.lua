@@ -5,7 +5,11 @@ require("plugins")
 require("lualine-setup")
 require("nvim-tree-setup")
 require("darkplus-theme-setup")
-require("intellisense")
+
+-- intellisense
+require("lspconfig-setup")
+require("cmp-setup")
+
 require("telescope-setup")
 require("trouble-config")
 require("nvim-tresitter-setup")
