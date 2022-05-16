@@ -15,7 +15,9 @@ local options = {
   cursorcolumn = true,
   scrolloff = 8,                           -- is one of my fav
   sidescrolloff = 8,
-  wrap = true,
+  wrap = false,
+  timeoutlen = 1000,
+  ttimeoutlen = 0,
 }
 
 for k, v in pairs(options) do
