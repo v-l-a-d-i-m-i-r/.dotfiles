@@ -1,5 +1,6 @@
 require("settings")
 require("mappings")
+require("autocommands")
 require("plugins")
 
 require("lualine-setup")

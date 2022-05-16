@@ -13,6 +13,9 @@ local options = {
   termguicolors = true,
   cursorline = true,
   cursorcolumn = true,
+  scrolloff = 8,                           -- is one of my fav
+  sidescrolloff = 8,
+  wrap = true,
 }
 
 for k, v in pairs(options) do

@@ -8,7 +8,7 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ryanoasis/vim-devicons'
 
 Plug 'pappasam/papercolor-theme-slim'
-Plug 'martinsione/darkplus.nvim'
+Plug 'LunarVim/darkplus.nvim' -- replacement for martinsione/darkplus.nvim
 Plug 'navarasu/onedark.nvim'
 Plug 'EdenEast/nightfox.nvim'
 
