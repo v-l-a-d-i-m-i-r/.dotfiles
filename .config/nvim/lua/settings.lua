@@ -15,9 +15,10 @@ local options = {
   cursorcolumn = true,
   scrolloff = 8,                           -- is one of my fav
   sidescrolloff = 8,
-  wrap = false,
+  wrap = true,
   timeoutlen = 1000,
   ttimeoutlen = 0,
+  clipboard = "unnamedplus",
 }
 
 for k, v in pairs(options) do
