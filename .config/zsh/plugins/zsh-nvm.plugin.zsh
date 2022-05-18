@@ -1,79 +1,37 @@
-# See https://github.com/nvm-sh/nvm#installation-and-update
-if [[ -z "$NVM_DIR" ]]; then
-  if [[ -d "$HOME/.nvm" ]]; then
-    export NVM_DIR="$HOME/.nvm"
-  elif [[ -d "${XDG_CONFIG_HOME:-$HOME/.config}/nvm" ]]; then
-    export NVM_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/nvm"
-  fi
-fi
+# https://unix.stackexchange.com/questions/450043/overwrite-and-reuse-existing-function-in-zsh
+# https://github.com/ohmyzsh/ohmyzsh/blob/8741664e5561c244d841be780b171171ae665fda/plugins/nvm/nvm.plugin.zsh
 
-# Don't try to load nvm if command already available
-# Note: nvm is a function so we need to use `which`
-! which nvm &>/dev/null || return
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 
-if [[ -f "$NVM_DIR/nvm.sh" ]]; then
-  # Load nvm if it exists in $NVM_DIR
-  source "$NVM_DIR/nvm.sh" ${NVM_LAZY+"--no-use"}
-elif (( $+commands[brew] )); then
-  # Otherwise try to load nvm installed via Homebrew
-  # User can set this if they have an unusual Homebrew setup
-  NVM_HOMEBREW="${NVM_HOMEBREW:-${HOMEBREW_PREFIX:-$(brew --prefix)}/opt/nvm}"
-  # Load nvm from Homebrew location if it exists
-  if [[ -f "$NVM_HOMEBREW/nvm.sh" ]]; then
-    source "$NVM_HOMEBREW/nvm.sh" ${NVM_LAZY+"--no-use"}
-  else
-    return
-  fi
-else
-  return
-fi
+function load_nvm {
+  # Don't try to load nvm if command already available
+  # Note: nvm_original is a function so we need to use `which`
+  ! which nvm_original &>/dev/null || return
 
-# Call nvm when first using node, npm or yarn
-if (( $+NVM_LAZY )); then
-  function node npm yarn $NVM_LAZY_CMD {
-    unfunction node npm yarn $NVM_LAZY_CMD
-    nvm use default
-    command "$0" "$@"
-  }
-fi
+  functions[nvm_wrapper]=$functions[nvm] 
 
-# Autoload nvm when finding a .nvmrc file in the current directory
-# Adapted from: https://github.com/nvm-sh/nvm#zsh
-if (( $+NVM_AUTOLOAD )); then
-  load-nvmrc() {
-    local node_version="$(nvm version)"
-    local nvmrc_path="$(nvm_find_nvmrc)"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
-    if [[ -n "$nvmrc_path" ]]; then
-      local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+  functions[nvm_original]=$functions[nvm]
+  functions[nvm]=$functions[nvm_wrapper] 
+}
 
-      if [[ "$nvmrc_node_version" = "N/A" ]]; then
-        nvm install
-      elif [[ "$nvmrc_node_version" != "$node_version" ]]; then
-        nvm use
-      fi
-    elif [[ "$node_version" != "$(nvm version default)" ]]; then
-      echo "Reverting to nvm default version"
-      nvm use default
-    fi
-  }
+function nvm {
+  list="use"
 
-  autoload -U add-zsh-hook
-  add-zsh-hook chpwd load-nvmrc
+  load_nvm;
+  nvm_original "$@"
 
-  load-nvmrc
-fi
+  # if [ "$1" == "use" ]; then
+    # export NODE_PATH=$(realpath $(dirname $(which node))/../lib/node_modules);
+  # fi
+}
 
-# Load nvm bash completion
-for nvm_completion in "$NVM_DIR/bash_completion" "$NVM_HOMEBREW/etc/bash_completion.d/nvm"; do
-  if [[ -f "$nvm_completion" ]]; then
-    # Load bashcompinit
-    autoload -U +X bashcompinit && bashcompinit
-    # Bypass compinit call in nvm bash completion script. See:
-    # https://github.com/nvm-sh/nvm/blob/4436638/bash_completion#L86-L93
-    ZSH_VERSION= source "$nvm_completion"
-    break
-  fi
-done
+function node npm yarn {
+  unfunction node npm yarn
 
-unset NVM_HOMEBREW NVM_LAZY NVM_AUTOLOAD nvm_completion
+  load_nvm;
+  nvm use default > /dev/null
+
+  command "$0" "$@"
+}
