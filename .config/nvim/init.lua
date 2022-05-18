@@ -15,6 +15,7 @@ require("telescope-setup")
 require("trouble-config")
 require("nvim-tresitter-setup")
 require("bufferline-setup")
+require("surround-setup")
 
 require("indent_blankline").setup {
   -- for example, context is off by default, use this to turn it on

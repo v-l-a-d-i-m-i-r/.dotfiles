@@ -23,7 +23,7 @@ map("n", "<space>o", "o<Esc>")
 map("n", "<space>O", "O<Esc>")
 
 -- Reload init.lua (:so %)
-vim.api.nvim_set_keymap("n", "<space><space>", ":source $MYVIMRC<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<space><space>", ":so %<CR>", { noremap = true, silent = true })
 
 -- Stay in indent mode
 vim.api.nvim_set_keymap("v", "<", "<gv", { noremap = true, silent = true })
