@@ -18,7 +18,7 @@ local options = {
   wrap = true,
   timeoutlen = 1000,
   ttimeoutlen = 0,
-  clipboard = "unnamedplus",
+  -- clipboard = "unnamedplus",
 }
 
 for k, v in pairs(options) do
