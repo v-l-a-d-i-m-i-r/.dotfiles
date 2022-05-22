@@ -1,0 +1,3 @@
+-- require('dap.ext.vscode').load_launchjs()
+-- https://github.com/mfussenegger/nvim-dap/issues/20
+-- https://alpha2phi.medium.com/neovim-lsp-and-dap-using-lua-3fb24610ac9f

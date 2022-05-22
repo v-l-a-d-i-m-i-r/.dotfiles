@@ -70,6 +70,11 @@ lspconfig.tsserver.setup {
 lspconfig.eslint.setup {
   on_attach = on_attach,
   capabilities = capabilities,
+  cmd = {
+    "/home/vladimir/.nvm/versions/node/v14.17.5/bin/node",
+    "/usr/bin/vscode-eslint-language-server",
+    "--stdio",
+  },
 }
 
 lspconfig.bashls.setup {

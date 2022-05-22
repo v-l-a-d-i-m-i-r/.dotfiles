@@ -38,3 +38,11 @@ vim.api.nvim_set_keymap("n", "<C-l>", "<C-w>l", { noremap = true, silent = true 
 -- Naviagate buffers
 vim.api.nvim_set_keymap("n", "<S-l>", ":bnext<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<S-h>", ":bprevious<CR>", { noremap = true, silent = true })
+
+-- Yank to clipboard
+vim.api.nvim_set_keymap("n", "<space>y", '"+y', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "<space>y", '"+y', { noremap = true, silent = true })
+
+-- Put from clipboard
+vim.api.nvim_set_keymap("n", "<space>p", '"+p', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "<space>p", '"+p', { noremap = true, silent = true })
