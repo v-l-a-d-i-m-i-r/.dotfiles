@@ -82,4 +82,5 @@
 !.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-power-manager.xml
 
 !.config/nvim/
-.config/nvim/plugged
+.config/nvim/plugged/
+.config/nvim/components/

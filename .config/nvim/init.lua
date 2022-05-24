@@ -2,6 +2,8 @@ require("settings")
 require("mappings")
 require("autocommands")
 require("plugins")
+require("components-plugin")
+require("components-setup")
 
 require("lualine-setup")
 require("nvim-tree-setup")

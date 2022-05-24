@@ -10,48 +10,46 @@ name='';
 exec='';
 genericName='';
 
-declare -A hashTable;
-menuList='';
+declare -A hashList;
+declare -a menuList;
 ignore=true;
+separator='№';
+outputSeparator=' ';
 
-function addToHashTable () {
-  [[ ! -z $genericName ]] && key="${name}:(${genericName}):${exec}" || key="${name}::${exec}";
-  menuList+="$key\n";
-  hashTable["$key"]="$exec";
-  # echo "${name} (${genericName})";
+function addToHashList () {
+  local key;
+  local menuItem;
+
+  [[ ! -z $genericName ]] && menuItem="${name}${separator}[${genericName}]${separator}${exec}" || menuItem="${name}${separator}${separator}${exec}";
+  # [[ ! -z $genericName ]] && key="${name} (${genericName}) ${exec}" || key="${name} ${exec}";
+
+  menuList+=("$menuItem");
+  hashList["$menuItem"]="$exec";
+
+  name='';
+  exec='';
+  genericName='';
 }
 
 while read -r line; do
-  # echo "$line";
   if [[ $line == '[Desktop Entry]' && "$ignore" = true ]]; then
-    # echo "********** ignore false"
     ignore=false;
-    # continue;
   fi
 
   if [[ $line =~ ^'[Desktop Action' ]]; then
-    # echo "********** ignore true";
     ignore=true;
     continue;
   fi
 
   if [[ $line == "[Desktop Entry]" && ! -z "$name" ]]; then
-    # echo $name;
-    # echo "write to hash $name"
-    addToHashTable;
+    addToHashList;
 
-    name='';
-    exec='';
-    genericName='';
-    # echo $name;
     continue;
   fi
 
   if [[ $line =~ ^'Name=' && "$ignore" = false ]]; then
     name="${line:5}";
-    # echo "write to var $line";
-    # menuList+="$name\n";
-    # echo $name;
+
     continue;
   fi
 
@@ -68,10 +66,19 @@ while read -r line; do
   fi
 done <<< "$filesContent"
 
-# echo -e $menuList;
-# echo $linesCount;
-# echo -e "$menuList"| dmenu -i
-n=$(echo -e "$menuList" | sort | column --table --separator ':' --output-separator ' ' | dmenu -i "$@");
-echo $n;
-e="${hashTable[$n]}"
-eval "$e" 
+declare -A hashTable;
+formattedMenuList=$(IFS=$'\n'; echo -e "${menuList[*]}" | column --table --separator ${separator} --output-separator $outputSeparator);
+
+i=0;
+
+while read -r formattedItem; do
+  hashTable["$formattedItem"]="${menuList[$i]}";
+
+  i=$((i + 1));
+done <<< ${formattedMenuList}
+
+selectedFormattedItem=$(IFS=$'\n'; echo -e "${formattedMenuList[*]}" | sort | dmenu -i "$@");
+selectedItem="${hashTable[$selectedFormattedItem]}";
+executable="${hashList[$selectedItem]}";
+
+eval "$executable";
