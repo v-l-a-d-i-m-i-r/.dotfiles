@@ -1,6 +1,7 @@
 -- https://github.com/iamcco/diagnostic-languageserver
 local lspconfig = require("lspconfig")
 local opts = { noremap = true, silent = true }
+
 vim.diagnostic.config({ virtual_text = false })
 
 -- Mappings.
@@ -18,16 +19,16 @@ local on_attach = function(client, bufnr)
 
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>lD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>ld', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>lh', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>li', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>lD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>ld', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>lh', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>li', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
 
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
@@ -40,10 +41,14 @@ end
 
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local c = require("components-plugin")
 
 lspconfig.sumneko_lua.setup {
   on_attach = on_attach,
   capabilities = capabilities,
+  cmd = {
+    c.get_component("lua-language-server:3.2.4").bin("lua-language-server"),
+  },
   settings = {
     Lua = {
       diagnostics = {
@@ -65,14 +70,19 @@ lspconfig.sumneko_lua.setup {
 lspconfig.tsserver.setup {
   on_attach = on_attach,
   capabilities = capabilities,
+  cmd = {
+    c.get_component("node:16.14.2").bin("node"),
+    c.get_component("typescript-language-server:0.10.1").bin("typescript-language-server"),
+    "--stdio",
+  },
 }
 
 lspconfig.eslint.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   cmd = {
-    "/home/vladimir/.nvm/versions/node/v14.17.5/bin/node",
-    "/usr/bin/vscode-eslint-language-server",
+    c.get_component("node:14.17.5").bin("node"),
+    c.get_component("vscode-langservers-extracted:4.2.1").bin("vscode-eslint-language-server"),
     "--stdio",
   },
 }
@@ -80,4 +90,9 @@ lspconfig.eslint.setup {
 lspconfig.bashls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
+  cmd = {
+    c.get_component("node:14.17.5").bin("node"),
+    c.get_component("bash-language-server:3.0.3").bin("bash-language-server"),
+    "start",
+  }
 }

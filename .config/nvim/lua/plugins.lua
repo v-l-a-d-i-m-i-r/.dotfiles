@@ -5,6 +5,7 @@ vim.call('plug#begin', '~/.config/nvim/plugged')
 
 -- Debugger
 Plug 'puremourning/vimspector'
+
 -- Interface
 Plug 'LunarVim/darkplus.nvim' -- replacement for martinsione/darkplus.nvim
 Plug 'nvim-lualine/lualine.nvim'
@@ -27,7 +28,7 @@ Plug ('nvim-treesitter/nvim-treesitter', {['do'] = ':TSUpdate'})
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'folke/trouble.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-
+Plug 'simrat39/symbols-outline.nvim'
 
 -- Misc
 Plug 'kyazdani42/nvim-web-devicons'

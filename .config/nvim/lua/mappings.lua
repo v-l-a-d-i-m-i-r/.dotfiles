@@ -35,6 +35,12 @@ vim.api.nvim_set_keymap("n", "<C-j>", "<C-w>j", { noremap = true, silent = true 
 vim.api.nvim_set_keymap("n", "<C-k>", "<C-w>k", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<C-l>", "<C-w>l", { noremap = true, silent = true })
 
+-- Resize window
+vim.api.nvim_set_keymap("n", "<A-h>", ":vertical resize -2<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<A-j>", ":resize +2<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<A-k>", ":resize -2<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<A-l>", ":vertical resize +2<CR>", { noremap = true, silent = true })
+
 -- Naviagate buffers
 vim.api.nvim_set_keymap("n", "<S-l>", ":bnext<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<S-h>", ":bprevious<CR>", { noremap = true, silent = true })
@@ -45,4 +51,6 @@ vim.api.nvim_set_keymap("v", "<space>y", '"+y', { noremap = true, silent = true 
 
 -- Put from clipboard
 vim.api.nvim_set_keymap("n", "<space>p", '"+p', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<space>P", '"+P', { noremap = true, silent = true })
 vim.api.nvim_set_keymap("v", "<space>p", '"+p', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "<space>P", '"+P', { noremap = true, silent = true })

@@ -11,6 +11,7 @@ require("telescope").setup({
     file_ignore_patterns = {
       ".git",
       "plugged",
+      "components/",
     },
     -- generic_sorter = require'telescope.sorters'.get_fzy_sorter,
     -- file_sorter = require'telescope.sorters'.get_fzy_sorter,

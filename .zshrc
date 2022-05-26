@@ -10,6 +10,8 @@ compinit -i
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
+# zoxide
+eval "$(zoxide init zsh)"
 
 # zsh plugins
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
