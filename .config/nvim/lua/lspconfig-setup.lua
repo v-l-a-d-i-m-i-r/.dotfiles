@@ -4,6 +4,13 @@ local opts = { noremap = true, silent = true }
 
 vim.diagnostic.config({ virtual_text = false })
 
+vim.cmd [[
+  sign define DiagnosticSignError text= linehl= texthl=DiagnosticSignError numhl=
+  sign define DiagnosticSignWarn text= linehl= texthl=DiagnosticSignWarn numhl=
+  sign define DiagnosticSignInfo text= linehl= texthl=DiagnosticSignInfo numhl=
+  sign define DiagnosticSignHint text=💡 linehl= texthl=DiagnosticSignHint numhl=
+]]
+
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.api.nvim_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
