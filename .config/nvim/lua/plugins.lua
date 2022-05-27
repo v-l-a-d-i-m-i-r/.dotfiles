@@ -5,6 +5,7 @@ vim.call('plug#begin', '~/.config/nvim/plugged')
 
 -- Debugger
 Plug 'puremourning/vimspector'
+Plug 'mfussenegger/nvim-dap'
 
 -- Interface
 Plug 'LunarVim/darkplus.nvim' -- replacement for martinsione/darkplus.nvim

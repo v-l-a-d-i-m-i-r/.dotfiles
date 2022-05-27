@@ -79,7 +79,12 @@ C.add_component = function(options)
   })
 
   local install = function()
-    vim.cmd("! mkdir -p " .. installation_path .. " && cd " .. installation_path .. " && " .. install_script)
+    local command_table = {
+      "! mkdir -p " .. installation_path,
+      "cd " .. installation_path,
+      install_script,
+    }
+    vim.cmd(table.concat(command_table, " && "))
   end
 
   local bin = function(binary_name)
@@ -90,7 +95,7 @@ C.add_component = function(options)
     install = install,
     bin = bin,
     check_installed = function()
-      return check_file_exists(bin("node"))
+      return check_directory_exists(bin(""))
     end
   })
 end

@@ -25,9 +25,12 @@ map("n", "<space>O", "O<Esc>")
 -- Reload init.lua (:so %)
 vim.api.nvim_set_keymap("n", "<space><space>", ":so %<CR>", { noremap = true, silent = true })
 
--- Stay in indent mode
-vim.api.nvim_set_keymap("v", "<", "<gv", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("v", ">", ">gv", { noremap = true, silent = true })
+-- Move text
+-- https://vim.fandom.com/wiki/Moving_lines_up_or_down
+vim.api.nvim_set_keymap("v", "<A-h>", "<gv", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "<A-j>", ":m '>+1<CR>gv", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "<a-k>", ":m '<-2<CR>gv", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "<A-l>", ">gv", { noremap = true, silent = true })
 
 -- Better window navigation
 vim.api.nvim_set_keymap("n", "<C-h>", "<C-w>h", { noremap = true, silent = true })
@@ -54,3 +57,4 @@ vim.api.nvim_set_keymap("n", "<space>p", '"+p', { noremap = true, silent = true 
 vim.api.nvim_set_keymap("n", "<space>P", '"+P', { noremap = true, silent = true })
 vim.api.nvim_set_keymap("v", "<space>p", '"+p', { noremap = true, silent = true })
 vim.api.nvim_set_keymap("v", "<space>P", '"+P', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "p", '"_dP', { noremap = true, silent = true })

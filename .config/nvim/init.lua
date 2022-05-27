@@ -14,8 +14,8 @@ require("lspconfig-setup")
 require("cmp-setup")
 
 -- Debugger
-require("vimspector-setup")
--- require("dap-setup")
+-- require("vimspector-setup")
+require("dap-setup")
 
 require("telescope-setup")
 require("trouble-config")

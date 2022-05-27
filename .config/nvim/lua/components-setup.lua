@@ -67,3 +67,18 @@ c.add_component({
     return "curl -L https://github.com/sumneko/lua-language-server/releases/download/" .. version .. "/lua-language-server-" .. version .. "-linux-x64.tar.gz | tar -xz"
   end,
 })
+
+c.add_component({
+  name = "vscode-node-debug2",
+  version = "1.43.0",
+  binaries_directory = "/out/src",
+  install_script = function (params)
+    local version = params.version
+    local command_table = {
+      "git clone --depth 1 --branch v" ..version .. " https://github.com/microsoft/vscode-node-debug2.git .",
+      c.get_component("node:16.14.2").bin("npm") .. " ci",
+      c.get_component("node:16.14.2").bin("node") .. " ./node_modules/.bin/gulp build"
+    }
+    return table.concat(command_table, " && ")
+  end,
+})
