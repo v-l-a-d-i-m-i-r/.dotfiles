@@ -159,4 +159,6 @@ C.add_yarn_package = function(options)
   })
 end
 
+vim.cmd("command! ComponentsInstall lua require('components-plugin').install_components()")
+
 return C
