@@ -80,5 +80,6 @@ done <<< ${formattedMenuList}
 selectedFormattedItem=$(IFS=$'\n'; echo -e "${formattedMenuList[*]}" | sort | dmenu -i "$@");
 selectedItem="${hashTable[$selectedFormattedItem]}";
 executable="${hashList[$selectedItem]}";
+cleanExecutable=$(echo -e "${executable}" | sed -E 's/%(u|U|f|F)//')
 
-eval "$executable";
+eval "$cleanExecutable";

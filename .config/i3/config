@@ -194,7 +194,7 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 exec_always xset -b
 exec_always --no-startup-id xbacklight -set 30
 # exec_always nitrogen --set-scaled ~/.config/backgrounds/background-abstract-gray.jpg
-exec_always nitrogen --set-zoom-fill ~/.config/backgrounds/background-arch-gray.jpg
+exec_always nitrogen --set-zoom-fill ~/.config/backgrounds/background-arch-nord-light.png
 # exec_always --no-startup-id xcompmgr -c -C -t-5 -l-5 -r4.2 -o.55
 exec_always --no-startup-id xcompmgr -CcfF -I1 -O1 -D0 -t-3.5 -l-3.5 -r4.2 -o.5
 # exec_always --no-startup-id compton --config ~/.config/compton/compton.xr-glx-hybrid.conf
