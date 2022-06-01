@@ -103,3 +103,11 @@ lspconfig.bashls.setup {
     "start",
   }
 }
+
+lspconfig.gopls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  cmd = {
+    c.get_component("gopls:0.8.4").bin("gopls"),
+  }
+}

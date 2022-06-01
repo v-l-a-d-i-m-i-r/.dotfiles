@@ -1,4 +1,4 @@
-local actions = require("telescope.actions")
+-- local actions = require("telescope.actions")
 local layout = {
   sorting_strategy = "ascending",
   layout_config = {
@@ -17,7 +17,7 @@ require("telescope").setup({
     -- file_sorter = require'telescope.sorters'.get_fzy_sorter,
     mappings = {
       n = {
-        ["fj"] = actions.close,
+        -- ["fj"] = actions.close,
       },
     },
   },

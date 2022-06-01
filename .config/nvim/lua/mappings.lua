@@ -17,8 +17,8 @@ local function map(mode, lhs, rhs, opts)
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
-map("i", "fj", "<Esc>")
-map("v", "fj", "<Esc>")
+-- map("i", "fj", "<Esc>")
+-- map("v", "fj", "<Esc>")
 map("n", "<space>o", "o<Esc>")
 map("n", "<space>O", "O<Esc>")
 

@@ -9,6 +9,7 @@
 !.Xresources
 !.Xresources.urxvt
 !.Xresources.xft
+!.xbindkeysrc
 
 # bash
 !.bash_history

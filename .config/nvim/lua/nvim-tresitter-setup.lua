@@ -13,7 +13,10 @@ require 'nvim-treesitter.configs'.setup {
     "yaml",
     "vim",
     "dockerfile",
-    "markdown"
+    "markdown",
+    "go",
+    "gomod",
+    "gowork",
   },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)

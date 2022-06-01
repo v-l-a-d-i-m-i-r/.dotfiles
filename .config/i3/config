@@ -203,10 +203,12 @@ exec_always --no-startup-id "synclient TapButton1=1 TapButton2=3 TapButton3=2 Ve
 # exec_always --no-startup-id conky
 exec_always --no-startup-id "pulseaudio --kill && pulseaudio --start"
 # exec_always --no-startup-id xxkb
-exec_always --no-startup-id "setxkbmap -layout us,ru -option grp:caps_toggle,grp_led:caps"
-exec_always --no-startup-id gxkb
+# exec_always --no-startup-id gxkb
+exec_always --no-startup-id setxkbmap -layout us,ru -option caps:swapescape
+exec_always --no-startup-id "xbindkeys -f ~/.xbindkeysrc"
 exec_always --no-startup-id shutter --min_at_startup
 exec_always --no-startup-id kalu
+exec_always --no-startup-id "sleep 10 && sbxkb"
 exec_always --no-startup-id "sleep 10 && flameshot"
 exec_always --no-startup-id "sleep 5 && xfce4-power-manager"
 exec_always --no-startup-id "sleep 5 && pa-applet"
