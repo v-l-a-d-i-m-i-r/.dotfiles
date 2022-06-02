@@ -1,4 +1,4 @@
-local c = require("components-plugin");
+local c = require("components");
 
 c.setup({
   path = os.getenv("HOME") .. "/.config/nvim/components",

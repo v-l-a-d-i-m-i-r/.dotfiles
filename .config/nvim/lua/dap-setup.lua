@@ -4,7 +4,7 @@
 -- package.loaded['mpack'] = nil
 
 local dap = require("dap")
-local c = require("components-plugin")
+local c = require("components")
 require('dap.ext.vscode').load_launchjs(nil, {
   node = {
     "javascript",

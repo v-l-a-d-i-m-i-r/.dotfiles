@@ -42,4 +42,7 @@ Plug 'numToStr/Comment.nvim'
 Plug 'PHSix/faster.nvim'
 Plug 'ur4ltz/surround.nvim'
 
+-- Local
+Plug '~/.config/nvim/plugins/components'
+
 vim.call('plug#end')

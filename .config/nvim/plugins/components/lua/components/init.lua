@@ -1,6 +1,5 @@
 local md5 = require("md5")
 
-local C = {}
 local params = {}
 local components_names_list = {}
 local components = {}
@@ -18,11 +17,11 @@ local function set_component(name, component)
   components[name] = component
 end
 
-C.setup = function(p)
+local setup = function(p)
   params = p
 end
 
-C.install_components = function()
+local install_components = function()
   for _, component_name in ipairs(components_names_list) do
     local component = components[component_name]
     local is_component_installed = component.check_installed()
@@ -36,11 +35,11 @@ C.install_components = function()
   end
 end
 
-C.get_component = function(name)
+local get_component = function(name)
   return components[name]
 end
 
-C.add_component = function(options)
+local add_component = function(options)
   local version = options.version
   local name = options.name
   local key = name .. ":" .. version
@@ -75,6 +74,9 @@ C.add_component = function(options)
   })
 end
 
-vim.cmd("command! ComponentsInstall lua require('components-plugin').install_components()")
-
-return C
+return {
+  setup = setup,
+  install_components = install_components,
+  add_component = add_component,
+  get_component = get_component,
+}

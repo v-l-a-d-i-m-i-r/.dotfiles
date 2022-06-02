@@ -48,7 +48,7 @@ end
 
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-local c = require("components-plugin")
+local c = require("components")
 
 lspconfig.sumneko_lua.setup {
   on_attach = on_attach,

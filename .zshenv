@@ -5,7 +5,7 @@ setopt HIST_IGNORE_ALL_DUPS
 
 export TERM=rxvt-unicode
 
-export KUBE_EDITOR="vim"
+export KUBE_EDITOR="nvim"
 
 export PATH="/usr/lib/ccache/bin/:$PATH"
 # export XDG_SESSION_TYPE="X11"
