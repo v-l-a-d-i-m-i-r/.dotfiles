@@ -2,8 +2,9 @@ package main
 
 import (
 	"fmt"
+	"os"
 	"os/exec"
-	// "regexp"
+	"regexp"
 	"strings"
 )
 
@@ -69,10 +70,12 @@ func main() {
 		`--no-line-number`,
 		`--no-filename`,
 		`--no-heading`,
-	).Output()
+	).CombinedOutput()
 
 	if err != nil {
 		fmt.Println(err.Error())
+		fmt.Println(string(stdout))
+
 		return
 	}
 
@@ -114,6 +117,10 @@ func main() {
 		}
 	}
 
+	if itemName != "" {
+		addToHashList()
+	}
+
 	m := make(map[string]string)
 	dmenuInput := ""
 
@@ -125,16 +132,23 @@ func main() {
 		dmenuInput = dmenuInput + key
 	}
 
-	stdout, err = exec.Command("sh", "-ce", "echo -e '"+dmenuInput+"' | dmenu -i -l 20").Output()
+	command := "echo -e '" + dmenuInput + "' | dmenu '-i'"
 
+	for _, arg := range os.Args[1:] {
+		command = command + " '" + arg + "'"
+	}
+
+	stdout, err = exec.Command("sh", "-ce", command).CombinedOutput()
 	if err != nil {
 		fmt.Println(err.Error())
+		fmt.Println(string(stdout))
+
 		return
 	}
-// https://www.geeksforgeeks.org/golang-replacing-all-string-which-matches-with-regular-expression/
-	key := string(stdout)
 
-	exec.Command("sh", "-ce", m[key]).Output()
-	// %(u|U|f|F)
-	// fmt.Println(m[key])
+	key := string(stdout)
+	r := regexp.MustCompile(`%(u|U|f|F)`)
+	cmd := r.ReplaceAllString(m[key], "")
+
+	exec.Command("sh", "-ce", cmd).Output()
 }

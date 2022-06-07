@@ -70,9 +70,10 @@ c.add_component({
   install_script = function (params)
     local version = params.version
     local name = params.name
+    local node = c.get_component("node:16.14.2").bin("node")
     local npm = c.get_component("node:16.14.2").bin("npm")
 
-    return npm .. " install --save-exact " .. name .. "@" .. version
+    return node .. " " .. npm .. " install --save-exact " .. name .. "@" .. version
   end
 })
 

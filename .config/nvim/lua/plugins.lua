@@ -41,6 +41,7 @@ Plug 'gpanders/editorconfig.nvim'
 Plug 'numToStr/Comment.nvim'
 Plug 'PHSix/faster.nvim'
 Plug 'ur4ltz/surround.nvim'
+Plug 'phaazon/hop.nvim'
 
 -- Local
 Plug '~/.config/nvim/plugins/components'

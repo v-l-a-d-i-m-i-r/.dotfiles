@@ -27,8 +27,10 @@ RPROMPT='$(git_super_status)'
 # kubectl
 [[ /usr/bin/kubectl ]] && source <(kubectl completion zsh)
 
-export NVM_LAZY=1
-source ~/.config/zsh/plugins/zsh-nvm.plugin.zsh
+# export NVM_LAZY=1
+# source ~/.config/zsh/plugins/zsh-nvm.plugin.zsh
+export NVM_DIR="$HOME/.nvm"
+source ~/.config/zsh/plugins/nvm.zsh
 
 # dotfiles
 alias dots='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'

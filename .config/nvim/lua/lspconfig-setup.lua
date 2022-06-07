@@ -97,6 +97,10 @@ lspconfig.eslint.setup {
 lspconfig.bashls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
+  filetypes = {
+    "sh",
+    "zsh",
+  },
   cmd = {
     c.get_component("node:14.17.5").bin("node"),
     c.get_component("bash-language-server:3.0.3").bin("bash-language-server"),

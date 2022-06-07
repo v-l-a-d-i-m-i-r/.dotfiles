@@ -22,6 +22,8 @@ require("nvim-tresitter-setup")
 require("bufferline-setup")
 require("surround-setup")
 require("symbols-outline-setup")
+-- require("faster-setup")
+require("hop-setup")
 
 require("indent_blankline").setup {
   -- for example, context is off by default, use this to turn it on
