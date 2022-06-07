@@ -18,11 +18,8 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/lib/zsh-git-prompt/zshrc.sh
 
-# zstyle ':completion:*' menu select
-
 PROMPT='%F{yellow}[%f%F{cyan}%n@%M%f %F{green}%~%b%f%F{yellow}]%f '
 RPROMPT='$(git_super_status)'
-# precmd() { print "" }
 
 # kubectl
 [[ /usr/bin/kubectl ]] && source <(kubectl completion zsh)

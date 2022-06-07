@@ -7,7 +7,9 @@
 !.xinitrc
 !.Xauthority
 !.Xresources
+!.Xresources.theme
 !.Xresources.urxvt
+!.Xresources.xterm
 !.Xresources.xft
 !.xbindkeysrc
 
@@ -85,3 +87,5 @@
 !.config/nvim/
 .config/nvim/plugged/
 .config/nvim/components/
+
+!.urxvt/
