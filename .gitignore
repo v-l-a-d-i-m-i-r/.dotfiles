@@ -37,6 +37,9 @@
 # conky
 !.conkyrc
 
+# tmux
+!.tmux.conf
+
 #vscode
 #!.vscode/
 
@@ -70,6 +73,7 @@
 !.config/backgrounds/
 !.config/kalu/
 !.config/zsh/
+!.config/kitty/
 
 !.config/qxkb.cfg
 # !.config/qxkb.pid
