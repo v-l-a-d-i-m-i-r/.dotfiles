@@ -18,7 +18,7 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/lib/zsh-git-prompt/zshrc.sh
 
-PROMPT='%F{yellow}[%f%F{cyan}%n@%M%f %F{green}%~%b%f%F{yellow}]%f '
+PROMPT='%F{yellow}[%f%F{blue}%n@%M%f %F{green}%~%b%f%F{yellow}]%f '
 RPROMPT='$(git_super_status)'
 
 # kubectl
@@ -103,7 +103,13 @@ done
 }
 
 # tmux
-alias t='tmux '
+function t() {
+  if [[ $# -eq 0 ]]; then
+    ~/.bin/tmux-sessionizer /data/projects/* ~/.config/nvim/plugins/* ~/.config/i3 ~/.config/nvim
+  else
+    ~/.bin/tmux-sessionizer $1
+  fi
+}
 
 #Kowl
 function kowl() { docker run --rm -ti --network=host -p 8080:8080 -e KAFKA_BROKERS=$1 quay.io/cloudhut/kowl:master }

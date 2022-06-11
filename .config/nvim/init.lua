@@ -1,6 +1,7 @@
 require("settings")
 require("mappings")
 require("autocommands")
+require("clip")
 require("plugins")
 require("components-setup")
 

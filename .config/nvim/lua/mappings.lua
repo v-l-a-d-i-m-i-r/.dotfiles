@@ -48,6 +48,8 @@ vim.api.nvim_set_keymap("n", "<S-h>", ":bprevious<CR>", { noremap = true, silent
 -- Yank to clipboard
 vim.api.nvim_set_keymap("n", "<space>y", '"+y', { noremap = true, silent = true })
 vim.api.nvim_set_keymap("v", "<space>y", '"+y', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<space>Y", '"+Y', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "<space>Y", '"+Y', { noremap = true, silent = true })
 
 -- Put from clipboard
 vim.api.nvim_set_keymap("n", "<space>p", '"+p', { noremap = true, silent = true })

@@ -7,7 +7,7 @@ export TERM=rxvt-unicode
 
 export KUBE_EDITOR="nvim"
 
-export PATH="/usr/lib/ccache/bin/:$PATH"
+export PATH="$HOME/.bin/:/usr/lib/ccache/bin/:$PATH"
 # export XDG_SESSION_TYPE="X11"
 export COMPOSE_DOCKER_CLI_BUILD=1
 export DOCKER_BUILDKIT=1

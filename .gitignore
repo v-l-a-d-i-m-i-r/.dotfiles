@@ -1,7 +1,9 @@
 /*
 !.gitignore
+!.gitconfig
 !README.md
 
+!.bin/
 
 # X-server
 !.xinitrc
@@ -14,7 +16,6 @@
 !.xbindkeysrc
 
 # bash
-!.bash_history
 !.bash_logout
 !.bash_profile
 !.bashrc
@@ -57,7 +58,6 @@
 !.config/
 .config/*
 
-
 !.config/gsimplecal/
 !.config/i3/
 !.config/i3blocks/
@@ -76,7 +76,7 @@
 !.config/kitty/
 
 !.config/qxkb.cfg
-# !.config/qxkb.pid
+
 !.config/redshift.conf
 
 !.config/xfce4
