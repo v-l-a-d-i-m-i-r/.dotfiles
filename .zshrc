@@ -103,7 +103,8 @@ done
 }
 
 # tmux
-function t() {
+alias t='tmux '
+function ts() {
   if [[ $# -eq 0 ]]; then
     ~/.bin/tmux-sessionizer /data/projects/* ~/.config/nvim/plugins/* ~/.config/i3 ~/.config/nvim
   else

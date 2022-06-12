@@ -4,6 +4,7 @@
 !README.md
 
 !.bin/
+!scripts/
 
 # X-server
 !.xinitrc
