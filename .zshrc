@@ -1,4 +1,3 @@
-# The following lines were added by compinstall
 zstyle :compinstall filename '~/.zshrc'
 
 zstyle ':completion:*' menu select
@@ -10,24 +9,16 @@ compinit -i
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
-# zoxide
-eval "$(zoxide init zsh)"
-
 # zsh plugins
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/lib/zsh-git-prompt/zshrc.sh
-
-PROMPT='%F{yellow}[%f%F{blue}%n@%M%f %F{green}%~%b%f%F{yellow}]%f '
-RPROMPT='$(git_super_status)'
+source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.config/zsh/prompt.zsh
 
 # kubectl
-[[ /usr/bin/kubectl ]] && source <(kubectl completion zsh)
+# [[ /usr/bin/kubectl ]] && source <(kubectl completion zsh)
 
-# export NVM_LAZY=1
-# source ~/.config/zsh/plugins/zsh-nvm.plugin.zsh
 export NVM_DIR="$HOME/.nvm"
-source ~/.config/zsh/plugins/nvm.zsh
+source ~/.config/zsh/nvm.zsh
 
 # dotfiles
 alias dots='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
@@ -101,16 +92,23 @@ do
   git ls-tree -r --name-only $branch | grep "$1" | sed 's/^/'$branch': /'
 done
 }
+alias gl='git log --pretty=format:"%C(yellow)%h%C(reset)%<|(30) %C(blue)%an%C(reset)%<|(47) %C(green)%ad (%ar)%C(reset) %s%C(red)%d%C(reset)" --graph --date local'
 
 # tmux
-alias t='tmux '
+alias tmux='TERM=screen-256color /usr/bin/tmux -2 ' # Force tmux to assume the terminal supports 256 colours.
+alias t="tmux "
 function ts() {
+  TERM=screen-256color 
+
   if [[ $# -eq 0 ]]; then
-    ~/.bin/tmux-sessionizer /data/projects/* ~/.config/nvim/plugins/* ~/.config/i3 ~/.config/nvim
+    zsh ~/.bin/tmux-sessionizer /data/projects/* ~/.config/nvim/plugins/* ~/.config/i3 ~/.config/nvim
   else
-    ~/.bin/tmux-sessionizer $1
+    zsh ~/.bin/tmux-sessionizer $1
   fi
 }
+
+alias bat='batcat'
+export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
 
 #Kowl
 function kowl() { docker run --rm -ti --network=host -p 8080:8080 -e KAFKA_BROKERS=$1 quay.io/cloudhut/kowl:master }
@@ -121,51 +119,3 @@ function myip() { ip route get 8.8.8.8 | grep -oP 'src \K[^ ]+' }
 # Safe jq
 alias sjq="jq -R 'fromjson? | select(type == \"object\")'"
 
-# Terminal colors
-function showcolors() {
-  for i in {0..255} ; do
-    printf "\x1b[38;5;${i}m%3d " "${i}"
-    if (( $i == 15 )) || (( $i > 15 )) && (( ($i-15) % 12 == 0 )); then
-      echo;
-    fi
-  done
-
-  # for x in {0..8}; do
-  #   for i in {30..37}; do
-  #     for a in {40..47}; do
-  #       echo -ne "\e[$x;$i;$a""m\\\e[$x;$i;$a""m\e[0;37;40m "
-  #     done
-  #     echo
-  #   done
-  # done
-  # echo ""
-
-  echo -e "\033[0mNC (No color)"
-  echo -e "\033[1;37mWHITE\t\033[0;30mBLACK"
-  echo -e "\033[0;34mBLUE\t\033[1;34mLIGHT_BLUE"
-  echo -e "\033[0;32mGREEN\t\033[1;32mLIGHT_GREEN"
-  echo -e "\033[0;36mCYAN\t\033[1;36mLIGHT_CYAN"
-  echo -e "\033[0;31mRED\t\033[1;31mLIGHT_RED"
-  echo -e "\033[0;35mPURPLE\t\033[1;35mLIGHT_PURPLE"
-  echo -e "\033[0;33mYELLOW\t\033[1;33mLIGHT_YELLOW"
-  echo -e "\033[1;30mGRAY\t\033[0;37mLIGHT_GRAY"
-}
-
-# alias devs='git shortlog -sen'
-# alias l='git log --pretty=format:"%C(yellow)%h%C(reset)%<|(30)   %C(blue)%an%C(reset)%<|(47) %C(green)%ar%C(reset) %s%C(red)%d%C(reset)" --graph -16'
-# alias ls='git log --pretty=format:"%C(yellow)%h%C(reset)%<|(30)  %C(blue)%an%C(reset)%<|(47) %C(green)%ar%C(reset) %s%C(red)%d%C(reset)" --graph'
-# alias lf='git log --pretty=format:"%C(yellow)%h%C(reset) %s%C(red)%d%C(reset)%n%C(cyan)a%C(reset) %C(blue)%ae%C(reset) %C(green)%ar% / %ad%C(reset)%n%C(cyan)c%C(reset) %C(blue)%ce%C(reset) %C(green)%cr / %cd%C(reset)%n" --graph --date=local'
-# alias ll='git log --pretty=format:"%C(yellow)%h%C(reset) %s%C(red)%d%C(reset)%n%C(cyan)a%C(reset) %C(blue)%ae%C(reset) %C(green)%ar% / %ad%C(reset)%n%C(cyan)c%C(reset) %C(blue)%ce%C(reset) %C(green)%cr / %cd%C(reset)%n" --graph --date=local -8'
-# alias lg='git log --pretty=format:"%C(yellow)%h%C(reset)%<|(30)  %C(blue)%an%C(reset)%<|(47) %C(green)%ar%C(reset) %s%C(red)%d%C(reset)" -E -i --grep'
-
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[[ -f /data/projects/pos-datamanagement/node_modules/tabtab/.completions/serverless.zsh ]] && . /data/projects/pos-datamanagement/node_modules/tabtab/.completions/serverless.zsh
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[[ -f /data/projects/pos-datamanagement/node_modules/tabtab/.completions/sls.zsh ]] && . /data/projects/pos-datamanagement/node_modules/tabtab/.completions/sls.zsh
-
-[[ /usr/bin/kubectl ]] && source <(kubectl completion zsh)
-# -- START ACTIVESTATE DEFAULT RUNTIME ENVIRONMENT
-export PATH="/home/vladimir/.cache/activestate/bin:$PATH"
-# -- STOP ACTIVESTATE DEFAULT RUNTIME ENVIRONMENT

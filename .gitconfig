@@ -3,5 +3,9 @@
 	trustExitCode = true
 [core]
 	pager = diff-so-fancy | less --tabs=4 -RFX
+	editor = nvim
 [interactive]
 	diffFilter = diff-so-fancy --patch
+[user]
+	email = volodymyr.danilin@gmail.com
+	name = Vladimir Danilin

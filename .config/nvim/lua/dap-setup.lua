@@ -13,10 +13,10 @@ require('dap.ext.vscode').load_launchjs(nil, {
 
 dap.adapters.node = {
   type = 'executable',
-  -- command = c.get_component("node:16.14.2").bin("node"),
+  -- command = c.get_component("node-16.14.2").bin("node"),
   command = "node",
   args = {
-    c.get_component("vscode-node-debug2:1.43.0").bin("nodeDebug.js")
+    c.get_component("vscode-node-debug2-1.43.0").bin("nodeDebug.js")
   },
 }
 

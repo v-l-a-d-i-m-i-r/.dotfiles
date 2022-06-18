@@ -3,11 +3,9 @@ export HISTSIZE=10000000
 export SAVEHIST=10000000
 setopt HIST_IGNORE_ALL_DUPS
 
-export TERM=rxvt-unicode
-
 export KUBE_EDITOR="nvim"
 
-export PATH="$HOME/.bin/:/usr/lib/ccache/bin/:$PATH"
+export PATH="$HOME/.bin/:/snap/bin:/usr/lib/ccache/bin/:$PATH"
 # export XDG_SESSION_TYPE="X11"
 export COMPOSE_DOCKER_CLI_BUILD=1
 export DOCKER_BUILDKIT=1
@@ -23,3 +21,4 @@ export MONGOMS_DISABLE_POSTINSTALL="1"
 # export MONGOMS_USE_LINUX_LSB_RELEASE="0"
 # export MONGOMS_USE_LINUX_OS_RELEASE="0"
 # export MONGOMS_USE_LINUX_ANYFILE_RELEASE="0"
+export PYTHON="python2"

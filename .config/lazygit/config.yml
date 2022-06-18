@@ -1,0 +1,5 @@
+os:
+  editCommand: 'nvim'
+  editCommandTemplate: '{{editor}} +{{line}} -- {{filename}}'
+# git:
+#   branchLogCmd: "git log --pretty=format:'%C(yellow)%h%C(reset)%<|(30) %C(blue)%an%C(reset)%<|(47) %C(green)%ad (%ar)%C(reset) %s%C(red)%d%C(reset)' --graph --date local"

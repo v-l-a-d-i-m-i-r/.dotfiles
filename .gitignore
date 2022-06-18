@@ -94,3 +94,4 @@
 .config/nvim/components/
 
 !.urxvt/
+!.config/lazygit/config.yml
