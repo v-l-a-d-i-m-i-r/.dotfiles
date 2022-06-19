@@ -1,6 +1,40 @@
-XTerm.vt100.faceName: DejaVuSansMono Nerd Font Mono:style=Book:size=13:antialias=true
-XTerm*boldFont: DejaVuSansMono Nerd Font Mono:style=Bold:size=13:antialias=true
+! https://github.com/gotbletu/shownotes/blob/master/xterm_xresources.md
+! https://github.com/tdwyer/Xresources/blob/master/Xresources
 
-XTerm*font: 7x13
-XTerm*boldMode: false
+! Allow xterm to report the TERM variable correctly.
+! Do not set the TERM variable from your ~/.bashrc or ~/.bash_profile or similar file.
+! The terminal itself should report the correct TERM to the system so that the proper terminfo file will be used.
+! Two usable terminfo names are xterm and xterm-256color
+XTerm.termName: xterm-256color
 
+XTerm*faceName: xft:DejaVuSansMono Nerd Font Mono:style=Book:size=12.3:dpi=100:antialias=true
+
+! XTerm.vt100.boldFont: DejaVuSansMono Nerd Font Mono:style=Bold:size=12:dpi=100:antialias=true
+XTerm*allowBoldFonts: false
+XTerm.scaleHeight: 1.0
+XTerm.scaleWidth: 1.0
+
+! Ensure that your locale is set up for UTF-8. If you do not use UTF-8, you may need to force xterm to more strictly follow your locale by setting
+XTerm.vt100.locale: true
+XTerm*highlightSelection: true
+XTerm.vt100.scrollBar: true
+XTerm.vt100.scrollbar.width: 8
+XTerm*rightScrollBar: true
+
+XTerm.vt100.translations: #override \n\
+  Ctrl <Key> minus: smaller-vt-font() \n\
+  Ctrl <Key> plus: larger-vt-font() \n\
+  Ctrl <Key> 0: set-vt-font(d) \n\
+  Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
+  Ctrl Shift <Key>V: insert-selection(CLIPBOARD)
+
+! xterm*scaleWidth: 1.5
+XTerm*disallowedWindowOps: 20,21,SetXprop
+! disable fullscreen hotkey alt+enter (hotkey conflicts with weechat, midnight commander ...etc)
+XTerm*fullscreen: never
+XTerm*saveLines: 100000
+
+! Make Alt key work
+XTerm*eightBitInput:   false
+XTerm*eightBitOutput:  true
+XTerm*cursorBlink: always

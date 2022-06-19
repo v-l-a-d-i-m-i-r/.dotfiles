@@ -5,6 +5,7 @@ import (
 	"os"
 	"os/exec"
 	"regexp"
+	"sort"
 	"strings"
 )
 
@@ -122,17 +123,20 @@ func main() {
 	}
 
 	m := make(map[string]string)
-	dmenuInput := ""
+	var dmenuInput []string
 
 	for _, item := range s {
 		separator := " | "
 		key := fillString(item.name, maxNameLen) + separator + fillString(item.genericName, maxGenericNameLen) + separator + item.exec + "\n"
 
 		m[key] = item.exec
-		dmenuInput = dmenuInput + key
+		dmenuInput = append(dmenuInput, key)
 	}
 
-	command := "echo -e '" + dmenuInput + "' | dmenu '-i'"
+  sort.Strings(dmenuInput)
+  dmenuInputString := strings.Join(dmenuInput, "")
+
+	command := "echo -e '" + dmenuInputString + "' | dmenu '-i'"
 
 	for _, arg := range os.Args[1:] {
 		command = command + " '" + arg + "'"

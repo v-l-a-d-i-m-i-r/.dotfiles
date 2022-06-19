@@ -1,13 +1,16 @@
+setopt HIST_IGNORE_ALL_DUPS
+
 export HISTFILE="$HOME/.zsh_history"
 export HISTSIZE=10000000
 export SAVEHIST=10000000
-setopt HIST_IGNORE_ALL_DUPS
 
-export TERM=rxvt-unicode
-
+export NVM_DIR="$HOME/.nvm"
 export KUBE_EDITOR="nvim"
+export ZVM_CURSOR_STYLE_ENABLED=false
 
-export PATH="$HOME/.bin/:/usr/lib/ccache/bin/:$PATH"
+export PATH="$HOME/.cache/activestate/bin:$PATH"
+export PATH="$HOME/.bin/:$PATH"
+export PATH="/usr/lib/ccache/bin/:$PATH"
 # export XDG_SESSION_TYPE="X11"
 export COMPOSE_DOCKER_CLI_BUILD=1
 export DOCKER_BUILDKIT=1

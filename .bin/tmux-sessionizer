@@ -4,10 +4,6 @@
 
 set +e
 
-folders_for_find="/data/projects/ $HOME/.config/nvim/plugins"
-static_folders='~/.config/i3 ~/.config/nvim'
-
-# echo "$@" | sed 's/ /\n/g' | fzf
 if [[ $# -eq 1 ]]; then
   selected=$1
 else
@@ -22,18 +18,13 @@ fi
 selected_name=$(basename "$selected" | tr . _)
 tmux_running=$(pgrep tmux)
 
-
 if [[ -z $tmux_running ]]; then
   tmux new-session -s $selected_name -c $selected
   exit 0
 fi
 
-tmux_has_session=$(tmux has-session -t=$selected_name 2> /dev/null)
-
 # create new session if not exists
-if [[ -z $tmux_has_session ]]; then
-  tmux new-session -ds $selected_name -c $selected
-fi
+tmux has-session -t="${selected_name}" 2> /dev/null || tmux new-session -ds "${selected_name}" -c "${selected}" 2> /dev/null
 
 # script called inside tmux
 if [[ ! -z $TMUX ]]; then
@@ -41,23 +32,5 @@ if [[ ! -z $TMUX ]]; then
   exit 0
 fi
 
+# script called outside tmux
 tmux a -t $selected_name
-
-# # script called out of tmux
-# if [[ -z $TMUX ]]; then
-#   # create new session and attach to it
-#   command="tmux new-session -s $selected_name -c $selected && tmux a -t $selected_name"
-#   echo $command
-#   $command
-#   exit 0
-# fi
-
-# if ! tmux has-session -t=$selected_name 2> /dev/null; then
-#   command="tmux new-session -ds $selected_name -c $selected"
-#   echo $command
-#   $command
-# fi
-#
-# command="tmux switch-client -t $selected_name"
-# echo $command
-# $command

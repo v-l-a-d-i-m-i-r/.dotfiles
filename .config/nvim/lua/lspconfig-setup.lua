@@ -54,7 +54,7 @@ lspconfig.sumneko_lua.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   cmd = {
-    c.get_component("lua-language-server:3.2.4").bin("lua-language-server"),
+    c.get_component("lua-language-server-3.2.4").bin("lua-language-server"),
   },
   settings = {
     Lua = {
@@ -78,8 +78,8 @@ lspconfig.tsserver.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   cmd = {
-    c.get_component("node:16.14.2").bin("node"),
-    c.get_component("typescript-language-server:0.10.1").bin("typescript-language-server"),
+    c.get_component("node-16.14.2").bin("node"),
+    c.get_component("typescript-language-server-0.10.1").bin("typescript-language-server"),
     "--stdio",
   },
 }
@@ -88,8 +88,8 @@ lspconfig.eslint.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   cmd = {
-    c.get_component("node:14.17.5").bin("node"),
-    c.get_component("vscode-langservers-extracted:4.2.1").bin("vscode-eslint-language-server"),
+    c.get_component("node-14.17.5").bin("node"),
+    c.get_component("vscode-langservers-extracted-4.2.1").bin("vscode-eslint-language-server"),
     "--stdio",
   },
 }
@@ -102,8 +102,8 @@ lspconfig.bashls.setup {
     "zsh",
   },
   cmd = {
-    c.get_component("node:14.17.5").bin("node"),
-    c.get_component("bash-language-server:3.0.3").bin("bash-language-server"),
+    c.get_component("node-14.17.5").bin("node"),
+    c.get_component("bash-language-server-3.0.3").bin("bash-language-server"),
     "start",
   }
 }
@@ -112,6 +112,8 @@ lspconfig.gopls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   cmd = {
-    c.get_component("gopls:0.8.4").bin("gopls"),
+    c.get_component("gopls-0.8.4").bin("gopls"),
   }
 }
+
+vim.lsp.handlers["textDocument/references"] = require("telescope.builtin").lsp_references

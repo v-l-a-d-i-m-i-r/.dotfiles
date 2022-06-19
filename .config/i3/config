@@ -91,19 +91,21 @@ assign [class="firefox"]        $workspace8
 assign [class="Opera"]          $workspace8
 assign [class="Falkon"]         $workspace8
 assign [class="Code"]           $workspace9
+assign [class="code-oss"]       $workspace9
 assign [class="Tilda"]          $workspace10
 assign [class="URxvt"]          $workspace10
+assign [class="XTerm"]          $workspace10
 assign [class="Sakura"]         $workspace10
 assign [class="Terminator"]     $workspace10
 assign [class="Xfce4-terminal"] $workspace10
 assign [class="Tym"]            $workspace10
 
 # switch to workspace
-bindsym $mod+1 workspace $workspace1
-bindsym $mod+2 workspace $workspace2
-bindsym $mod+3 workspace $workspace3
-bindsym $mod+4 workspace $workspace4
-bindsym $mod+5 workspace $workspace5
+bindsym $mod+y workspace $workspace1
+bindsym $mod+u workspace $workspace2
+bindsym $mod+i workspace $workspace3
+bindsym $mod+o workspace $workspace4
+bindsym $mod+p workspace $workspace5
 bindsym $mod+6 workspace $workspace6
 bindsym $mod+7 workspace $workspace7
 bindsym $mod+8 workspace $workspace8
@@ -144,20 +146,19 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-bindsym $mod+p exec --no-startup-id vlc --qt-start-minimized ~/vlc-playlist.xspf
 
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &\
   eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg)
 
+# exec_always --no-startup-id xcompmgr -c -C -t-5 -l-5 -r4.2 -o.55
+exec_always --no-startup-id xcompmgr -CcfF -I1 -O1 -D0 -t-3.5 -l-3.5 -r4.2 -o.5
+# exec_always --no-startup-id compton --config ~/.config/compton/compton.xr-glx-hybrid.conf
 exec_always /usr/lib/xfce4/notifyd/xfce4-notifyd
 exec_always xset -b
 exec_always --no-startup-id xset r rate 300 50
 exec_always --no-startup-id xbacklight -set 30
 # exec_always nitrogen --set-scaled ~/.config/backgrounds/background-abstract-gray.jpg
-exec_always nitrogen --set-zoom-fill ~/.config/backgrounds/background-arch-nord-light.png
-# exec_always --no-startup-id xcompmgr -c -C -t-5 -l-5 -r4.2 -o.55
-exec_always --no-startup-id xcompmgr -CcfF -I1 -O1 -D0 -t-3.5 -l-3.5 -r4.2 -o.5
-# exec_always --no-startup-id compton --config ~/.config/compton/compton.xr-glx-hybrid.conf
+exec_always nitrogen --set-zoom-fill ~/.config/backgrounds/background-minimal-arch-light.jpg
 exec_always --no-startup-id "synclient TapButton1=1 TapButton2=3 TapButton3=2 VertTwoFingerScroll=1 HorizTwoFingerScroll=1"
 # exec_always --no-startup-id conky
 exec_always --no-startup-id "pulseaudio --kill && pulseaudio --start"
@@ -213,8 +214,11 @@ new_float normal 1
 focus_on_window_activation focus
 
 ############### hooks ###############
-for_window [class="URxvt"]     focus
-for_window [class="Viber"]     focus
+for_window [class="URxvt"] focus
+for_window [class="XTerm"] focus
+for_window [class="Viber"] focus
+for_window [class="Pamac-manager"] focus
+
 #for_window [class="Code"]     border none, focus
 #for_window [class="QupZilla"] border none
 #for_window [class="Skype"]    floating disable

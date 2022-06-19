@@ -43,9 +43,10 @@ c.add_component({
   install_script = function (params)
     local version = params.version
     local name = params.name
-    local npm = c.get_component("node:16.14.2").bin("npm")
+    local node = c.get_component("node-16.14.2").bin("node")
+    local npm = c.get_component("node-16.14.2").bin("npm")
 
-    return npm .. " install --save-exact " .. name .. "@" .. version
+    return node .. " " .. npm .. " install --save-exact " .. name .. "@" .. version
   end
 })
 
@@ -56,8 +57,8 @@ c.add_component({
   install_script = function (params)
     local version = params.version
     local name = params.name
-    local node = c.get_component("node:16.14.2").bin("node")
-    local yarn = c.get_component("yarn:1.22.18").bin("yarn")
+    local node = c.get_component("node-16.14.2").bin("node")
+    local yarn = c.get_component("yarn-1.22.18").bin("yarn")
 
     return node .. " " .. yarn .. " add " .. name .. "@" .. version .. " typescript@4.6.4"
   end
@@ -70,10 +71,9 @@ c.add_component({
   install_script = function (params)
     local version = params.version
     local name = params.name
-    local node = c.get_component("node:16.14.2").bin("node")
-    local npm = c.get_component("node:16.14.2").bin("npm")
+    local path = c.get_component("node-16.14.2").bin("") .. ":$PATH"
 
-    return node .. " " .. npm .. " install --save-exact " .. name .. "@" .. version
+    return "PATH=" .. path .. " npm install --save-exact " .. name .. "@" .. version
   end
 })
 
@@ -84,8 +84,8 @@ c.add_component({
   install_script = function (params)
     local version = params.version
     local name = params.name
-    local node = c.get_component("node:14.17.5").bin("node")
-    local yarn = c.get_component("yarn:1.22.18").bin("yarn")
+    local node = c.get_component("node-14.17.5").bin("node")
+    local yarn = c.get_component("yarn-1.22.18").bin("yarn")
 
     return node .. " " .. yarn .. " add " .. name .. "@" .. version
   end
@@ -108,10 +108,11 @@ c.add_component({
   binaries_directory = "/out/src",
   install_script = function (params)
     local version = params.version
+    local path = c.get_component("node-16.14.2").bin("") .. ":$PATH"
     local command_table = {
       "git clone --depth 1 --branch v" ..version .. " https://github.com/microsoft/vscode-node-debug2.git .",
-      c.get_component("node:16.14.2").bin("npm") .. " ci",
-      c.get_component("node:16.14.2").bin("node") .. " ./node_modules/.bin/gulp build"
+      "PATH=" .. path .. " npm ci",
+      "PATH=" .. path .. " node ./node_modules/.bin/gulp build"
     }
     return table.concat(command_table, " && ")
   end,
@@ -126,7 +127,7 @@ c.add_component({
     local command_table = {
       "git clone --depth 1 --branch gopls/v" ..version .. "  https://github.com/golang/tools.git .",
       "cd ./gopls",
-      c.get_component("go:1.18.2").bin("go") .. " build -o ../bin/gopls",
+      c.get_component("go-1.18.2").bin("go") .. " build -o ../bin/gopls",
     }
     return table.concat(command_table, " && ")
   end,

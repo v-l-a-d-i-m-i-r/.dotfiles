@@ -94,7 +94,7 @@ pacman_install chrony
 
 ## ZSH
 pacman_install zsh
-aur_install zsh-git-prompt zsh-autosuggestions zsh-syntax-highlighting
+aur_install zsh-git-prompt zsh-autosuggestions zsh-syntax-highlighting zsh-vi-mode
 
 ## Nano syntax highligting
 aur_install nano-syntax-highlighting-git

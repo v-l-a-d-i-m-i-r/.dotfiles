@@ -28,6 +28,7 @@ local install_components = function()
 
     if not is_component_installed then
       print("Installing " .. component_name)
+      component.clear()
       component.install()
     else
       print(component_name .. " already installed")
@@ -42,14 +43,14 @@ end
 local add_component = function(options)
   local version = options.version
   local name = options.name
-  local key = name .. ":" .. version
+  local key = name .. "-" .. version
   local binaries_directory = options.binaries_directory
   local install_script = options.install_script({
     version = version,
     name = name,
   })
   local hash = md5.sumhexa(install_script)
-  local installation_path = params.path .. "/" .. key .. ":" .. hash
+  local installation_path = params.path .. "/" .. key .. "-" .. hash
 
   local install = function()
     local command_table = {
@@ -61,11 +62,20 @@ local add_component = function(options)
   end
 
   local bin = function(binary_name)
-    return installation_path .. binaries_directory .. "/" .. binary_name
+    if (binary_name == nil or binary_name == "") then
+      return installation_path .. binaries_directory
+    else
+      return installation_path .. binaries_directory .. "/" .. binary_name
+    end
+  end
+
+  local clear = function()
+    vim.cmd("! rm -rf " .. installation_path)
   end
 
   set_component(key, {
     install = install,
+    clear = clear,
     bin = bin,
     hash = hash,
     check_installed = function()

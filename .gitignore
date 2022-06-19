@@ -16,11 +16,6 @@
 !.Xresources.xft
 !.xbindkeysrc
 
-# bash
-!.bash_logout
-!.bash_profile
-!.bashrc
-
 # zsh
 !.zprofile
 !.zlogin

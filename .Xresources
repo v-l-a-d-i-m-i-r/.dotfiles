@@ -1,4 +1,4 @@
 #include ".Xresources.xterm"
 #include ".Xresources.urxvt"
-#include ".Xresources.xft"
+! #include ".Xresources.xft"
 #include ".Xresources.theme"
