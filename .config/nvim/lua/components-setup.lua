@@ -26,6 +26,13 @@ c.add_component({
 })
 
 c.add_component({
+  name = "node",
+  version = "12.16.2",
+  binaries_directory = node_binaries_directory,
+  install_script = install_node,
+})
+
+c.add_component({
   name = "go",
   version = "1.18.2",
   binaries_directory = "/bin",
