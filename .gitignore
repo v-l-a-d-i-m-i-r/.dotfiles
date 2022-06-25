@@ -73,7 +73,6 @@
 !.config/compton/
 !.config/backgrounds/
 !.config/kalu/
-!.config/zsh/
 !.config/kitty/
 
 !.config/qxkb.cfg
@@ -92,6 +91,9 @@
 !.config/nvim/
 .config/nvim/plugged/
 .config/nvim/components/
+
+!.config/zsh/
+.config/zsh/plugins/
 
 !.urxvt/
 !.config/lazygit/config.yml

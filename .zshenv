@@ -1,9 +1,12 @@
+setopt HIST_IGNORE_ALL_DUPS
+
 export HISTFILE="$HOME/.zsh_history"
 export HISTSIZE=10000000
 export SAVEHIST=10000000
-setopt HIST_IGNORE_ALL_DUPS
 
+export NVM_DIR="$HOME/.nvm"
 export KUBE_EDITOR="nvim"
+export ZVM_CURSOR_STYLE_ENABLED=false
 
 export PATH="$HOME/.bin/:/snap/bin:/usr/lib/ccache/bin/:$PATH"
 # export XDG_SESSION_TYPE="X11"

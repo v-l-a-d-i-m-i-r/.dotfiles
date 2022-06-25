@@ -37,5 +37,32 @@ function precmd() {
     RPROMPT='${vcs_info_msg_0_}'
   fi
 }
+function _load_prompt() {
+  local prompt_path='%F{green}%~%b%f'
+  local prompt_zvm=''
 
-PROMPT='%F{yellow}[%F{green}%~%b%f%F{yellow}]%f '
+  case $ZVM_MODE in
+    $ZVM_MODE_NORMAL)
+      prompt_zvm='%F{#262626}%K{#608B4E}%B NORMAL %b%f%k%F{default}%K{default}'
+    ;;
+    $ZVM_MODE_INSERT)
+      prompt_zvm='%F{#262626}%K{#569CD6}%B INSERT %b%f%k%F{default}%K{default}'
+    ;;
+    $ZVM_MODE_VISUAL)
+      prompt_zvm='%F{#262626}%K{#C586C0}%B VISUAL %b%f%k%F{default}%K{default}'
+    ;;
+    $ZVM_MODE_VISUAL_LINE)
+      prompt_zvm='%F{#262626}%K{#C586C0}%B V-LINE %b%f%k%F{default}%K{default}'
+    ;;
+    $ZVM_MODE_REPLACE)
+      prompt_zvm='%F{#262626}%K{#D16969}%B REPLACE %b%f%k%F{default}%K{default}'
+    ;;
+  esac
+
+  PROMPT="${prompt_zvm} ${prompt_path} "
+}
+function zvm_after_select_vi_mode() {
+  _load_prompt
+}
+
+_load_prompt
