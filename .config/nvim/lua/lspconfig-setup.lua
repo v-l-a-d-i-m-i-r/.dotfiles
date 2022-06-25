@@ -115,3 +115,5 @@ lspconfig.gopls.setup {
     c.get_component("gopls-0.8.4").bin("gopls"),
   }
 }
+
+vim.lsp.handlers["textDocument/references"] = require("telescope.builtin").lsp_references
