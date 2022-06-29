@@ -7,11 +7,10 @@ set +e
 if [[ $# -eq 1 ]]; then
   selected=$1
 else
-  selected=$(echo "$@" | sed 's/ /\n/g' | fzf)
+  selected=$(echo "$@" | sed 's/ /\n/g' | fzf --reverse)
 fi
 
 if [[ -z $selected ]]; then
-  echo "folder not selected"
   exit 0
 fi
 

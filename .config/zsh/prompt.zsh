@@ -38,7 +38,7 @@ function precmd() {
   fi
 }
 function _load_prompt() {
-  local prompt_path='%F{green}%~%b%f'
+  local prompt_path='%F{yellow}%~%b%f'
   local prompt_zvm=''
 
   case $ZVM_MODE in

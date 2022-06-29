@@ -29,7 +29,12 @@ Plug ('nvim-treesitter/nvim-treesitter', {['do'] = ':TSUpdate'})
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'folke/trouble.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug ('nvim-telescope/telescope-fzf-native.nvim', { ['do'] = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' })
 Plug 'simrat39/symbols-outline.nvim'
+
+-- Git
+Plug 'sindrets/diffview.nvim'
+Plug 'lewis6991/gitsigns.nvim'
 
 -- Misc
 Plug 'kyazdani42/nvim-web-devicons'
@@ -42,6 +47,7 @@ Plug 'numToStr/Comment.nvim'
 Plug 'PHSix/faster.nvim'
 Plug 'ur4ltz/surround.nvim'
 Plug 'phaazon/hop.nvim'
+Plug 'folke/todo-comments.nvim'
 
 -- Local
 Plug '~/.config/nvim/plugins/components'

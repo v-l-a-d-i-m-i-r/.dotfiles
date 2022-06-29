@@ -68,6 +68,85 @@ function ggf() {
   done
 }
 alias gl='git log --pretty=format:"%C(yellow)%h%C(reset)%<|(30) %C(blue)%an%C(reset)%<|(47) %C(green)%ad (%ar)%C(reset) %s%C(red)%d%C(reset)" --graph --date local'
+alias gla='gl --all'
+alias gs='git status'
+
+
+# function fzf-git-branch() {
+#   git rev-parse HEAD > /dev/null 2>&1 || return
+#
+#   git branch --color=always --all --sort=-committerdate |
+#     grep -v HEAD |
+#     fzf --height 50% --ansi --no-multi --preview-window right:65% \
+#       --preview 'git log -n 50 --color=always --date=short --pretty="format:%C(auto)%cd %h%d %s" $(sed "s/.* //" <<< {})' |
+#     sed "s/.* //"
+# }
+# function fzf-git-checkout() {
+#   git rev-parse HEAD > /dev/null 2>&1 || return
+#
+#   local branch
+#
+#   branch=$(fzf-git-branch)
+#   if [[ "$branch" = "" ]]; then
+#     echo "No branch selected."
+#     return
+#   fi
+#
+#   # If branch name starts with 'remotes/' then it is a remote branch. By
+#   # using --track and a remote branch name, it is the same as:
+#   # git checkout -b branchName --track origin/branchName
+#   if [[ "$branch" = 'remotes/'* ]]; then
+#     git checkout --track $branch
+#   else
+#     git checkout $branch;
+#   fi
+# }
+# alias gb='fzf-git-branch'
+# alias gco='fzf-git-checkout'
+
+# https://cocktailmake.github.io/posts/improvement-of-git-commands-with-fzf/
+# is_in_git_repo() {
+#     # git rev-parse HEAD > /dev/null 2>&1
+#     git rev-parse HEAD > /dev/null
+# }
+# # Filter branches.
+# git-br-fzf() {
+#     is_in_git_repo || return
+#
+#     local tags branches target
+#     tags=$(
+# 	git tag | awk '{print "\x1b[31;1mtag\x1b[m\t" $1}') || return
+#     branches=$(
+# 	git branch --all | grep -v HEAD |
+# 	    sed "s/.* //" | sed "s#remotes/[^/]*/##" |
+# 	    sort -u | awk '{print "\x1b[34;1mbranch\x1b[m\t" $1}') || return
+#     target=$(
+# 	(echo "$tags"; echo "$branches") |
+# 	    fzf --no-hscroll --no-multi --delimiter="\t" -n 2 \
+# 		--ansi --preview="git log -200 --pretty=format:%s $(echo {+2..} |  sed 's/$/../' )" ) || return
+#     echo $(echo "$target" | awk -F "\t" '{print $2}')
+# }
+# # Filter branches and checkout the selected one with <enter> key,
+# git-co-fzf() {
+#     is_in_git_repo || return
+#     git checkout $(git-br-fzf)
+# }
+# # Filter commit logs. The diff is shown on the preview window.
+# git-log-fzf() { # fshow - git commit browser
+#     is_in_git_repo || return
+#
+#     _gitLogLineToHash="echo {} | grep -o '[a-f0-9]\{7\}' | head -1"
+#     _viewGitLogLine="$_gitLogLineToHash | xargs -I % sh -c 'git show --color=always %'"
+#     git log --graph --color=always \
+# 	--format="%C(auto)%h%d [%an] %s %C(black)%C(bold)%cr" "$@" |
+#     fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
+# 	--preview="$_viewGitLogLine" \
+# 	--bind "ctrl-m:execute:
+# 		(grep -o '[a-f0-9]\{7\}' | head -1 |
+# 		xargs -I % sh -c 'git show --color=always % | less -R') << 'FZF-EOF'
+# 		{}
+# FZF-EOF"
+# }
 
 # tmux
 alias t='tmux '
@@ -78,6 +157,7 @@ function ts() {
     ~/.bin/tmux-sessionizer $1
   fi
 }
+alias ta='t attach-session -t=$(t ls | fzf --reverse | cut -d ':' -f1)'
 
 #Kowl
 function kowl() { docker run --rm -ti --network=host -p 8080:8080 -e KAFKA_BROKERS=$1 quay.io/cloudhut/kowl:master }

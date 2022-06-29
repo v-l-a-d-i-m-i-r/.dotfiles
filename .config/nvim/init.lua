@@ -17,6 +17,10 @@ require("cmp-setup")
 -- require("vimspector-setup")
 -- require("dap-setup")
 
+-- Git
+require("diffview-setup")
+require("gitsigns-setup")
+
 require("telescope-setup")
 require("trouble-config")
 require("nvim-tresitter-setup")
@@ -35,6 +39,7 @@ require("indent_blankline").setup {
 require('colorizer').setup()
 require('nvim-autopairs').setup {}
 require('Comment').setup()
+require("todo-comments").setup()
 
 -- TODO:
 -- 1. [lspconfig] Unable to find ESLint library.
