@@ -29,6 +29,8 @@ require("telescope").setup({
   },
 })
 
+require('telescope').load_extension('fzf')
+
 -- nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
 -- nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 

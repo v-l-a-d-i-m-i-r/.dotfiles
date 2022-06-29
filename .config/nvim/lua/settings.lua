@@ -22,6 +22,7 @@ vim.opt.timeoutlen = 1000
 vim.opt.ttimeoutlen = 0
 vim.opt.list = true
 vim.opt.guicursor = "n-v-c:blinkon1"
-vim.opt.signcolumn = "yes:2"
+vim.opt.signcolumn = "yes:1"
+vim.opt.autoread = true
 -- vim.opt.listchars = "eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣"
-
+vim.opt.completeopt={"menu", "menuone", "noselect"}
