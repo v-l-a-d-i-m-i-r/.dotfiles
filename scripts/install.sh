@@ -25,7 +25,7 @@
 set -e;
 
 install_utils () {
-  sudo apt install -y tmux fzf fd-find ripgrep reptyr bat python2 make
+  sudo apt install -y tmux fzf fd-find ripgrep reptyr bat python2 make cmake
 }
 
 install_zsh () {
