@@ -28,26 +28,26 @@ dap.adapters.node = function (callback, config)
 end
 
 dapui.setup({
-  layouts = {
-    {
-      elements = {
-      -- Elements can be strings or table with id and size keys.
-        -- "breakpoints",
-        { id = "stacks", size = 0.25 },
-        "scopes",
-      },
-      size = 40,
-      position = "left",
-    },
-    {
-      elements = {
-        -- "repl",
-        "console",
-      },
-      size = 10,
-      position = "bottom",
-    },
-  },
+  -- layouts = {
+  --   {
+  --     elements = {
+  --     -- Elements can be strings or table with id and size keys.
+  --       -- "breakpoints",
+  --       { id = "stacks", size = 0.25 },
+  --       "scopes",
+  --     },
+  --     size = 40,
+  --     position = "left",
+  --   },
+  --   {
+  --     elements = {
+  --       -- "repl",
+  --       "console",
+  --     },
+  --     size = 10,
+  --     position = "bottom",
+  --   },
+  -- },
 })
 dap.listeners.after.event_initialized["dapui_config"] = function()
   dapui.open()
