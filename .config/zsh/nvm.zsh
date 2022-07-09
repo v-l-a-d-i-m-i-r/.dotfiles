@@ -1,5 +1,20 @@
 function _nvm_use() {
   local version="$1"
+
+  if [ -z "${version}" ]; then
+    version=$(nvm list | fzf | sed 's/^ *//g' | sed 's/ *$//g' | tr -d '\n' )
+  fi
+
+  if [ -z "${version}" ]; then
+    return
+  fi
+
+  if [ ! -d "${NVM_DIR}/versions/node/${version}/bin" ]; then
+    echo "not available";
+
+    return
+  fi
+
   local NEW_PATH=""
   declare -a path_array=(`echo $PATH | sed 's/:/\n/g'`)
 
@@ -11,10 +26,12 @@ function _nvm_use() {
     NEW_PATH="${NEW_PATH}:${dir}"
   done
 
-  export PATH="${NVM_DIR}/versions/node/v${version}/bin${NEW_PATH}"
+  export PATH="${NVM_DIR}/versions/node/${version}/bin${NEW_PATH}"
 }
 
 function _nvm_list () {
+  if [ ! -d "${NVM_DIR}/versions/node" ] && return
+
   local node_version=$(node -v 2>/dev/null)
   local includes_in_list=false
   local versions=$(ls $NVM_DIR/versions/node | awk '{print $NF}' | sort -r)
@@ -37,10 +54,23 @@ function _nvm_list () {
 
 function _nvm_install () {
   local version="$1"
-  local output_dir="${NVM_DIR}/versions/node/v${version}"
+
+  if [ -z "${version}" ]; then
+    version=$(curl -Ls https://nodejs.org/dist/ | grep '"v' | grep -o '">.*/</' | cut -c 3- | rev | cut -c 4- | rev | fzf)
+  fi
+
+  if [ -z "${version}" ]; then
+    return
+  fi
+
+  local output_dir="${NVM_DIR}/versions/node/${version}"
+
+  if [ -d "${output_dir}" ]; then
+    return
+  fi
 
   mkdir -p $output_dir
-  curl -L https://nodejs.org/download/release/v${version}/node-v${version}-linux-x64.tar.gz | tar -xz --strip-components=1 -C $output_dir
+  curl -L https://nodejs.org/download/release/${version}/node-${version}-linux-x64.tar.gz | tar -xz --strip-components=1 -C $output_dir
 }
 
 function nvm () {
