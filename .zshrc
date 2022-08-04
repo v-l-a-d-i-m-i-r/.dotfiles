@@ -13,6 +13,7 @@ source ~/.zshenv
 source ~/.config/zsh/nvm.zsh
 source ~/.config/zsh/prompt.zsh
 source ~/.config/zsh/aliases.zsh
+source ~/.config/zsh/mpv.zsh
 
 # zoxide
 eval "$(zoxide init zsh)"
