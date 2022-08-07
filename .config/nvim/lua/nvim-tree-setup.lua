@@ -31,6 +31,9 @@ require('nvim-tree').setup({
       enable = true,
     }
   },
+  git = {
+    ignore = false,
+  },
 })
 
 vim.api.nvim_set_keymap("n", "<space>n", ":NvimTreeToggle<CR>", { silent = true })

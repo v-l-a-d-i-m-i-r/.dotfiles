@@ -23,6 +23,9 @@ vim.api.nvim_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<C
 local on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+  require("lsp_signature").on_attach({
+    hint_prefix = " ",
+  }, bufnr)
 
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
@@ -92,6 +95,11 @@ lspconfig.eslint.setup {
     c.get_component("vscode-langservers-extracted-4.2.1").bin("vscode-eslint-language-server"),
     "--stdio",
   },
+  handlers = {
+    ['eslint/noLibrary'] = function()
+      return {}
+    end,
+  }
 }
 
 lspconfig.bashls.setup {

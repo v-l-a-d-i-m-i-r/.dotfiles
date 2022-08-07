@@ -4,6 +4,8 @@ export HISTFILE="$HOME/.zsh_history"
 export HISTSIZE=10000000
 export SAVEHIST=10000000
 
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#797979'
+
 export NVM_DIR="$HOME/.nvm"
 export KUBE_EDITOR="nvim"
 export ZVM_CURSOR_STYLE_ENABLED=false

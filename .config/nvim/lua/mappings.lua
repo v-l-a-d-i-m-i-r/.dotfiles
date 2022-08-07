@@ -14,13 +14,11 @@ local function map(mode, lhs, rhs, opts)
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
--- map("i", "fj", "<Esc>")
--- map("v", "fj", "<Esc>")
 map("n", "<space>o", "o<Esc>")
 map("n", "<space>O", "O<Esc>")
 
 -- Reload init.lua (:so %)
-vim.api.nvim_set_keymap("n", "<space><space>", ":so %<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<space><space>", "za", { noremap = true, silent = true })
 
 -- Move text
 -- https://vim.fandom.com/wiki/Moving_lines_up_or_down
@@ -42,8 +40,8 @@ vim.api.nvim_set_keymap("n", "<A-k>", ":resize -2<CR>", { noremap = true, silent
 vim.api.nvim_set_keymap("n", "<A-l>", ":vertical resize +2<CR>", { noremap = true, silent = true })
 
 -- Naviagate buffers
-vim.api.nvim_set_keymap("n", "<S-l>", ":bnext<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<S-h>", ":bprevious<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<S-l>", ":BufferLineCycleNext<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<S-h>", ":BufferLineCyclePrev<CR>", { noremap = true, silent = true })
 
 -- Yank to clipboard
 vim.api.nvim_set_keymap("n", "<space>y", '"+y', { noremap = true, silent = true })

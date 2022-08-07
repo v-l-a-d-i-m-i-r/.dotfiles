@@ -1,3 +1,4 @@
+require("globals")
 require("settings")
 require("mappings")
 require("autocommands")
@@ -20,6 +21,7 @@ require("dap-setup")
 -- Git
 require("diffview-setup")
 require("gitsigns-setup")
+require("conflict-marker-setup")
 
 require("telescope-setup")
 require("trouble-config")
@@ -40,6 +42,7 @@ require('colorizer').setup()
 require('nvim-autopairs').setup {}
 require('Comment').setup()
 require("todo-comments").setup()
+require('neoscroll').setup()
 
 -- TODO:
 -- 1. [lspconfig] Unable to find ESLint library.
