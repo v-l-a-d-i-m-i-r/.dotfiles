@@ -1,6 +1,7 @@
 -- https://github.com/mfussenegger/nvim-dap/issues/20
 -- https://alpha2phi.medium.com/neovim-lsp-and-dap-using-lua-3fb24610ac9f
 -- https://alpha2phi.medium.com/neovim-for-beginners-debugging-using-dap-44626a767f57
+-- https://github.com/mfussenegger/nvim-dap/discussions/355
 -- remove the loaded package from a cache, otherwise the package will not be reloaded
 -- package.loaded['mpack'] = nil
 
@@ -27,28 +28,8 @@ dap.adapters.node = function (callback, config)
   })
 end
 
-dapui.setup({
-  -- layouts = {
-  --   {
-  --     elements = {
-  --     -- Elements can be strings or table with id and size keys.
-  --       -- "breakpoints",
-  --       { id = "stacks", size = 0.25 },
-  --       "scopes",
-  --     },
-  --     size = 40,
-  --     position = "left",
-  --   },
-  --   {
-  --     elements = {
-  --       -- "repl",
-  --       "console",
-  --     },
-  --     size = 10,
-  --     position = "bottom",
-  --   },
-  -- },
-})
+dapui.setup({})
+
 dap.listeners.after.event_initialized["dapui_config"] = function()
   dapui.open()
 end
@@ -67,11 +48,11 @@ vim.api.nvim_set_keymap("n", "<space>dk", "<cmd>lua require'dap'.step_back()<CR>
 vim.api.nvim_set_keymap("n", "<space>dl", "<cmd>lua require'dap'.step_into()<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<space>du", "<cmd>lua require'dap'.up()<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<space>dd", "<cmd>lua require'dap'.down()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<space>dx", "<cmd>lua require'dap'.disconnect()<CR>", { noremap = true, silent = true })
  
-vim.fn.sign_define('DapBreakpoint', {text=''})
-vim.fn.sign_define('DapBreakpointRejected', {text=''})
--- vim.fn.sign_define('DapStopped', {text=''})
-vim.fn.sign_define('DapStopped', {text=''})
+vim.fn.sign_define('DapBreakpoint', { text='', texthl='DiagnosticSignWarn' })
+vim.fn.sign_define('DapStopped', { text='', texthl='DiagnosticSignHint' })
+vim.fn.sign_define('DapBreakpointRejected', { text='' })
 
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
   pattern = { "dap-repl" },

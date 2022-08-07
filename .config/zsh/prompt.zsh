@@ -4,8 +4,8 @@
 autoload -Uz vcs_info
 
 zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:git*' formats "%{$fg[green]%}%b"
-zstyle ':vcs_info:git*' actionformats "%{$fg[green]%}%b %{$fg[red]%}%a"
+zstyle ':vcs_info:git*' formats "%F{green}%b%f"
+zstyle ':vcs_info:git*' actionformats "%F{green}%b%f %F{red}%a%f"
 
 setopt prompt_subst
 

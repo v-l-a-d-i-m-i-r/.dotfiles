@@ -30,11 +30,14 @@ Plug 'kyazdani42/nvim-tree.lua'
 Plug 'folke/trouble.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug ('nvim-telescope/telescope-fzf-native.nvim', { ['do'] = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' })
+Plug 'nvim-telescope/telescope-live-grep-args.nvim'
 Plug 'simrat39/symbols-outline.nvim'
 
 -- Git
 Plug 'sindrets/diffview.nvim'
 Plug 'lewis6991/gitsigns.nvim'
+Plug 'tpope/vim-fugitive'
+Plug 'rhysd/conflict-marker.vim'
 
 -- Misc
 Plug 'kyazdani42/nvim-web-devicons'
@@ -48,6 +51,8 @@ Plug 'PHSix/faster.nvim'
 Plug 'ur4ltz/surround.nvim'
 Plug 'phaazon/hop.nvim'
 Plug 'folke/todo-comments.nvim'
+Plug 'karb94/neoscroll.nvim'
+Plug 'ray-x/lsp_signature.nvim'
 
 -- Local
 Plug '~/.config/nvim/plugins/components'
