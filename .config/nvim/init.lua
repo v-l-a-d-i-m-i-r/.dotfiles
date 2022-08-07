@@ -16,7 +16,7 @@ require("cmp-setup")
 
 -- Debugger
 -- require("vimspector-setup")
--- require("dap-setup")
+require("dap-setup")
 
 -- Git
 require("diffview-setup")
