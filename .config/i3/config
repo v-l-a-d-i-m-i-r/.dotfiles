@@ -16,8 +16,6 @@ bindsym $mod+Return exec st
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+Tab workspace prev
-bindsym $mod+q   workspace next
 # bindsym $mod+z exec rofi -show drun -normal-window
 bindsym $mod+d exec "~/.bin/dmenu-run -p ':' -l 20 -nb '#DFDFDE' -nf '#555555' -sf '#DFDFDE' -sb '#555555' -fn 'DejaVuSansMono Nerd Font Mono-14'"
 bindsym $mod+Shift+Escape exec "~/.bin/dmenu-exit -p ':' -l 20 -nb '#DFDFDE' -nf '#555555' -sf '#DFDFDE' -sb '#555555' -fn 'DejaVuSansMono Nerd Font Mono-14'"
@@ -112,6 +110,8 @@ bindsym $mod+7 workspace $workspace7
 bindsym $mod+8 workspace $workspace8
 bindsym $mod+9 workspace $workspace9
 bindsym $mod+0 workspace $workspace10
+# bindsym $mod+Tab workspace prev
+# bindsym $mod+q   workspace next
 
 # move focused container to workspace
 bindsym $mod+Shift+y move container to workspace $workspace1

@@ -15,7 +15,8 @@ function aur_install() {
 
 ## Text editors
 pacman_install mousepad gedit
-aur_install visual-studio-code-bin
+# aur_install visual-studio-code-bin
+pacman_install code
 
 ## Engrampa
 pacman_install engrampa
@@ -30,7 +31,7 @@ aur_install google-chrome
 
 ## REST clients
 # aur_install postman-bin
-aur_install insomnia
+aur_install insomnia-bin
 
 ## Mongodb clients
 # aur_install mongodb-compass robo3t-bin
@@ -45,10 +46,13 @@ aur_install insomnia
 aur_install flameshot
 
 ## Docker
-pacman_install docker docker-compose
+pacman_install docker docker-compose kubectl
 
 ## Players
-aur_install vlc qmplay2
+aur_install vlc qmplay2 youtube-dl mpv
+
+## AUR clients
+aur_install pamac-aur kalu
 # sudo groupadd docker
 sudo gpasswd -a ${USER} docker
 sudo systemctl enable docker
