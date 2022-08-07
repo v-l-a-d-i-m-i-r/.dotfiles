@@ -27,3 +27,20 @@ vim.cmd([[
     endif
   augroup end
 ]])
+
+-- vim.cmd([[
+--   augroup AutoSaveGroup
+--     autocmd!
+--     " view files are about 500 bytes
+--     " bufleave but not bufwinleave captures closing 2nd tab
+--     " nested is needed by bufwrite* (if triggered via other autocmd)
+--     " BufHidden for compatibility with `set hidden`
+--     autocmd BufWinLeave,BufLeave,BufWritePost,BufHidden,QuitPre ?* nested silent! mkview!
+--     autocmd BufWinEnter ?* silent! loadview
+--   augroup end
+-- ]])
+-- vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGained" }, {
+--   command = "if mode() != 'c' | checktime | endif",
+--   pattern = { "*" },
+-- })
+

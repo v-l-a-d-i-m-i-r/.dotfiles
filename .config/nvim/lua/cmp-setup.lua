@@ -1,4 +1,3 @@
--- yaourt -Sy typescript typescript-language-server vscode-langservers-extracted --noconfirm
 local kind_icons = {
   Text = "",
   -- Method = "m",
@@ -87,10 +86,12 @@ cmp.setup {
     end
   },
   window = {
+    -- completion = cmp.config.window.bordered(),
+    -- documentation = cmp.config.window.bordered(),
     -- documentation = "native",
-    documentation = {
-      border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-    },
+    -- documentation = {
+    --   border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+    -- },
   },
   -- documentation = {
   -- 	border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
@@ -107,6 +108,8 @@ cmp.setup {
   },
 }
 
+-- https://github.com/hrsh7th/nvim-cmp/wiki/Menu-Appearance#basic-customisations
+vim.cmd[[highlight! Pmenu guibg=#121212]]
 -- gray
 vim.cmd[[highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080]]
 -- blue
