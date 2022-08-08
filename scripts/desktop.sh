@@ -27,7 +27,7 @@ packages=(
   alsa-utils
   alsa-oss
   alsa-plugins
-  alsa-ucf-conf
+  alsa-ucm-conf
   pavucontrol
   pulseaudio
   pa-applet-git
@@ -43,6 +43,7 @@ packages=(
   ## Source control
   git
   diff-so-fancy
+  git-delta
 
   ## Neovim
   neovim
