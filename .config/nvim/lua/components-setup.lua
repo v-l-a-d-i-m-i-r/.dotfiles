@@ -78,6 +78,19 @@ c.add_component({
 })
 
 c.add_component({
+  name = "emmet-ls",
+  version = "0.3.0",
+  binaries_directory = "/node_modules/.bin",
+  install_script = function (params)
+    local version = params.version
+    local name = params.name
+    local path = c.get_component("node-16.14.2").bin("") .. ":$PATH"
+
+    return "PATH=" .. path .. " npm install --save-exact " .. name .. "@" .. version
+  end
+})
+
+c.add_component({
   name = "bash-language-server",
   version = "3.0.3",
   binaries_directory = "/node_modules/.bin",

@@ -1,11 +1,3 @@
-vim.g.nvim_tree_highlight_opened_files = 1
-vim.g.nvim_tree_show_icons = {
-   git = 1,
-   folders = 1,
-   files = 1,
-   folder_arrows = 1,
-}
-
 local nvim_tree_config = require("nvim-tree.config")
 
 require('nvim-tree').setup({
@@ -27,9 +19,18 @@ require('nvim-tree').setup({
     },
   },
   renderer = {
+    highlight_opened_files = "icon",
     indent_markers = {
       enable = true,
-    }
+    },
+    icons = {
+      show = {
+        git = true,
+        folder = true,
+        file = true,
+        folder_arrow = true,
+      },
+    },
   },
   git = {
     ignore = false,
@@ -37,4 +38,3 @@ require('nvim-tree').setup({
 })
 
 vim.api.nvim_set_keymap("n", "<space>n", ":NvimTreeToggle<CR>", { silent = true })
-vim.api.nvim_set_keymap("n", "<C-n>", ":NvimTreeToggle<CR>", { silent = true })

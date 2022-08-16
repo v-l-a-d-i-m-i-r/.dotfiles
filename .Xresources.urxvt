@@ -1,6 +1,7 @@
 ! https://gist.github.com/JAEGER2K/704857196157d911c5df
 
-URxvt.termName: rxvt-unicode
+! URxvt.termName: rxvt-unicode
+URxvt.termName: xterm-256color
 URxvt.imLocale: en_US.UTF-8
 URxvt*utf8: true
 URxvt*locale: true

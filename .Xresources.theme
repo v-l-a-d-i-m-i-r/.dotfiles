@@ -39,46 +39,6 @@
 ! URxvt*color7:             #D3D7CF
 ! URxvt*color15:            #EEEEEC
 
-! vscode darkplus
-! http://blog.itaysk.com/2018/03/06/making-my-terminal-look-like-vscode
-! http://www.eclipsecolorthemes.org/?view=theme&id=50827
-! special
-*.foreground:   #d4d4d4
-*.background:   #1e1e1e
-*.cursorColor:  #D2D2D2
-
-! black
-*.color0:       #000000
-*.color8:       #797979
-
-! red
-*.color1:       #d25252
-*.color9:       #ce9178
-
-! green
-*.color2:       #608b4e
-*.color10:      #7fb347
-
-! yellow
-*.color3:       #ccdf32
-*.color11:      #d9e577
-
-! blue
-*.color4:       #569cd6
-*.color12:      #79abff
-
-! magenta
-*.color5:       #d197d9
-*.color13:      #bfa4a4
-
-! cyan
-*.color6:       #9cdcfe
-*.color14:      #bed6ff
-
-! white
-*.color7:       #d0d0d0
-*.color15:      #d8d8d8
-
 ! !! Colorscheme
 ! 
 ! ! special

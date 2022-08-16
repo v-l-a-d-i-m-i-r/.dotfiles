@@ -19,6 +19,7 @@
       <value type="string" value="org.qbittorrent.qBittorrent"/>
       <value type="string" value="pa-applet"/>
       <value type="string" value="Package Manager"/>
+      <value type="string" value="pasystray"/>
       <value type="string" value="qBittorrent"/>
       <value type="string" value="QMPlay2"/>
       <value type="string" value="Radio Tray"/>

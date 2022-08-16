@@ -9,6 +9,7 @@ require("components-setup")
 require("lualine-setup")
 require("nvim-tree-setup")
 require("darkplus-theme-setup")
+-- require("base16-theme-setup")
 
 -- intellisense
 require("lspconfig-setup")

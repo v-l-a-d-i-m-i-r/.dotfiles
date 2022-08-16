@@ -158,6 +158,13 @@ function ts() {
   fi
 }
 alias ta='t attach-session -t=$(t ls | fzf --reverse | cut -d ':' -f1)'
+function tsf() {
+  if [[ $# -eq 0 ]]; then
+    ~/.bin/tmux-sessionizer /data/projects/flip/* 
+  else
+    ~/.bin/tmux-sessionizer $1
+  fi
+}
 
 #Kowl
 function kowl() { docker run --rm -ti --network=host -p 8080:8080 -e KAFKA_BROKERS=$1 quay.io/cloudhut/kowl:master }

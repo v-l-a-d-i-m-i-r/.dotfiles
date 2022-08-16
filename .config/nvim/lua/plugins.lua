@@ -10,6 +10,7 @@ Plug 'rcarriga/nvim-dap-ui'
 
 -- Interface
 Plug 'LunarVim/darkplus.nvim' -- replacement for martinsione/darkplus.nvim
+-- Plug 'RRethy/nvim-base16'
 Plug 'nvim-lualine/lualine.nvim'
 Plug ('akinsho/bufferline.nvim', { ['tag'] = '*' })
 Plug 'lukas-reineke/indent-blankline.nvim'

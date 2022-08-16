@@ -1,13 +1,13 @@
-call plug#begin('~/.vim/plugged')
-
-Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'ryanoasis/vim-devicons'
-"Plug 'KabbAmine/yowish.vim'
-"Plug 'sheerun/vim-polyglot'
-"Plug 'dikiaap/minimalist'
-"Plug 'vim-airline/vim-airline'
-"Plug 'powerline/powerline-fonts'
-call plug#end()
+" call plug#begin('~/.vim/plugged')
+" 
+" Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle' }
+" Plug 'ryanoasis/vim-devicons'
+" "Plug 'KabbAmine/yowish.vim'
+" "Plug 'sheerun/vim-polyglot'
+" "Plug 'dikiaap/minimalist'
+" "Plug 'vim-airline/vim-airline'
+" "Plug 'powerline/powerline-fonts'
+" call plug#end()
 
 set t_Co=256
 set encoding=UTF-8

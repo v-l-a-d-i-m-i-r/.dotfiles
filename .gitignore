@@ -10,10 +10,7 @@
 !.xinitrc
 !.Xauthority
 !.Xresources
-!.Xresources.theme
-!.Xresources.urxvt
-!.Xresources.xterm
-!.Xresources.xft
+!.Xresources.*
 !.xbindkeysrc
 
 # zsh
@@ -66,6 +63,7 @@
 !.config/gtk-3.0/
 !.config/qt5ct/
 !.config/compton/
+!.config/picom/
 !.config/backgrounds/
 !.config/kalu/
 !.config/zsh/

@@ -19,6 +19,8 @@ export DOCKER_BUILDKIT=1
 
 export LD_LIBRARY_PATH="/data/projects/sf-platform/repos/sf-backend/packages/backend"
 
+export LIBGL_DRI3_DISABLE=1
+
 # https://github.com/nodkz/mongodb-memory-server#options-which-can-be-set-via-environment-variables
 export MONGOMS_SYSTEM_BINARY="/usr/bin/mongod"
 export MONGOMS_DISABLE_POSTINSTALL="1"

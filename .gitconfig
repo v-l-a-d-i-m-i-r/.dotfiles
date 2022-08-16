@@ -27,3 +27,7 @@
 [user]
 	email = volodymyr.danilin@gmail.com
 	name = Vladimir Danilin
+
+[includeIf "gitdir:/data/projects/flip/"]
+  path = /data/projects/flip/.gitconfig
+
