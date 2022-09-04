@@ -3,7 +3,8 @@ alias dots='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 # ls
 alias ll='lsd -lah --group-directories-first'
-alias lt='lsd --tree'
+alias lt='ll --tree'
+alias lz='ll --total-size'
 
 # Docker
 alias d='docker'

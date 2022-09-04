@@ -5,9 +5,11 @@ require("autocommands")
 require("clip")
 require("plugins")
 require("components-setup")
+require("marks-setup")
 
 require("lualine-setup")
 require("nvim-tree-setup")
+-- vim.cmd(" colorscheme everforest")
 require("darkplus-theme-setup")
 -- require("base16-theme-setup")
 
@@ -41,7 +43,7 @@ require("indent_blankline").setup {
 
 require('colorizer').setup()
 require('nvim-autopairs').setup {}
-require('Comment').setup()
+require('Comment').setup({})
 require("todo-comments").setup()
 require('neoscroll').setup()
 

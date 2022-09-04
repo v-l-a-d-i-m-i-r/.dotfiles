@@ -10,7 +10,7 @@ Plug 'rcarriga/nvim-dap-ui'
 
 -- Interface
 Plug 'LunarVim/darkplus.nvim' -- replacement for martinsione/darkplus.nvim
--- Plug 'RRethy/nvim-base16'
+Plug 'RRethy/nvim-base16'
 Plug 'nvim-lualine/lualine.nvim'
 Plug ('akinsho/bufferline.nvim', { ['tag'] = '*' })
 Plug 'lukas-reineke/indent-blankline.nvim'
@@ -55,6 +55,7 @@ Plug 'phaazon/hop.nvim'
 Plug 'folke/todo-comments.nvim'
 Plug 'karb94/neoscroll.nvim'
 Plug 'ray-x/lsp_signature.nvim'
+Plug 'chentoast/marks.nvim'
 
 -- Local
 Plug '~/.config/nvim/plugins/components'

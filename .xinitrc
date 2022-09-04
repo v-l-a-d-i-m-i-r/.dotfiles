@@ -43,7 +43,7 @@ fi
 # setxkbmap -layout "us,ru" -option "grp:alt_shift_toggle,grp_led:scroll"
 
 # disable touchpad while typing
-syndaemon -i 0.7 -d
+# syndaemon -i 0.7 -d
 
 exec i3
 

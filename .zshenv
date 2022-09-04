@@ -22,8 +22,9 @@ export LD_LIBRARY_PATH="/data/projects/sf-platform/repos/sf-backend/packages/bac
 export LIBGL_DRI3_DISABLE=1
 
 # https://github.com/nodkz/mongodb-memory-server#options-which-can-be-set-via-environment-variables
-export MONGOMS_SYSTEM_BINARY="/usr/bin/mongod"
+export MONGOMS_SYSTEM_BINARY="/data/projects/flip/flip-platform/mongodb-binaries/mongod-5.0.8"
 export MONGOMS_DISABLE_POSTINSTALL="1"
+
 # export MONGOMS_DEBUG="1"
 # export MONGOMS_PLATFORM="linux"
 # export MONGOMS_ARCH="x64"

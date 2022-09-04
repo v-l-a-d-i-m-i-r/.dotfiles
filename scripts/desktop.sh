@@ -139,6 +139,8 @@ packages=(
   ## Keyboard
   xkblayout-state-git
   xbindkeys
+  xautomation
+  xdotool
 
   ## Cli smart tools
   lsd

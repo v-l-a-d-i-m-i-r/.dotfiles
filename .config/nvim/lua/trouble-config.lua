@@ -5,4 +5,4 @@ require("trouble").setup {
 }
 
 
-vim.api.nvim_set_keymap('n', '<space>t', '<cmd>TroubleToggle<cr>', {noremap = true})
+vim.api.nvim_set_keymap('n', '<space>t', '<cmd>TroubleToggle document_diagnostics<cr>', {noremap = true})

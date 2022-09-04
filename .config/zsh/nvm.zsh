@@ -2,7 +2,7 @@ function _nvm_use() {
   local version="$1"
 
   if [ -z "${version}" ]; then
-    version=$(nvm list | fzf | sed 's/^ *//g' | sed 's/ *$//g' | tr -d '\n' )
+    version=$(nvm list | fzf --reverse | sed 's/^ *//g' | sed 's/ *$//g' | tr -d '\n' )
   fi
 
   if [ -z "${version}" ]; then
@@ -56,7 +56,7 @@ function _nvm_install () {
   local version="$1"
 
   if [ -z "${version}" ]; then
-    version=$(curl -Ls https://nodejs.org/dist/ | grep '"v' | grep -o '">.*/</' | cut -c 3- | rev | cut -c 4- | rev | fzf)
+    version=$(curl -Ls https://nodejs.org/dist/ | grep '"v' | grep -o '">.*/</' | cut -c 3- | rev | cut -c 4- | rev | fzf --reverse)
   fi
 
   if [ -z "${version}" ]; then

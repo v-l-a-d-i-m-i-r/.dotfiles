@@ -4,19 +4,26 @@
 autoload -Uz vcs_info
 
 zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:git*' formats "%F{green}%b%f"
-zstyle ':vcs_info:git*' actionformats "%F{green}%b%f %F{red}%a%f"
+zstyle ':vcs_info:git*' formats "%F{green} %b%f"
+zstyle ':vcs_info:git*' actionformats "%F{green} %b%f %F{red}%a%f"
 
 setopt prompt_subst
 
 function preexec() {
   timer=$(date +%s%3N)
+  vcs_info
 }
 
 function precmd() {
   vcs_info
+  local node=$(node -v 2> /dev/null)
+
+  local prompt_elapsed
+  local prompt_git=" ${vcs_info_msg_0_}"
+  local prompt_node
 
   if [ $timer ]; then
+    local elapsed
     local now=$(date +%s%3N)
     local d_ms=$(($now-$timer))
     local d_s=$((d_ms / 1000))
@@ -24,6 +31,7 @@ function precmd() {
     local s=$((d_s % 60))
     local m=$(((d_s / 60) % 60))
     local h=$((d_s / 3600))
+
     if ((h > 0)); then elapsed=${h}h${m}m
     elif ((m > 0)); then elapsed=${m}m${s}s
     elif ((s >= 10)); then elapsed=${s}.$((ms / 100))s
@@ -31,11 +39,16 @@ function precmd() {
     else elapsed=${ms}ms
     fi
 
-    RPROMPT="%F{#555753}${elapsed} %{$reset_color%}${vcs_info_msg_0_}"
+    prompt_elapsed=" %F{#555753}祥${elapsed}%{$reset_color%}"
+
     unset timer
-  else
-    RPROMPT='${vcs_info_msg_0_}'
   fi
+
+  if [ $node ]; then
+    prompt_node=" %F{#5497CF} ${node:1}%f"
+  fi
+
+  RPROMPT="${prompt_elapsed}${prompt_node}${prompt_git}"
 }
 function _load_prompt() {
   local prompt_path='%F{yellow}%~%b%f'

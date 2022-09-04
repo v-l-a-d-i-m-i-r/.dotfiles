@@ -64,8 +64,15 @@
 ## Control + mouse button 2 release event starts rxvt
 #"rxvt"
 #  Control + b:2 + Release
-"xkblayout-state set +1"
-Shift+Escape
+# "xkblayout-state set +1"
+# Shift+Escape
+
+
+"xdotool mousedown 1"
+  control + c:66
+
+"xdotool mouseup 1"
+  release + control + c:66
 ##################################
 # End of xbindkeys configuration #
 ##################################
