@@ -9,9 +9,8 @@ require("marks-setup")
 
 require("lualine-setup")
 require("nvim-tree-setup")
--- vim.cmd(" colorscheme everforest")
 require("darkplus-theme-setup")
--- require("base16-theme-setup")
+-- require("themes").setup()
 
 -- intellisense
 require("lspconfig-setup")

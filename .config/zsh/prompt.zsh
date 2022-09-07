@@ -17,9 +17,11 @@ function preexec() {
 function precmd() {
   vcs_info
   local node=$(node -v 2> /dev/null)
+  local git=$(git branch 2> /dev/null)
 
   local prompt_elapsed
-  local prompt_git=" ${vcs_info_msg_0_}"
+  # local prompt_git=" ${vcs_info_msg_0_}"
+  local prompt_git
   local prompt_node
 
   if [ $timer ]; then
@@ -46,6 +48,10 @@ function precmd() {
 
   if [ $node ]; then
     prompt_node=" %F{#5497CF} ${node:1}%f"
+  fi
+
+  if [ $git ]; then
+    prompt_git=" %F{green}$(git branch | grep '*' | awk '{$1=""; print $0}')%f"
   fi
 
   RPROMPT="${prompt_elapsed}${prompt_node}${prompt_git}"

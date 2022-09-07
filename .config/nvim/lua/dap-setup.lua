@@ -21,7 +21,8 @@ dap.adapters.node = function (callback, config)
 
   return callback({
     type = 'executable',
-    command = c.get_component("node-" .. runtime_version).bin("node"),
+    -- command = c.get_component("node-" .. runtime_version).bin("node"),
+    command = 'node',
     args = {
       c.get_component("vscode-node-debug2-1.43.0").bin("nodeDebug.js")
     },

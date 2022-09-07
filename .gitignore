@@ -85,5 +85,6 @@
 !.config/nvim/
 .config/nvim/plugged/
 .config/nvim/components/
+.config/nvim/themes/
 
 !.urxvt/

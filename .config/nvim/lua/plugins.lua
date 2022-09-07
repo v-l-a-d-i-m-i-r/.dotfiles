@@ -59,5 +59,6 @@ Plug 'chentoast/marks.nvim'
 
 -- Local
 Plug '~/.config/nvim/plugins/components'
+Plug '~/.config/nvim/plugins/themes'
 
 vim.call('plug#end')

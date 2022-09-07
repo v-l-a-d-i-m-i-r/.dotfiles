@@ -49,6 +49,11 @@ require("telescope").setup({
       layout_config = layout_config,
       cwd = cwd,
     },
+    lsp_references = {
+      sorting_strategy = sorting_strategy,
+      layout_config = layout_config,
+      cwd = cwd,
+    }
   },
   extensions = {
     live_grep_args = {
