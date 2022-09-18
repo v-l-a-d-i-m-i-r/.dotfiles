@@ -7,16 +7,33 @@
 
 local dap = require("dap")
 local dapui = require("dapui")
+local dap_vscode_js = require("dap-vscode-js")
 
 local c = require("components")
 
-require('dap.ext.vscode').load_launchjs(nil, {
+local mappings = {
   node = {
     "javascript",
+    "typescript",
   },
+  node2 = {
+    "javascript",
+    "typescript",
+  },
+  ["pwa-node"] = {
+    "javascript",
+    "typescript",
+  },
+}
+
+require('dap.ext.vscode').load_launchjs(nil, mappings)
+dap_vscode_js.setup({
+  node_path = "node", -- Path of node executable. Defaults to $NODE_PATH, and then "node"
+  debugger_path = c.get_component("vscode-js-debug-1.71.1").bin(""), -- Path to vscode-js-debug installation.
+  adapters = { 'pwa-node', 'pwa-chrome', 'pwa-msedge', 'node-terminal', 'pwa-extensionHost' }, -- which adapters to register in nvim-dap
 })
 
-dap.adapters.node = function (callback, config)
+dap.adapters.node2 = function (callback, config)
   local runtime_version = config.runtimeVersion or "16.14.2"
 
   return callback({
@@ -24,6 +41,20 @@ dap.adapters.node = function (callback, config)
     -- command = c.get_component("node-" .. runtime_version).bin("node"),
     command = 'node',
     args = {
+      -- "--enable-source-maps",
+      c.get_component("vscode-node-debug2-1.43.0").bin("nodeDebug.js")
+    },
+  })
+end
+
+dap.adapters.jsDebug = function (callback, config)
+
+  return callback({
+    type = 'executable',
+    -- command = c.get_component("node-" .. runtime_version).bin("node"),
+    command = 'node',
+    args = {
+      -- "--enable-source-maps",
       c.get_component("vscode-node-debug2-1.43.0").bin("nodeDebug.js")
     },
   })
@@ -67,10 +98,6 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
   callback = function()
     dap.configurations = {}
 
-    require('dap.ext.vscode').load_launchjs(nil, {
-      node = {
-        "javascript",
-      },
-    })
+    require('dap.ext.vscode').load_launchjs(nil, mappings)
   end,
 })

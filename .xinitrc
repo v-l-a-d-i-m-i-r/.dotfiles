@@ -44,6 +44,6 @@ fi
 
 # disable touchpad while typing
 # syndaemon -i 0.7 -d
-
+# synclient VertScrollDelta=30
 exec i3
 

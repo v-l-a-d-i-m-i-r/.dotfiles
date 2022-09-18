@@ -1,19 +1,19 @@
 local groups = require("groups-highlight")
+local c = require("colors-definitions").base16_colors
+local C = require("colors-definitions").colors
 
-return function(params)
-  local c = params.base16_colors
-
+return function()
  return {
-  TSAnnotation         = { guifg = c.base0F, guibg = nil, gui = 'none', guisp = nil },
-  TSAttribute          = { guifg = c.base0A, guibg = nil, gui = 'none', guisp = nil },
-  TSBoolean            = { guifg = c.base09, guibg = nil, gui = 'none', guisp = nil },
-  TSCharacter          = { guifg = c.base08, guibg = nil, gui = 'none', guisp = nil },
+  -- TSAnnotation         = { guifg = c.base0F, guibg = nil, gui = 'none', guisp = nil },
+  -- TSAttribute          = { guifg = c.base0A, guibg = nil, gui = 'none', guisp = nil },
+  TSBoolean            = groups.Boolean,
+  -- TSCharacter          = { guifg = c.base08, guibg = nil, gui = 'none', guisp = nil },
   -- TSCharacterSpecial
-  TSComment            = { guifg = c.base03, guibg = nil, gui = 'italic', guisp = nil },
+  TSComment            = groups.Comments,
   TSConditional        = groups.Keyword,
   TSConstant           = groups.Variable,
   TSConstBuiltin       = groups.Variable,
-  TSConstMacro         = { guifg = c.base08, guibg = nil, gui = 'none', guisp = nil },
+  -- TSConstMacro         = { guifg = c.base08, guibg = nil, gui = 'none', guisp = nil },
   TSConstructor        = groups.Type,
   -- TSDebug
   -- TSDefine
@@ -35,12 +35,12 @@ return function(params)
   TSMethodCall         = groups.Function,
   TSNamespace          = { guifg = c.base08, guibg = nil, gui = 'none', guisp = nil },
   TSNone               = { guifg = c.base05, guibg = nil, gui = 'none', guisp = nil },
-  TSNumber             = { guifg = c.base09, guibg = nil, gui = 'none', guisp = nil },
+  TSNumber             = groups.Number,
   TSOperator           = groups.Punctuation,
   TSParameter          = groups.Variable,
   TSParameterReference = { guifg = c.base05, guibg = nil, gui = 'none', guisp = nil },
   -- TSPreProc
-  TSProperty           = { guifg = c.base05, guibg = nil, gui = 'none', guisp = nil },
+  TSProperty           = groups.Property,
   TSPunctDelimiter     = groups.Punctuation,
   TSPunctBracket       = groups.Punctuation,
   TSPunctSpecial       = groups.Punctuation,

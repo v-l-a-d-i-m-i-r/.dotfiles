@@ -164,6 +164,7 @@ exec_always --no-startup-id xcompmgr -CcfF -I1 -O1 -D0 -t-3.5 -l-3.5 -r4.2 -o.5
 # exec_always picom --config ~/.config/picom/picom.conf
 exec_always /usr/lib/xfce4/notifyd/xfce4-notifyd
 exec_always xset -b
+# exec_always imwheel
 exec_always --no-startup-id xset r rate 300 50
 exec_always --no-startup-id xbacklight -set 30
 exec_always nitrogen --set-zoom-fill ~/.config/backgrounds/background-server.jpg
@@ -178,7 +179,7 @@ exec_always --no-startup-id setxkbmap -layout us,ru -option -option caps:escape,
 # exec_always --no-startup-id xmodmap -e 'keycode 66 = Escape NoSymbol Escape'
 exec_always --no-startup-id "xbindkeys -f ~/.xbindkeysrc"
 exec_always --no-startup-id shutter --min_at_startup
-exec_always --no-startup-id "sleep 30 && kalu"
+# exec_always --no-startup-id "sleep 30 && kalu"
 exec_always --no-startup-id "sleep 10 && sbxkb"
 exec_always --no-startup-id "sleep 10 && flameshot"
 exec_always --no-startup-id "sleep 5 && xfce4-power-manager"

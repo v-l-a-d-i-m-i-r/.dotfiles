@@ -13,10 +13,28 @@ return {
     guifg = c.blue,
     gui = 'none',
   },
+  Property = {
+    fg = c.fg_secondary,
+
+    guifg = c.fg_secondary,
+    gui = 'none',
+  },
   String = {
     fg = c.orange,
 
     guifg = c.orange,
+    gui = 'none',
+  },
+  Number = {
+    fg = c.fg_primary,
+
+    guifg = c.fg_primary,
+    gui = 'none',
+  },
+  Boolean = {
+    fg = c.blue,
+
+    guifg = c.blue,
     gui = 'none',
   },
   Variable = {
@@ -36,5 +54,35 @@ return {
 
     guifg = c.fg_secondary,
     gui = 'none',
-  }
+  },
+  SignAdd = {
+    fg = c.cyan,
+
+    guifg = c.cyan,
+    gui = 'none',
+  },
+  SignChange = {
+    fg = c.yellow,
+
+    guifg = c.yellow,
+    gui = 'none',
+  },
+  SignDelete = {
+    fg = c.red,
+
+    guifg = c.red,
+    gui = 'none',
+  },
+  Comments = {
+    fg = c.fg_comments,
+
+    guifg = c.fg_comments,
+    gui = 'none',
+  },
+  IndentGuides = {
+    fg = c.fg_comments,
+
+    guifg = c.fg_comments,
+    gui = 'none',
+  },
 }

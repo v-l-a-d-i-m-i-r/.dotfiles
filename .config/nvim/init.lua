@@ -5,13 +5,10 @@ require("autocommands")
 require("clip")
 require("plugins")
 require("components-setup")
-require("marks-setup")
 
-require("lualine-setup")
 require("nvim-tree-setup")
 require("darkplus-theme-setup")
--- require("themes").setup()
-
+-- require("custom-theme-setup")
 -- intellisense
 require("lspconfig-setup")
 require("cmp-setup")
@@ -44,7 +41,7 @@ require('colorizer').setup()
 require('nvim-autopairs').setup {}
 require('Comment').setup({})
 require("todo-comments").setup()
-require('neoscroll').setup()
+-- require('neoscroll').setup()
 
 -- TODO:
 -- 1. [lspconfig] Unable to find ESLint library.

@@ -1,4 +1,7 @@
 -- https://github.com/ChristianChiarulli/nvim/blob/master/lua/user/options.lua
+local function join(list, separator)
+  return table.concat(list, separator or ",")
+end
 
 vim.opt.title = true
 vim.opt.encoding = "UTF-8"
@@ -24,7 +27,23 @@ vim.opt.list = true
 vim.opt.guicursor = "n-v-c:blinkon1"
 vim.opt.signcolumn = "yes:1"
 vim.opt.autoread = true
--- vim.opt.listchars = "eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣"
+-- vim.opt.listchars = join({
+--   "tab: ──",
+--   "space:·",
+--   "nbsp:␣",
+--   "trail:•",
+--   "eol:↵",
+--   "precedes:«",
+--   "extends:»"
+-- })
+vim.opt.fillchars = join({
+  -- "vert:▏",
+  -- "vert:│",
+  "diff:╱",
+  "foldclose:",
+  "foldopen:",
+  -- "msgsep:─",
+})
 vim.opt.completeopt={"menu", "menuone", "noselect"}
 vim.opt.fixendofline = true
 vim.opt.foldmethod = "indent"

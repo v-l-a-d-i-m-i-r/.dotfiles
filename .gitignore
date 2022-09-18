@@ -34,6 +34,9 @@
 # tmux
 !.tmux.conf
 
+# imwheel
+!.imwheelrc
+
 #vscode
 #!.vscode/
 

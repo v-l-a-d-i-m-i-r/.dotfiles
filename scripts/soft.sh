@@ -15,8 +15,8 @@ function aur_install() {
 
 ## Text editors
 pacman_install mousepad gedit
-# aur_install visual-studio-code-bin
-pacman_install code
+aur_install visual-studio-code-bin
+# pacman_install code
 
 ## Engrampa
 pacman_install engrampa

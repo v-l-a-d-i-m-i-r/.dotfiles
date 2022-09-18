@@ -21,3 +21,4 @@ vim.api.nvim_set_hl(0, "CmpItemKindKeyword", { bg = "none", fg = "#D4D4D4" })
 vim.api.nvim_set_hl(0, "CmpItemKindProperty", { bg = "none", fg = "#D4D4D4" })
 vim.api.nvim_set_hl(0, "CmpItemKindUnit", { bg = "none", fg = "#D4D4D4" })
 
+require("lualine-setup")

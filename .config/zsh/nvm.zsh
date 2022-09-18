@@ -92,3 +92,5 @@ function nvm () {
   ;;
   esac
 }
+
+nvm use v14.19.2

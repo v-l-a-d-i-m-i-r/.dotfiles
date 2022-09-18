@@ -52,7 +52,7 @@ c.add_component({
 
 c.add_component({
   name = "typescript-language-server",
-  version = "0.10.1",
+  version = "1.1.2",
   binaries_directory = "/node_modules/.bin",
   install_script = function (params)
     local version = params.version
@@ -66,7 +66,7 @@ c.add_component({
 
 c.add_component({
   name = "vscode-langservers-extracted",
-  version = "4.2.1",
+  version = "4.4.0",
   binaries_directory = "/node_modules/.bin",
   install_script = function (params)
     local version = params.version
@@ -131,6 +131,21 @@ c.add_component({
   end,
 })
 
+c.add_component({
+  name = "vscode-js-debug",
+  version = "1.71.1",
+  binaries_directory = "/",
+  install_script = function (params)
+    local version = params.version
+    local path = c.get_component("node-16.14.2").bin("") .. ":$PATH"
+    local command_table = {
+      "git clone --depth 1 --branch v" ..version .. " https://github.com/microsoft/vscode-js-debug.git .",
+      "PATH=" .. path .. " npm ci --legacy-peer-deps",
+      "PATH=" .. path .. " npm run compile"
+    }
+    return table.concat(command_table, " && ")
+  end,
+})
 c.add_component({
   name = "gopls",
   version = "0.8.4",

@@ -7,6 +7,7 @@ vim.call('plug#begin', '~/.config/nvim/plugged')
 Plug 'puremourning/vimspector'
 Plug 'mfussenegger/nvim-dap'
 Plug 'rcarriga/nvim-dap-ui'
+Plug 'mxsdev/nvim-dap-vscode-js'
 
 -- Interface
 Plug 'LunarVim/darkplus.nvim' -- replacement for martinsione/darkplus.nvim
@@ -26,6 +27,7 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
 Plug 'L3MON4D3/LuaSnip' -- Snippets plugin
 Plug ('nvim-treesitter/nvim-treesitter', {['do'] = ':TSUpdate'})
+Plug 'nvim-treesitter/nvim-treesitter-context'
 
 -- File tree
 Plug 'kyazdani42/nvim-tree.lua'
@@ -40,6 +42,7 @@ Plug 'sindrets/diffview.nvim'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'tpope/vim-fugitive'
 Plug 'rhysd/conflict-marker.vim'
+Plug 'rickhowe/diffchar.vim'
 
 -- Misc
 Plug 'kyazdani42/nvim-web-devicons'
@@ -55,7 +58,6 @@ Plug 'phaazon/hop.nvim'
 Plug 'folke/todo-comments.nvim'
 Plug 'karb94/neoscroll.nvim'
 Plug 'ray-x/lsp_signature.nvim'
-Plug 'chentoast/marks.nvim'
 
 -- Local
 Plug '~/.config/nvim/plugins/components'

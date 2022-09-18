@@ -1,6 +1,6 @@
-return function(params)
-  local C = params.colors
+local C = require("colors-definitions").colors
 
+return function(params)
   return {
     TelescopeSelection = {
       fg = C.blue,

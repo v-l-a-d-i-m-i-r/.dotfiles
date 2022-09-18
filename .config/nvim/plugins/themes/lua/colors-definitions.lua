@@ -1,22 +1,27 @@
 local hsl_to_hex_string = require("color-utils").hsl_to_hex_string
 
-local bg_primary =  hsl_to_hex_string(214, 42, 16) -- base00
-local bg_secondary = hsl_to_hex_string(213, 39, 11) -- base01
-local bg_selection = hsl_to_hex_string(214, 34, 20) -- base03
-local fg_comments = hsl_to_hex_string(213, 29, 33) -- base04
+local base_hue = 197
+local base_saturation = 10
+local base_lightnes = 15
+local base_lightnes_step = 8
 
-local fg_secondary = hsl_to_hex_string(213, 24, 64) -- base05
-local fg_primary = hsl_to_hex_string(214, 32, 70) -- base06
-local fg_tertiary = hsl_to_hex_string(212, 37, 92) -- base07
-local bg_tertiary = hsl_to_hex_string(210, 36, 96) -- base08
+local bg_primary =  hsl_to_hex_string(base_hue, base_saturation, base_lightnes + base_lightnes_step * 0) -- base00
+local bg_secondary = hsl_to_hex_string(base_hue, base_saturation, base_lightnes + base_lightnes_step * 0.5) -- base01
+local bg_selection = hsl_to_hex_string(base_hue, base_saturation, base_lightnes + base_lightnes_step * 2) -- base03
+local fg_comments = hsl_to_hex_string(base_hue, base_saturation, base_lightnes + base_lightnes_step * 3) -- base04
+
+local fg_secondary = hsl_to_hex_string(base_hue, base_saturation, base_lightnes + base_lightnes_step * 5) -- base05
+local fg_primary = hsl_to_hex_string(base_hue, base_saturation, base_lightnes + base_lightnes_step * 6) -- base06
+local fg_tertiary = hsl_to_hex_string(base_hue, base_saturation, base_lightnes + base_lightnes_step * 7) -- base07
+local bg_tertiary = hsl_to_hex_string(base_hue, base_saturation, base_lightnes + base_lightnes_step * 8) -- base08
 
 local red = hsl_to_hex_string(3, 30, 40) -- red
 local orange = hsl_to_hex_string(27, 30, 40) -- orange
 local yellow = hsl_to_hex_string(49, 19, 44) -- yellow
 local green = hsl_to_hex_string(102, 19, 44) -- green
 local cyan = hsl_to_hex_string(180, 30, 44) -- cyan
-local blue = hsl_to_hex_string(203, 30, 44) -- blue
-local purple = hsl_to_hex_string(276, 30, 40) -- purple
+local blue = hsl_to_hex_string(203, 30, 50) -- blue
+local purple = hsl_to_hex_string(276, 14, 40) -- purple
 local pink = hsl_to_hex_string(300, 30, 40) -- pink
 
 local colors = {

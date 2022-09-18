@@ -82,7 +82,7 @@ lspconfig.tsserver.setup {
   capabilities = capabilities,
   cmd = {
     c.get_component("node-16.14.2").bin("node"),
-    c.get_component("typescript-language-server-0.10.1").bin("typescript-language-server"),
+    c.get_component("typescript-language-server-1.1.2").bin("typescript-language-server"),
     "--stdio",
   },
 }
@@ -92,14 +92,14 @@ lspconfig.eslint.setup {
   capabilities = capabilities,
   cmd = {
     c.get_component("node-16.14.2").bin("node"),
-    c.get_component("vscode-langservers-extracted-4.2.1").bin("vscode-eslint-language-server"),
+    c.get_component("vscode-langservers-extracted-4.4.0").bin("vscode-eslint-language-server"),
     "--stdio",
   },
   handlers = {
     ['eslint/noLibrary'] = function()
       return {}
     end,
-  }
+  },
 }
 
 lspconfig.cssls.setup {
@@ -107,7 +107,7 @@ lspconfig.cssls.setup {
   capabilities = capabilities,
   cmd = {
     c.get_component("node-16.14.2").bin("node"),
-    c.get_component("vscode-langservers-extracted-4.2.1").bin("vscode-css-language-server"),
+    c.get_component("vscode-langservers-extracted-4.4.0").bin("vscode-css-language-server"),
     "--stdio",
   },
 }
