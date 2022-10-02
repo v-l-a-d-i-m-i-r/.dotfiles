@@ -1,28 +1,21 @@
-local hsl_to_hex_string = require("color-utils").hsl_to_hex_string
-
-local base_hue = 197
-local base_saturation = 10
-local base_lightnes = 15
-local base_lightnes_step = 8
-
-local bg_primary =  hsl_to_hex_string(base_hue, base_saturation, base_lightnes + base_lightnes_step * 0) -- base00
-local bg_secondary = hsl_to_hex_string(base_hue, base_saturation, base_lightnes + base_lightnes_step * 0.5) -- base01
-local bg_selection = hsl_to_hex_string(base_hue, base_saturation, base_lightnes + base_lightnes_step * 2) -- base03
-local fg_comments = hsl_to_hex_string(base_hue, base_saturation, base_lightnes + base_lightnes_step * 3) -- base04
-
-local fg_secondary = hsl_to_hex_string(base_hue, base_saturation, base_lightnes + base_lightnes_step * 5) -- base05
-local fg_primary = hsl_to_hex_string(base_hue, base_saturation, base_lightnes + base_lightnes_step * 6) -- base06
-local fg_tertiary = hsl_to_hex_string(base_hue, base_saturation, base_lightnes + base_lightnes_step * 7) -- base07
-local bg_tertiary = hsl_to_hex_string(base_hue, base_saturation, base_lightnes + base_lightnes_step * 8) -- base08
-
-local red = hsl_to_hex_string(3, 30, 40) -- red
-local orange = hsl_to_hex_string(27, 30, 40) -- orange
-local yellow = hsl_to_hex_string(49, 19, 44) -- yellow
-local green = hsl_to_hex_string(102, 19, 44) -- green
-local cyan = hsl_to_hex_string(180, 30, 44) -- cyan
-local blue = hsl_to_hex_string(203, 30, 50) -- blue
-local purple = hsl_to_hex_string(276, 14, 40) -- purple
-local pink = hsl_to_hex_string(300, 30, 40) -- pink
+-- start colors
+local bg_primary = "#22282a" -- base00
+local bg_secondary = "#2c3335" -- base01
+local bg_selection = "#353d41" -- base02
+local fg_comments = "#505d62" -- base03
+local fg_secondary = "#97a5aa" -- base04
+local fg_primary = "#b9c2c6" -- base05
+local fg_tertiary = "#c4cccf" -- base06
+local bg_tertiary = "#dbdfe1" -- base07
+local red = "#cc5733" --base08
+local orange = "#ce9178" -- base09
+local yellow = "#cdcd9d" -- base0A
+local green = "#41a490" -- base0B
+local cyan = "#94cceb" -- base0C
+local blue = "#5496d4" -- base0D
+local purple = "#646696" -- base0E
+local pink = "#bb81c5" -- base0F
+-- end colors
 
 local colors = {
   bg_primary = bg_primary,

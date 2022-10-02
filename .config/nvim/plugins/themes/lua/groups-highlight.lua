@@ -14,9 +14,9 @@ return {
     gui = 'none',
   },
   Property = {
-    fg = c.fg_secondary,
+    fg = c.cyan,
 
-    guifg = c.fg_secondary,
+    guifg = c.cyan,
     gui = 'none',
   },
   String = {
@@ -26,9 +26,9 @@ return {
     gui = 'none',
   },
   Number = {
-    fg = c.fg_primary,
+    fg = c.pink,
 
-    guifg = c.fg_primary,
+    guifg = c.pink,
     gui = 'none',
   },
   Boolean = {
@@ -50,9 +50,9 @@ return {
     gui = 'none',
   },
   Punctuation = {
-    fg = c.fg_secondary,
+    fg = c.fg_primary,
 
-    guifg = c.fg_secondary,
+    guifg = c.fg_primary,
     gui = 'none',
   },
   SignAdd = {

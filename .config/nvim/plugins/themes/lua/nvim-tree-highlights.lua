@@ -16,7 +16,7 @@ return function ()
 		-- NvimTreeEndOfBuffer = {fg = C.tree_gray, },
 		-- NvimTreeCursorLine = { bg = C.bg_selection },
 		-- NvimTreeGitignoreIcon = {fg = "#E64A19", },
-    NvimTreeOpenedFile = { fg = C.cyan},
+    NvimTreeOpenedFile = { fg = C.orange},
 		NvimTreeGitStaged = groups.SignAdd,
 		NvimTreeGitNew = groups.SignAdd,
 		NvimTreeGitRenamed = groups.SignAdd,

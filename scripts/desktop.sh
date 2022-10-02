@@ -149,6 +149,7 @@ packages=(
   ripgrep
   zoxide
   jq
+  jless
   fzf
   tmux
 );

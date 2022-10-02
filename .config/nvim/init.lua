@@ -7,8 +7,9 @@ require("plugins")
 require("components-setup")
 
 require("nvim-tree-setup")
-require("darkplus-theme-setup")
--- require("custom-theme-setup")
+-- require("darkplus-theme-setup")
+-- require("gruvbox-theme-setup")
+require("custom-theme-setup")
 -- intellisense
 require("lspconfig-setup")
 require("cmp-setup")
@@ -29,7 +30,7 @@ require("bufferline-setup")
 require("surround-setup")
 require("symbols-outline-setup")
 -- require("faster-setup")
-require("hop-setup")
+-- require("hop-setup")
 
 require("indent_blankline").setup {
   -- for example, context is off by default, use this to turn it on

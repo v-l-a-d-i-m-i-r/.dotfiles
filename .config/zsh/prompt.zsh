@@ -3,6 +3,25 @@
 
 autoload -Uz vcs_info
 
+# start colors
+BG_PRIMARY="#22282a";
+BG_SECONDARY="#2c3335";
+BG_SELECTION="#353d41";
+FG_COMMENTS="#505d62";
+FG_SECONDARY="#97a5aa";
+FG_PRIMARY="#b9c2c6";
+FG_TERTIARY="#c4cccf";
+BG_TERTIARY="#dbdfe1";
+RED="#cc5733";
+ORANGE="#ce9178";
+YELLOW="#cdcd9d";
+GREEN="#41a490";
+CYAN="#94cceb";
+BLUE="#5496d4";
+PURPLE="#646696";
+PINK="#bb81c5";
+# end colors
+
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:git*' formats "%F{green} %b%f"
 zstyle ':vcs_info:git*' actionformats "%F{green} %b%f %F{red}%a%f"
@@ -15,14 +34,16 @@ function preexec() {
 }
 
 function precmd() {
-  vcs_info
+  # vcs_info
   local node=$(node -v 2> /dev/null)
   local git=$(git branch 2> /dev/null)
+  local k8s=$(kubectl config current-context 2> /dev/null)
 
   local prompt_elapsed
   # local prompt_git=" ${vcs_info_msg_0_}"
   local prompt_git
   local prompt_node
+  local prompt_k8s
 
   if [ $timer ]; then
     local elapsed
@@ -41,40 +62,44 @@ function precmd() {
     else elapsed=${ms}ms
     fi
 
-    prompt_elapsed=" %F{#555753}祥${elapsed}%{$reset_color%}"
+    prompt_elapsed=" %F{$FG_COMMENTS}祥${elapsed}%{$reset_color%}"
 
     unset timer
   fi
 
   if [ $node ]; then
-    prompt_node=" %F{#5497CF} ${node:1}%f"
+    prompt_node=" %F{$BLUE} ${node:1}%f"
   fi
 
   if [ $git ]; then
-    prompt_git=" %F{green}$(git branch | grep '*' | awk '{$1=""; print $0}')%f"
+    prompt_git=" %F{$GREEN}$(git branch | grep '*' | awk '{$1=""; print $0}')%f"
+  fi
+  
+  if [ $k8s ]; then
+    prompt_k8s=" %F{$YELLOW}ﴱ ${k8s}%f"
   fi
 
-  RPROMPT="${prompt_elapsed}${prompt_node}${prompt_git}"
+  RPROMPT="${prompt_elapsed}${prompt_node}${prompt_git}${prompt_k8s}"
 }
 function _load_prompt() {
-  local prompt_path='%F{yellow}%~%b%f'
+  local prompt_path='%F{$YELLOW}%~%b%f'
   local prompt_zvm=''
 
   case $ZVM_MODE in
     $ZVM_MODE_NORMAL)
-      prompt_zvm='%F{#262626}%K{#608B4E}%B NORMAL %b%f%k%F{default}%K{default}'
+      prompt_zvm='%F{$BG_PRIMARY}%K{$BLUE}%B NORMAL %b%f%k%F{default}%K{default}'
     ;;
     $ZVM_MODE_INSERT)
-      prompt_zvm='%F{#262626}%K{#569CD6}%B INSERT %b%f%k%F{default}%K{default}'
+      prompt_zvm='%F{$BG_PRIMARY}%K{$CYAN}%B INSERT %b%f%k%F{default}%K{default}'
     ;;
     $ZVM_MODE_VISUAL)
-      prompt_zvm='%F{#262626}%K{#C586C0}%B VISUAL %b%f%k%F{default}%K{default}'
+      prompt_zvm='%F{$BG_PRIMARY}%K{$ORANGE}%B VISUAL %b%f%k%F{default}%K{default}'
     ;;
     $ZVM_MODE_VISUAL_LINE)
-      prompt_zvm='%F{#262626}%K{#C586C0}%B V-LINE %b%f%k%F{default}%K{default}'
+      prompt_zvm='%F{$BG_PRIMARY}%K{$ORANGE}%B V-LINE %b%f%k%F{default}%K{default}'
     ;;
     $ZVM_MODE_REPLACE)
-      prompt_zvm='%F{#262626}%K{#D16969}%B REPLACE %b%f%k%F{default}%K{default}'
+      prompt_zvm='%F{$BG_PRIMARY}%K{$RED}%B REPLACE %b%f%k%F{default}%K{default}'
     ;;
   esac
 

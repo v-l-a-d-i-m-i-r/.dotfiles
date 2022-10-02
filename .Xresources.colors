@@ -1,0 +1,62 @@
+!:https://git.dubzland.net/jdubz/dotfiles/-/blob/main/xthemes/base16-default.dark.xresources
+
+! start colors
+#define BG_PRIMARY #22282a
+#define BG_SECONDARY #2c3335
+#define BG_SELECTION #353d41
+#define FG_COMMENTS #505d62
+#define FG_SECONDARY #97a5aa
+#define FG_PRIMARY #b9c2c6
+#define FG_TERTIARY #c4cccf
+#define BG_TERTIARY #dbdfe1
+#define RED #cc5733
+#define ORANGE #ce9178
+#define YELLOW #cdcd9d
+#define GREEN #41a490
+#define CYAN #94cceb
+#define BLUE #5496d4
+#define PURPLE #646696
+#define PINK #bb81c5
+! end colors
+
+*.foreground: FG_PRIMARY
+*.background: BG_PRIMARY
+*.cursorColor: FG_SECONDARY
+*fading: 35
+*fadeColor: BG_SELECTION
+
+! black
+*.color0: BG_PRIMARY
+*.color8: FG_COMMENTS
+
+! red
+*.color1: RED
+*.color9: ORANGE
+
+! green
+*.color2: GREEN
+! *.color10: BG_SECONDARY
+*.color10: GREEN
+
+! yellow
+*.color3: YELLOW
+! *.color11: BG_SELECTION
+*.color11: YELLOW
+
+! blue
+*.color4: BLUE
+! *.color12: FG_SECONDARY
+*.color12: BLUE
+
+! magenta
+*.color5: PINK
+! *.color13: FG_TERTIARY
+*.color13: PINK
+
+! cyan
+*.color6: CYAN
+*.color14: PURPLE
+
+! white
+*.color7: FG_PRIMARY
+*.color15: BG_TERTIARY

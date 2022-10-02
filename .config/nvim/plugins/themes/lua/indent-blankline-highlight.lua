@@ -1,8 +1,9 @@
-local C = require("groups-highlight")
+local groups = require("groups-highlight")
+local C = require("colors-definitions")
 
 return function ()
   return {
-    IndentBlanklineChar        = C.IndentGuides,
-    IndentBlanklineContextChar = C.IndentGuides,
+    IndentBlanklineChar        = groups.IndentGuides,
+    IndentBlanklineContextChar = groups.IndentGuides,
   }
 end

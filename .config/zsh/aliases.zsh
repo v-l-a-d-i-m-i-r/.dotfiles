@@ -151,6 +151,7 @@ alias gs='git status'
 
 # tmux
 alias t='tmux '
+alias ta='t attach-session -t=$(t ls | fzf --reverse | cut -d ':' -f1)'
 function ts() {
   if [[ $# -eq 0 ]]; then
     ~/.bin/tmux-sessionizer /data/projects/* ~/.config/nvim/plugins/* ~/.config/i3 ~/.config/nvim
@@ -158,13 +159,19 @@ function ts() {
     ~/.bin/tmux-sessionizer $1
   fi
 }
-alias ta='t attach-session -t=$(t ls | fzf --reverse | cut -d ':' -f1)'
+alias tsh='ts ~'
 function tsf() {
   if [[ $# -eq 0 ]]; then
     ~/.bin/tmux-sessionizer /data/projects/flip/* 
   else
     ~/.bin/tmux-sessionizer $1
   fi
+}
+
+# npm
+alias ni='npm install'
+function nri() {
+  npm uninstall $@ && npm install $@;
 }
 
 #Kowl

@@ -138,13 +138,6 @@
 				<vlc:option>network-caching=1000</vlc:option>
 			</extension>
 		</track>
-		<track>
-			<location>https://stream.zeno.fm/w2vtvc1tpuhvv</location>
-			<extension application="http://www.videolan.org/vlc/playlist/0">
-				<vlc:id>18</vlc:id>
-				<vlc:option>network-caching=1000</vlc:option>
-			</extension>
-		</track>
 	</trackList>
 	<extension application="http://www.videolan.org/vlc/playlist/0">
 		<vlc:item tid="0"/>
@@ -165,6 +158,5 @@
 		<vlc:item tid="15"/>
 		<vlc:item tid="16"/>
 		<vlc:item tid="17"/>
-		<vlc:item tid="18"/>
 	</extension>
 </playlist>
