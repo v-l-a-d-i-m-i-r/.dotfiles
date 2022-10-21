@@ -131,7 +131,7 @@ packages=(
   ttf-dejavu
   nerd-fonts-dejavu-complete
   noto-fonts-emoji
-  libxft-bgra
+  libxft
 
   ## Images
   gwenview
@@ -152,6 +152,13 @@ packages=(
   jless
   fzf
   tmux
+
+  ## kubernets
+  kubectl
+  kubecolor
+  kubelogin
+  kubectx
+  kubefwd-bin
 );
 
 yaourt -S "${packages[@]}" --noconfirm --needed

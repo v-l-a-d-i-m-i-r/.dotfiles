@@ -1,7 +1,6 @@
 #!/bin/sh
 set -e;
 
-COLOR=$( pastel format hex 'hsl(2, 50%, 50%)');
 base_hue=197
 base_saturation=10
 base_lightnes=15
@@ -25,7 +24,7 @@ patch_file() {
 
 bg_primary=$(hsl_to_hex_string ${base_hue} ${base_saturation} $((${base_lightnes} + ${base_lightnes_step} * 0)));
 bg_secondary=$(hsl_to_hex_string ${base_hue} ${base_saturation} $((${base_lightnes} + ${base_lightnes_step} * 0.5)));
-bg_selection=$(hsl_to_hex_string ${base_hue} ${base_saturation} $((${base_lightnes} + ${base_lightnes_step} * 1)));
+bg_selection=$(hsl_to_hex_string ${base_hue} ${base_saturation} $((${base_lightnes} + ${base_lightnes_step} * 1.2)));
 fg_comments=$(hsl_to_hex_string ${base_hue} ${base_saturation} $((${base_lightnes} + ${base_lightnes_step} * 2.5)));
 fg_secondary=$(hsl_to_hex_string ${base_hue} ${base_saturation} $((${base_lightnes} + ${base_lightnes_step} * 6)));
 fg_primary=$(hsl_to_hex_string ${base_hue} ${base_saturation} $((${base_lightnes} + ${base_lightnes_step} * 7.5)));

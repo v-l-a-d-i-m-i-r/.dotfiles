@@ -2,7 +2,8 @@
 alias dots='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 # ls
-alias ll='lsd -lah --group-directories-first'
+# alias ll='lsd -lah --group-directories-first'
+alias ll='exa -la --icons --group-directories-first -ug'
 alias lt='ll --tree'
 alias lz='ll --total-size'
 
@@ -22,25 +23,26 @@ alias dcd='/usr/bin/docker-compose down'
 alias dcub='/usr/bin/docker-compose up --build'
 
 # kubernetes aliases
-alias k='kubectl '
+alias kubectl='kubecolor'
+alias k='kubectl'
 alias kx='kubectx '
 alias kn='kubens '
-alias ke='kubectl exec -it '
+alias ke='k exec -it '
 # get
-alias kg='kubectl get po -o wide '
-alias kgg='kubectl get po -o wide | grep '
-function kggw() { watch "kubectl get pod -o wide | grep $1" }
-alias kgd='kubectl get deployment '
-alias kgdg='kubectl get deployment | grep '
-alias kgs='kubectl get services '
-alias kgsg='kubectl get services | grep '
+alias kg='k get po -o wide '
+alias kgg='k get po -o wide | grep '
+function kggw() { watch "k get pod -o wide | grep $1" }
+alias kgd='k get deployment '
+alias kgdg='k get deployment | grep '
+alias kgs='k get services '
+alias kgsg='k get services | grep '
 # describe
-alias kdp='kubectl describe po '
-alias kdd='kubectl describe deployment '
-alias kds='kubectl describe service '
+alias kdp='k describe po '
+alias kdd='k describe deployment '
+alias kds='k describe service '
 # logs
-alias kl='kubectl logs -f '
-alias klt='kubectl logs -f --tail '
+alias kl='k logs -f '
+alias klt='k logs -f --tail '
 function kld() { k logs -f deployment/$1 --all-containers=true ${@:2}}
 # alias kd='kubectl delete po '
 function ked() { k edit deployment/$1 }
@@ -179,6 +181,7 @@ function kowl() { docker run --rm -ti --network=host -p 8080:8080 -e KAFKA_BROKE
 
 #IP
 function myip() { ip route get 8.8.8.8 | grep -oP 'src \K[^ ]+' }
+function opened-ports() { sudo netstat -tulpn | grep LISTEN }
 
 # Safe jq
 alias sjq="jq -R 'fromjson? | select(type == \"object\")'"

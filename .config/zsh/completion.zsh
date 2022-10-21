@@ -18,3 +18,5 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 # zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
 
 [[ /usr/bin/kubectl ]] && source <(kubectl completion zsh)
+
+compdef kubecolor=kubectl

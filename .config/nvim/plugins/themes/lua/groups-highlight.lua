@@ -73,6 +73,30 @@ return {
     guifg = c.red,
     gui = 'none',
   },
+  Error = {
+    fg = c.red,
+
+    guifg = c.red,
+    gui = 'none',
+  },
+  Warn = {
+    fg = c.yellow,
+
+    guifg = c.yellow,
+    gui = 'none',
+  },
+  Hint = {
+    fg = c.cyan,
+
+    guifg = c.cyan,
+    gui = 'none',
+  },
+  Info = {
+    fg = c.green,
+
+    guifg = c.green,
+    gui = 'none',
+  },
   Comments = {
     fg = c.fg_comments,
 

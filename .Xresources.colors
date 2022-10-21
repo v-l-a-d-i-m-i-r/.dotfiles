@@ -3,7 +3,7 @@
 ! start colors
 #define BG_PRIMARY #22282a
 #define BG_SECONDARY #2c3335
-#define BG_SELECTION #353d41
+#define BG_SELECTION #384145
 #define FG_COMMENTS #505d62
 #define FG_SECONDARY #97a5aa
 #define FG_PRIMARY #b9c2c6

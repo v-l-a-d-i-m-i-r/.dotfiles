@@ -1,7 +1,7 @@
 -- start colors
 local bg_primary = "#22282a" -- base00
 local bg_secondary = "#2c3335" -- base01
-local bg_selection = "#353d41" -- base02
+local bg_selection = "#384145" -- base02
 local fg_comments = "#505d62" -- base03
 local fg_secondary = "#97a5aa" -- base04
 local fg_primary = "#b9c2c6" -- base05

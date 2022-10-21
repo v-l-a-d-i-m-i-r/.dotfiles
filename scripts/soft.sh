@@ -53,6 +53,10 @@ aur_install vlc qmplay2 youtube-dl mpv
 
 ## AUR clients
 aur_install pamac-aur kalu
+
+## Redshift
+aur_install redshift-qt
+
 # sudo groupadd docker
 sudo gpasswd -a ${USER} docker
 sudo systemctl enable docker
