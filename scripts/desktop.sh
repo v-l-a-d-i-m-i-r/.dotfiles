@@ -144,6 +144,7 @@ packages=(
 
   ## Cli smart tools
   lsd
+  exa
   bat
   fd
   ripgrep
