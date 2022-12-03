@@ -17,10 +17,10 @@ URxvt*scrollTtyKeypress:    true
 ! test font
 ! printf '\e]710;%s\007' "xft:DejaVuSansMono Nerd Font Mono:size=14:style=Oblique"
 
-URxvt.font: xft:DejaVuSansMono Nerd Font:style=Book:size=13,xft:Noto Color Emoji:style=regular:size=13
-URxvt.boldFont: xft:DejaVuSansMono Nerd Font:style=Bold:size=13
-URxvt.italicFont: xft:DejaVuSansMono Nerd Font:style=Oblique:size=13
-URxvt.boldItalicFont: xft:DejaVuSansMono Nerd Font:style=Bold Oblique:size=13
+URxvt.font: xft:DejaVuSansM Nerd Font:style=Regular:size=13,xft:Noto Color Emoji:style=regular:size=13
+URxvt.boldFont: xft:DejaVuSansM Nerd Font:style=Regular:size=13
+URxvt.italicFont: xft:DejaVuSansM Nerd Font:style=Regularque:size=13
+URxvt.boldItalicFont: xft:DejaVuSansM Nerd Font:style=Regular:size=13
 URxvt.letterSpace: -0.5
 URxvt.depth: 32
 
