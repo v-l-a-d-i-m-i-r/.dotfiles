@@ -23,8 +23,7 @@ alias dcd='/usr/bin/docker-compose down'
 alias dcub='/usr/bin/docker-compose up --build'
 
 # kubernetes aliases
-alias kubectl='kubecolor'
-alias k='kubectl'
+alias k='kubecolor'
 alias kx='kubectx '
 alias kn='kubens '
 alias ke='k exec -it '
@@ -188,3 +187,4 @@ alias sjq="jq -R 'fromjson? | select(type == \"object\")'"
 
 # misc
 alias vlp="vlc --qt-start-minimized ~/vlc-playlist.xspf"
+alias sudo='sudo -Es'

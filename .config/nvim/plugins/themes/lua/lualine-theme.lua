@@ -4,7 +4,7 @@ return function ()
   local normal = C.blue
   local visual = C.orange
   local replace = C.red
-  local insert = C.cyan
+  local insert = C.green
   return {
     normal = {
       a = { fg = C.bg_primary, bg = normal, gui = 'bold' },

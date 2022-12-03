@@ -90,7 +90,7 @@ function _load_prompt() {
       prompt_zvm='%F{$BG_PRIMARY}%K{$BLUE}%B NORMAL %b%f%k%F{default}%K{default}'
     ;;
     $ZVM_MODE_INSERT)
-      prompt_zvm='%F{$BG_PRIMARY}%K{$CYAN}%B INSERT %b%f%k%F{default}%K{default}'
+      prompt_zvm='%F{$BG_PRIMARY}%K{$GREEN}%B INSERT %b%f%k%F{default}%K{default}'
     ;;
     $ZVM_MODE_VISUAL)
       prompt_zvm='%F{$BG_PRIMARY}%K{$ORANGE}%B VISUAL %b%f%k%F{default}%K{default}'

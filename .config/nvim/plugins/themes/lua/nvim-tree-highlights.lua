@@ -12,6 +12,8 @@ return function ()
 		-- NvimTreeEmptyFolderName = {fg = C.gray, style = "italic", },
 		-- NvimTreeGitIgnored = {fg = C.gray, style = "italic", },
 		-- NvimTreeImageFile = {fg = C.light_gray, },
+		NvimTreeExecFile = {fg = C.fg_primary, style = 'none'},
+		NvimTreeImageFile = {fg = C.fg_primary, style = 'none'},
 		NvimTreeSpecialFile = {fg = C.fg_primary, style = 'none'},
 		-- NvimTreeEndOfBuffer = {fg = C.tree_gray, },
 		-- NvimTreeCursorLine = { bg = C.bg_selection },
