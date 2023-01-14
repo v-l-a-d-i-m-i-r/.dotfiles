@@ -13,7 +13,7 @@ require("telescope").setup({
     file_ignore_patterns = {
       ".git",
       "plugged",
-      "components/",
+      "nvim/components",
       "lua_modules",
       "node_modules",
     },

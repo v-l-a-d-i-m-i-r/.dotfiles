@@ -55,3 +55,15 @@ vim.api.nvim_set_keymap("n", "<space>P", '"+P', { noremap = true, silent = true 
 vim.api.nvim_set_keymap("v", "<space>p", '"+p', { noremap = true, silent = true })
 vim.api.nvim_set_keymap("v", "<space>P", '"+P', { noremap = true, silent = true })
 vim.api.nvim_set_keymap("v", "p", '"_dP', { noremap = true, silent = true })
+
+-- Vertical allign center after the scrolling
+vim.api.nvim_set_keymap("n", "<C-u>", "<C-u>zz", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<C-d>", "<C-d>zz", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "{", "{zz", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "}", "}zz", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "n", "nzz", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "N", "Nzz", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "*", "*zz", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "#", "#zz", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "g*", "g*zz", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "g#", "g#zz", { noremap = true, silent = true })
