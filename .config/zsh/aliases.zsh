@@ -155,7 +155,7 @@ alias t='tmux '
 alias ta='t attach-session -t=$(t ls | fzf --reverse | cut -d ':' -f1)'
 function ts() {
   if [[ $# -eq 0 ]]; then
-    ~/.bin/tmux-sessionizer /data/projects/* ~/.config/nvim/plugins/* ~/.config/i3 ~/.config/nvim
+    ~/.bin/tmux-sessionizer /data/projects/* ~/.config/nvim/plugins/* ~/.config/i3 ~/.config/nvim ~/scripts/tools/*
   else
     ~/.bin/tmux-sessionizer $1
   fi
