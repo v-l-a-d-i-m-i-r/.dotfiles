@@ -93,4 +93,23 @@ function nvm () {
   esac
 }
 
+function _handle_nvmrc () {
+  if [ ! -f '.nvmrc' ]; then
+    return
+  fi
+
+  local node_version=$(cat .nvmrc)
+
+  if [[ $node_version == v* ]]; then
+    nvm use $node_version
+  else
+    nvm use "v$node_version"
+  fi
+}
+
+function chpwd() {
+  _handle_nvmrc
+}
+
 nvm use v14.19.2
+_handle_nvmrc
