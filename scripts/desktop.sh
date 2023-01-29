@@ -128,8 +128,8 @@ packages=(
   xterm
 
   ## Fonts
-  ttf-dejavu
-  nerd-fonts-dejavu-complete
+  ttf-dejavu-nerd
+  # ttf-hack-nerd
   noto-fonts-emoji
   libxft
 

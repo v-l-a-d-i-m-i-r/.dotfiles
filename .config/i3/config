@@ -4,7 +4,7 @@
 
 set $mod Mod4
 
-font pango:DejaVuSansMonoNerdFontMonoBook, 13
+font pango:DejaVuSansMonoNerdFont, 13
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -17,8 +17,8 @@ bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 # bindsym $mod+z exec rofi -show drun -normal-window
-bindsym $mod+d exec "~/.bin/dmenu-run -p ':' -l 20 -nb '#DFDFDE' -nf '#555555' -sf '#DFDFDE' -sb '#555555' -fn 'DejaVuSansMono Nerd Font Mono-14'"
-bindsym $mod+Shift+Escape exec "~/.bin/dmenu-exit -p ':' -l 20 -nb '#DFDFDE' -nf '#555555' -sf '#DFDFDE' -sb '#555555' -fn 'DejaVuSansMono Nerd Font Mono-14'"
+bindsym $mod+d exec "~/.bin/dmenu-run -p ':' -l 20 -nb '#DFDFDE' -nf '#555555' -sf '#DFDFDE' -sb '#555555' -fn 'DejaVuSansMono Nerd Font-14'"
+bindsym $mod+Shift+Escape exec "~/.bin/dmenu-exit -p ':' -l 20 -nb '#DFDFDE' -nf '#555555' -sf '#DFDFDE' -sb '#555555' -fn 'DejaVuSansMono Nerd Font-14'"
 
 # change focus
 bindsym $mod+h focus left
@@ -68,13 +68,13 @@ bindsym $mod+a focus parent
 set $workspace1  "  1  "
 set $workspace2  "  2  "
 set $workspace3  "  3  "
-set $workspace4  "4: "
-set $workspace5  "5: "
-set $workspace6  "6: "
-set $workspace7  "7: "
-set $workspace8  "8: "
-set $workspace9  "9: "
-set $workspace10 "10:"
+set $workspace4  "4:  "
+set $workspace5  "5:  "
+set $workspace6  "6:  "
+set $workspace7  "7:  "
+set $workspace8  "8:  "
+set $workspace9  "9:  "
+set $workspace10 "10: ~"
 
 # run xprop to get the application info
 assign [class="Skype"]          $workspace4
@@ -194,7 +194,7 @@ bar {
   status_command i3blocks
   position top
   tray_padding 2 px
-  font pango:DejaVuSansMonoNerdFontMonoBook, 13
+  font pango:DejaVuSansMonoNerdFont, 13
 
   colors {
     background #DFDFDE

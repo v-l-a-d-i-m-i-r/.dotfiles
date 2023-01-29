@@ -2,3 +2,4 @@
 #include ".Xresources.urxvt"
 #include ".Xresources.xft"
 #include ".Xresources.colors"
+#include ".Xresources.st"
