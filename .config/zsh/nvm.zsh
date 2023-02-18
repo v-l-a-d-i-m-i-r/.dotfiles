@@ -111,5 +111,5 @@ function chpwd() {
   _handle_nvmrc
 }
 
-nvm use v14.19.2
+nvm use v16.14.2
 _handle_nvmrc
