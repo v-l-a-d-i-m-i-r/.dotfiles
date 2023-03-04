@@ -12,7 +12,7 @@ vim.opt.softtabstop = 2
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.ruler = true
--- vim.opt.hlsearch = true
+vim.cmd('set nohlsearch')
 vim.opt.incsearch = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
@@ -26,7 +26,10 @@ vim.opt.wrap = true
 vim.opt.timeoutlen = 1000
 vim.opt.ttimeoutlen = 0
 vim.opt.list = true
-vim.opt.guicursor = "n-v-c:blinkon1"
+vim.opt.guicursor = join({
+  "n-v:blinkon1",
+  "i-c:ver25",
+})
 vim.opt.signcolumn = "yes:1"
 vim.opt.autoread = true
 -- vim.opt.listchars = join({

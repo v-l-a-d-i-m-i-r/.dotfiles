@@ -11,12 +11,11 @@ Plug 'mxsdev/nvim-dap-vscode-js'
 
 -- Interface
 Plug 'LunarVim/darkplus.nvim' -- replacement for martinsione/darkplus.nvim
-Plug 'RRethy/nvim-base16'
-Plug 'morhetz/gruvbox'
 Plug 'nvim-lualine/lualine.nvim'
 Plug ('akinsho/bufferline.nvim', { ['tag'] = '*' })
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'norcalli/nvim-colorizer.lua'
+Plug 'rakr/vim-two-firewatch'
 
 -- Languages support
 Plug 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
@@ -28,6 +27,7 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
 Plug 'L3MON4D3/LuaSnip' -- Snippets plugin
 Plug ('nvim-treesitter/nvim-treesitter', {['do'] = ':TSUpdate'})
+Plug 'nvim-treesitter/playground'
 Plug 'nvim-treesitter/nvim-treesitter-context'
 
 -- File tree
@@ -47,7 +47,6 @@ Plug 'rickhowe/diffchar.vim'
 
 -- Misc
 Plug 'kyazdani42/nvim-web-devicons'
-Plug 'ryanoasis/vim-devicons'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'tpope/vim-repeat'
 Plug 'windwp/nvim-autopairs'

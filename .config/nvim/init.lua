@@ -8,8 +8,7 @@ require("components-setup")
 
 require("nvim-tree-setup")
 -- require("darkplus-theme-setup")
--- require("gruvbox-theme-setup")
-require("custom-theme-setup")
+require("colorscheme-setup")
 -- intellisense
 require("lspconfig-setup")
 require("cmp-setup")

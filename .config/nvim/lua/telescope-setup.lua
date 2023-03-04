@@ -23,6 +23,10 @@ require("telescope").setup({
       n = {
         ['\\'] = actions.select_vertical,
         ['-'] = actions.select_horizontal,
+        ['<CR>'] = function (prompt_bufnr)
+          actions.select_default(prompt_bufnr)
+          actions.center(prompt_bufnr)
+        end
       },
     },
   },
