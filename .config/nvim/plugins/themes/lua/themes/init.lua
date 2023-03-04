@@ -13,25 +13,7 @@ local lsp = require("lsp-highlight")
 local hsl_to_hex_string = require("color-utils").hsl_to_hex_string
 local lualine_theme = require("lualine-theme")
 
-local function highlight(group, properties)
-  local bg = properties.bg == nil and "" or "guibg=" .. properties.bg
-  local fg = properties.fg == nil and "" or "guifg=" .. properties.fg
-  local style = properties.style == nil and "" or "gui=" .. properties.style
-
-  local cmd = table.concat({
-    "highlight", group, bg, fg, style
-  }, " ")
-
-  vim.api.nvim_command(cmd)
-end
-
-local function initialise(skeleton)
-  for group, properties in pairs(skeleton) do
-    highlight(group, properties)
-  end
-end
-
-local function initialise_base16(groups)
+local function higlight(groups)
   for group, props in pairs(groups) do
     -- if ('string' == type(args)) then
     --   vim.cmd(('hi! link %s %s'):format(hlgroup, args))
@@ -51,26 +33,26 @@ local function initialise_base16(groups)
   end
 end
 
-local function setup()
+local function setup(params)
   if vim.fn.exists('syntax_on') then
     vim.cmd('syntax reset')
   end
 
   vim.cmd('set termguicolors')
 
-  initialise_base16(editor())
-  initialise_base16(syntax())
-  initialise(telescope())
-  initialise_base16(treesitter())
-  initialise(git())
-  initialise(nvim_tree())
-  initialise(inident_blanklines())
-  initialise(lsp())
-
-  vim.api.nvim_set_hl(0, "DiffAdd", { fg = "none" , bg = "#193119" })
-  vim.api.nvim_set_hl(0, "DiffDelete", { fg = "none" , bg = "#311919" })
-  vim.api.nvim_set_hl(0, "DiffChange", { fg = "none" , bg = "#191931" })
-  vim.api.nvim_set_hl(0, "DiffText", { fg = "none" , bg = "#0F0F83" })
+  -- higlight(editor(params))
+  -- higlight(syntax(params))
+  -- higlight(telescope(params))
+  -- higlight(treesitter(params))
+  -- higlight(git(params))
+  -- higlight(nvim_tree(params))
+  -- higlight(inident_blanklines(params))
+  -- higlight(lsp(params))
+  --
+  -- vim.api.nvim_set_hl(0, "DiffAdd", { fg = "none" , bg = "#193119" })
+  -- vim.api.nvim_set_hl(0, "DiffDelete", { fg = "none" , bg = "#311919" })
+  -- vim.api.nvim_set_hl(0, "DiffChange", { fg = "none" , bg = "#191931" })
+  -- vim.api.nvim_set_hl(0, "DiffText", { fg = "none" , bg = "#0F0F83" })
 end
 
 return {
