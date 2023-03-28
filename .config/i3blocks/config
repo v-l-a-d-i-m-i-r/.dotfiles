@@ -25,7 +25,7 @@
 # The top properties below are applied to every block, but can be overridden.
 # Each block command defaults to the script name to avoid boilerplate.
 command=/usr/lib/i3blocks/$BLOCK_NAME
-separator_block_width=15
+separator_block_width=40
 markup=none
 
 # # Volume indicator
@@ -139,7 +139,11 @@ markup=none
 # interval=5
 
 [calendar]
-command= echo $(date '+%H:%M'); [[ -z "${BLOCK_BUTTON}" ]] || gsimplecal &
+command= echo "UA $(TZ=':Europe/Kiev' date '+%H:%M')"; [[ -z "${BLOCK_BUTTON}" ]] || gsimplecal &
+interval=5
+
+[calendar]
+command= echo "PL $(TZ=':Europe/Warsaw' date '+%H:%M')"; [[ -z "${BLOCK_BUTTON}" ]] || gsimplecal &
 interval=5
 
 # [packages]
