@@ -16,6 +16,7 @@ Plug ('akinsho/bufferline.nvim', { ['tag'] = '*' })
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'rakr/vim-two-firewatch'
+Plug 'v-l-a-d-i-m-i-r/nvim-themes'
 
 -- Languages support
 Plug 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
@@ -61,6 +62,5 @@ Plug 'ray-x/lsp_signature.nvim'
 
 -- Local
 Plug '~/.config/nvim/plugins/components'
-Plug '~/.config/nvim/plugins/themes'
 
 vim.call('plug#end')

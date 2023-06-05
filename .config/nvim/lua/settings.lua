@@ -12,7 +12,8 @@ vim.opt.softtabstop = 2
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.ruler = true
-vim.cmd('set nohlsearch')
+-- vim.cmd('set nohlsearch')
+vim.opt.hlsearch = true
 vim.opt.incsearch = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
