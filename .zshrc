@@ -4,6 +4,7 @@ bindkey "^[[1;5D" backward-word
 source ~/.zshenv
 source ~/.config/zsh/completion.zsh
 source ~/.config/zsh/nvm.zsh
+source ~/.config/zsh/govm.zsh
 source ~/.config/zsh/prompt.zsh
 source ~/.config/zsh/aliases.zsh
 source ~/.config/zsh/mpv.zsh
