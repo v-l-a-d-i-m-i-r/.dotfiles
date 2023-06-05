@@ -18,7 +18,7 @@ Install Arch linux under Manjaro
   pacman -Sy
 
 2. Install the arch install scripts
-  pacman -S --noconfirm arch-install-scripts
+  pacman -S --noconfirm arch-install-scripts archlinux-keyring ca-certificates
 
 3. Add and format the partitions (using gparted) after unmounting
 

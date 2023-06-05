@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 set -ex
 
@@ -54,6 +54,7 @@ packages=(
   watchman-bin
   ### Providers
   cpanminus
+  shellcheck-bin
 
   ## Utils
   gvfs
@@ -128,6 +129,7 @@ packages=(
   xterm
 
   ## Fonts
+  ttf-dejavu
   ttf-dejavu-nerd
   # ttf-hack-nerd
   noto-fonts-emoji
@@ -141,12 +143,14 @@ packages=(
   xbindkeys
   xautomation
   xdotool
+  imwheel
 
   ## Cli smart tools
   lsd
   exa
   bat
   fd
+  sd
   ripgrep
   zoxide
   jq
@@ -177,4 +181,4 @@ sudo systemctl enable chronyd.service
 sudo systemctl start chronyd.service
 
 ## Change shell
-sudo chsh -s /bin/zsh $USER
+sudo chsh -s /bin/zsh "$USER"
