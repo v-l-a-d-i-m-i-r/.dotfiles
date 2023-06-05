@@ -236,6 +236,7 @@ for_window [class="St"] focus
 #for_window [class="QupZilla"] border none
 #for_window [class="Skype"]    floating disable
 for_window [class="Terminator"]    floating disable
+for_window [instance="floating-term"] floating enable, resize set 100ppt 25ppt, move position 0 0
 
 # workspace_layout tabbed
 # for_window [class=".*"] title_format "%class - %title"
