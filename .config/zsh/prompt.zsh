@@ -1,5 +1,7 @@
 # https://arjanvandergaag.nl/blog/customize-zsh-prompt-with-vcs-info.html
 # https://gist.github.com/knadh/123bca5cfdae8645db750bfb49cb44b0
+# https://www.reddit.com/r/zsh/comments/cgbm24/multiline_prompt_the_missing_ingredient/
+# https://superuser.com/questions/974908/multiline-rprompt-in-zsh
 
 autoload -Uz vcs_info
 
@@ -21,6 +23,8 @@ BLUE="#5496d4";
 PURPLE="#646696";
 PINK="#bb81c5";
 # end colors
+
+NL=$'\n';
 
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:git*' formats "%F{green} %b%f"

@@ -232,11 +232,14 @@ for_window [class="Viber"] focus
 for_window [class="Pamac-manager"] focus
 for_window [class="St"] focus
 
+# for_window [floating_from="auto"] resize set 50ppt 50ppt, move position 25ppt 25ppt
+# for_window [floating instance="^(?!floating-term).*$" class="^(?!Gcolor3|Gsimplecal).*$"] resize set 50ppt 50ppt, move position 25ppt 25ppt
 #for_window [class="Code"]     border none, focus
 #for_window [class="QupZilla"] border none
 #for_window [class="Skype"]    floating disable
 for_window [class="Terminator"]    floating disable
 for_window [instance="floating-term"] floating enable, resize set 100ppt 25ppt, move position 0 0
+for_window [class="Gcolor3"] floating enable
 
 # workspace_layout tabbed
 # for_window [class=".*"] title_format "%class - %title"

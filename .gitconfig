@@ -7,6 +7,7 @@
 	editor = nvim
 
 [interactive]
+  ; diffFilter = delta --color-only --config ~/.config/.delta.toml
   diffFilter = delta --color-only
 
 [add.interactive]
@@ -31,3 +32,5 @@
 [includeIf "gitdir:/data/projects/flip/"]
   path = /data/projects/flip/.gitconfig
 
+[alias]
+  uncommit = reset HEAD^
