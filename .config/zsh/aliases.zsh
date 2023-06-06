@@ -69,7 +69,7 @@ function ggf() {
     git ls-tree -r --name-only $branch | grep "$1" | sed 's/^/'$branch': /'
   done
 }
-alias gl='git log --pretty=format:"%C(yellow)%h%C(reset)%<|(30) %C(blue)%an%C(reset)%<|(47) %C(green)%ad (%ar)%C(reset) %s%C(red)%d%C(reset)" --graph --date local'
+alias gl='git log --pretty=format:"%C(yellow)%h%C(reset)%<|(30) %C(blue)%an%C(reset)%<|(47) %C(green)%ad%C(reset) %s%C(red)%d%C(reset)" --graph --date=format-local:"%Y-%m-%d %H:%M:%S"'
 alias gla='gl --all'
 alias gs='git status'
 
@@ -188,3 +188,4 @@ alias sjq="jq -R 'fromjson? | select(type == \"object\")'"
 # misc
 alias vlp="vlc --qt-start-minimized ~/vlc-playlist.xspf"
 alias sudo='sudo -Es'
+alias csvtojson="python -c 'import csv, json, sys; print(json.dumps([dict(r) for r in csv.DictReader(sys.stdin)]))'"
