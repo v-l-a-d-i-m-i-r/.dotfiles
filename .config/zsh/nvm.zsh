@@ -10,7 +10,7 @@ function _nvm_use() {
   fi
 
   if [ ! -d "${NVM_DIR}/versions/node/${version}/bin" ]; then
-    echo "not available";
+    echo "node ${version} is not available";
 
     return
   fi
