@@ -2,3 +2,4 @@ st.font: DejaVuSansMono Nerd Font:style=Book:size=13:antialias=true:autohint=tru
 st.disablebold: 1
 st.disableitalic: 1
 st.disableroman: 0
+st.blinktimeout: 500

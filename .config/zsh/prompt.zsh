@@ -85,6 +85,15 @@ function precmd() {
 
   RPROMPT="${prompt_elapsed}${prompt_node}${prompt_git}${prompt_k8s}"
 }
+
+function make_cursor_as_blinking_block() {
+  echo -e -n "\x1b[\x30 q"
+}
+
+function make_cursor_as_steady_bar() {
+  echo -e -n "\x1b[\x36 q"
+}
+
 function _load_prompt() {
   local prompt_path='%F{$YELLOW}%~%b%f'
   local prompt_zvm=''
@@ -92,18 +101,23 @@ function _load_prompt() {
   case $ZVM_MODE in
     $ZVM_MODE_NORMAL)
       prompt_zvm='%F{$BG_PRIMARY}%K{$BLUE}%B NORMAL %b%f%k%F{default}%K{default}'
+      make_cursor_as_blinking_block
     ;;
     $ZVM_MODE_INSERT)
       prompt_zvm='%F{$BG_PRIMARY}%K{$GREEN}%B INSERT %b%f%k%F{default}%K{default}'
+      make_cursor_as_steady_bar
     ;;
     $ZVM_MODE_VISUAL)
       prompt_zvm='%F{$BG_PRIMARY}%K{$ORANGE}%B VISUAL %b%f%k%F{default}%K{default}'
+      make_cursor_as_blinking_block
     ;;
     $ZVM_MODE_VISUAL_LINE)
       prompt_zvm='%F{$BG_PRIMARY}%K{$ORANGE}%B V-LINE %b%f%k%F{default}%K{default}'
+      make_cursor_as_blinking_block
     ;;
     $ZVM_MODE_REPLACE)
       prompt_zvm='%F{$BG_PRIMARY}%K{$RED}%B REPLACE %b%f%k%F{default}%K{default}'
+      make_cursor_as_blinking_block
     ;;
   esac
 
