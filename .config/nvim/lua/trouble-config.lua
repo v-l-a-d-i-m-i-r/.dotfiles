@@ -1,8 +1,7 @@
-require("trouble").setup {
-  -- your configuration comes here
-  -- or leave it empty to use the default settings
-  -- refer to the configuration section below
-}
+require('trouble').setup({
+  use_diagnostic_signs = true,
+  auto_preview = false,
+  -- mode = "document_diagnostics",
+})
 
-
-vim.api.nvim_set_keymap('n', '<space>t', '<cmd>TroubleToggle document_diagnostics<cr>', {noremap = true})
+vim.api.nvim_set_keymap('n', '<space>t', '<cmd>TroubleToggle document_diagnostics<cr>', { noremap = true })

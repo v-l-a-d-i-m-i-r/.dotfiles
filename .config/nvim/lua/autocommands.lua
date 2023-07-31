@@ -1,21 +1,21 @@
-vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-  pattern = { ".zshrc" },
+vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufRead' }, {
+  pattern = { '.zshrc', '*.zsh' },
   callback = function()
-    vim.cmd "set filetype=bash"
+    vim.cmd('set filetype=bash')
   end,
 })
 
-vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-  pattern = { ".Xresources.*" },
+vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufRead' }, {
+  pattern = { '.Xresources.*' },
   callback = function()
-    vim.cmd "set filetype=xdefaults"
+    vim.cmd('set filetype=xdefaults')
   end,
 })
 
-vim.api.nvim_create_autocmd({ "TextYankPost" }, {
-  pattern = { "*" },
+vim.api.nvim_create_autocmd({ 'TextYankPost' }, {
+  pattern = { '*' },
   callback = function()
-    vim.highlight.on_yank({ higroup = "Visual", timeout = 1000 })
+    vim.highlight.on_yank({ higroup = 'Visual', timeout = 750 })
   end,
 })
 
@@ -35,18 +35,22 @@ vim.cmd([[
   augroup end
 ]])
 
-vim.cmd([[
-  augroup AutoSaveGroup
-    autocmd!
-    " view files are about 500 bytes
-    " bufleave but not bufwinleave captures closing 2nd tab
-    " nested is needed by bufwrite* (if triggered via other autocmd)
-    " BufHidden for compatibility with `set hidden`
-    autocmd BufWinLeave,BufLeave,BufWritePost,BufHidden,QuitPre ?* nested silent! mkview!
-    autocmd BufWinEnter ?* silent! loadview
-  augroup end
-]])
--- vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGained" }, {
---   command = "if mode() != 'c' | checktime | endif",
---   pattern = { "*" },
--- })
+-- https://vi.stackexchange.com/questions/6749/after-copying-a-visual-selection-return-to-original-location
+local cursor_position
+
+vim.api.nvim_create_autocmd({ 'VimEnter', 'CursorMoved' }, {
+  pattern = { '*' },
+  callback = function()
+    cursor_position = vim.fn.getpos('.')
+  end,
+})
+vim.api.nvim_create_autocmd({ 'TextYankPost' }, {
+  pattern = { '*' },
+  callback = function()
+    local operator = vim.v.event.operator
+
+    if operator == 'y' then
+      vim.fn.setpos('.', cursor_position)
+    end
+  end,
+})

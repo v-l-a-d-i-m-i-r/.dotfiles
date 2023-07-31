@@ -1,0 +1,46 @@
+local kind_icons = {
+  Text = '',
+  -- Method = "m",
+  -- Function = "",
+  -- Constructor = "",
+  Method = '',
+  Function = '',
+  Constructor = '',
+  Field = '',
+  -- Variable = "",
+  Variable = '',
+  Class = '',
+  Interface = '',
+  -- Module = "",
+  Module = '',
+  Property = '',
+  Unit = '',
+  Value = '',
+  Enum = '',
+  -- Keyword = "",
+  Keyword = '',
+  -- Snippet = "",
+  Snippet = '',
+  Color = '',
+  File = '',
+  Reference = '',
+  Folder = '',
+  EnumMember = '',
+  Constant = '',
+  Struct = '',
+  Event = '',
+  Operator = '',
+  TypeParameter = '',
+}
+
+local diagnostic_icons = {
+  error = '',
+  warn = '',
+  info = '',
+  hint = '',
+}
+
+return {
+  kind_icons = kind_icons,
+  diagnostic_icons = diagnostic_icons,
+}

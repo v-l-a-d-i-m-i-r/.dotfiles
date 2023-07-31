@@ -1,4 +1,4 @@
-vim.cmd([[
+vim.cmd[[
    " disable the default highlight group
   let g:conflict_marker_highlight_group = ''
 
@@ -11,4 +11,4 @@ vim.cmd([[
   " highlight ConflictMarkerTheirs guibg=#344f69
   highlight ConflictMarkerEnd guibg=#2f628e
   highlight ConflictMarkerCommonAncestorsHunk guibg=#754a81
-]])
+]]

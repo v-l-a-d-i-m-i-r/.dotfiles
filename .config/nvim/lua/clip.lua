@@ -1,14 +1,19 @@
-vim.cmd([[
-  " copy to attached terminal using the yank(1) script:
-  " https://github.com/sunaku/home/blob/master/bin/yank
-  function! Yank(text) abort
-    let escape = system('yank', a:text)
-    if v:shell_error
-      echoerr escape
-    else
-      call writefile([escape], '/dev/tty', 'b')
-    endif
-  endfunction
+vim.api.nvim_create_autocmd({ 'TextYankPost' }, {
+  pattern = { '*' },
+  callback = function()
+    local regname = vim.v.event.regname
 
-  autocmd TextYankPost * if v:event.regname is '+' | call Yank(join(v:event.regcontents, "\n")) | endif
-]])
+    if regname ~= '+' then
+      return
+    end
+
+    local text = vim.fn.getreg(regname)
+    local escape = vim.fn.system('yank', text)
+
+    if vim.v.shell_error ~= 0 then
+      vim.api.nvim_err_writeln(escape)
+    else
+      -- vim.fn.writefile({escape}, '/dev/tty', 'b')
+    end
+  end,
+})

@@ -4,8 +4,8 @@
 -- :VimspectorInstall vscode-node-debug2
 
 vim.g.vimspector_install_gadgets = {
-  "vscode-node-debug2",
+  'vscode-node-debug2',
 }
 
-vim.api.nvim_set_keymap("n", "<space>dd", ":call vimspector#Launch()<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<space>dt", ":call vimspector#ToggleBreakpoint()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<space>dd', ':call vimspector#Launch()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<space>dt', ':call vimspector#ToggleBreakpoint()<CR>', { noremap = true, silent = true })

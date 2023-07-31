@@ -1,13 +1,9 @@
-local tab_width = vim.api.nvim_get_option('tabstop')
-local spaces_indicator = function()
-  if vim.bo.expandtab then
-    return 'spaces:' .. tab_width
-  else
-    return 'tabs'
-  end
-end
-
-local lualine_setup_params = {
+-- local theme = require("themes")
+-- local lualine_theme = theme.lualine_theme
+-- 
+-- theme.setup()
+-- 
+require('lualine').setup({
   options = {
     section_separators = '',
     component_separators = '',
@@ -34,19 +30,6 @@ local lualine_setup_params = {
       },
     },
   },
-  sections = {
-    lualine_a = { 'mode' },
-    lualine_b = { 'diagnostics' },
-    lualine_c = {
-      {
-        'filename',
-        path = 1,
-      },
-    },
-    lualine_x = { 'encoding', 'fileformat', 'filetype', spaces_indicator },
-    lualine_y = { 'progress' },
-    lualine_z = { 'location' },
-  },
-}
+})
 
-require('lualine').setup(lualine_setup_params)
+vim.cmd('colorscheme code-dark')

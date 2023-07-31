@@ -1,11 +1,10 @@
 -- https://github.com/ChristianChiarulli/nvim/blob/master/lua/user/options.lua
 local function join(list, separator)
-  return table.concat(list, separator or ',')
+  return table.concat(list, separator or ",")
 end
-vim.g.editorconfig = true
 
 vim.opt.title = true
-vim.opt.encoding = 'UTF-8'
+vim.opt.encoding = "UTF-8"
 vim.opt.expandtab = true -- on pressing tab, insert 2 spaces
 vim.opt.shiftwidth = 2 -- when indenting with '>', use 2 spaces width
 vim.opt.tabstop = 2 -- show existing tab with 2 spaces width
@@ -29,10 +28,10 @@ vim.opt.timeoutlen = 1000
 vim.opt.ttimeoutlen = 0
 vim.opt.list = true
 vim.opt.guicursor = join({
-  'n-v:blinkon1',
-  'i-c:ver25',
+  "n-v:blinkon1",
+  "i-c:ver25",
 })
-vim.opt.signcolumn = 'yes:1'
+vim.opt.signcolumn = "yes:1"
 vim.opt.autoread = true
 -- vim.opt.listchars = join({
 --   "tab: ──",
@@ -46,14 +45,14 @@ vim.opt.autoread = true
 vim.opt.fillchars = join({
   -- "vert:▏",
   -- "vert:│",
-  'diff:╱',
-  'foldclose:',
-  'foldopen:',
+  "diff:╱",
+  "foldclose:",
+  "foldopen:",
   -- "msgsep:─",
 })
-vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
+vim.opt.completeopt={"menu", "menuone", "noselect"}
 vim.opt.fixendofline = true
-vim.opt.foldmethod = 'indent'
+vim.opt.foldmethod = "indent"
 vim.opt.foldlevelstart = 99 -- open all folds
 -- vim.opt.foldlevel = 1
 -- vim.opt.foldenable = false
@@ -62,4 +61,3 @@ vim.opt.foldlevelstart = 99 -- open all folds
 -- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 -- vim.opt.viewoptions = { "folds", "cursor" }
 -- vim.opt.sessionoptions = "foldsk"
-vim.opt.mouse = ''

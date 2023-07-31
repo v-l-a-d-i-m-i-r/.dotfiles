@@ -1,15 +1,16 @@
 -- https://github.com/iamcco/diagnostic-languageserver
-local lspconfig = require("lspconfig")
+local diagnostic_icons = require('icons').diagnostic_icons
+local lspconfig = require('lspconfig')
 local opts = { noremap = true, silent = true }
 
 vim.diagnostic.config({ virtual_text = false })
 
-vim.cmd [[
-  sign define DiagnosticSignError text= linehl= texthl=DiagnosticSignError numhl=
-  sign define DiagnosticSignWarn text= linehl= texthl=DiagnosticSignWarn numhl=
-  sign define DiagnosticSignInfo text= linehl= texthl=DiagnosticSignInfo numhl=
-  sign define DiagnosticSignHint text= linehl= texthl=DiagnosticSignHint numhl=
-]]
+vim.cmd(
+  'sign define DiagnosticSignError text=' .. diagnostic_icons.error .. ' linehl= texthl=DiagnosticSignError numhl='
+)
+vim.cmd('sign define DiagnosticSignWarn text=' .. diagnostic_icons.warn .. ' linehl= texthl=DiagnosticSignWarn numhl=')
+vim.cmd('sign define DiagnosticSignInfo text=' .. diagnostic_icons.info .. ' linehl= texthl=DiagnosticSignInfo numhl=')
+vim.cmd('sign define DiagnosticSignHint text=' .. diagnostic_icons.hint .. ' linehl= texthl=DiagnosticSignHint numhl=')
 
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -21,18 +22,14 @@ vim.api.nvim_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<C
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
+  -- disable LSP higlights
+  client.server_capabilities.semanticTokensProvider = nil
+
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-  require("lsp_signature").on_attach({
-    hint_prefix = " ",
+  require('lsp_signature').on_attach({
+    hint_prefix = ' ',
   }, bufnr)
-
-  -- Mappings.
-  -- See `:help vim.lsp.*` for documentation on any of the below functions
-  -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>lD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>ld', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>lh', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>li', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
 
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
@@ -41,108 +38,134 @@ local on_attach = function(client, bufnr)
   -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+  vim.api.nvim_buf_set_keymap(
+    bufnr,
+    'n',
+    '<space>wl',
+    '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>',
+    opts
+  )
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+  -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
 
 -- Add additional capabilities supported by nvim-cmp
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-local c = require("components")
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+local c = require('components')
 
-lspconfig.sumneko_lua.setup {
+lspconfig.sumneko_lua.setup({
   on_attach = on_attach,
   capabilities = capabilities,
   cmd = {
-    c.get_component("lua-language-server-3.2.4").bin("lua-language-server"),
+    c.get_component('lua-language-server').bin('lua-language-server'),
   },
   settings = {
     Lua = {
       diagnostics = {
-        globals = { "vim" },
+        globals = { 'vim' },
       },
       workspace = {
         library = {
-          [vim.fn.expand "$VIMRUNTIME/lua"] = true,
-          [vim.fn.stdpath "config" .. "/lua"] = true,
+          [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+          [vim.fn.stdpath('config') .. '/lua'] = true,
         },
+        preloadFileSize = 5000,
       },
       telemetry = {
         enable = false,
       },
     },
   },
-}
+})
 
-lspconfig.tsserver.setup {
+-- https://github.com/neovim/neovim/issues/22744
+lspconfig.tsserver.setup({
   on_attach = on_attach,
   capabilities = capabilities,
   cmd = {
-    c.get_component("node-16.14.2").bin("node"),
-    c.get_component("typescript-language-server-1.1.2").bin("typescript-language-server"),
-    "--stdio",
+    c.get_component('node-16.14.2').bin('node'),
+    c.get_component('typescript-language-server').bin('typescript-language-server'),
+    '--stdio',
   },
-}
+  flags = {
+    debounce_text_changes = 500,
+  },
+})
 
-lspconfig.eslint.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  cmd = {
-    c.get_component("node-16.14.2").bin("node"),
-    c.get_component("vscode-langservers-extracted-4.4.0").bin("vscode-eslint-language-server"),
-    "--stdio",
-  },
-  handlers = {
-    ['eslint/noLibrary'] = function()
-      return {}
-    end,
-  },
-}
+-- lspconfig.eslint.setup({
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   cmd = {
+--     c.get_component("node-16.14.2").bin("node"),
+--     -- c.get_component("vscode-langservers-extracted-4.7.0").bin("vscode-eslint-language-server"),
+--     c.get_component("vscode-langservers-extracted-4.4.0").bin("vscode-eslint-language-server"),
+--     "--stdio",
+--   },
+--   settings = {
+--     cmd = {
+--       shell = '/bin/bash',
+--       arguments = {
+--         '-ce',
+--         'PATH=' .. c.get_component("node-16.14.2").bin("") .. ':$PATH" "$@"',
+--       }
+--     }
+--   },
+--   handlers = {
+--     ['eslint/noLibrary'] = function()
+--       return {}
+--     end,
+--   },
+--   -- root_dir = function() return vim.loop.cwd() end,
+-- })
 
-lspconfig.cssls.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  cmd = {
-    c.get_component("node-16.14.2").bin("node"),
-    c.get_component("vscode-langservers-extracted-4.4.0").bin("vscode-css-language-server"),
-    "--stdio",
-  },
-}
+-- lspconfig.cssls.setup {
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   cmd = {
+--     c.get_component("node-16.14.2").bin("node"),
+--     c.get_component("vscode-langservers-extracted-4.7.0").bin("vscode-css-language-server"),
+--     "--stdio",
+--   },
+-- }
 
 -- https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
-lspconfig.emmet_ls.setup {
+lspconfig.emmet_ls.setup({
   on_attach = on_attach,
   capabilities = capabilities,
   cmd = {
-    c.get_component("node-16.14.2").bin("node"),
-    c.get_component("emmet-ls-0.3.0").bin("emmet-ls"),
-    "--stdio",
+    c.get_component('node-16.14.2').bin('node'),
+    c.get_component('emmet-ls-0.3.0').bin('emmet-ls'),
+    '--stdio',
   },
-}
+})
 
-lspconfig.bashls.setup {
+lspconfig.bashls.setup({
   on_attach = on_attach,
   capabilities = capabilities,
   filetypes = {
-    "sh",
-    "zsh",
+    'sh',
+    'bash',
+    'zsh',
   },
   cmd = {
-    c.get_component("node-14.17.5").bin("node"),
-    c.get_component("bash-language-server-3.0.3").bin("bash-language-server"),
-    "start",
-  }
-}
+    c.get_component('node-14.17.5').bin('node'),
+    c.get_component('bash-language-server').bin('bash-language-server'),
+    'start',
+  },
+})
 
-lspconfig.gopls.setup {
+lspconfig.gopls.setup({
   on_attach = on_attach,
   capabilities = capabilities,
   cmd = {
-    c.get_component("gopls-0.8.4").bin("gopls"),
-  }
-}
+    c.get_component('gopls').bin('gopls'),
+  },
+})
 
-vim.lsp.handlers["textDocument/references"] = require("telescope.builtin").lsp_references
+vim.lsp.handlers['textDocument/references'] = require('telescope.builtin').lsp_references
+
+-- Enable logging for LSP
+-- vim.lsp.set_log_level("debug")
