@@ -7,7 +7,8 @@ set +e
 if [[ $# -eq 1 ]]; then
   selected=$1
 else
-  selected=$(echo "$@" | sed 's/ /\n/g' | fzf --reverse)
+  # selected=$(echo "$@" | sed 's/ /\n/g' | fzf --reverse)
+  selected=$(echo "$@" | sed 's/ /\n/g' | awk '{ $0 = $0 sprintf("%500s", ""); print }' | fzf | xargs echo -n)
 fi
 
 if [[ -z $selected ]]; then

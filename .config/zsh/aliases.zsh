@@ -152,10 +152,29 @@ alias gs='git status'
 
 # tmux
 alias t='tmux '
-alias ta='t attach-session -t=$(t ls | fzf --reverse | cut -d ':' -f1)'
+alias ta='~/.bin/tmux-sessionizer $(t ls | fzf | cut -d ':' -f1)'
 function ts() {
   if [[ $# -eq 0 ]]; then
-    ~/.bin/tmux-sessionizer /data/projects/* ~/.config/nvim/plugins/* ~/.config/i3 ~/.config/nvim ~/scripts/tools/*
+    folders=(
+      ~/.config/i3
+      ~/.config/nvim
+      ~/.config/nvim7
+      ~/scripts/tools/*
+    )
+
+    if [ -d /data/projects ]; then
+      folders+=(/data/projects/*)
+    fi
+
+    if [ -d ~/.config/nvim/plugins ]; then
+      folders+=(~/.config/nvim/plugins/*)
+    fi
+
+    if [ -d /data/projects/monorepo ]; then
+      folders+=(/data/projects/monorepo/*)
+    fi
+
+    ~/.bin/tmux-sessionizer ${folders[@]}
   else
     ~/.bin/tmux-sessionizer $1
   fi
