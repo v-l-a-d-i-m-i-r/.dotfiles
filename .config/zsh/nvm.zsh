@@ -107,9 +107,8 @@ function _handle_nvmrc () {
   fi
 }
 
-function chpwd() {
-  _handle_nvmrc
-}
+autoload -Uz add-zsh-hook
+add-zsh-hook chpwd _handle_nvmrc
 
 nvm use v14.19.2
 _handle_nvmrc
