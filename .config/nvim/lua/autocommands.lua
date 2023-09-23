@@ -54,3 +54,10 @@ vim.api.nvim_create_autocmd({ 'TextYankPost' }, {
     end
   end,
 })
+
+vim.api.nvim_create_autocmd('Signal', {
+  pattern = 'SIGUSR1',
+  callback = function()
+    vim.cmd('luafile' .. env.NVIM_CONFIG_ROOT .. '/lua/colorscheme-setup.lua')
+  end,
+})

@@ -6,22 +6,15 @@
 autoload -Uz vcs_info
 
 # start colors
-BG_PRIMARY="#22282a";
-BG_SECONDARY="#2c3335";
-BG_SELECTION="#384145";
-FG_COMMENTS="#505d62";
-FG_SECONDARY="#97a5aa";
-FG_PRIMARY="#b9c2c6";
-FG_TERTIARY="#c4cccf";
-BG_TERTIARY="#dbdfe1";
-RED="#cc5733";
-ORANGE="#ce9178";
-YELLOW="#cdcd9d";
-GREEN="#41a490";
-CYAN="#94cceb";
-BLUE="#5496d4";
-PURPLE="#646696";
-PINK="#bb81c5";
+ZSH_PROMPT_PATH="#cdcd9d";
+ZSH_PROMPT_ELAPSED="#505d62";
+ZSH_PROMPT_NODE="#5496d4";
+ZSH_PROMPT_GIT="#41a490";
+ZSH_PROMPT_K8S="#cdcd9d";
+ZSH_PROMPT_ZVM_NORMAL="#5496d4";
+ZSH_PROMPT_ZVM_INSERT="#41a490";
+ZSH_PROMPT_ZVM_VISUAL="#ce9178";
+ZSH_PROMPT_ZVM_REPLACE="#cc5733";
 # end colors
 
 NL=$'\n';
@@ -66,21 +59,21 @@ function precmd() {
     else elapsed=${ms}ms
     fi
 
-    prompt_elapsed=" %F{$FG_COMMENTS}祥${elapsed}%{$reset_color%}"
+    prompt_elapsed=" %F{$ZSH_PROMPT_ELAPSED}祥${elapsed}%{$reset_color%}"
 
     unset timer
   fi
 
   if [ $node ]; then
-    prompt_node=" %F{$BLUE} ${node:1}%f"
+    prompt_node=" %F{$ZSH_PROMPT_NODE} ${node:1}%f"
   fi
 
   if [ $git ]; then
-    prompt_git=" %F{$GREEN}$(git branch | grep '*' | awk '{$1=""; print $0}')%f"
+    prompt_git=" %F{$ZSH_PROMPT_GIT}$(git branch | grep '*' | awk '{$1=""; print $0}')%f"
   fi
   
   if [ $k8s ]; then
-    prompt_k8s=" %F{$YELLOW}ﴱ ${k8s}%f"
+    prompt_k8s=" %F{$ZSH_PROMPT_K8S}ﴱ ${k8s}%f"
   fi
 
   RPROMPT="${prompt_elapsed}${prompt_node}${prompt_git}${prompt_k8s}"
@@ -95,28 +88,28 @@ function make_cursor_as_steady_bar() {
 }
 
 function _load_prompt() {
-  local prompt_path='%F{$YELLOW}%~%b%f'
+  local prompt_path='%F{$ZSH_PROMPT_PATH}%~%b%f'
   local prompt_zvm=''
 
   case $ZVM_MODE in
     $ZVM_MODE_NORMAL)
-      prompt_zvm='%F{$BG_PRIMARY}%K{$BLUE}%B NORMAL %b%f%k%F{default}%K{default}'
+      prompt_zvm='%F{0}%K{$ZSH_PROMPT_ZVM_NORMAL}%B NORMAL %b%f%k%F{default}%K{default}'
       make_cursor_as_blinking_block
     ;;
     $ZVM_MODE_INSERT)
-      prompt_zvm='%F{$BG_PRIMARY}%K{$GREEN}%B INSERT %b%f%k%F{default}%K{default}'
+      prompt_zvm='%F{0}%K{$ZSH_PROMPT_ZVM_INSERT}%B INSERT %b%f%k%F{default}%K{default}'
       make_cursor_as_steady_bar
     ;;
     $ZVM_MODE_VISUAL)
-      prompt_zvm='%F{$BG_PRIMARY}%K{$ORANGE}%B VISUAL %b%f%k%F{default}%K{default}'
+      prompt_zvm='%F{0}%K{$ZSH_PROMPT_ZVM_VISUAL}%B VISUAL %b%f%k%F{default}%K{default}'
       make_cursor_as_blinking_block
     ;;
     $ZVM_MODE_VISUAL_LINE)
-      prompt_zvm='%F{$BG_PRIMARY}%K{$ORANGE}%B V-LINE %b%f%k%F{default}%K{default}'
+      prompt_zvm='%F{0}%K{$ZSH_PROMPT_ZVM_VISUAL}%B V-LINE %b%f%k%F{default}%K{default}'
       make_cursor_as_blinking_block
     ;;
     $ZVM_MODE_REPLACE)
-      prompt_zvm='%F{$BG_PRIMARY}%K{$RED}%B REPLACE %b%f%k%F{default}%K{default}'
+      prompt_zvm='%F{0}%K{$ZSH_PROMPT_ZVM_REPLACE}%B REPLACE %b%f%k%F{default}%K{default}'
       make_cursor_as_blinking_block
     ;;
   esac
