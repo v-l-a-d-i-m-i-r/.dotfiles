@@ -1,0 +1,63 @@
+!:https://git.dubzland.net/jdubz/dotfiles/-/blob/main/xthemes/base16-default.dark.xresources
+
+! start colors
+#define X_BACKGROUND #22282a
+#define X_FOREGROUND #b9c2c6
+#define X_CURSOR_COLOR #97a5aa
+#define X_FADE_COLOR #384145
+#define X_BLACK_NORMAL #22282a
+#define X_BLACK_BRIGHT #505d62
+#define X_RED_NORMAL #cc5733
+#define X_RED_BRIGHT #ce9178
+#define X_GREEN_NORMAL #41a490
+#define X_GREEN_BRIGHT #41a490
+#define X_YELLOW_NORMAL #cdcd9d
+#define X_YELLOW_BRIGHT #cdcd9d
+#define X_BLUE_NORMAL #5496d4
+#define X_BLUE_BRIGHT #5496d4
+#define X_PURPLE_NORMAL #bb81c5
+#define X_PURPLE_BRIGHT #bb81c5
+#define X_CYAN_NORMAL #94cceb
+#define X_CYAN_BRIGHT #646696
+#define X_WHITE_NORMAL #b9c2c6
+#define X_WHITE_BRIGHT #dbdfe1
+! end colors
+
+*.foreground: X_FOREGROUND
+*.background: X_BACKGROUND
+*.cursorColor: X_CURSOR_COLOR
+*fading: 35
+*fadeColor: X_FADE_COLOR
+! *highlightColor: #000000
+
+! black
+*.color0: X_BLACK_NORMAL
+*.color8: X_BLACK_BRIGHT
+
+! red
+*.color1: X_RED_NORMAL 
+*.color9: X_RED_BRIGHT
+
+! green
+*.color2: X_GREEN_NORMAL
+*.color10: X_GREEN_BRIGHT
+
+! yellow
+*.color3: X_YELLOW_NORMAL
+*.color11: X_YELLOW_BRIGHT
+
+! blue
+*.color4: X_BLUE_NORMAL
+*.color12: X_BLUE_BRIGHT
+
+! magenta
+*.color5: X_PURPLE_NORMAL
+*.color13: X_PURPLE_BRIGHT
+
+! cyan
+*.color6: X_CYAN_NORMAL
+*.color14: X_CYAN_BRIGHT
+
+! white
+*.color7: X_WHITE_NORMAL 
+*.color15: X_WHITE_BRIGHT

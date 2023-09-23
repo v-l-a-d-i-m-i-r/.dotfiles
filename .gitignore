@@ -10,7 +10,6 @@
 !.xinitrc
 !.Xauthority
 !.Xresources
-!.Xresources.*
 !.xbindkeysrc
 
 # zsh
@@ -71,6 +70,7 @@
 !.config/kalu/
 !.config/zsh/
 !.config/kitty/
+!.config/xresources/
 
 !.config/qxkb.cfg
 
