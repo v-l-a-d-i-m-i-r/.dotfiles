@@ -62,10 +62,21 @@ require('telescope').setup({
       cwd = cwd,
       show_line = false,
       file_ignore_patterns = {
-        '*.spec.ts',
+        -- '%.spec.ts',
       },
     },
+    lsp_definitions = {
+      sorting_strategy = sorting_strategy,
+      layout_config = layout_config,
+      cwd = cwd,
+      show_line = false,
+    },
     buffers = {
+      sorting_strategy = sorting_strategy,
+      layout_config = layout_config,
+      cwd = cwd,
+    },
+    highlights = {
       sorting_strategy = sorting_strategy,
       layout_config = layout_config,
       cwd = cwd,
@@ -98,3 +109,4 @@ vim.api.nvim_set_keymap(
   { noremap = true }
 )
 vim.api.nvim_set_keymap('n', '<space>fb', '<cmd>lua require("telescope.builtin").buffers()<cr>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<space>fh', '<cmd>lua require("telescope.builtin").highlights()<cr>', { noremap = true })

@@ -1,6 +1,7 @@
 -- https://github.com/iamcco/diagnostic-languageserver
 local diagnostic_icons = require('icons').diagnostic_icons
 local lspconfig = require('lspconfig')
+
 local opts = { noremap = true, silent = true }
 
 vim.diagnostic.config({ virtual_text = false })
@@ -22,8 +23,8 @@ vim.api.nvim_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<C
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
-  -- disable LSP higlights
-  client.server_capabilities.semanticTokensProvider = nil
+  -- disable LSP higlights (when disabled 'attempt to index field 'semanticTokensProvider' error occures)
+  -- client.server_capabilities.semanticTokensProvider = false
 
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -56,7 +57,7 @@ end
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 local c = require('components')
 
-lspconfig.sumneko_lua.setup({
+lspconfig.lua_ls.setup({
   on_attach = on_attach,
   capabilities = capabilities,
   cmd = {
@@ -86,12 +87,18 @@ lspconfig.tsserver.setup({
   on_attach = on_attach,
   capabilities = capabilities,
   cmd = {
-    c.get_component('node-16.14.2').bin('node'),
+    c.get_component('node-18.17.1').bin('node'),
     c.get_component('typescript-language-server').bin('typescript-language-server'),
     '--stdio',
   },
   flags = {
-    debounce_text_changes = 500,
+    debounce_text_changes = 100,
+  },
+  init_options = {
+    preferences = {
+      importModuleSpecifierPreference = 'relative',
+      -- importModuleSpecifierEnding = 'minimal',
+    },
   },
 })
 
@@ -161,11 +168,12 @@ lspconfig.gopls.setup({
   on_attach = on_attach,
   capabilities = capabilities,
   cmd = {
-    c.get_component('gopls').bin('gopls'),
+    c.get_component('gotools').bin('gopls'),
   },
 })
 
 vim.lsp.handlers['textDocument/references'] = require('telescope.builtin').lsp_references
+vim.lsp.handlers['textDocument/definition'] = require('telescope.builtin').lsp_definitions
 
 -- Enable logging for LSP
 -- vim.lsp.set_log_level("debug")

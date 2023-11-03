@@ -40,8 +40,8 @@ vim.api.nvim_set_keymap('n', '<A-k>', ':resize -2<CR>', { noremap = true, silent
 vim.api.nvim_set_keymap('n', '<A-l>', ':vertical resize +2<CR>', { noremap = true, silent = true })
 
 -- Naviagate buffers
-vim.api.nvim_set_keymap('n', '<S-l>', ':BufferLineCycleNext<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<S-h>', ':BufferLineCyclePrev<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<S-l>', ':bn<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<S-h>', ':bp<CR>', { noremap = true, silent = true })
 
 -- Yank to clipboard
 vim.api.nvim_set_keymap('n', '<space>y', '"+y', { noremap = true, silent = true })
@@ -57,18 +57,20 @@ vim.api.nvim_set_keymap('v', '<space>P', '"+P', { noremap = true, silent = true 
 vim.api.nvim_set_keymap('v', 'p', '"_dP', { noremap = true, silent = true })
 
 -- Vertical allign center after the scrolling
-vim.api.nvim_set_keymap('n', '<C-u>', '<C-u>zz', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-d>', '<C-d>zz', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '{', '{zz', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '}', '}zz', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', 'n', 'nzz', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', 'N', 'Nzz', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '*', '*zz', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '#', '#zz', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', 'g*', 'g*zz', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', 'g#', 'g#zz', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-o>', '<C-o>zz', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-i>', '<C-i>zz', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '<C-u>', '<C-u>zz', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '<C-d>', '<C-d>zz', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '{', '{zz', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '}', '}zz', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', 'n', 'nzz', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', 'N', 'Nzz', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '*', '*zz', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '#', '#zz', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', 'g*', 'g*zz', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', 'g#', 'g#zz', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '<C-o>', '<C-o>zz', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '<C-i>', '<C-i>zz', { noremap = true, silent = true })
 
--- Disable highlighting
-vim.api.nvim_set_keymap('n', '<space>h', ':noh<CR>', { noremap = true, silent = true })
+-- Clear highlighting on escape in normal mode
+vim.api.nvim_set_keymap('n', '<Esc>', ':noh<CR><Esc>', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '<Esc>^[', '<Esc>^[', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<space>z', ':%s/<C-R><C-W>/<C-R>0/g<CR><C-O>', { noremap = true, silent = true })

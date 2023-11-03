@@ -21,6 +21,10 @@ add_nodejs({
   version = '14.17.5',
 })
 
+add_nodejs({
+  version = '18.17.1',
+})
+
 c.add_component({
   name = 'go',
   version = '1.18.2',
@@ -52,8 +56,7 @@ c.add_component({
   name = 'typescript-language-server',
   binaries_directory = '/node_modules/.bin',
   install_script = function()
-    -- local version = '3.3.2'
-    local version = '2.3.0'
+    local version = '3.3.2'
     local node = c.get_component('node-16.14.2').bin('node')
     local yarn = c.get_component('yarn-1.22.18').bin('yarn')
 
@@ -148,7 +151,7 @@ c.add_component({
   end,
 })
 c.add_component({
-  name = 'gopls',
+  name = 'gotools',
   binaries_directory = '/bin',
   install_script = function()
     local version = '0.12.4'
@@ -227,7 +230,8 @@ c.add_component({
     return clone_git_repo({
       url = 'https://github.com/akinsho/bufferline.nvim',
       -- tag = 'v4.1.0',
-      tag = 'v4.3.0',
+      -- tag = 'v4.3.0',
+      tag = 'v4.4.0',
     })
   end,
 })
@@ -257,7 +261,8 @@ c.add_component({
   install_script = function()
     return clone_git_repo({
       url = 'https://github.com/neovim/nvim-lspconfig',
-      tag = 'v0.1.6',
+      -- tag = 'v0.1.6',
+      commit = 'a27356f1ef9c11e1f459cc96a3fcac5c265e72d6',
     })
   end,
 })
@@ -378,9 +383,7 @@ c.add_component({
   install_script = function()
     return clone_git_repo({
       url = 'https://github.com/folke/trouble.nvim',
-      -- tag = 'v2.3.0',
-      tag = 'v2.6.0',
-      -- commit = '691d490cc4eadc430d226fa7d77aaa84e2e0a125', -- from nvim 0.7 snapshot
+      tag = 'v2.8.0',
     })
   end,
 })
@@ -424,6 +427,8 @@ c.add_component({
     return clone_git_repo({
       url = 'https://github.com/sindrets/diffview.nvim',
       commit = '6ca4cce071d527fa16c27781f98b843774ae84a7',
+      -- commit = '500d8b2013812e05ab87db83a8d22319986519f2', -- diff file not working
+      -- commit = 'a111d19ccceac6530448d329c63f998f77b5626e', -- file history does not show the whole history
     })
   end,
 })
@@ -563,14 +568,13 @@ c.add_component({
   install_script = function()
     return clone_git_repo({
       url = 'https://github.com/v-l-a-d-i-m-i-r/nvim-themes',
-      commit = '5af5483bfe2a5fc9fee2178040e2f81c605f5744',
+      commit = 'fb7c89e28c1784d5c6e1793472d577c67e66d42c',
     })
   end,
 })
 
 load_plugin('Comment.nvim')
 load_plugin('LuaSnip')
-load_plugin('bufferline.nvim')
 load_plugin('cmp-buffer')
 load_plugin('cmp-cmdline')
 load_plugin('cmp-nvim-lsp')

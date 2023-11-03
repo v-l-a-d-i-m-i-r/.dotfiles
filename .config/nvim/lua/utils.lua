@@ -42,7 +42,8 @@ local load_plugin = function(name)
   local path = c.get_component(name).bin('')
   local rtp = path:sub(1, string.len(path) - 1)
   local after = rtp .. '/after'
-  local doc = rtp .. '/doc'
+  local doc_dir = rtp .. '/doc'
+  local tags_file = doc_dir .. '/tags'
   -- local after = c.get_component(name).bin('after')
   -- local doc = c.get_component(name).bin('doc')
   -- local files = vim.fn.glob(path .. "*")
@@ -56,10 +57,17 @@ local load_plugin = function(name)
     vim.opt.rtp:append(after)
   end
 
-  local doc_stat = vim.loop.fs_stat(doc)
-  if doc_stat and doc_stat.type == 'directory' then
-    vim.cmd("silent! execute 'helptags' '" .. doc .. "/'")
+  local doc_dir_stat = vim.loop.fs_stat(doc_dir)
+  if not (doc_dir_stat and doc_dir_stat.type == 'directory') then
+    return
   end
+
+  local tags_file_stat = vim.loop.fs_stat(tags_file)
+  if (tags_file_stat and tags_file_stat.type == 'file') then
+    return
+  end
+
+  vim.cmd("silent! execute 'helptags' '" .. doc_dir .. "/'")
 end
 
 return {
