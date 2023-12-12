@@ -34,3 +34,5 @@
 
 [alias]
   uncommit = reset HEAD^
+  ; remove all local branches that are not exist on remote branch
+  cleanup = fetch --prune && git branch -vv | grep ': gone]' | awk '{print $1}' | xargs git branch -D
