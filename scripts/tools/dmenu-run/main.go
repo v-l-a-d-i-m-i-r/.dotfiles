@@ -68,6 +68,7 @@ func main() {
 		`rg`,
 		`^Name=|^Exec=|^Comment=|^GenericName=|^\[`,
 		`/usr/share/applications`,
+		`-L`,
 		`--no-line-number`,
 		`--no-filename`,
 		`--no-heading`,
@@ -133,8 +134,8 @@ func main() {
 		dmenuInput = append(dmenuInput, key)
 	}
 
-  sort.Strings(dmenuInput)
-  dmenuInputString := strings.Join(dmenuInput, "")
+	sort.Strings(dmenuInput)
+	dmenuInputString := strings.Join(dmenuInput, "")
 
 	command := "echo -e '" + dmenuInputString + "' | dmenu '-i'"
 
