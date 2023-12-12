@@ -11,6 +11,9 @@ sudo pacman -U https://archive.archlinux.org/packages/x/xfce4-notifyd/xfce4-noti
 # Rofi (0.6.1-1)
 sudo pacman -U https://archive.archlinux.org/packages/r/rofi/rofi-1.6.1-1-x86_64.pkg.tar.zst --noconfirm
 
-# neovim
+# neovim 0.7
 sudo pacman -U https://archive.archlinux.org/packages/l/libvterm01/libvterm01-0.1.4-2-x86_64.pkg.tar.zst
 sudo pacman -U https://archive.archlinux.org/packages/n/neovim/neovim-0.7.2-3-x86_64.pkg.tar.zst 
+
+# neovim 0.9
+sudo pacman -U https://archive.archlinux.org/packages/n/neovim/neovim-0.9.2-1-x86_64.pkg.tar.zst
