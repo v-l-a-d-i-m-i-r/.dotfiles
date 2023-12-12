@@ -3,7 +3,7 @@ alias dots='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 # ls
 # alias ll='lsd -lah --group-directories-first'
-alias ll='exa -la --icons --group-directories-first -ug'
+alias ll='exa -liah --icons --group-directories-first -ug'
 alias lt='ll --tree'
 alias lz='ll --total-size'
 
@@ -158,7 +158,6 @@ function ts() {
     folders=(
       ~/.config/i3
       ~/.config/nvim
-      ~/.config/nvim7
       ~/scripts/tools/*
     )
 
@@ -208,3 +207,14 @@ alias sjq="jq -R 'fromjson? | select(type == \"object\")'"
 alias vlp="vlc --qt-start-minimized ~/vlc-playlist.xspf"
 alias sudo='sudo -Es'
 alias csvtojson="python -c 'import csv, json, sys; print(json.dumps([dict(r) for r in csv.DictReader(sys.stdin)]))'"
+
+alias nvim='/data/projects/nvim-0.9.4/bin/nvim'
+alias nvimdiff='nvim -d -o'
+
+function b64 (){
+  echo $@ | base64
+}
+
+function b64d () {
+  echo $@ | base64 -d
+}

@@ -17,7 +17,8 @@ ZSH_PROMPT_ZVM_VISUAL="#ce9178";
 ZSH_PROMPT_ZVM_REPLACE="#cc5733";
 # end colors
 
-NL=$'\n';
+NL=$'
+';
 
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:git*' formats "%F{green} %b%f"
@@ -80,11 +81,11 @@ function precmd() {
 }
 
 function make_cursor_as_blinking_block() {
-  echo -e -n "\x1b[\x30 q"
+  echo -e -n "[0 q"
 }
 
 function make_cursor_as_steady_bar() {
-  echo -e -n "\x1b[\x36 q"
+  echo -e -n "[6 q"
 }
 
 function _load_prompt() {
