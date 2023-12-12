@@ -1,26 +1,26 @@
 !:https://git.dubzland.net/jdubz/dotfiles/-/blob/main/xthemes/base16-default.dark.xresources
 
 ! start colors
-#define X_BACKGROUND #22282a
-#define X_FOREGROUND #b9c2c6
-#define X_CURSOR_COLOR #97a5aa
-#define X_FADE_COLOR #384145
-#define X_BLACK_NORMAL #22282a
-#define X_BLACK_BRIGHT #505d62
-#define X_RED_NORMAL #cc5733
-#define X_RED_BRIGHT #ce9178
-#define X_GREEN_NORMAL #41a490
-#define X_GREEN_BRIGHT #41a490
-#define X_YELLOW_NORMAL #cdcd9d
-#define X_YELLOW_BRIGHT #cdcd9d
-#define X_BLUE_NORMAL #5496d4
-#define X_BLUE_BRIGHT #5496d4
-#define X_PURPLE_NORMAL #bb81c5
-#define X_PURPLE_BRIGHT #bb81c5
-#define X_CYAN_NORMAL #94cceb
-#define X_CYAN_BRIGHT #646696
-#define X_WHITE_NORMAL #b9c2c6
-#define X_WHITE_BRIGHT #dbdfe1
+#define X_BACKGROUND #2E3440
+#define X_FOREGROUND #c2c8d2
+#define X_CURSOR_COLOR #acafb4
+#define X_FADE_COLOR #434C5E
+#define X_BLACK_NORMAL #2E3440
+#define X_BLACK_BRIGHT #616e88
+#define X_RED_NORMAL #BF616A
+#define X_RED_BRIGHT #BF616A
+#define X_GREEN_NORMAL #A3BE8C
+#define X_GREEN_BRIGHT #A3BE8C
+#define X_YELLOW_NORMAL #EBCB8B
+#define X_YELLOW_BRIGHT #EBCB8B
+#define X_BLUE_NORMAL #81A1C1
+#define X_BLUE_BRIGHT #5E81AC
+#define X_PURPLE_NORMAL #B48EAD
+#define X_PURPLE_BRIGHT #B48EAD
+#define X_CYAN_NORMAL #88C0D0
+#define X_CYAN_BRIGHT #8FBCBB
+#define X_WHITE_NORMAL #E5E9F0
+#define X_WHITE_BRIGHT #ECEFF4
 ! end colors
 
 *.foreground: X_FOREGROUND

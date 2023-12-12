@@ -1,9 +1,9 @@
 # start colors
-FZF_BG_PLUS="#384145";
-FZF_HL="#ce9178";
-FZF_GUTTER="#22282a";
-FZF_POINTER="#b9c2c6";
-FZF_HL_PLUS="#ce9178";
+FZF_BG_PLUS="#434C5E";
+FZF_HL="#D08770";
+FZF_GUTTER="#2E3440";
+FZF_POINTER="#c2c8d2";
+FZF_HL_PLUS="#D08770";
 # end colors
 
 local opts=(

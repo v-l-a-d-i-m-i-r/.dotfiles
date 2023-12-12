@@ -1,5 +1,5 @@
 -- start colors
-vim.cmd('colorscheme code-dark')
+vim.cmd('colorscheme nord-simple')
 -- end colors
 
 package.loaded['tabline-setup'] = nil
