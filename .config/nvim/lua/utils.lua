@@ -63,7 +63,7 @@ local load_plugin = function(name)
   end
 
   local tags_file_stat = vim.loop.fs_stat(tags_file)
-  if (tags_file_stat and tags_file_stat.type == 'file') then
+  if tags_file_stat and tags_file_stat.type == 'file' then
     return
   end
 

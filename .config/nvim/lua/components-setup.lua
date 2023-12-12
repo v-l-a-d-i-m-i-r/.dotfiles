@@ -56,8 +56,8 @@ c.add_component({
   name = 'typescript-language-server',
   binaries_directory = '/node_modules/.bin',
   install_script = function()
-    local version = '3.3.2'
-    local node = c.get_component('node-16.14.2').bin('node')
+    local version = '4.2.0'
+    local node = c.get_component('node-18.17.1').bin('node')
     local yarn = c.get_component('yarn-1.22.18').bin('yarn')
 
     return node .. ' ' .. yarn .. ' add typescript-language-server@' .. version .. ' typescript@4.6.4'

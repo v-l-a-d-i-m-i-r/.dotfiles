@@ -72,7 +72,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
       buffer = vim.api.nvim_get_current_buf(),
       callback = function(opts)
         require('trouble').close()
-        vim.cmd('NvimTreeClose')
+        -- vim.cmd('NvimTreeClose')
 
         local bufnr = opts.buf
         local clients = vim.lsp.buf_get_clients(bufnr)
