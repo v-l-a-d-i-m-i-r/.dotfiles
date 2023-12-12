@@ -15,13 +15,13 @@ local chars = {
 }
 
 local skipped_buf_names = {
-  '',
   'NvimTree_1',
   'Trouble',
   'DiffviewFilePanel',
   'null',
   'api.txt',
   '0.fugitiveblame',
+  'diffview://',
 }
 
 local function add_hl_group(hl_group_name, text)
@@ -43,7 +43,6 @@ local function get_buf_abs_path(buf_nr)
 end
 
 local function get_buf_name_with_ext(buf_nr)
-  -- return vim.fn.fnamemodify(buf_path, ':t')
   return vim.fn.expand('#' .. buf_nr .. ':t')
 end
 
@@ -59,7 +58,7 @@ local function draw_buf(params)
   local icon_with_paddings_len = 5
 
   if buf_name_with_ext_len > (buf_width - icon_with_paddings_len) then
-    return string.sub(buf_name_with_ext, 1, (buf_width - icon_with_paddings_len))
+    return string.sub(buf_name_with_ext, 1, (buf_width - icon_with_paddings_len - 1)) .. '~'
   end
 
   if buf_name_with_ext_len < (buf_width - icon_with_paddings_len) then
@@ -77,6 +76,7 @@ end
 
 local function setup()
   vim.o.showtabline = 2
+  vim.o.tabline = '%!v:lua.nvim_tabline()'
 
   vim.api.nvim_set_hl(0, hl_group_names.fill, { link = 'TabLineFill' })
   vim.api.nvim_set_hl(0, hl_group_names.tab_normal, { link = 'TabLine' })
@@ -109,10 +109,8 @@ local function tabline()
       goto continue
     end
 
-    local buf_full_name = get_buf_name_with_ext(buf_nr)
-
     for _, skipped_buf_name in ipairs(skipped_buf_names) do
-      if skipped_buf_name == buf_full_name then
+      if buf_path:find(skipped_buf_name) ~= nil then
         goto continue
       end
     end
@@ -137,11 +135,8 @@ local function tabline()
       end
     end
 
-    -- local buf_path = vim.api.nvim_buf_get_name(buf_nr)
-    -- local buf_path_rel = string.gsub(buf_path, vim.loop.cwd(), '')
     local buf_name_with_ext = get_buf_name_with_ext(buf_nr)
     local buf_ext = get_buf_ext(buf_nr)
-    local buf_type = vim.filetype.match({ buf = buf_nr }) or ''
 
     local buf_icon, buf_icon_hl_group = nvim_dev_icons.get_icon(buf_name_with_ext, buf_ext, { default = true })
 
@@ -179,7 +174,7 @@ local function tabline()
     end
 
     line = line .. add_hl_group(tab_hl_group_name, ' ')
-    line = line ..  add_hl_group(icon_hl_group_name, buf_icon)
+    line = line .. add_hl_group(icon_hl_group_name, buf_icon)
     line = line .. add_hl_group(tab_hl_group_name, ' ')
     line = line .. add_hl_group(tab_hl_group_name, buf_name_with_ext_normalized)
     line = line .. add_hl_group(tab_hl_group_name, ' ')
@@ -198,25 +193,6 @@ function _G.nvim_tabline()
   return tabline()
 end
 
--- setup()
-
-vim.o.tabline = '%!v:lua.nvim_tabline()'
-
 return {
   setup = setup,
 }
-
--- local tab_pages_ids = vim.api.nvim_list_tabpages()
-
--- for _, tab_page_number in ipairs(tab_pages_ids) do
---   local wins_ids = vim.api.nvim_tabpage_list_wins(tab_page_number)
---   -- P(wins_ids)
---   P(vim.fn.tabpagebuflist(tab_page_number))
--- end
--- local windows_list = vim.api.nvim_list_wins()
--- local buffs_list = vim.api.nvim_list_bufs()
---
--- P(vim.api.nvim_buf_get_name(buf_nr):find(vim.fn.getcwd(), 0, true))
---
---
--- vim.go.columns get global width
