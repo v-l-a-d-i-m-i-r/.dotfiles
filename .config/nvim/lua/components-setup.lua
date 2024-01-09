@@ -393,7 +393,7 @@ c.add_component({
   install_script = function()
     return clone_git_repo({
       url = 'https://github.com/nvim-telescope/telescope.nvim',
-      tag = '0.1.2',
+      tag = '0.1.5',
     })
   end,
 })
@@ -514,6 +514,16 @@ c.add_component({
 })
 
 c.add_component({
+  name = 'ts_context_commentstring',
+  install_script = function()
+    return clone_git_repo({
+      url = 'https://github.com/JoosepAlviste/nvim-ts-context-commentstring',
+      commit = '1277b4a1f451b0f18c0790e1a7f12e1e5fdebfee',
+    })
+  end,
+})
+
+c.add_component({
   name = 'Comment.nvim',
   install_script = function()
     return clone_git_repo({
@@ -573,6 +583,7 @@ c.add_component({
   end,
 })
 
+load_plugin('ts_context_commentstring')
 load_plugin('Comment.nvim')
 load_plugin('LuaSnip')
 load_plugin('cmp-buffer')

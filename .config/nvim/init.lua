@@ -31,9 +31,7 @@ require('indent_blankline').setup({
 
 require('colorizer').setup()
 require('nvim-autopairs').setup({})
-require('Comment').setup({
-  ignore = '^$',
-})
+require('comment-setup')
 require('todo-comments').setup()
 require('gitsigns').setup()
 require('aerial-setup')

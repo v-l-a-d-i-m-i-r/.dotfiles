@@ -20,6 +20,44 @@ vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', op
 vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
 vim.api.nvim_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
 
+local handlers = {
+  ['textDocument/definition'] = function(err, result, method, ...)
+    if not vim.tbl_islist(result) then
+      return vim.lsp.handlers['textDocument/definition'](err, result, method, ...)
+    end
+
+    if vim.tbl_islist(result) and #result == 1 then
+      return vim.lsp.handlers['textDocument/definition'](err, result, method, ...)
+    end
+
+    local filtered_result = {}
+    if vim.tbl_islist(result) and #result > 1 then
+      for _, value in ipairs(result) do
+        -- if string.match(value.targetUri, 'react/index.d.ts') then
+        -- if string.match(value.targetUri, '.d.ts') then
+        if string.match(value.targetUri, '/react/') and string.match(value.targetUri, 'index.d.ts') then
+          P(value.targetUri)
+          goto continue
+        end
+
+        table.insert(filtered_result, value)
+        ::continue::
+      end
+    end
+
+    if #filtered_result == 1 then
+      return vim.lsp.handlers['textDocument/definition'](err, filtered_result, method, ...)
+    end
+
+    if #result > 1 and #filtered_result == 0 then
+      return vim.lsp.handlers['textDocument/definition'](err, { result[1] }, method, ...)
+    end
+
+    -- return require('telescope.builtin').lsp_definitions(err, result, method, ...)
+    -- return require('telescope.builtin').lsp_type_definitions(err, result, method, ...)
+    vim.lsp.handlers['textDocument/definition'](err, { result[1] }, method, ...)
+  end,
+}
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
@@ -80,6 +118,7 @@ lspconfig.lua_ls.setup({
       },
     },
   },
+  handlers = handlers,
 })
 
 -- https://github.com/neovim/neovim/issues/22744
@@ -100,6 +139,7 @@ lspconfig.tsserver.setup({
       -- importModuleSpecifierEnding = 'minimal',
     },
   },
+  handlers = handlers,
 })
 
 -- lspconfig.eslint.setup({
@@ -173,7 +213,5 @@ lspconfig.gopls.setup({
 })
 
 vim.lsp.handlers['textDocument/references'] = require('telescope.builtin').lsp_references
-vim.lsp.handlers['textDocument/definition'] = require('telescope.builtin').lsp_definitions
-
 -- Enable logging for LSP
 -- vim.lsp.set_log_level("debug")
