@@ -4,17 +4,51 @@ local params = {}
 local components_names_list = {}
 local components = {}
 
-local function check_directory_exists(path)
-  if os.execute("! test -d " .. path) ~= 0 then
-    return true
-  else
-    return false
-  end
-end
+local function Component(options)
+  local name = options.name
+  local install_script_string = options.install_script()
+  local hash = md5.sumhexa(install_script_string)
+  local installation_path = params.path .. "/" .. name .. "-" .. hash
+  local binaries_directory = table.concat({
+    installation_path,
+    options.binaries_directory or "/",
+  }, "");
 
-local function set_component(name, component)
-  table.insert(components_names_list, name)
-  components[name] = component
+  return {
+    get_name = function()
+      return name;
+    end,
+
+    install = function()
+      local command_table = {
+        "! mkdir -p " .. installation_path,
+        "cd " .. installation_path,
+        install_script_string,
+      }
+
+      vim.cmd(table.concat(command_table, " && "))
+    end,
+
+    bin = function(binary_name)
+      if (binary_name == nil or binary_name == "") then
+        return binaries_directory
+      else
+        return binaries_directory .. "/" .. binary_name
+      end
+    end,
+
+    clear = function()
+      vim.cmd("! rm -rf " .. installation_path)
+    end,
+
+    check_installed = function()
+      if os.execute("! test -d " .. binaries_directory) ~= 0 then
+        return true
+      else
+        return false
+      end
+    end,
+  }
 end
 
 local setup = function(p)
@@ -41,53 +75,11 @@ local get_component = function(name)
 end
 
 local add_component = function(options)
-  local version = options.version
-  local name = options.name
-  -- local key = name .. "-" .. version
-  local key
-  if version == nil then
-    key = name
-  else
-    key = name .. "-" .. version
-  end
-  local binaries_directory = options.binaries_directory or "/"
-  local install_script = options.install_script({
-    version = version,
-    name = name,
-  })
-  local hash = md5.sumhexa(install_script)
-  local installation_path = params.path .. "/" .. key .. "-" .. hash
+  local component = Component(options)
+  local component_name = component.get_name()
 
-  local install = function()
-    local command_table = {
-      "! mkdir -p " .. installation_path,
-      "cd " .. installation_path,
-      install_script,
-    }
-    vim.cmd(table.concat(command_table, " && "))
-  end
-
-  local bin = function(binary_name)
-    if (binary_name == nil or binary_name == "") then
-      return installation_path .. binaries_directory
-    else
-      return installation_path .. binaries_directory .. "/" .. binary_name
-    end
-  end
-
-  local clear = function()
-    vim.cmd("! rm -rf " .. installation_path)
-  end
-
-  set_component(key, {
-    install = install,
-    clear = clear,
-    bin = bin,
-    hash = hash,
-    check_installed = function()
-      return check_directory_exists(bin(""))
-    end
-  })
+  table.insert(components_names_list, component_name)
+  components[component_name] = component
 end
 
 return {

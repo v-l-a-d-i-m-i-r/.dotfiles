@@ -27,10 +27,9 @@ add_nodejs({
 
 c.add_component({
   name = 'go',
-  version = '1.18.2',
   binaries_directory = '/bin',
-  install_script = function(params)
-    local version = params.version
+  install_script = function()
+    local version = '1.18.2'
 
     return cli_pipe({
       'curl -L https://go.dev/dl/go' .. version .. '.linux-amd64.tar.gz',
@@ -40,11 +39,10 @@ c.add_component({
 })
 
 c.add_component({
-  name = 'yarn-1.22.18',
+  name = 'yarn',
   binaries_directory = '/node_modules/.bin',
   install_script = function()
     local version = '1.22.18'
-
     local node = c.get_component('node-16.14.2').bin('node')
     local npm = c.get_component('node-16.14.2').bin('npm')
 
@@ -56,9 +54,9 @@ c.add_component({
   name = 'typescript-language-server',
   binaries_directory = '/node_modules/.bin',
   install_script = function()
-    local version = '4.2.0'
+    local version = '4.3.0'
     local node = c.get_component('node-18.17.1').bin('node')
-    local yarn = c.get_component('yarn-1.22.18').bin('yarn')
+    local yarn = c.get_component('yarn').bin('yarn')
 
     return node .. ' ' .. yarn .. ' add typescript-language-server@' .. version .. ' typescript@4.6.4'
   end,
@@ -66,28 +64,23 @@ c.add_component({
 
 c.add_component({
   name = 'vscode-langservers-extracted',
-  version = '4.4.0',
-  -- version = "4.7.0",
   binaries_directory = '/node_modules/.bin',
-  install_script = function(params)
-    local version = params.version
-    local name = params.name
+  install_script = function()
+    local version = '4.4.0'
     local path = c.get_component('node-16.14.2').bin('') .. ':$PATH'
 
-    return 'PATH=' .. path .. ' npm install --save-exact ' .. name .. '@' .. version
+    return 'PATH=' .. path .. ' npm install --save-exact ' .. 'vscode-langservers-extracted@' .. version
   end,
 })
 
 c.add_component({
   name = 'emmet-ls',
-  version = '0.3.0',
   binaries_directory = '/node_modules/.bin',
-  install_script = function(params)
-    local version = params.version
-    local name = params.name
+  install_script = function()
+    local version = '0.3.0'
     local path = c.get_component('node-16.14.2').bin('') .. ':$PATH'
 
-    return 'PATH=' .. path .. ' npm install --save-exact ' .. name .. '@' .. version
+    return 'PATH=' .. path .. ' npm install --save-exact ' .. 'emmet-ls@' .. version
   end,
 })
 
@@ -97,7 +90,7 @@ c.add_component({
   install_script = function()
     local version = '3.0.3'
     local node = c.get_component('node-14.17.5').bin('node')
-    local yarn = c.get_component('yarn-1.22.18').bin('yarn')
+    local yarn = c.get_component('yarn').bin('yarn')
 
     return node .. ' ' .. yarn .. ' add bash-language-server@' .. version
   end,
@@ -107,7 +100,7 @@ c.add_component({
   name = 'lua-language-server',
   binaries_directory = '/bin',
   install_script = function()
-    local version = '3.6.23'
+    local version = '3.7.4'
 
     return cli_pipe({
       'curl -L https://github.com/LuaLS/lua-language-server/releases/download/'
@@ -122,11 +115,11 @@ c.add_component({
 
 c.add_component({
   name = 'vscode-node-debug2',
-  version = '1.43.0',
   binaries_directory = '/out/src',
-  install_script = function(params)
-    local version = params.version
+  install_script = function()
+    local version = '1.43.0'
     local path = c.get_component('node-16.14.2').bin('') .. ':$PATH'
+
     return cli_and({
       'git clone --depth 1 --branch v' .. version .. ' https://github.com/microsoft/vscode-node-debug2.git .',
       'PATH=' .. path .. ' npm ci',
@@ -137,10 +130,9 @@ c.add_component({
 
 c.add_component({
   name = 'vscode-js-debug',
-  version = '1.71.1',
   binaries_directory = '/',
-  install_script = function(params)
-    local version = params.version
+  install_script = function()
+    local version = '1.71.1'
     local path = c.get_component('node-16.14.2').bin('') .. ':$PATH'
 
     return cli_and({
@@ -159,7 +151,7 @@ c.add_component({
     return cli_and({
       'git clone --depth 1 --branch gopls/v' .. version .. '  https://github.com/golang/tools.git .',
       'cd ./gopls',
-      c.get_component('go-1.18.2').bin('go') .. ' build -o ../bin/gopls',
+      c.get_component('go').bin('go') .. ' build -o ../bin/gopls',
     })
   end,
 })
@@ -229,8 +221,6 @@ c.add_component({
   install_script = function()
     return clone_git_repo({
       url = 'https://github.com/akinsho/bufferline.nvim',
-      -- tag = 'v4.1.0',
-      -- tag = 'v4.3.0',
       tag = 'v4.4.0',
     })
   end,
@@ -261,8 +251,7 @@ c.add_component({
   install_script = function()
     return clone_git_repo({
       url = 'https://github.com/neovim/nvim-lspconfig',
-      -- tag = 'v0.1.6',
-      commit = 'a27356f1ef9c11e1f459cc96a3fcac5c265e72d6',
+      tag = 'v0.1.7',
     })
   end,
 })
@@ -272,7 +261,6 @@ c.add_component({
   install_script = function()
     return clone_git_repo({
       url = 'https://github.com/nvim-treesitter/nvim-treesitter',
-      -- tag = "v0.8.5.2",
       tag = 'v0.9.0',
     })
   end,

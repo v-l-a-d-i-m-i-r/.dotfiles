@@ -184,7 +184,7 @@ lspconfig.emmet_ls.setup({
   capabilities = capabilities,
   cmd = {
     c.get_component('node-16.14.2').bin('node'),
-    c.get_component('emmet-ls-0.3.0').bin('emmet-ls'),
+    c.get_component('emmet-ls').bin('emmet-ls'),
     '--stdio',
   },
 })

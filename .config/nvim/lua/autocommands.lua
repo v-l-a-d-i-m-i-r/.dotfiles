@@ -96,7 +96,7 @@ vim.api.nvim_create_autocmd('BufWritePost', {
   pattern = '*.go',
   callback = function()
     local gopls = c.get_component('gotools').bin('gopls')
-    local gofmt = c.get_component('go-1.18.2').bin('gofmt')
+    local gofmt = c.get_component('go').bin('gofmt')
     local current_buffer_path = vim.fn.expand('%:p')
 
     vim.cmd('silent !' .. gopls .. ' imports -w ' .. current_buffer_path)
