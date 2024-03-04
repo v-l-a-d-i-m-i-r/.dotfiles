@@ -146,19 +146,19 @@ local project_library_path = c.get_component('angular-language-server').bin()
 local cmd = {
   c.get_component('node-18.17.1').bin('node'),
   c.get_component('angular-language-server').bin('ngserver'),
-  "--stdio",
-  "--tsProbeLocations",
-  project_library_path ,
-  "--ngProbeLocations",
-  project_library_path
+  '--stdio',
+  '--tsProbeLocations',
+  project_library_path,
+  '--ngProbeLocations',
+  project_library_path,
 }
 
-require'lspconfig'.angularls.setup{
+require('lspconfig').angularls.setup({
   cmd = cmd,
   on_new_config = function(new_config, new_root_dir)
     new_config.cmd = cmd
   end,
-}
+})
 
 -- lspconfig.eslint.setup({
 --   on_attach = on_attach,
@@ -200,9 +200,9 @@ lspconfig.jsonls.setup({
   on_attach = on_attach,
   capabilities = capabilities,
   cmd = {
-    c.get_component("node-18.17.1").bin("node"),
-    c.get_component("vscode-langservers-extracted").bin("vscode-json-language-server"),
-    "--stdio",
+    c.get_component('node-18.17.1').bin('node'),
+    c.get_component('vscode-langservers-extracted').bin('vscode-json-language-server'),
+    '--stdio',
   },
 })
 
