@@ -28,8 +28,8 @@
 	email = volodymyr.danilin@gmail.com
 	name = Vladimir Danilin
 
-[includeIf "gitdir:/data/projects/flip/"]
-  path = /data/projects/flip/.gitconfig
+[includeIf "gitdir:~/projects/ramboll/"]
+  path = ~/projects/ramboll/.gitconfig
 
 [alias]
   uncommit = reset HEAD^
