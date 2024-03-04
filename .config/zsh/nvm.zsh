@@ -104,10 +104,12 @@ function _handle_nvmrc () {
     nvm use 'v16.20.2'
     return
   fi
+
   if [[ $node_version == '18' ]]; then
     nvm use 'v18.17.1'
     return
   fi
+
   if [[ $node_version == '14' ]]; then
     nvm use 'v14.19.2'
     return
