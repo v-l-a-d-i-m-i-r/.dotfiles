@@ -6,39 +6,40 @@ set -ex
 sudo pacman -Sy --noconfirm
 
 packages=(
+  inetutils
   ## Xorg server
-  xorg
-  xorg-xinit
-  mesa
+  # xorg
+  # xorg-xinit
+  # mesa
 
   ## i3
-  i3-wm
-  i3lock
-  i3blocks
-  dmenu
+  # i3-wm
+  # i3lock
+  # i3blocks
+  # dmenu
 
   ## Video driver
   # check the type of video card
   # lspci | grep VGA
-  xf86-video-intel
+  # xf86-video-intel
 
   ## Audio driver
-  alsa-lib
-  alsa-utils
-  alsa-oss
-  alsa-plugins
-  alsa-ucm-conf
-  pavucontrol
-  pulseaudio
-  pa-applet-git
-  sof-firmware # driver
+  # alsa-lib
+  # alsa-utils
+  # alsa-oss
+  # alsa-plugins
+  # alsa-ucm-conf
+  # pavucontrol
+  # pulseaudio
+  # pa-applet-git
+  # sof-firmware # driver
 
   ## Touchpad
-  xf86-input-synaptics
+  # xf86-input-synaptics
 
   ## Commanders
-  doublecmd-gtk2
-  pcmanfm
+  # doublecmd-gtk2
+  # pcmanfm
 
   ## Source control
   git
@@ -47,68 +48,70 @@ packages=(
 
   ## Neovim
   neovim
-  neovim-plug
+  cmake
+  # neovim-plug
   ### Dependencies
   python
   python-pip
+  python-pynvim
   watchman-bin
   ### Providers
   cpanminus
   shellcheck-bin
 
   ## Utils
-  gvfs
-  polkit-gnome
-  gnome-keyring
-  gparted
-  ntfs-3g
-  dosfstools
-  xfce4-power-manager
-  htop
-  conky
-  arandr
-  xcompmgr
-  nitrogen
-  gsimplecal
-  gvfs-mtp
-  gvfs-gphoto2
-  bind-tools
-  pacman-contrib
-  lm_sensors
-  seahorse
-  grub-customizer
-  jmtpfs
-  sbxkb
+  # gvfs
+  # polkit-gnome
+  # gnome-keyring
+  # gparted
+  # ntfs-3g
+  # dosfstools
+  # xfce4-power-manager
+  # htop
+  # conky
+  # arandr
+  # xcompmgr
+  # nitrogen
+  # gsimplecal
+  # gvfs-mtp
+  # gvfs-gphoto2
+  # bind-tools
+  # pacman-contrib
+  # lm_sensors
+  # seahorse
+  # grub-customizer
+  # jmtpfs
+  # sbxkb
 
   ## Notifications
-  xfce4-notifyd
+  # xfce4-notifyd
 
   ## Appearance
-  lxappearance
-  qt5ct
-  qt5-styleplugins
+  # lxappearance
+  # qt5ct
+  # qt5-styleplugins
 
   ## Theme
-  gnome-themes-extra
-  papirus-icon-theme
+  # gnome-themes-extra
+  # papirus-icon-theme
 
   ## Archivers
   zip
   unzip
 
   ## Launchers
-  rofi
+  # rofi
 
   ## Network
-  networkmanager
-  networkmanager-pptp
-  network-manager-applet
+  # networkmanager
+  # networkmanager-pptp
+  # network-manager-applet
 
   ## SSH
   openssh
 
   ## Chrony
-  chrony
+  # chrony
 
   ## ZSH
   zsh
@@ -121,13 +124,13 @@ packages=(
   nano-syntax-highlighting-git
 
   ## Browsers
-  firefox
+  # firefox
 
   ## Terminal
-  rxvt-unicode
-  urxvt-perls
-  urxvt-resize-font-git
-  xterm
+  # rxvt-unicode
+  # urxvt-perls
+  # urxvt-resize-font-git
+  # xterm
 
   ## Fonts
   ttf-dejavu
@@ -137,14 +140,14 @@ packages=(
   libxft
 
   ## Images
-  gwenview
+  # gwenview
 
   ## Keyboard
-  xkblayout-state-git
-  xbindkeys
-  xautomation
-  xdotool
-  imwheel
+  # xkblayout-state-git
+  # xbindkeys
+  # xautomation
+  # xdotool
+  # imwheel
 
   ## Cli smart tools
   lsd
@@ -174,12 +177,12 @@ yaourt -S "${packages[@]}" --noconfirm --needed
 # cpanm -n Neovim::Ext
 
 ## Enable Network Manager daemon
-sudo systemctl enable NetworkManager
-sudo systemctl start NetworkManager
+# sudo systemctl enable NetworkManager
+# sudo systemctl start NetworkManager
 
 ## Time sync
-sudo systemctl enable chronyd.service
-sudo systemctl start chronyd.service
+# sudo systemctl enable chronyd.service
+# sudo systemctl start chronyd.service
 
 ## Change shell
 sudo chsh -s /bin/zsh "$USER"
