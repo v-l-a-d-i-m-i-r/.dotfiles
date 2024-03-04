@@ -63,6 +63,18 @@ c.add_component({
 })
 
 c.add_component({
+  name = 'angular-language-server',
+  binaries_directory = '/node_modules/.bin',
+  install_script = function()
+    local version = '17.2.2'
+    local node = c.get_component('node-18.17.1').bin('node')
+    local yarn = c.get_component('yarn').bin('yarn')
+
+    return node .. ' ' .. yarn .. ' add @angular/language-server@' .. version .. ' typescript@5.4.2'
+  end,
+})
+
+c.add_component({
   name = 'vscode-langservers-extracted',
   binaries_directory = '/node_modules/.bin',
   install_script = function()

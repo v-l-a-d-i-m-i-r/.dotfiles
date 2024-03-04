@@ -100,6 +100,22 @@ function _handle_nvmrc () {
 
   local node_version=$(cat .nvmrc)
 
+  if [[ $node_version == '16' ]]; then
+    nvm use 'v16.20.2'
+    return
+  fi
+
+
+  if [[ $node_version == '18' ]]; then
+    nvm use 'v18.17.1'
+    return
+  fi
+
+  if [[ $node_version == '14' ]]; then
+    nvm use 'v14.19.2'
+    return
+  fi
+
   if [[ $node_version == v* ]]; then
     nvm use $node_version
   else

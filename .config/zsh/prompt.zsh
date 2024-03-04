@@ -27,7 +27,7 @@ zstyle ':vcs_info:git*' actionformats "%F{green} %b%f %F{red}%a%f"
 setopt prompt_subst
 
 function preexec() {
-  timer=$(date +%s%3N)
+  # timer=$(date +%s%3N)
   vcs_info
 }
 
@@ -121,4 +121,5 @@ function zvm_after_select_vi_mode() {
   _load_prompt
 }
 
+ZVM_MODE=$ZVM_MODE_INSERT # hook to load prompt indicator on shell load
 _load_prompt
