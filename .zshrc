@@ -8,7 +8,7 @@ fi
 source ~/.config/zsh/nvm.zsh
 source ~/.config/zsh/completion.zsh
 source ~/.config/zsh/fzf.zsh
-source ~/.config/zsh/govm.zsh
+# source ~/.config/zsh/govm.zsh
 source ~/.config/zsh/plugins.zsh
 source ~/.config/zsh/ai-agents.zsh
 source ~/.config/zsh/prompt.zsh
@@ -17,6 +17,6 @@ source ~/.config/zsh/mpv.zsh
 source ~/.config/zsh/nvim.zsh
 source ~/.config/zsh/tools/gemini-ralph/gemini-ralph.zsh
 
-if [ -z "${TMUX}" ] && [ ! -z "${DISPLAY}" ]; then
+if [ -z "${TMUX}" ]; then
   tsh;
 fi
