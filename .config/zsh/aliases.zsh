@@ -187,7 +187,7 @@ function ts() {
 alias tsh='ts ~'
 function tsf() {
   if [[ $# -eq 0 ]]; then
-    ~/.bin/tmux-sessionizer /data/projects/flip/* 
+    ~/.bin/tmux-sessionizer ~/projects/ramboll/* 
   else
     ~/.bin/tmux-sessionizer $1
   fi
@@ -214,7 +214,7 @@ alias vlp="vlc --qt-start-minimized ~/vlc-playlist.xspf"
 alias sudo='sudo -Es'
 alias csvtojson="python -c 'import csv, json, sys; print(json.dumps([dict(r) for r in csv.DictReader(sys.stdin)]))'"
 
-alias nvim='/data/projects/nvim-0.10.1/bin/nvim'
+# alias nvim='/data/projects/nvim-0.9.4/bin/nvim'
 alias nvimdiff='nvim -d -o'
 
 function b64 (){
