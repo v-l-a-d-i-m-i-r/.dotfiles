@@ -197,7 +197,7 @@ function ts() {
 alias tsh='ts ~'
 function tsf() {
   if [[ $# -eq 0 ]]; then
-    ~/.bin/tmux-sessionizer /data/projects/flip/* 
+    ~/.bin/tmux-sessionizer ~/projects/ramboll/*
   else
     ~/.bin/tmux-sessionizer $1
   fi
