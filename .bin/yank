@@ -35,7 +35,7 @@ test -n "$TMUX" && maybe tmux load-buffer -
 
 # copy via X11
 test -n "$DISPLAY" && alive xhost && {
-  maybe xclip -sel c || maybe xsel -i -b
+  maybe /mnt/c/Windows/System32/clip.exe || maybe xclip -sel c || maybe xsel -i -b
 }
 
 # copy via OSC 52
