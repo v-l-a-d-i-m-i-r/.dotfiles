@@ -196,6 +196,16 @@ require'lspconfig'.angularls.setup{
 --   },
 -- }
 
+lspconfig.jsonls.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+  cmd = {
+    c.get_component("node-18.17.1").bin("node"),
+    c.get_component("vscode-langservers-extracted").bin("vscode-json-language-server"),
+    "--stdio",
+  },
+})
+
 -- https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
 lspconfig.emmet_ls.setup({
   on_attach = on_attach,

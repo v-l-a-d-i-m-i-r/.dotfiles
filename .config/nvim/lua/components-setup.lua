@@ -78,7 +78,7 @@ c.add_component({
   name = 'vscode-langservers-extracted',
   binaries_directory = '/node_modules/.bin',
   install_script = function()
-    local version = '4.4.0'
+    local version = '4.8.0'
     local path = c.get_component('node-16.14.2').bin('') .. ':$PATH'
 
     return 'PATH=' .. path .. ' npm install --save-exact ' .. 'vscode-langservers-extracted@' .. version
