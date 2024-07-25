@@ -66,7 +66,7 @@ c.add_component({
   name = 'angular-language-server',
   binaries_directory = '/node_modules/.bin',
   install_script = function()
-    local version = '17.2.2'
+    local version = '17.3.1'
     local node = c.get_component('node-18.17.1').bin('node')
     local yarn = c.get_component('yarn').bin('yarn')
 
