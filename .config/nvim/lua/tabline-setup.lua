@@ -38,42 +38,6 @@ local function get_hl(name)
   return hl_group
 end
 
-local function get_buf_abs_path(buf_nr)
-  return vim.api.nvim_buf_get_name(buf_nr)
-end
-
-local function get_buf_name_with_ext(buf_nr)
-  return vim.fn.expand('#' .. buf_nr .. ':t')
-end
-
-local function get_buf_ext(buf_nr)
-  return vim.fn.expand('#' .. buf_nr .. ':e')
-end
-
-local function draw_buf(params)
-  local buf_name_with_ext = params.buf_name_with_ext
-  local buf_width = params.buf_width
-
-  local buf_name_with_ext_len = string.len(buf_name_with_ext)
-  local icon_with_paddings_len = 5
-
-  if buf_name_with_ext_len > (buf_width - icon_with_paddings_len) then
-    return string.sub(buf_name_with_ext, 1, (buf_width - icon_with_paddings_len - 1)) .. '~'
-  end
-
-  if buf_name_with_ext_len < (buf_width - icon_with_paddings_len) then
-    local buf_name_with_ext_normalized = buf_name_with_ext
-
-    while string.len(buf_name_with_ext_normalized) < (buf_width - icon_with_paddings_len - 1) do
-      buf_name_with_ext_normalized = buf_name_with_ext_normalized .. ' '
-    end
-
-    return buf_name_with_ext_normalized
-  end
-
-  return params.buf_name_with_ext
-end
-
 local function setup()
   vim.o.showtabline = 2
   vim.o.tabline = '%!v:lua.nvim_tabline()'
@@ -92,105 +56,196 @@ local function setup()
   vim.api.nvim_set_hl(0, hl_group_names.sep_active, { fg = hl_normal.bg, bg = hl_active.bg })
 end
 
-local function tabline()
-  local nvim_width = vim.go.columns
-  local line = ''
-  local buf_nrs = vim.api.nvim_list_bufs()
-  local active_buf_nrs = vim.fn.tabpagebuflist()
-  local filterred_buf_nrs = {}
-  for _, buf_nr in ipairs(buf_nrs) do
-    if not vim.api.nvim_buf_is_loaded(buf_nr) then
-      goto continue
-    end
+local function Line()
+  local line = {}
 
-    local buf_path = get_buf_abs_path(buf_nr)
-
-    if buf_path == '' then
-      goto continue
-    end
-
-    for _, skipped_buf_name in ipairs(skipped_buf_names) do
-      if buf_path:find(skipped_buf_name) ~= nil then
-        goto continue
-      end
-    end
-
-    table.insert(filterred_buf_nrs, buf_nr)
-
-    ::continue::
-  end
-
-  local bufs_qty = #filterred_buf_nrs
-  local buf_width = math.min(nvim_width / bufs_qty, 30)
-
-  local is_prev_buf_active = false
-  for i, buf_nr in ipairs(filterred_buf_nrs) do
-    local is_first = i == 1
-    local is_last = i == table.getn(filterred_buf_nrs)
-    local is_modified = vim.api.nvim_buf_get_option(buf_nr, 'modified')
-    local is_active = false
-    for _, active_buf_nr in ipairs(active_buf_nrs) do
-      if buf_nr == active_buf_nr then
-        is_active = true
-      end
-    end
-
-    local buf_name_with_ext = get_buf_name_with_ext(buf_nr)
-    local buf_ext = get_buf_ext(buf_nr)
-
-    local buf_icon, buf_icon_hl_group = nvim_dev_icons.get_icon(buf_name_with_ext, buf_ext, { default = true })
-
-    local tab_hl_group_name = hl_group_names.tab_normal
-    if is_active and is_modified then
-      tab_hl_group_name = hl_group_names.tab_active_modified
-    end
-    if not is_active and is_modified then
-      tab_hl_group_name = hl_group_names.tab_normal_modified
-    end
-    if is_active and not is_modified then
-      tab_hl_group_name = hl_group_names.tab_active
-    end
-
-    local icon_hl_group_name = is_active and buf_icon_hl_group or hl_group_names.tab_normal
-
-    local sep_hl_group_name
-    if not is_first and is_active and is_prev_buf_active then
-      sep_hl_group_name = hl_group_names.sep_active
-    end
-    if not is_first and not is_active and not is_prev_buf_active then
-      sep_hl_group_name = hl_group_names.sep_normal
-    end
-
-    local buf_name_with_ext_normalized = draw_buf({
-      buf_name_with_ext = buf_name_with_ext,
-      buf_width = buf_width,
-    })
-
-    if not is_first and sep_hl_group_name ~= nil then
-      line = line .. add_hl_group(sep_hl_group_name, chars.separator)
-    end
-    if not is_first and sep_hl_group_name == nil then
-      line = line .. ' '
-    end
-
-    line = line .. add_hl_group(tab_hl_group_name, ' ')
-    line = line .. add_hl_group(icon_hl_group_name, buf_icon)
-    line = line .. add_hl_group(tab_hl_group_name, ' ')
-    line = line .. add_hl_group(tab_hl_group_name, buf_name_with_ext_normalized)
-    line = line .. add_hl_group(tab_hl_group_name, ' ')
-
-    if is_last and not is_active then
-      line = line .. add_hl_group(hl_group_names.sep_normal, chars.separator)
-    end
-
-    is_prev_buf_active = is_active
-  end
-
-  return line .. add_hl_group(hl_group_names.fill, '')
+  return {
+    add = function(value)
+      table.insert(line, value)
+    end,
+    build = function()
+      return table.concat(line)
+    end,
+  }
 end
 
+local function Tab(params)
+  local isActive = params.isActive or false
+  local isModified = params.isModified or false
+  local nameWithExtention = params.nameWithExtention or ''
+  local extention = params.extention or ''
+  local width = params.width or 0
+
+  local function drawTab(buf_name_with_ext, buf_width)
+    local buf_name_with_ext_len = string.len(buf_name_with_ext)
+    local icon_with_paddings_len = 5
+
+    if buf_name_with_ext_len > (buf_width - icon_with_paddings_len) then
+      return string.sub(buf_name_with_ext, 1, (buf_width - icon_with_paddings_len - 1)) .. '~'
+    end
+
+    if buf_name_with_ext_len < (buf_width - icon_with_paddings_len) then
+      local buf_name_with_ext_normalized = buf_name_with_ext
+
+      while string.len(buf_name_with_ext_normalized) < (buf_width - icon_with_paddings_len - 1) do
+        buf_name_with_ext_normalized = buf_name_with_ext_normalized .. ' '
+      end
+
+      return buf_name_with_ext_normalized
+    end
+
+    return buf_name_with_ext
+  end
+
+  return {
+    build = function()
+      local buf_icon, iconHighlightGroup = nvim_dev_icons.get_icon(nameWithExtention, extention, { default = true })
+      local iconHighlightGroupName = isActive and iconHighlightGroup or hl_group_names.tab_normal
+
+      local tab_hl_group_name = hl_group_names.tab_normal
+      if isActive and isModified then
+        tab_hl_group_name = hl_group_names.tab_active_modified
+      end
+      if not isActive and isModified then
+        tab_hl_group_name = hl_group_names.tab_normal_modified
+      end
+      if isActive and not isModified then
+        tab_hl_group_name = hl_group_names.tab_active
+      end
+
+      local buf_name_with_ext_normalized = drawTab(nameWithExtention, width)
+
+      return add_hl_group(tab_hl_group_name, ' ')
+        .. add_hl_group(iconHighlightGroupName, buf_icon)
+        .. add_hl_group(tab_hl_group_name, ' ')
+        .. add_hl_group(tab_hl_group_name, buf_name_with_ext_normalized)
+        .. add_hl_group(tab_hl_group_name, ' ')
+    end,
+  }
+end
+
+local function Separator(params)
+  local isActive = params.isActive or false
+
+  return {
+    build = function()
+      local separatorHighlightGroupName = isActive and hl_group_names.sep_active or hl_group_names.sep_normal
+
+      return add_hl_group(separatorHighlightGroupName, chars.separator)
+    end,
+  }
+end
+
+local function Tabline()
+  local function filterBufferNumbers(numbers, skippedBufferNames)
+    local result = {}
+
+    for _, number in ipairs(numbers) do
+      if not vim.api.nvim_buf_is_loaded(number) then
+        goto continue
+      end
+
+      local buf_path = vim.api.nvim_buf_get_name(number)
+
+      if buf_path == '' then
+        goto continue
+      end
+
+      for _, skippedBufferName in ipairs(skippedBufferNames) do
+        if buf_path:find(skippedBufferName) ~= nil then
+          goto continue
+        end
+      end
+
+      table.insert(result, number)
+
+      ::continue::
+    end
+
+    return result
+  end
+
+  local function checkBufferActive(bufferNumber)
+    local activeBufferNumbers = vim.fn.tabpagebuflist()
+
+    for _, activeBufferNumber in ipairs(activeBufferNumbers) do
+      if bufferNumber == activeBufferNumber then
+        return true
+      end
+    end
+
+    return false
+  end
+
+  local function getStartSeparator(isActive, isPrevBufferActive)
+    if isActive ~= isPrevBufferActive then
+      return ' '
+    end
+
+    return Separator({ isActive = isActive }).build()
+  end
+
+  local function getBufferNameWithExtention(bufferNumber)
+    return vim.fn.expand('#' .. bufferNumber .. ':t')
+  end
+
+  local function getBufferExtention(bufferNumber)
+    return vim.fn.expand('#' .. bufferNumber .. ':e')
+  end
+
+  return {
+    build = function()
+      local nvim_width = vim.go.columns
+      local line = Line()
+      local buf_nrs = vim.api.nvim_list_bufs()
+      local filterredBufferNumbers = filterBufferNumbers(buf_nrs, skipped_buf_names)
+
+      local bufs_qty = #filterredBufferNumbers
+      local buf_width = math.min(nvim_width / bufs_qty, 30)
+
+      local isPrevBufferActive = false
+      for i, bufferNumber in ipairs(filterredBufferNumbers) do
+        local isFirst = i == 1
+        local isLast = i == table.getn(filterredBufferNumbers)
+        local isModified = vim.api.nvim_buf_get_option(bufferNumber, 'modified')
+        local isActive = checkBufferActive(bufferNumber)
+
+        if not isFirst then
+          local startSeparator = getStartSeparator(isActive, isPrevBufferActive)
+
+          line.add(startSeparator)
+        end
+
+        local tab = Tab({
+          isActive = isActive,
+          isModified = isModified,
+          nameWithExtention = getBufferNameWithExtention(bufferNumber),
+          extention = getBufferExtention(bufferNumber),
+          width = buf_width,
+        }).build()
+
+        line.add(tab)
+
+        if isLast and not isActive then
+          local endSeparator = Separator({ isActive = false }).build()
+
+          line.add(endSeparator)
+        end
+
+        isPrevBufferActive = isActive
+      end
+
+      line.add(add_hl_group(hl_group_names.fill, ''))
+
+      return line.build()
+    end,
+  }
+end
+
+local tabline = Tabline()
+
 function _G.nvim_tabline()
-  return tabline()
+  return tabline.build()
 end
 
 return {
