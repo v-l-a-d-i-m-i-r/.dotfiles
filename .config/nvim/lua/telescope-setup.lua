@@ -13,7 +13,7 @@ local cwd = vim.fn.getcwd()
 require('telescope').setup({
   defaults = {
     file_ignore_patterns = {
-      '.git',
+      '.git/',
       'plugged',
       'nvim/components',
       'lua_modules',

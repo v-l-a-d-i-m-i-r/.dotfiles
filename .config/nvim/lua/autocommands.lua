@@ -1,5 +1,5 @@
 local c = require('components')
-local env = require('env')
+local config = require('config')
 
 vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufRead' }, {
   pattern = { '.zshrc', '*.zsh' },
@@ -61,7 +61,7 @@ vim.api.nvim_create_autocmd({ 'TextYankPost' }, {
 vim.api.nvim_create_autocmd('Signal', {
   pattern = 'SIGUSR1',
   callback = function()
-    vim.cmd('luafile' .. env.NVIM_CONFIG_ROOT .. '/lua/colorscheme-setup.lua')
+    vim.cmd('luafile' .. config.NVIM_CONFIG_ROOT .. '/lua/colorscheme-setup.lua')
   end,
 })
 

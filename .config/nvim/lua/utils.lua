@@ -1,4 +1,5 @@
 local c = require('components')
+local config = require('config')
 
 local cli_and = function(commands_table)
   return table.concat(commands_table, ' && ')
@@ -17,7 +18,13 @@ local install_node = function(params)
     binaries_directory = node_binaries_directory,
     install_script = function()
       return cli_pipe({
-        'curl -L https://nodejs.org/download/release/v' .. version .. '/node-v' .. version .. '-linux-x64.tar.gz',
+        'curl -L https://nodejs.org/download/release/v'
+          .. version
+          .. '/node-v'
+          .. version
+          .. '-'
+          .. config.NODEJS_ARCH
+          .. '.tar.gz',
         'tar -xz --strip-components=1',
       })
     end,
