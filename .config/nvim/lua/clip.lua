@@ -12,8 +12,6 @@ vim.api.nvim_create_autocmd({ 'TextYankPost' }, {
 
     if vim.v.shell_error ~= 0 then
       vim.api.nvim_err_writeln(escape)
-    else
-      -- vim.fn.writefile({escape}, '/dev/tty', 'b')
     end
   end,
 })

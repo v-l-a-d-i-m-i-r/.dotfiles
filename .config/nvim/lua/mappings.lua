@@ -6,16 +6,8 @@
 --   term_mode = "t",
 --   command_mode = "c",
 
-local function map(mode, lhs, rhs, opts)
-  local options = { noremap = true }
-  if opts then
-    options = vim.tbl_extend('force', options, opts)
-  end
-  vim.api.nvim_set_keymap(mode, lhs, rhs, options)
-end
-
-map('n', '<space>o', 'o<Esc>')
-map('n', '<space>O', 'O<Esc>')
+vim.api.nvim_set_keymap('n', '<space>o', 'o<Esc>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<space>O', 'O<Esc>', { noremap = true, silent = true })
 
 -- Reload init.lua (:so %)
 vim.api.nvim_set_keymap('n', '<space><space>', 'za', { noremap = true, silent = true })
@@ -55,20 +47,6 @@ vim.api.nvim_set_keymap('n', '<space>P', '"+P', { noremap = true, silent = true 
 vim.api.nvim_set_keymap('v', '<space>p', '"+p', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('v', '<space>P', '"+P', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('v', 'p', '"_dP', { noremap = true, silent = true })
-
--- Vertical allign center after the scrolling
--- vim.api.nvim_set_keymap('n', '<C-u>', '<C-u>zz', { noremap = true, silent = true })
--- vim.api.nvim_set_keymap('n', '<C-d>', '<C-d>zz', { noremap = true, silent = true })
--- vim.api.nvim_set_keymap('n', '{', '{zz', { noremap = true, silent = true })
--- vim.api.nvim_set_keymap('n', '}', '}zz', { noremap = true, silent = true })
--- vim.api.nvim_set_keymap('n', 'n', 'nzz', { noremap = true, silent = true })
--- vim.api.nvim_set_keymap('n', 'N', 'Nzz', { noremap = true, silent = true })
--- vim.api.nvim_set_keymap('n', '*', '*zz', { noremap = true, silent = true })
--- vim.api.nvim_set_keymap('n', '#', '#zz', { noremap = true, silent = true })
--- vim.api.nvim_set_keymap('n', 'g*', 'g*zz', { noremap = true, silent = true })
--- vim.api.nvim_set_keymap('n', 'g#', 'g#zz', { noremap = true, silent = true })
--- vim.api.nvim_set_keymap('n', '<C-o>', '<C-o>zz', { noremap = true, silent = true })
--- vim.api.nvim_set_keymap('n', '<C-i>', '<C-i>zz', { noremap = true, silent = true })
 
 -- Clear highlighting on escape in normal mode
 vim.api.nvim_set_keymap('n', '<Esc>', ':noh<CR><Esc>', { noremap = true, silent = true })
