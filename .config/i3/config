@@ -10,7 +10,7 @@ font pango:DejaVuSansMonoNerdFont, 13
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec xterm
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -181,7 +181,7 @@ exec_always --no-startup-id "synclient TouchpadOff=1"
 exec_always --no-startup-id "pulseaudio --kill && pulseaudio --start"
 # exec_always --no-startup-id xxkb
 # exec_always --no-startup-id gxkb
-exec_always --no-startup-id setxkbmap -layout us,ru -option -option caps:escape,grp:shift_caps_toggle
+exec_always --no-startup-id "setxkbmap -layout us,ru,ro -variant ,,std -option -option caps:escape,grp:shift_caps_toggle"
 # exec_always --no-startup-id xmodmap -e 'clear Lock'
 # exec_always --no-startup-id xmodmap -e 'keycode 9 = Caps_Lock NoSymbol Caps_Lock'
 # exec_always --no-startup-id xmodmap -e 'keycode 66 = Escape NoSymbol Escape'
@@ -244,6 +244,7 @@ for_window [class="St"] focus
 #for_window [class="QupZilla"] border none
 #for_window [class="Skype"]    floating disable
 for_window [class="Terminator"]    floating disable
+for_window [class="Code"]    floating disable
 
 # workspace_layout tabbed
 # for_window [class=".*"] title_format "%class - %title"
