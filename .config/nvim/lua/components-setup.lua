@@ -1,4 +1,3 @@
-
 -- vim.opt.rtp:append(vim.fn.stdpath('config') .. '/plugins/components')
 local NVIM_CONFIG_ROOT = require('config').NVIM_CONFIG_ROOT
 
@@ -429,7 +428,7 @@ c.add_component({
   install_script = function()
     return u.clone_git_repo({
       url = 'https://github.com/nvim-telescope/telescope.nvim',
-      tag = '0.1.5',
+      tag = '0.1.8',
     })
   end,
   on_init = function()
@@ -623,7 +622,7 @@ c.add_component({
   install_script = function()
     return u.clone_git_repo({
       url = 'https://github.com/v-l-a-d-i-m-i-r/nvim-themes',
-      commit = 'd7ef27d5059e544c546e4abc6b8098f4d4c9549d',
+      commit = '7f7baebf0bd85cacfb1762d2dd3f9754912e4309',
     })
   end,
   on_init = function()

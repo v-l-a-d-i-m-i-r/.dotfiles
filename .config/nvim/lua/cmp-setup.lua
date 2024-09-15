@@ -1,4 +1,5 @@
-local kind_icons = require('icons').kind_icons
+local kind_icons = require('assets').kind_icons
+local borders = require('assets').borders
 local luasnip = require('luasnip')
 
 local cmp = require('cmp')
@@ -57,5 +58,32 @@ cmp.setup({
     { name = 'path' },
     { name = 'luasnip' },
     -- { name = 'buffer' },
+  },
+  window = {
+    -- completion = {
+    -- border = {
+    --   { borders.top_left_corner, 'FloatBorder' },
+    --   { borders.horisontal, 'FloatBorder' },
+    --   { borders.top_right_corner, 'FloatBorder' },
+    --   { borders.vertical, 'FloatBorder' },
+    --   { borders.bottom_right_corner, 'FloatBorder' },
+    --   { borders.horisontal, 'FloatBorder' },
+    --   { borders.bottom_left_corner, 'FloatBorder' },
+    --   { borders.vertical, 'FloatBorder' },
+    -- },
+    -- winhighlight = 'Normal:CmpPmenu,CursorLine:PmenuSel,Search:None',
+    -- },
+    documentation = {
+      border = {
+        borders.top_left_corner,
+        borders.horisontal,
+        borders.top_right_corner,
+        borders.vertical,
+        borders.bottom_right_corner,
+        borders.horisontal,
+        borders.bottom_left_corner,
+        borders.vertical,
+      },
+    },
   },
 })

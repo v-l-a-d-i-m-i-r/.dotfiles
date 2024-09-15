@@ -1,5 +1,6 @@
 -- https://github.com/nvim-telescope/telescope.nvim/wiki/Configuration-Recipes
 
+local borders = require('assets').borders
 local actions = require('telescope.actions')
 
 local sorting_strategy = 'ascending'
@@ -31,6 +32,16 @@ require('telescope').setup({
           actions.center(prompt_bufnr)
         end,
       },
+    },
+    borderchars = {
+      borders.horisontal,
+      borders.vertical,
+      borders.horisontal,
+      borders.vertical,
+      borders.top_left_corner,
+      borders.top_right_corner,
+      borders.bottom_right_corner,
+      borders.bottom_left_corner,
     },
   },
   pickers = {
@@ -91,8 +102,8 @@ require('telescope').setup({
     },
     fzf = {
       fuzzy = true, -- false will only do exact matching
-      override_generic_sorter = true, -- override the generic sorter
-      override_file_sorter = true, -- override the file sorter
+      -- override_generic_sorter = true, -- override the generic sorter
+      -- override_file_sorter = true, -- override the file sorter
       case_mode = 'smart_case', -- or "ignore_case" or "respect_case"
     },
   },

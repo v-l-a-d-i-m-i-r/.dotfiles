@@ -1,6 +1,10 @@
 -- https://github.com/iamcco/diagnostic-languageserver
-local diagnostic_icons = require('icons').diagnostic_icons
+local diagnostic_icons = require('assets').diagnostic_icons
+local borders = require('assets').borders
+local border_types = require('assets').border_types
 local lspconfig = require('lspconfig')
+
+require('lspconfig.ui.windows').default_options.border = border_types.single
 
 local opts = { noremap = true, silent = true }
 
@@ -20,7 +24,20 @@ vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', op
 vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
 vim.api.nvim_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
 
+local border = {
+  { borders.top_left_corner, 'FloatBorder' },
+  { borders.horisontal, 'FloatBorder' },
+  { borders.top_right_corner, 'FloatBorder' },
+  { borders.vertical, 'FloatBorder' },
+  { borders.bottom_right_corner, 'FloatBorder' },
+  { borders.horisontal, 'FloatBorder' },
+  { borders.bottom_left_corner, 'FloatBorder' },
+  { borders.vertical, 'FloatBorder' },
+}
+
 local handlers = {
+  ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
+  ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
   ['textDocument/definition'] = function(err, result, method, ...)
     if not vim.tbl_islist(result) then
       return vim.lsp.handlers['textDocument/definition'](err, result, method, ...)
@@ -68,6 +85,10 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
   require('lsp_signature').on_attach({
     hint_prefix = ' ',
+    bind = true, -- This is mandatory, otherwise border config won't get registered.
+    handler_opts = {
+      border = border_types.single,
+    },
   }, bufnr)
 
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
