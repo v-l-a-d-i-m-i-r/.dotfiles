@@ -70,7 +70,7 @@ function _nvm_install () {
   fi
 
   mkdir -p $output_dir
-  curl -L https://nodejs.org/download/release/${version}/node-${version}-linux-x64.tar.gz | tar -xz --strip-components=1 -C $output_dir
+  curl -L https://nodejs.org/download/release/${version}/node-${version}-${NVM_ARCH}.tar.gz | tar -xz --strip-components=1 -C $output_dir
 }
 
 function nvm () {
@@ -99,6 +99,19 @@ function _handle_nvmrc () {
   fi
 
   local node_version=$(cat .nvmrc)
+
+  if [[ $node_version == '16' ]]; then
+    nvm use 'v16.20.2'
+    return
+  fi
+  if [[ $node_version == '18' ]]; then
+    nvm use 'v18.17.1'
+    return
+  fi
+  if [[ $node_version == '14' ]]; then
+    nvm use 'v14.19.2'
+    return
+  fi
 
   if [[ $node_version == v* ]]; then
     nvm use $node_version

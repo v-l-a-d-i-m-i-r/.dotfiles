@@ -147,7 +147,7 @@ lspconfig.tsserver.setup({
   on_attach = on_attach,
   capabilities = capabilities,
   cmd = {
-    c.get_component('node-18.17.1').bin('node'),
+    c.get_component('node-18.19.1').bin('node'),
     c.get_component('typescript-language-server').bin('typescript-language-server'),
     '--stdio',
   },
@@ -165,7 +165,7 @@ lspconfig.tsserver.setup({
 
 local project_library_path = c.get_component('angular-language-server').bin()
 local cmd = {
-  c.get_component('node-18.17.1').bin('node'),
+  c.get_component('node-18.19.1').bin('node'),
   c.get_component('angular-language-server').bin('ngserver'),
   '--stdio',
   '--tsProbeLocations',
@@ -185,7 +185,7 @@ lspconfig.jsonls.setup({
   on_attach = on_attach,
   capabilities = capabilities,
   cmd = {
-    c.get_component('node-18.17.1').bin('node'),
+    c.get_component('node-18.19.1').bin('node'),
     c.get_component('vscode-langservers-extracted').bin('vscode-json-language-server'),
     '--stdio',
   },

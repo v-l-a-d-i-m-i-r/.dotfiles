@@ -74,7 +74,8 @@ function precmd() {
   fi
   
   if [ $k8s ]; then
-    prompt_k8s=" %F{$ZSH_PROMPT_K8S}ﴱ ${k8s}%f"
+    local namespace=$(kubectl config view --minify -o jsonpath='{..namespace}')
+    prompt_k8s=" %F{$ZSH_PROMPT_K8S}ﴱ ${k8s} (${namespace})%f"
   fi
 
   RPROMPT="${prompt_elapsed}${prompt_node}${prompt_git}${prompt_k8s}"

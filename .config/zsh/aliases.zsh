@@ -61,6 +61,7 @@ alias gplc='git pull origin `git rev-parse --abbrev-ref HEAD`'
 alias gpsc='git push origin `git rev-parse --abbrev-ref HEAD`'
 alias gco='git checkout '
 alias gcob='git checkout -b '
+alias gcof='git checkout $(g branch | fzf)'
 alias gm='git merge '
 alias gg='git branch -a | tr -d \* | sed "/->/d" | xargs git grep '
 function ggf() {
@@ -69,7 +70,8 @@ function ggf() {
     git ls-tree -r --name-only $branch | grep "$1" | sed 's/^/'$branch': /'
   done
 }
-alias gl='git log --pretty=format:"%C(yellow)%h%C(reset)%<|(30) %C(blue)%an%C(reset)%<|(47) %C(green)%ad%C(reset) %s%C(red)%d%C(reset)" --graph --date=format-local:"%Y-%m-%d %H:%M:%S"'
+# alias gl='git log --pretty=format:"%C(yellow)%h%C(reset)%<|(30) %C(blue)%an%C(reset)%<|(47) %C(green)%ad%C(reset) %s%C(red)%d%C(reset)" --graph --date=format-local:"%Y-%m-%d %H:%M:%S"'
+alias gl='git log --abbrev=8 --pretty=format:"%C(yellow)%h%C(reset)%<|(30) %C(blue)%an%C(reset)%<|(47) %C(green)%ad%C(reset) %s" --graph --date=format-local:"%Y-%m-%d %H:%M:%S"'
 alias gla='gl --all'
 alias gs='git status'
 
@@ -152,7 +154,11 @@ alias gs='git status'
 
 # tmux
 alias t='tmux '
-alias ta='~/.bin/tmux-sessionizer $(t ls | fzf | cut -d ':' -f1)'
+# alias ta='~/.bin/tmux-sessionizer $(t ls | fzf | cut -d ':' -f1)'
+function ta() {
+  local session_name=$(tmux list-sessions -F '#{session_id}: #S' | sort| awk '{print $2}' | awk '{print NR-1 ": " $0}' | fzf | awk '{print $2}');
+  ~/.bin/tmux-sessionizer "${session_name}";
+}
 function ts() {
   if [[ $# -eq 0 ]]; then
     folders=(
@@ -165,9 +171,9 @@ function ts() {
       folders+=(/data/projects/*)
     fi
 
-    if [ -d ~/.config/nvim/plugins ]; then
-      folders+=(~/.config/nvim/plugins/*)
-    fi
+    # if [ -d ~/.config/nvim/plugins ]; then
+    #   folders+=(~/.config/nvim/plugins/*)
+    # fi
 
     if [ -d /data/projects/monorepo ]; then
       folders+=(/data/projects/monorepo/*)
@@ -208,7 +214,7 @@ alias vlp="vlc --qt-start-minimized ~/vlc-playlist.xspf"
 alias sudo='sudo -Es'
 alias csvtojson="python -c 'import csv, json, sys; print(json.dumps([dict(r) for r in csv.DictReader(sys.stdin)]))'"
 
-alias nvim='/data/projects/nvim-0.9.4/bin/nvim'
+alias nvim='/data/projects/nvim-0.10.1/bin/nvim'
 alias nvimdiff='nvim -d -o'
 
 function b64 (){
@@ -218,3 +224,9 @@ function b64 (){
 function b64d () {
   echo $@ | base64 -d
 }
+
+function pinfo() {
+  cmd='(pacman -Qi {}; pactree -r {})'; pacman -Q --quiet | fzf --preview "$cmd"
+}
+
+alias pott='f() { xdg-open ${1/https:\/\/teams.microsoft.com/msteams:} }; f'

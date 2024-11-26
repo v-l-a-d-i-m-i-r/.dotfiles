@@ -71,7 +71,7 @@ function _govm_install () {
 
   mkdir -p $output_dir
   # curl -L https://nodejs.org/download/release/${version}/node-${version}-linux-x64.tar.gz | tar -xz --strip-components=1 -C $output_dir
-  curl -L https://go.dev/dl/go${version}.linux-amd64.tar.gz | tar -xz --strip=1 -C $output_dir
+  curl -L https://go.dev/dl/go${version}.${GOVM_ARCH}.tar.gz | tar -xz --strip=1 -C $output_dir
 }
 
 function govm () {

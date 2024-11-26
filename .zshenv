@@ -7,7 +7,9 @@ export SAVEHIST=10000000
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#797979'
 
 export NVM_DIR="$HOME/.nvm"
+export NVM_ARCH="linux-x64"
 export GOVM_DIR="$HOME/.go"
+export GOVM_ARCH="linux-amd64"
 export EDITOR="nvim"
 export KUBE_EDITOR="nvim"
 export MANPAGER="nvim +Man!"

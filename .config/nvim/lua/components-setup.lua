@@ -40,7 +40,7 @@ add_nodejs({
 })
 
 add_nodejs({
-  version = '18.17.1',
+  version = '18.19.1',
 })
 
 c.add_component({
@@ -87,10 +87,10 @@ c.add_component({
   binaries_directory = '/node_modules/.bin',
   install_script = function()
     local version = '4.3.1'
-    local node = c.get_component('node-18.17.1').bin('node')
+    local node = c.get_component('node-18.19.1').bin('node')
     local yarn = c.get_component('yarn').bin('yarn')
 
-    return node .. ' ' .. yarn .. ' add typescript-language-server@' .. version .. ' typescript@4.6.4'
+    return node .. ' ' .. yarn .. ' add typescript-language-server@' .. version .. ' typescript@5.4.2'
   end,
 })
 
@@ -99,7 +99,7 @@ c.add_component({
   binaries_directory = '/node_modules/.bin',
   install_script = function()
     local version = '17.3.1'
-    local node = c.get_component('node-18.17.1').bin('node')
+    local node = c.get_component('node-18.19.1').bin('node')
     local yarn = c.get_component('yarn').bin('yarn')
 
     return node .. ' ' .. yarn .. ' add @angular/language-server@' .. version .. ' typescript@5.4.2'
