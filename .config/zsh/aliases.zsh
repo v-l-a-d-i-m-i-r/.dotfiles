@@ -202,6 +202,28 @@ function nri() {
 #Kowl
 function kowl() { docker run --rm -ti --network=host -p 8080:8080 -e KAFKA_BROKERS=$1 quay.io/cloudhut/kowl:master }
 
+#PGAdmin
+pgadmin4-docker() {
+  local working_dir="$HOME/.pgadmin-docker";
+  local pg_gid=5050;
+  local pg_uid=5050;
+
+  if [ ! -d "${working_dir}" ]; then
+    mkdir -p "$working_dir";
+
+    sudo chown -R "${pg_uid}":"${pg_gid}" "${working_dir}";
+    sudo chmod -R 770 "${working_dir}";
+  fi
+
+  docker run --rm -ti \
+    -p 5050:5050 \
+    -e "PGADMIN_DEFAULT_EMAIL=user@domain.com" \
+    -e "PGADMIN_DEFAULT_PASSWORD=SuperSecret" \
+    -e 'PGADMIN_LISTEN_PORT=5050' \
+    -v "$working_dir:/var/lib/pgadmin" \
+    dpage/pgadmin4:9.1.0;
+}
+
 #IP
 function myip() { ip route get 8.8.8.8 | grep -oP 'src \K[^ ]+' }
 function opened-ports() { sudo netstat -tulpn | grep LISTEN }
@@ -230,3 +252,4 @@ function pinfo() {
 }
 
 alias pott='f() { xdg-open ${1/https:\/\/teams.microsoft.com/msteams:} }; f'
+alias youtube-dl='docker run --rm -i -e PGID=$(id -g) -e PUID=$(id -u) -v "$(pwd)":/workdir:rw mikenye/youtube-dl:2025.02.19'
