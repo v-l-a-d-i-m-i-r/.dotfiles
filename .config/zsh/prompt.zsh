@@ -16,6 +16,7 @@ ZSH_PROMPT_ZVM_INSERT="#A3BE8C";
 ZSH_PROMPT_ZVM_VISUAL="#8FBCBB";
 ZSH_PROMPT_ZVM_REPLACE="#D08770";
 # end colors
+ZSH_PROMPT_GO="${ZSH_PROMPT_ZVM_VISUAL}"
 
 NL=$'
 ';
@@ -34,6 +35,7 @@ function preexec() {
 function precmd() {
   # vcs_info
   local node=$(node -v 2> /dev/null)
+  local go=$(go version 2> /dev/null | { read _ _ v _; echo ${v#go}; })
   local git=$(git branch 2> /dev/null)
   local k8s=$(kubectl config current-context 2> /dev/null)
 
@@ -69,6 +71,10 @@ function precmd() {
     prompt_node=" %F{$ZSH_PROMPT_NODE} ${node:1}%f"
   fi
 
+  if [ $go ]; then
+    prompt_go=" %F{$ZSH_PROMPT_GO} ${go}%f"
+  fi
+
   if [ $git ]; then
     prompt_git=" %F{$ZSH_PROMPT_GIT}$(git branch | grep '*' | awk '{$1=""; print $0}')%f"
   fi
@@ -78,7 +84,7 @@ function precmd() {
     prompt_k8s=" %F{$ZSH_PROMPT_K8S}ﴱ ${k8s} (${namespace})%f"
   fi
 
-  RPROMPT="${prompt_elapsed}${prompt_node}${prompt_git}${prompt_k8s}"
+  RPROMPT="${prompt_elapsed}${prompt_node}${prompt_go}${prompt_git}${prompt_k8s}"
 }
 
 function make_cursor_as_blinking_block() {
