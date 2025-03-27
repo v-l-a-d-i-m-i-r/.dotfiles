@@ -2,7 +2,9 @@
 local function join(list, separator)
   return table.concat(list, separator or ',')
 end
+
 vim.g.editorconfig = true
+vim.g.tmux_resizer_no_mappings = 1
 
 vim.opt.title = true
 vim.opt.encoding = 'UTF-8'

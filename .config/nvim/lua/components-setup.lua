@@ -618,6 +618,32 @@ c.add_component({
 })
 
 c.add_component({
+  name = 'vim-tmux-navigator',
+  install_script = function()
+    return u.clone_git_repo({
+      url = 'https://github.com/christoomey/vim-tmux-navigator',
+      commit = '424b5caa154bff34dc258ee53cec5a8e36cf7ea8',
+    })
+  end,
+  on_init = function()
+    c.load_plugin('vim-tmux-navigator')
+  end,
+})
+
+c.add_component({
+  name = 'better-vim-tmux-resizer',
+  install_script = function()
+    return u.clone_git_repo({
+      url = 'https://github.com/RyanMillerC/better-vim-tmux-resizer',
+      commit = 'a791fe5b4433ac43a4dad921e94b7b5f88751048',
+    })
+  end,
+  on_init = function()
+    c.load_plugin('better-vim-tmux-resizer')
+  end,
+})
+
+c.add_component({
   name = 'nvim-themes',
   install_script = function()
     return u.clone_git_repo({

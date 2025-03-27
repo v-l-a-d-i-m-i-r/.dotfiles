@@ -19,17 +19,18 @@ vim.api.nvim_set_keymap('v', '<A-j>', ":m '>+1<CR>gv", { noremap = true, silent 
 vim.api.nvim_set_keymap('v', '<a-k>', ":m '<-2<CR>gv", { noremap = true, silent = true })
 vim.api.nvim_set_keymap('v', '<A-l>', '>gv', { noremap = true, silent = true })
 
--- Better window navigation
-vim.api.nvim_set_keymap('n', '<C-h>', '<C-w>h', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-j>', '<C-w>j', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', { noremap = true, silent = true })
+-- Vim-Tmux navigator
+vim.api.nvim_set_keymap('n', '<C-h>', ':TmuxNavigateLeft<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-j>', ':TmuxNavigateDown<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-k>', ':TmuxNavigateUp<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-l>', ':TmuxNavigateRight<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-\\>', ':TmuxNavigatePrevious<CR>', { noremap = true, silent = true })
 
--- Resize window
-vim.api.nvim_set_keymap('n', '<A-h>', ':vertical resize -2<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<A-j>', ':resize +2<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<A-k>', ':resize -2<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<A-l>', ':vertical resize +2<CR>', { noremap = true, silent = true })
+-- Vim-Tmux resizer
+vim.api.nvim_set_keymap('n', '<A-h>', ':TmuxResizeLeft<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<A-j>', ':TmuxResizeDown<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<A-k>', ':TmuxResizeUp<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<A-l>', ':TmuxResizeRight<CR>', { noremap = true, silent = true })
 
 -- Naviagate buffers
 vim.api.nvim_set_keymap('n', '<S-l>', ':bn<CR>', { noremap = true, silent = true })
