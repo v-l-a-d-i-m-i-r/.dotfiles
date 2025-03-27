@@ -226,5 +226,6 @@ lspconfig.gopls.setup({
 })
 
 vim.lsp.handlers['textDocument/references'] = require('telescope.builtin').lsp_references
+vim.lsp.handlers['textDocument/implementation'] = require('telescope.builtin').lsp_implementations
 -- Enable logging for LSP
 -- vim.lsp.set_log_level("debug")

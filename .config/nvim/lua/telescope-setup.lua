@@ -82,6 +82,12 @@ require('telescope').setup({
       cwd = cwd,
       show_line = false,
     },
+    lsp_implementations = {
+      sorting_strategy = sorting_strategy,
+      layout_config = layout_config,
+      cwd = cwd,
+      show_line = false,
+    },
     buffers = {
       sorting_strategy = sorting_strategy,
       layout_config = layout_config,
