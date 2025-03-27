@@ -295,7 +295,7 @@ c.add_component({
 })
 
 c.add_component({
-  name = 'LuaSnip',
+  name = 'luasnip',
   install_script = function()
     return u.clone_git_repo({
       url = 'https://github.com/L3MON4D3/LuaSnip',
@@ -303,7 +303,8 @@ c.add_component({
     })
   end,
   on_init = function()
-    c.load_plugin('LuaSnip')
+    c.load_plugin('luasnip')
+    require('luasnip-setup')
   end,
 })
 
@@ -312,7 +313,7 @@ c.add_component({
   install_script = function()
     return u.clone_git_repo({
       url = 'https://github.com/hrsh7th/nvim-cmp',
-      tag = 'v0.0.1',
+      commit = 'b555203ce4bd7ff6192e759af3362f9d217e8c89',
     })
   end,
   on_init = function()
