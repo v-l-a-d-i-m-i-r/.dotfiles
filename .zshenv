@@ -8,7 +8,7 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#797979'
 
 export NVM_DIR="$HOME/.nvm"
 export NVM_ARCH="linux-x64"
-export GOVM_DIR="$HOME/.go"
+export GOVM_DIR="$HOME/.govm"
 export GOVM_ARCH="linux-amd64"
 export EDITOR="nvim"
 export KUBE_EDITOR="nvim"
@@ -37,3 +37,4 @@ export MONGOMS_DISABLE_POSTINSTALL="1"
 # export MONGOMS_USE_LINUX_OS_RELEASE="0"
 # export MONGOMS_USE_LINUX_ANYFILE_RELEASE="0"
 export GOBIN=$(which go)
+export GO111MODULE=on

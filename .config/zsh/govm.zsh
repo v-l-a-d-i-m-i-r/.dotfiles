@@ -1,3 +1,5 @@
+local GOVM_VERSIONS_DIR="${GOVM_DIR}/versions/go"
+
 function _govm_use() {
   local version="$1"
 
@@ -9,7 +11,7 @@ function _govm_use() {
     return
   fi
 
-  if [ ! -d "${GOVM_DIR}/versions/go/${version}/bin" ]; then
+  if [ ! -d "${GOVM_VERSIONS_DIR}/${version}/bin" ]; then
     echo "go ${version} is not available";
 
     return
@@ -19,28 +21,30 @@ function _govm_use() {
   declare -a path_array=(`echo $PATH | sed 's/:/\n/g'`)
 
   for dir in "${path_array[@]}"; do
-    if [[ "$dir" =~ "^${GOVM_DIR}\/versions\/go\/v(.*)\/bin$" ]] ; then
+    if [[ "$dir" =~ "^${GOVM_VERSIONS_DIR}\/v(.*)\/bin$" ]] ; then
       continue
     fi
 
     NEW_PATH="${NEW_PATH}:${dir}"
   done
 
-  export PATH="${GOVM_DIR}/versions/go/${version}/bin${NEW_PATH}"
+  export PATH="${GOVM_VERSIONS_DIR}/${version}/bin${NEW_PATH}"
 }
 
 function _govm_list () {
-  if [ ! -d "${GOVM_DIR}/versions/go" ] && return
+  if [ ! -d "${GOVM_VERSIONS_DIR}" ]; then
+    return
+  fi
 
-  local node_version=$(node -v 2>/dev/null)
+  local go_version=$(go version 2> /dev/null | { read _ _ v _; echo ${v#go}; })
   local includes_in_list=false
-  local versions=$(ls $GOVM_DIR/versions/node | awk '{print $NF}' | sort -r)
+  local versions=$(ls $GOVM_DIR/versions/go | awk '{print $NF}' | sort -r)
   local output_list=""
   local separator="|"
   local output_separator="  "
 
   while read -r version; do
-    if [ "$node_version" = "$version" ]; then
+    if [ "$go_version" = "$version" ]; then
       output_list="$output_list*$separator$version$separator\n"
 
       continue
@@ -56,21 +60,39 @@ function _govm_install () {
   local version="$1"
 
   # if [ -z "${version}" ]; then
-  #   version=$(curl -Ls https://nodejs.org/dist/ | grep '"v' | grep -o '">.*/</' | cut -c 3- | rev | cut -c 4- | rev | fzf --reverse)
+  #   local page=1;
+
+  #   while : ; do
+  #     versions_per_page=$(curl -s "https://api.github.com/repos/golang/go/tags?page=${page}" | jq '.[].name' | sed 's/"go//' | sed 's/"//');
+  #     versions_pre_page_length=$(echo "$versions_per_page" | wc -l);
+  #     echo $page;
+  #     echo $versions_per_page;
+  #     echo $versions_pre_page_length;
+
+  #     echo '\n';
+
+  #     if [ -z "${versions_pre_page_length}" ]; then
+  #       break;
+  #     fi
+
+  #     page=$((page+1));
+  #   done
+
+  #   return
   # fi
 
   if [ -z "${version}" ]; then
     return
   fi
 
-  local output_dir="${GOVM_DIR}/versions/go/${version}"
+  local output_dir="${GOVM_VERSIONS_DIR}/${version}"
 
   if [ -d "${output_dir}" ]; then
     return
   fi
 
   mkdir -p $output_dir
-  # curl -L https://nodejs.org/download/release/${version}/node-${version}-linux-x64.tar.gz | tar -xz --strip-components=1 -C $output_dir
+
   curl -L https://go.dev/dl/go${version}.${GOVM_ARCH}.tar.gz | tar -xz --strip=1 -C $output_dir
 }
 
