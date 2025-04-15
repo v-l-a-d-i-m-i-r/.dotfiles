@@ -178,6 +178,7 @@ function ts() {
     folders=(
       ~/.config/i3
       ~/.config/nvim
+      ~/.config/nvim11
       ~/scripts/tools/*
     )
 
@@ -250,7 +251,7 @@ alias vlp="vlc --qt-start-minimized ~/vlc-playlist.xspf"
 alias sudo='sudo -Es'
 alias csvtojson="python -c 'import csv, json, sys; print(json.dumps([dict(r) for r in csv.DictReader(sys.stdin)]))'"
 
-alias nvim='/data/projects/nvim-0.10.1/bin/nvim'
+alias nvim="$NVIM_PATH"
 alias nvimdiff='nvim -d -o'
 
 function b64 (){

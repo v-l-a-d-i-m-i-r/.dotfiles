@@ -6,13 +6,16 @@ export SAVEHIST=10000000
 
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#797979'
 
+export NVIM_APPNAME="nvim11"
+export NVIM_PATH="/data/projects/nvim-0.11.0/bin/nvim"
+
 export NVM_DIR="$HOME/.nvm"
 export NVM_ARCH="linux-x64"
 export GOVM_DIR="$HOME/.govm"
 export GOVM_ARCH="linux-amd64"
-export EDITOR="nvim"
-export KUBE_EDITOR="nvim"
-export MANPAGER="nvim +Man!"
+export EDITOR="$NVIM_PATH"
+export KUBE_EDITOR="$NVIM_PATH"
+export MANPAGER="$NVIM_PATH +Man!"
 export ZVM_CURSOR_STYLE_ENABLED=false
 
 export PATH="$HOME/.cache/activestate/bin:$PATH"
