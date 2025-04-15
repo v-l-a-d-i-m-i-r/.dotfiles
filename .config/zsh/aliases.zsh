@@ -37,7 +37,21 @@ alias kgs='k get services '
 alias kgsg='k get services | grep '
 # describe
 alias kdp='k describe po '
-alias kdd='k describe deployment '
+function kdd() {
+  local deployment="$1"
+
+  if [ -z "${deployment}" ]; then
+    deployment=$(k get deployments | tail -n +2 | awk '{print $1}' | fzf);
+  fi
+
+  if [ -z "${deployment}" ]; then
+    echo "Deployment name is not provided";
+
+    return;
+  fi
+
+  k describe deployment "${deployment}";
+}
 alias kds='k describe service '
 # logs
 alias kl='k logs -f '
