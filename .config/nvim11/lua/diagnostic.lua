@@ -2,7 +2,7 @@ local diagnostic_icons = require('assets').diagnostic_icons
 
 vim.diagnostic.config({
   virtual_text = false, -- floating text next to code is too noisy.
-  underline = false,
+  underline = true,
   signs = {
     text = {
       [vim.diagnostic.severity.ERROR] = diagnostic_icons.error,

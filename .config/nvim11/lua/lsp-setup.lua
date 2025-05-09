@@ -2,7 +2,6 @@ local nvim_lsp = require('nvim-lsp')
 local blink = require('blink.cmp')
 local c = require('components')
 local borders = require('assets').borders
-local border_types = require('assets').border_types
 local utils = require('utils')
 
 vim.keymap.set('n', 'gd', function()
@@ -161,6 +160,25 @@ nvim_lsp.add_server({
         project_library_path,
         '--ngProbeLocations',
         project_library_path,
+      },
+      capabilities = capabilities,
+      on_attach = on_attach,
+    }
+  end,
+})
+
+nvim_lsp.add_server({
+  name = 'vscode-json-language-server',
+  filetypes = {
+    'json',
+    'jsonc',
+  },
+  on_file_type = function()
+    return {
+      cmd = {
+        c.get_component('node-18.19.1').bin('node'),
+        c.get_component('vscode-langservers-extracted').bin('vscode-json-language-server'),
+        '--stdio',
       },
       capabilities = capabilities,
       on_attach = on_attach,
