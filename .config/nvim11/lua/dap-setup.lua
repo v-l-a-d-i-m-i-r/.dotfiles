@@ -71,20 +71,20 @@ dap.listeners.before.event_exited['dapui_config'] = function()
   dapui.close()
 end
 
-vim.api.nvim_set_keymap('n', '<space>ds', "<cmd>lua require'dap'.continue()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>ds', "<cmd>lua require'dap'.continue()<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap(
   'n',
-  '<space>dt',
+  '<leader>dt',
   "<cmd>lua require'dap'.toggle_breakpoint()<CR>",
   { noremap = true, silent = true }
 )
-vim.api.nvim_set_keymap('n', '<space>dh', "<cmd>lua require'dap'.step_out()<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<space>dj', "<cmd>lua require'dap'.step_over()<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<space>dk', "<cmd>lua require'dap'.step_back()<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<space>dl', "<cmd>lua require'dap'.step_into()<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<space>du', "<cmd>lua require'dap'.up()<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<space>dd', "<cmd>lua require'dap'.down()<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<space>dx', "<cmd>lua require'dap'.disconnect()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>dh', "<cmd>lua require'dap'.step_out()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>dj', "<cmd>lua require'dap'.step_over()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>dk', "<cmd>lua require'dap'.step_back()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>dl', "<cmd>lua require'dap'.step_into()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>du', "<cmd>lua require'dap'.up()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>dd', "<cmd>lua require'dap'.down()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>dx', "<cmd>lua require'dap'.disconnect()<CR>", { noremap = true, silent = true })
 
 vim.fn.sign_define('DapBreakpoint', { text = '', texthl = 'DiagnosticSignWarn' })
 vim.fn.sign_define('DapStopped', { text = '', texthl = 'DiagnosticSignHint' })

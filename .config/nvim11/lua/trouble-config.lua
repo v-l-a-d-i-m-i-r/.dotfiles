@@ -22,4 +22,4 @@ require('trouble').setup({
   },
 })
 
-vim.api.nvim_set_keymap('n', '<space>t', '<cmd>Trouble diagnostics toggle filter.buf=0<cr>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>t', '<cmd>Trouble diagnostics toggle filter.buf=0<cr>', { noremap = true })

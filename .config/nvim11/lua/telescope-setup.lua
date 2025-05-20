@@ -118,18 +118,18 @@ require('telescope').setup({
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('live_grep_args')
 
-vim.api.nvim_set_keymap('n', '<space>ff', '<cmd>lua require("telescope.builtin").find_files()<cr>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>ff', '<cmd>lua require("telescope.builtin").find_files()<cr>', { noremap = true })
 vim.api.nvim_set_keymap(
   'n',
-  '<space>fg',
+  '<leader>fg',
   '<cmd>lua require("telescope").extensions.live_grep_args.live_grep_args()<cr>',
   { noremap = true }
 )
 vim.api.nvim_set_keymap(
   'n',
-  '<space>f/',
+  '<leader>f/',
   '<cmd>lua require("telescope.builtin").current_buffer_fuzzy_find()<cr>',
   { noremap = true }
 )
-vim.api.nvim_set_keymap('n', '<space>fb', '<cmd>lua require("telescope.builtin").buffers()<cr>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<space>fh', '<cmd>lua require("telescope.builtin").highlights()<cr>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>fb', '<cmd>lua require("telescope.builtin").buffers()<cr>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>fh', '<cmd>lua require("telescope.builtin").highlights()<cr>', { noremap = true })
