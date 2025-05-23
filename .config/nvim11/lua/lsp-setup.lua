@@ -121,6 +121,7 @@ nvim_lsp.add_server({
         preferences = {
           importModuleSpecifierPreference = 'relative',
           -- importModuleSpecifierEnding = 'minimal',
+          quotePreference = 'single',
         },
       },
       capabilities = capabilities,
