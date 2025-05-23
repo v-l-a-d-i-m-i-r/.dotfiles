@@ -20,7 +20,7 @@ blink.setup({
     preset = 'default',
     ['<Tab>'] = { 'select_next', 'fallback' },
     ['<S-Tab>'] = { 'select_prev', 'fallback' },
-    ['<CR>'] = { 'accept', 'fallback' },
+    ['<CR>'] = { 'accept', 'select_and_accept', 'fallback' },
   },
   completion = {
     documentation = {
