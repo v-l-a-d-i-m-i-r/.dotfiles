@@ -260,10 +260,13 @@ nvim_lsp.add_server({
 nvim_lsp.start_servers()
 
 function get_current_script_path()
-  local current_stack_info = debug.getinfo(2, "S") -- Level 2 is the caller
-  if current_stack_info and current_stack_info.source ~= "=[C]" then
+  local current_stack_info = debug.getinfo(2, 'S') -- Level 2 is the caller
+  if current_stack_info and current_stack_info.source ~= '=[C]' then
     -- Remove the leading '@' if present, which indicates a loaded file
-    return (string.sub(current_stack_info.source, 1, 1) == "@" and string.sub(current_stack_info.source, 2) or current_stack_info.source)
+    return (
+      string.sub(current_stack_info.source, 1, 1) == '@' and string.sub(current_stack_info.source, 2)
+      or current_stack_info.source
+    )
   end
   return nil
 end

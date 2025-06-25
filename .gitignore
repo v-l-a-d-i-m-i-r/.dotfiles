@@ -68,7 +68,10 @@
 !.config/picom/
 !.config/backgrounds/
 !.config/kalu/
+
 !.config/zsh/
+.config/zsh/private-env.zsh
+
 !.config/kitty/
 !.config/xresources/
 
