@@ -34,10 +34,11 @@ local kind_icons = {
 }
 
 local diagnostic_icons = {
-  error = '',
-  warn = '',
+  error = '',
+  -- error = '',
+  warn = '',
   info = '',
-  hint = '',
+  hint = '',
 }
 
 local git_signs = {
