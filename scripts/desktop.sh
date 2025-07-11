@@ -169,8 +169,8 @@ packages=(
 yaourt -S "${packages[@]}" --noconfirm --needed
 
 ### Providers
-python3 -m pip install --user --upgrade pynvim
-cpanm -n Neovim::Ext
+# python3 -m pip install --user --upgrade pynvim
+# cpanm -n Neovim::Ext
 
 ## Enable Network Manager daemon
 sudo systemctl enable NetworkManager
