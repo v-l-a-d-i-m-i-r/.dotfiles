@@ -241,16 +241,17 @@ c.add_component({
 })
 
 c.add_component({
-  name = 'colorizer',
-  install_script = function()
+  name = 'nvim-highlight-colors',
+  install_script = function ()
     return u.clone_git_repo({
-      url = 'https://github.com/norcalli/nvim-colorizer.lua',
-      commit = '36c610a9717cc9ec426a07c8e6bf3b3abcb139d6',
+      url = 'https://github.com/brenoprata10/nvim-highlight-colors',
+      commit = 'b42a5ccec7457b44e89f7ed3b3afb1b375bb2093',
     })
   end,
-  on_init = function()
-    c.load_plugin('colorizer')
-  end,
+  on_init = function ()
+    c.load_plugin('nvim-highlight-colors')
+    require('nvim-highlight-colors').setup({})
+  end
 })
 
 c.add_component({
