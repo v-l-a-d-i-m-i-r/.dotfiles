@@ -188,7 +188,7 @@ nvim_lsp.add_server({
 })
 
 nvim_lsp.add_server({
-  name = 'emmet-ls',
+  name = 'emmet-language-server',
   filetypes = {
     'astro',
     'css',
@@ -202,14 +202,15 @@ nvim_lsp.add_server({
     'sass',
     'scss',
     'svelte',
+    'templ',
     'typescriptreact',
     'vue',
   },
   on_file_type = function()
     return {
       cmd = {
-        c.get_component('node-16.14.2').bin('node'),
-        c.get_component('emmet-ls').bin('emmet-ls'),
+        c.get_component('node-18.19.1').bin('node'),
+        c.get_component('emmet-language-server').bin('emmet-language-server'),
         '--stdio',
       },
       capabilities = capabilities,

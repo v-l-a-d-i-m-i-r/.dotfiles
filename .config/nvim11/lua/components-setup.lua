@@ -114,13 +114,14 @@ c.add_component({
 })
 
 c.add_component({
-  name = 'emmet-ls',
+  name = 'emmet-language-server',
   binaries_directory = '/node_modules/.bin',
   install_script = function()
-    local version = '0.3.0'
-    local path = c.get_component('node-16.14.2').bin('') .. ':$PATH'
+    local version = '2.6.1'
+    local node = c.get_component('node-18.19.1').bin('node')
+    local yarn = c.get_component('yarn').bin('yarn')
 
-    return 'PATH=' .. path .. ' npm install --save-exact ' .. 'emmet-ls@' .. version
+    return node .. ' ' .. yarn .. ' add @olrtg/emmet-language-server@' .. version .. ' typescript@5.7.2'
   end,
 })
 
