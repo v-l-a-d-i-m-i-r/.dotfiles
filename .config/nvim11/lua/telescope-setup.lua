@@ -43,6 +43,10 @@ require('telescope').setup({
       borders.bottom_right_corner,
       borders.bottom_left_corner,
     },
+    preview = true,
+    sorting_strategy = sorting_strategy,
+    layout_config = layout_config,
+    cwd = cwd,
   },
   pickers = {
     find_files = {
@@ -56,6 +60,9 @@ require('telescope').setup({
       sorting_strategy = sorting_strategy,
       layout_config = layout_config,
       cwd = cwd,
+      additional_args = function(opts)
+        return { '--hidden' }
+      end,
     },
     grep_string = {
       sorting_strategy = sorting_strategy,
@@ -105,6 +112,9 @@ require('telescope').setup({
       layout_config = layout_config,
       cwd = cwd,
       show_line = false,
+      additional_args = function(opts)
+        return { '--hidden' }
+      end,
     },
     fzf = {
       fuzzy = true, -- false will only do exact matching
