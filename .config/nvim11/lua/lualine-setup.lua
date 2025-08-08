@@ -1,3 +1,4 @@
+local diagnostic_icons = require('assets').diagnostic_icons
 local tab_width = vim.opt.tabstop
 local spaces_indicator = function()
   if vim.bo.expandtab then
@@ -36,7 +37,17 @@ local lualine_setup_params = {
   },
   sections = {
     lualine_a = { 'mode' },
-    lualine_b = { 'diagnostics' },
+    lualine_b = {
+      {
+        'diagnostics',
+        symbols = {
+          error = diagnostic_icons.error .. ' ',
+          warn = diagnostic_icons.warn .. ' ',
+          info = diagnostic_icons.info .. ' ',
+          hint = diagnostic_icons.hint .. ' ',
+        },
+      },
+    },
     lualine_c = {
       {
         'filename',
