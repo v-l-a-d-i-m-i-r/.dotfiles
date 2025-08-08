@@ -138,7 +138,7 @@ markup=none
 # command=date '+%H:%M'
 # interval=5
 [calendar]
-command= echo "UTC $(TZ=':UTC' date '+%H:%M')"; [[ -z "${BLOCK_BUTTON}" ]] || gsimplecal &
+command= echo "UTC $(TZ=':UTC' date '+%H:%M')"; [[ -z "${BLOCK_BUTTON}" ]] || LC_TIME=en_GB.utf8 gsimplecal &
 interval=5
 
 [calendar]
