@@ -65,25 +65,6 @@ vim.api.nvim_create_autocmd('Signal', {
   end,
 })
 
--- https://github.com/neovim/nvim-lspconfig/issues/1659
-vim.api.nvim_create_autocmd('LspAttach', {
-  callback = function()
-    vim.api.nvim_create_autocmd('BufDelete', {
-      buffer = vim.api.nvim_get_current_buf(),
-      callback = function(opts)
-        require('trouble').close()
-        -- vim.cmd('NvimTreeClose')
-
-        local bufnr = opts.buf
-        local clients = vim.lsp.buf_get_clients(bufnr)
-        for client_id, _ in pairs(clients) do
-          vim.lsp.buf_detach_client(bufnr, client_id)
-        end
-      end,
-    })
-  end,
-})
-
 -- vim.api.nvim_create_autocmd('BufWritePre', {
 --   pattern = '*.go',
 --   callback = function()

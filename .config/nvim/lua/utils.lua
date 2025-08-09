@@ -24,6 +24,15 @@ local install_node = function(params)
   })
 end
 
+local function fs_exists(path)
+  if path == nil then
+    return false
+  end
+
+  return vim.fn.filereadable(path) == 1
+end
+
 return {
   install_node = install_node,
+  fs_exists = fs_exists,
 }

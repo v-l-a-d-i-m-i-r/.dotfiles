@@ -1,7 +1,0 @@
-require('globals')
-require('settings')
-require('mappings')
-require('clip')
-require('diagnostic')
-require('components-setup')
-require('autocommands')
