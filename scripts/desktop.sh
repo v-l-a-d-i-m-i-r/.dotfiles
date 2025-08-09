@@ -62,6 +62,7 @@ packages=(
   gnome-keyring
   gparted
   ntfs-3g
+  dosfstools
   xfce4-power-manager
   htop
   conky
