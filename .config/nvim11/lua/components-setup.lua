@@ -379,9 +379,8 @@ c.add_component({
         commit = '6a33ecefa9b3d9ade654f9a7a6396a00c3758ca6',
       }),
       u.cli_and({
-        'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release',
+        'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release -DCMAKE_POLICY_VERSION_MINIMUM=3.5',
         'cmake --build build --config Release',
-        'cmake --install build --prefix build',
       }),
     })
   end,
