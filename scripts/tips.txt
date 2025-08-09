@@ -1,0 +1,16 @@
+# pacman/yaourt
+
+/etc/yaourtrc
+
+error: file owned by 'X-debug' and 'Y-debug'
+
+debug needs to be disabled:
+- sudo vim /etc/makepkg.conf
+- find OPTIONS array
+- comment 'debug' option wihth '!'
+- find all the debug packages installed
+  pacman -Q | grep "\-debug" | awk ' { print $1 }'
+- remove them
+  sudo pacman -R $(pacman -Q | grep "\-debug" | awk ' { print $1 }')
+
+reference: https://bbs.archlinux.org/viewtopic.php?id=293005

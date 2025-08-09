@@ -22,8 +22,8 @@ aur_install visual-studio-code-bin
 pacman_install engrampa
 
 ## Browsers
-pacman_install opera falkon
-aur_install google-chrome
+pacman_install falkon
+aur_install opera google-chrome
 
 ## Messangers
 # aur_install zoom
@@ -46,10 +46,10 @@ aur_install insomnia-bin
 aur_install flameshot
 
 ## Docker
-pacman_install docker docker-compose kubectl
+pacman_install docker docker-compose docker-buildx kubectl
 
 ## Players
-aur_install vlc qmplay2 youtube-dl mpv
+aur_install vlc qmplay2 mpv
 
 ## AUR clients
 aur_install pamac-aur kalu
