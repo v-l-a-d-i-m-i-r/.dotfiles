@@ -68,7 +68,7 @@ function precmd() {
   fi
 
   if [ $node ]; then
-    prompt_node=" %F{$ZSH_PROMPT_NODE} ${node:1}%f"
+    prompt_node=" %F{$ZSH_PROMPT_NODE} ${node:1}%f"
   fi
 
   if [ $go ]; then
@@ -98,8 +98,9 @@ function make_cursor_as_steady_bar() {
 function _load_prompt() {
   local prompt_path='%F{$ZSH_PROMPT_PATH}%~%b%f'
   local prompt_zvm=''
+  local zvm_mode="${ZVM_MODE:-i}"
 
-  case $ZVM_MODE in
+  case $zvm_mode in
     $ZVM_MODE_NORMAL)
       prompt_zvm='%F{0}%K{$ZSH_PROMPT_ZVM_NORMAL}%B NORMAL %b%f%k%F{default}%K{default}'
       make_cursor_as_blinking_block
