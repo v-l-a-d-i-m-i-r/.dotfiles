@@ -6,8 +6,11 @@ export SAVEHIST=10000000
 
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#797979'
 
-export NVIM_APPNAME="nvim11"
-export NVIM_PATH="/data/projects/nvim-0.11.0/bin/nvim"
+export NVIM_APPNAME='nvim11'
+export NVIM_VERSION='0.11.3'
+export NVIM_ARCH='linux-x86_64'
+export NVIM_DIR="$HOME/.config/$NVIM_APPNAME/.editors/$NVIM_VERSION"
+export NVIM_PATH="$NVIM_DIR/bin/nvim"
 
 export NVM_DIR="$HOME/.nvm"
 export NVM_ARCH="linux-x64"

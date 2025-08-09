@@ -12,6 +12,7 @@ source ~/.config/zsh/govm.zsh
 source ~/.config/zsh/prompt.zsh
 source ~/.config/zsh/aliases.zsh
 source ~/.config/zsh/mpv.zsh
+source ~/.config/zsh/nvim.zsh
 
 # zsh plugins
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh

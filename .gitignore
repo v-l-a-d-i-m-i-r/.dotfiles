@@ -90,6 +90,7 @@
 
 !.config/nvim/
 .config/nvim/components/
+.config/nvim/.editors/
 
 !.config/nvim7/
 .config/nvim7/themes/
@@ -98,5 +99,6 @@
 
 !.config/nvim11/
 .config/nvim11/components/
+.config/nvim11/.editors/
 
 !.urxvt/
