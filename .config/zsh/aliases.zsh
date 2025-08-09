@@ -178,17 +178,12 @@ function ts() {
     folders=(
       ~/.config/i3
       ~/.config/nvim
-      ~/.config/nvim11
       ~/scripts/tools/*
     )
 
     if [ -d /data/projects ]; then
       folders+=(/data/projects/*)
     fi
-
-    # if [ -d ~/.config/nvim/plugins ]; then
-    #   folders+=(~/.config/nvim/plugins/*)
-    # fi
 
     if [ -d /data/projects/monorepo ]; then
       folders+=(/data/projects/monorepo/*)

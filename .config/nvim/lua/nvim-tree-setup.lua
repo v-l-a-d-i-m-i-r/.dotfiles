@@ -1,5 +1,3 @@
-local nvim_tree_config = require('nvim-tree.config')
-
 --
 -- This function has been generated from your
 --   view.mappings.list
@@ -88,7 +86,7 @@ local function on_attach(bufnr)
   vim.keymap.set('n', 'v', api.node.open.vertical, opts('Open: Vertical Split'))
 end
 
-vim.api.nvim_set_keymap('n', '<space>n', ':NvimTreeToggle<CR>', { silent = true })
+vim.api.nvim_set_keymap('n', '<leader>n', ':NvimTreeToggle<CR>', { silent = true })
 
 require('nvim-tree').setup({
   update_cwd = false,

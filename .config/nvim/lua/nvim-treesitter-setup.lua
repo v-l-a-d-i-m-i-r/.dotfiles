@@ -1,6 +1,7 @@
 require('nvim-treesitter.configs').setup({
   -- A list of parser names, or "all"
   ensure_installed = {
+    'angular',
     'bash',
     'c',
     'css',
@@ -8,7 +9,7 @@ require('nvim-treesitter.configs').setup({
     'dockerfile',
     'fish',
     'go',
-    -- 'gomod',
+    'gomod',
     'gowork',
     'html',
     'javascript',

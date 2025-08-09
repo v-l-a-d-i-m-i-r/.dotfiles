@@ -7,4 +7,4 @@ require('aerial').setup({
   show_guides = false,
 })
 
-vim.keymap.set('n', '<space>s', '<cmd>AerialToggle!<CR>')
+vim.keymap.set('n', '<leader>s', '<cmd>AerialToggle!<CR>')

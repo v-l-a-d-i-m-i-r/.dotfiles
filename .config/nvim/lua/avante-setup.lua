@@ -149,4 +149,10 @@ avante.setup({
     debounce = 600,
     throttle = 600,
   },
+  file_selector = {
+    provider = 'telescope',
+  },
+  selector = {
+    provider = 'telescope',
+  },
 })
