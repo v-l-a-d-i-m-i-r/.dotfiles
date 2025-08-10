@@ -25,8 +25,8 @@
   colorMoved = default
 
 [user]
-	email = volodymyr.danilin@gmail.com
-	name = Vladimir Danilin
+	email = anna.gorbacheva231@gmail.com
+	name = AnnaGorbachev
 
 [includeIf "gitdir:/data/projects/flip/"]
   path = /data/projects/flip/.gitconfig
