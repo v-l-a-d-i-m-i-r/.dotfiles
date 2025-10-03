@@ -33,7 +33,7 @@ vim.opt.timeoutlen = 1000
 vim.opt.ttimeoutlen = 0
 vim.opt.list = true
 vim.opt.guicursor = join({
-  'n-v:blinkon1',
+  'n-v:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor',
   'i-c:ver25',
 })
 vim.opt.signcolumn = 'yes:1'
