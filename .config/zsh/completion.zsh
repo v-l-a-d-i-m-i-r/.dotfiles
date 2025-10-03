@@ -20,3 +20,8 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 [[ /usr/bin/kubectl ]] && source <(kubectl completion zsh)
 
 compdef kubecolor=kubectl
+
+# Load Angular CLI autocompletion.
+if which ng >/dev/null 2>&1; then
+  source <(ng completion script)
+fi
