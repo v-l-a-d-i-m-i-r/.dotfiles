@@ -231,6 +231,7 @@ pgadmin4-docker() {
     -e "PGADMIN_DEFAULT_PASSWORD=SuperSecret" \
     -e 'PGADMIN_LISTEN_PORT=5050' \
     -v "$working_dir:/var/lib/pgadmin" \
+    --network host \
     dpage/pgadmin4:9.1.0;
 }
 
@@ -262,4 +263,14 @@ function pinfo() {
 }
 
 alias pott='f() { xdg-open ${1/https:\/\/teams.microsoft.com/msteams:} }; f'
-alias youtube-dl='docker run --rm -i -e PGID=$(id -g) -e PUID=$(id -u) -v "$(pwd)":/workdir:rw mikenye/youtube-dl:2025.02.19'
+alias youtube-dl='docker run --rm -ti -e PGID=$(id -g) -e PUID=$(id -u) -v "$(pwd)":/workdir:rw mikenye/youtube-dl:2025.09.26'
+
+join-files () {
+  fd \
+    -j 1 \
+    --type file \
+    -x sh \
+    -c 'echo -e "\nfile_name: {}\n\nfile_content:\n"; cat {}'
+}
+
+alias dua='du -d 1 -h | sort -h -r'
