@@ -191,13 +191,13 @@ nvim_lsp.add_server({
 nvim_lsp.add_server({
   name = 'vscode-css-language-server',
   filetypes = {
-    "css",
-    "less",
-    "scss",
+    'css',
+    'less',
+    'scss',
   },
   root_markers = {
-    ".git",
-    "package.json",
+    '.git',
+    'package.json',
   },
   on_file_type = function()
     return {
