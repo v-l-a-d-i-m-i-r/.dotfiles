@@ -1,3 +1,4 @@
+-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
 local nvim_lsp = require('nvim-lsp')
 local blink = require('blink.cmp')
 local c = require('components')
@@ -179,6 +180,30 @@ nvim_lsp.add_server({
       cmd = {
         c.get_component('node-18.19.1').bin('node'),
         c.get_component('vscode-langservers-extracted').bin('vscode-json-language-server'),
+        '--stdio',
+      },
+      capabilities = capabilities,
+      on_attach = on_attach,
+    }
+  end,
+})
+
+nvim_lsp.add_server({
+  name = 'vscode-css-language-server',
+  filetypes = {
+    "css",
+    "less",
+    "scss",
+  },
+  root_markers = {
+    ".git",
+    "package.json",
+  },
+  on_file_type = function()
+    return {
+      cmd = {
+        c.get_component('node-18.19.1').bin('node'),
+        c.get_component('vscode-langservers-extracted').bin('vscode-css-language-server'),
         '--stdio',
       },
       capabilities = capabilities,
