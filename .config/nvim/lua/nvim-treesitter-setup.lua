@@ -12,6 +12,7 @@ require('nvim-treesitter.configs').setup({
     'gomod',
     'gowork',
     'html',
+    'http',
     'javascript',
     'json',
     'lua',

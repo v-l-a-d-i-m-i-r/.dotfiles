@@ -173,6 +173,21 @@ c.add_component({
   end,
 })
 
+c.add_component({
+  name = 'kulala-ls',
+  binaries_directory = '/node_modules/.bin',
+  install_script = function()
+    local version = '1.10.0'
+    local node = c.get_component('node-18.19.1').bin('node')
+    local yarn = c.get_component('yarn').bin('yarn')
+
+    return u.cli_and({
+      'npm init -y',
+      node .. ' ' .. yarn .. ' add @mistweaverco/kulala-ls@' .. version,
+    })
+  end,
+})
+
 -- Nvim Plugin Dependencies --
 
 c.add_component({
@@ -653,6 +668,21 @@ c.add_component({
   on_init = function()
     c.load_plugin('avante.nvim')
     require('avante-setup')
+  end,
+})
+
+-- https://neovim.getkulala.net/
+c.add_component({
+  name = 'kulala.nvim',
+  install_script = function()
+    return u.clone_git_repo({
+      url = 'https://github.com/mistweaverco/kulala.nvim',
+      tag = 'v5.3.3',
+    })
+  end,
+  on_init = function()
+    c.load_plugin('kulala.nvim')
+    require('kulala-setup')
   end,
 })
 

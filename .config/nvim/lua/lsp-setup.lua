@@ -283,6 +283,25 @@ nvim_lsp.add_server({
   end,
 })
 
+nvim_lsp.add_server({
+  name = 'kulala-ls',
+  filetypes = {
+    'http',
+  },
+  root_markers = {
+    '.git',
+  },
+  on_file_type = function()
+    return {
+      cmd = {
+        c.get_component('node-18.19.1').bin('node'),
+        c.get_component('kulala-ls').bin('kulala-ls'),
+        '--stdio',
+      },
+    }
+  end,
+})
+
 nvim_lsp.start_servers()
 
 function get_current_script_path()
