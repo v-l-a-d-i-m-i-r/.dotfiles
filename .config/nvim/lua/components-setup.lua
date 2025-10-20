@@ -645,7 +645,7 @@ c.add_component({
     return u.cli_and({
       u.clone_git_repo({
         url = 'https://github.com/yetone/avante.nvim',
-        tag = 'v0.0.23',
+        tag = 'v0.0.27',
       }),
       'make',
     })

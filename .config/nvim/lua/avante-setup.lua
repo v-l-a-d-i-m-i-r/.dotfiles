@@ -5,7 +5,7 @@ avante.setup({
   -- provider = "gemini", -- The provider used in Aider mode or in the planning phase of Cursor Planning Mode
   provider = 'openrouter',
   -- debug = true,
-  vendors = {
+  providers = {
     openrouter = {
       __inherited_from = 'openai',
       endpoint = 'https://openrouter.ai/api/v1',
@@ -15,8 +15,15 @@ avante.setup({
       -- model = 'deepseek/deepseek-chat-v3-0324:free',
       -- model = 'google/gemini-2.5-pro-exp-03-25',
       -- model = 'meta-llama/llama-3.3-70b-instruct:free',
-      model = 'mistralai/mistral-small-3.1-24b-instruct:free',
+      model = 'mistralai/mistral-small-3.2-24b-instruct:free',
       -- model = 'google/gemini-2.0-flash-001',
+    },
+    claude = {
+      disable_tools = true,
+      -- endpoint = "https://api.anthropic.com",
+      -- model = "claude-3-5-sonnet-20241022",
+      -- temperature = 0,
+      -- max_tokens = 4096,
     },
   },
   ---@alias Mode "agentic" | "legacy"
@@ -27,13 +34,6 @@ avante.setup({
   -- auto_suggestions_provider = "claude",
   auto_suggestions_provider = nil,
   cursor_applying_provider = nil, -- The provider used in the applying phase of Cursor Planning Mode, defaults to nil, when nil uses Config.provider as the provider for the applying phase
-  claude = {
-    disable_tools = true,
-    -- endpoint = "https://api.anthropic.com",
-    -- model = "claude-3-5-sonnet-20241022",
-    -- temperature = 0,
-    -- max_tokens = 4096,
-  },
   ---Specify the special dual_boost mode
   ---1. enabled: Whether to enable dual_boost mode. Default to false.
   ---2. first_provider: The first provider to generate response. Default to "openai".
