@@ -348,8 +348,7 @@ c.add_component({
   install_script = function()
     return u.clone_git_repo({
       url = 'https://github.com/nvim-treesitter/nvim-treesitter',
-      -- tag = 'v0.9.2', -- last used with nvim 0.10
-      tag = 'v0.9.3',
+      tag = 'v0.10.0',
     })
   end,
   on_init = function()
@@ -363,8 +362,7 @@ c.add_component({
   install_script = function()
     return u.clone_git_repo({
       url = 'https://github.com/nvim-tree/nvim-tree.lua',
-      -- commit = 'f5d970d4506f385b29534252d8c15a782fa53034', -- last used with nvim 0.10
-      tag = 'v1.11.0',
+      tag = 'v1.14.0',
     })
   end,
   on_init = function()
