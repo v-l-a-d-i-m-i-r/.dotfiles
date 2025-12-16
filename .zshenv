@@ -44,3 +44,5 @@ export MONGOMS_DISABLE_POSTINSTALL="1"
 # export MONGOMS_USE_LINUX_ANYFILE_RELEASE="0"
 export GOBIN=$(which go)
 export GO111MODULE=on
+
+export BROWSER="$HOME/.bin/url-logger"
