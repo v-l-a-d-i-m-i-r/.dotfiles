@@ -263,7 +263,7 @@ function pinfo() {
 }
 
 alias pott='f() { xdg-open ${1/https:\/\/teams.microsoft.com/msteams:} }; f'
-alias youtube-dl='docker run --rm -ti -e PGID=$(id -g) -e PUID=$(id -u) -v "$(pwd)":/workdir:rw mikenye/youtube-dl:2025.09.26'
+alias youtube-dl='docker run --rm -ti -e PGID=$(id -g) -e PUID=$(id -u) -v "$(pwd)":/workdir:rw mikenye/youtube-dl:2025.10.22'
 
 join-files () {
   fd \
@@ -274,3 +274,4 @@ join-files () {
 }
 
 alias dua='du -d 1 -h | sort -h -r'
+alias gem='gemini'
