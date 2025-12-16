@@ -34,7 +34,13 @@ vim.keymap.set('n', 'gi', function()
   require('telescope.builtin').lsp_implementations()
 end)
 vim.keymap.set('n', 'gr', function()
-  require('telescope.builtin').lsp_references()
+  local opts = {
+    include_current_line = false,
+    include_declaration = false,
+    jump_type = 'never'
+  }
+
+  require('telescope.builtin').lsp_references(opts)
 end)
 vim.keymap.set('n', '<leader>rn', function()
   vim.lsp.buf.rename()
@@ -111,7 +117,7 @@ nvim_lsp.add_server({
   on_file_type = function()
     return {
       cmd = {
-        c.get_component('node-18.19.1').bin('node'),
+        c.get_component('node-22.21.0').bin('node'),
         c.get_component('typescript-language-server').bin('typescript-language-server'),
         '--stdio',
       },
@@ -144,18 +150,19 @@ nvim_lsp.add_server({
     'angular.json',
   },
   on_file_type = function(opts)
-    local root_dir = opts.root_dir
-    local is_angular_project = root_dir ~= nil and utils.fs_exists(root_dir .. '/angular.json')
+    -- This approach does not work when angular.json is not in root_dir
+    -- local root_dir = opts.root_dir
+    -- local is_angular_project = root_dir ~= nil and utils.fs_exists(root_dir .. '/angular.json')
 
-    if not is_angular_project then
-      return
-    end
+    -- if not is_angular_project then
+    --   return
+    -- end
 
     local project_library_path = c.get_component('angular-language-server').bin()
 
     return {
       cmd = {
-        c.get_component('node-18.19.1').bin('node'),
+        c.get_component('node-22.21.0').bin('node'),
         c.get_component('angular-language-server').bin('ngserver'),
         '--stdio',
         '--tsProbeLocations',

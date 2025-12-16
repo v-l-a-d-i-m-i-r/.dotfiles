@@ -39,6 +39,10 @@ add_nodejs({
   version = '18.19.1',
 })
 
+add_nodejs({
+  version = '22.21.0',
+})
+
 c.add_component({
   name = 'yarn',
   binaries_directory = '/node_modules/.bin',
@@ -85,8 +89,8 @@ c.add_component({
   name = 'typescript-language-server',
   binaries_directory = '/node_modules/.bin',
   install_script = function()
-    local version = '4.3.4'
-    local node = c.get_component('node-18.19.1').bin('node')
+    local version = '5.1.3'
+    local node = c.get_component('node-22.21.0').bin('node')
     local yarn = c.get_component('yarn').bin('yarn')
 
     return u.cli_and({
@@ -100,8 +104,8 @@ c.add_component({
   name = 'angular-language-server',
   binaries_directory = '/node_modules/.bin',
   install_script = function()
-    local version = '17.3.1'
-    local node = c.get_component('node-18.19.1').bin('node')
+    local version = '20.2.2'
+    local node = c.get_component('node-22.21.0').bin('node')
     local yarn = c.get_component('yarn').bin('yarn')
 
     return u.cli_and({
@@ -292,7 +296,7 @@ c.add_component({
   install_script = function()
     return u.clone_git_repo({
       url = 'https://github.com/L3MON4D3/LuaSnip',
-      commit = '51ebb4b6637290e1b8e0fb0d6f38b605d3c24940',
+      tag = 'v2.4.1',
     })
   end,
   on_init = function()
@@ -425,7 +429,7 @@ c.add_component({
   install_script = function()
     return u.clone_git_repo({
       url = 'https://github.com/nvim-telescope/telescope-live-grep-args.nvim',
-      commit = '0f75ea809c46af8997c64f49c52e3c641d887885',
+      commit = 'b80ec2c70ec4f32571478b501218c8979fab5201',
     })
   end,
   on_init = function()
@@ -438,7 +442,7 @@ c.add_component({
   install_script = function()
     return u.clone_git_repo({
       url = 'https://github.com/nvim-telescope/telescope.nvim',
-      tag = '0.1.8',
+      tag = 'v0.2.0',
     })
   end,
   on_init = function()
