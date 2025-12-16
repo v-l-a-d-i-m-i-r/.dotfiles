@@ -18,6 +18,12 @@ ZSH_PROMPT_ZVM_REPLACE="#D08770";
 # end colors
 ZSH_PROMPT_GO="${ZSH_PROMPT_ZVM_VISUAL}"
 
+ZSH_PROMPT_GIT_ICON=''
+ZSH_PROMPT_NODE_ICON=''
+ZSH_PROMPT_GO_ICON=''
+ZSH_PROMPT_K8S_ICON='󰠳'
+ZSH_PROMPT_ELAPSED_ICON='󰔛'
+
 NL=$'
 ';
 
@@ -28,7 +34,7 @@ zstyle ':vcs_info:git*' actionformats "%F{green} %b%f %F{red}%a%f"
 setopt prompt_subst
 
 function preexec() {
-  timer=$(date +%s%3N)
+  # timer=$(date +%s%3N)
   vcs_info
 }
 
@@ -62,26 +68,26 @@ function precmd() {
     else elapsed=${ms}ms
     fi
 
-    prompt_elapsed=" %F{$ZSH_PROMPT_ELAPSED}祥${elapsed}%{$reset_color%}"
+    prompt_elapsed=" %F{$ZSH_PROMPT_ELAPSED}${ZSH_PROMPT_ELAPSED_ICON} ${elapsed}%{$reset_color%}"
 
     unset timer
   fi
 
   if [ $node ]; then
-    prompt_node=" %F{$ZSH_PROMPT_NODE} ${node:1}%f"
+    prompt_node=" %F{$ZSH_PROMPT_NODE}${ZSH_PROMPT_NODE_ICON} ${node:1}%f"
   fi
 
   if [ $go ]; then
-    prompt_go=" %F{$ZSH_PROMPT_GO} ${go}%f"
+    prompt_go=" %F{$ZSH_PROMPT_GO}${ZSH_PROMPT_GO_ICON} ${go}%f"
   fi
 
   if [ $git ]; then
-    prompt_git=" %F{$ZSH_PROMPT_GIT}$(git branch | grep '*' | awk '{$1=""; print $0}')%f"
+    prompt_git=" %F{$ZSH_PROMPT_GIT}${ZSH_PROMPT_GIT_ICON}$(git branch | grep '*' | awk '{$1=""; print $0}')%f"
   fi
   
   if [ $k8s ]; then
     local namespace=$(kubectl config view --minify -o jsonpath='{..namespace}')
-    prompt_k8s=" %F{$ZSH_PROMPT_K8S}ﴱ ${k8s} (${namespace})%f"
+    prompt_k8s=" %F{$ZSH_PROMPT_K8S}${ZSH_PROMPT_K8S_ICON} ${k8s} (${namespace})%f"
   fi
 
   RPROMPT="${prompt_elapsed}${prompt_node}${prompt_go}${prompt_git}${prompt_k8s}"
@@ -129,4 +135,5 @@ function zvm_after_select_vi_mode() {
   _load_prompt
 }
 
+ZVM_MODE=$ZVM_MODE_INSERT # hook to load prompt indicator on shell load
 _load_prompt
