@@ -155,6 +155,7 @@ packages=(
   ripgrep
   zoxide
   jq
+  jj-bin
   jless
   fzf
   tmux
