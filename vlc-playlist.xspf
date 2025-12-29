@@ -153,6 +153,22 @@
 				<vlc:option>network-caching=1000</vlc:option>
 			</extension>
 		</track>
+		<track>
+			<location>http://station.waveradio.org/soviet</location>
+			<title>Sovietwave</title>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>20</vlc:id>
+				<vlc:option>network-caching=1000</vlc:option>
+			</extension>
+		</track>
+		<track>
+			<location>https://audiotainment-sw.streamabc.net/atsw-lofifocus-mp3-128-3757575?sABC=668o94sq#0#s6333510n31648r98nps97rs31rqoqs2#enqvbqr&amp;aw_0_1st.playerid=radiode&amp;amsparams=playerid:radiode;skey:1720423677</location>
+			<title>bigFM LoFi Focus</title>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>21</vlc:id>
+				<vlc:option>network-caching=1000</vlc:option>
+			</extension>
+		</track>
 	</trackList>
 	<extension application="http://www.videolan.org/vlc/playlist/0">
 		<vlc:item tid="0"/>
@@ -175,5 +191,7 @@
 		<vlc:item tid="17"/>
 		<vlc:item tid="18"/>
 		<vlc:item tid="19"/>
+		<vlc:item tid="20"/>
+		<vlc:item tid="21"/>
 	</extension>
 </playlist>
