@@ -87,6 +87,7 @@
 
 !.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-notifyd.xml
 !.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-power-manager.xml
+!.config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml
 
 !.config/nvim/
 .config/nvim/components/

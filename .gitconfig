@@ -17,6 +17,18 @@
   light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
   side-by-side = true
   line-numbers = true
+  ; start colors
+  syntax-theme = Nord
+  plus-style = "syntax #394147"
+  minus-style = "syntax #3c3844"
+  plus-emph-style = "syntax #556259"
+  minus-emph-style = "syntax #5e434e"
+  file-style = "bold #81A1C1"
+  file-decoration-style = "#81A1C1 ul"
+  hunk-header-style = "bold #88C0D0"
+  line-numbers-minus-style = "#5e434e"
+  line-numbers-plus-style = "#556259"
+  ; end colors
 
 ; [merge]
 ;   conflictstyle = diff3

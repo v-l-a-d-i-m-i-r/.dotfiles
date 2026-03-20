@@ -9,15 +9,11 @@ source ~/.config/zsh/nvm.zsh
 source ~/.config/zsh/completion.zsh
 source ~/.config/zsh/fzf.zsh
 source ~/.config/zsh/govm.zsh
+source ~/.config/zsh/plugins.zsh
 source ~/.config/zsh/prompt.zsh
 source ~/.config/zsh/aliases.zsh
 source ~/.config/zsh/mpv.zsh
 source ~/.config/zsh/nvim.zsh
-
-# zsh plugins
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 if [ -z "${TMUX}" ] && [ ! -z "${DISPLAY}" ]; then
   tsh;

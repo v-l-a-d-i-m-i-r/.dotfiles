@@ -9,7 +9,6 @@ packages=(
   ## Xorg server
   xorg
   xorg-xinit
-  mesa
 
   ## i3
   i3-wm
@@ -21,6 +20,11 @@ packages=(
   # check the type of video card
   # lspci | grep VGA
   xf86-video-intel
+  mesa
+  intel-media-driver
+  libva-intel-driver
+  nvidia-utils
+  lib32-nvidia-utils
 
   ## Audio driver
   alsa-lib
@@ -30,14 +34,14 @@ packages=(
   alsa-ucm-conf
   pavucontrol
   pulseaudio
-  pa-applet-git
+  # pa-applet-git
   sof-firmware # driver
 
   ## Touchpad
   xf86-input-synaptics
 
   ## Commanders
-  doublecmd-gtk2
+  doublecmd-qt6
   pcmanfm
 
   ## Source control
@@ -68,7 +72,7 @@ packages=(
   conky
   arandr
   xcompmgr
-  nitrogen
+  feh
   gsimplecal
   gvfs-mtp
   gvfs-gphoto2
@@ -78,7 +82,7 @@ packages=(
   seahorse
   grub-customizer
   jmtpfs
-  sbxkb
+  xkblayout
 
   ## Notifications
   xfce4-notifyd
@@ -86,7 +90,7 @@ packages=(
   ## Appearance
   lxappearance
   qt5ct
-  qt5-styleplugins
+  # qt5-styleplugins
 
   ## Theme
   gnome-themes-extra
@@ -159,13 +163,14 @@ packages=(
   jless
   fzf
   tmux
+  stylua
 
   ## kubernets
   kubectl
   kubecolor
   kubelogin
   kubectx
-  kubefwd-bin
+  # kubefwd-bin
 );
 
 yaourt -S "${packages[@]}" --noconfirm --needed
