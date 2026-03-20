@@ -287,7 +287,11 @@ c.add_component({
   end,
   on_init = function()
     c.load_plugin('nvim-highlight-colors')
-    require('nvim-highlight-colors').setup({})
+    require('nvim-highlight-colors').setup({
+      exclude_filetypes = {
+        'csv',
+      },
+    })
   end,
 })
 
@@ -687,6 +691,20 @@ c.add_component({
   on_init = function()
     c.load_plugin('kulala.nvim')
     require('kulala-setup')
+  end,
+})
+
+c.add_component({
+  name = 'csvview',
+  install_script = function()
+    return u.clone_git_repo({
+      url = 'https://github.com/hat0uma/csvview.nvim',
+      tag = 'v1.3.0',
+    })
+  end,
+  on_init = function()
+    c.load_plugin('csvview')
+    require('csvview').setup()
   end,
 })
 
