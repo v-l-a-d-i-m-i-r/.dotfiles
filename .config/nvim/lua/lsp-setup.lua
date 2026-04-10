@@ -52,6 +52,9 @@ end)
 local capabilities = blink.get_lsp_capabilities(vim.lsp.capabilities)
 
 local function on_attach(lsp_client, buffer_number) end
+local function check_angular_project(root_dir)
+  return root_dir ~= nil and utils.fs_exists(root_dir .. '/angular.json')
+end
 
 nvim_lsp.add_server({
   name = 'lua-language-server',
@@ -114,11 +117,64 @@ nvim_lsp.add_server({
     'package.json',
     'tsconfig.json',
   },
-  on_file_type = function()
+  on_file_type = function(opts)
+    local root_dir = opts.root_dir
+    local is_angular_project = check_angular_project(root_dir)
+
+    if is_angular_project then
+      return
+    end
+
     return {
       cmd = {
         c.get_component('node-22.21.0').bin('node'),
         c.get_component('typescript-language-server').bin('typescript-language-server'),
+        '--stdio',
+      },
+      flags = {
+        debounce_text_changes = 100,
+      },
+      init_options = {
+        preferences = {
+          importModuleSpecifierPreference = 'relative',
+          -- importModuleSpecifierEnding = 'minimal',
+          quotePreference = 'single',
+        },
+      },
+      capabilities = capabilities,
+      on_attach = on_attach,
+    }
+  end,
+})
+
+nvim_lsp.add_server({
+  name = 'tsgo',
+  filetypes = {
+    'javascript',
+    'javascript.jsx',
+    'javascriptreact',
+    'typescript',
+    'typescript.tsx',
+    'typescriptreact',
+  },
+  root_markers = {
+    '.git',
+    'jsconfig.json',
+    'package.json',
+    'tsconfig.json',
+  },
+  on_file_type = function(opts)
+    local root_dir = opts.root_dir
+    local is_angular_project = check_angular_project(root_dir)
+
+    if not is_angular_project then
+      return
+    end
+
+    return {
+      cmd = {
+        c.get_component('tsgo').bin('tsgo'),
+        '--lsp',
         '--stdio',
       },
       flags = {

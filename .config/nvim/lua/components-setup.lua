@@ -101,6 +101,21 @@ c.add_component({
 })
 
 c.add_component({
+  name = 'tsgo',
+  binaries_directory = '/node_modules/.bin',
+  install_script = function()
+    local version = '7.0.0-dev.20260312.1'
+    local node = c.get_component('node-22.21.0').bin('node')
+    local yarn = c.get_component('yarn').bin('yarn')
+
+    return u.cli_and({
+      'npm init -y',
+      node .. ' ' .. yarn .. ' add @typescript/native-preview@' .. version,
+    })
+  end,
+})
+
+c.add_component({
   name = 'angular-language-server',
   binaries_directory = '/node_modules/.bin',
   install_script = function()
