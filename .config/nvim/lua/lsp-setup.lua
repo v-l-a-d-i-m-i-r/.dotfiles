@@ -37,7 +37,7 @@ vim.keymap.set('n', 'gr', function()
   local opts = {
     include_current_line = false,
     include_declaration = false,
-    jump_type = 'never'
+    jump_type = 'never',
   }
 
   require('telescope.builtin').lsp_references(opts)

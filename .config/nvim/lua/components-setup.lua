@@ -722,6 +722,24 @@ c.add_component({
   end,
 })
 
+c.add_component({
+  name = 'nvim-tabline',
+  install_script = function()
+    return u.clone_git_repo({
+      url = 'https://github.com/v-l-a-d-i-m-i-r/nvim-tabline',
+      commit = '1f790cf95c43394119ce08f7f7adc505ff1c13e8',
+    })
+  end,
+  on_init = function()
+    c.load_plugin('nvim-tabline')
+    require('tabline-setup')
+  end,
+})
+
 -- vim.opt.rtp:append('/data/projects/nvim-themes')
 -- require('colorscheme-setup')
+
+-- vim.opt.rtp:append('/data/projects/nvim-tabline')
+-- require('tabline-setup')
+
 -- vim.opt.rtp:append(vim.fn.stdpath('config') .. '/plugins/components')
