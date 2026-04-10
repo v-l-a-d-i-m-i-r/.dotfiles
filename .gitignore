@@ -94,3 +94,5 @@
 .config/nvim/.editors/
 
 !.urxvt/
+
+!.agents/

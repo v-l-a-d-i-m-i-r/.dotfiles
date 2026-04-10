@@ -275,3 +275,38 @@ join-files () {
 
 alias dua='du -d 1 -h | sort -h -r'
 alias gem='gemini'
+gemini() {
+  if [ -z "$GEMINI_CLI_NODE_VERSION" ]; then
+    echo 'Error: GEMINI_CLI_NODE_VERSION is not set.';
+    return 1;
+  fi
+
+  local args=();
+  local subshell_script=$(cat <<EOF
+    set -e;
+    cp ${HOME}/.agents/AGENTS.md ${HOME}/.gemini/GEMINI.md;
+    nvm use ${GEMINI_CLI_NODE_VERSION};
+    $NVM_DIR/versions/node/${GEMINI_CLI_NODE_VERSION}/bin/gemini ${args[@]} $@;
+EOF
+  );
+
+  zsh -ci "$subshell_script";
+}
+
+copilot() {
+  if [ -z "$COPILOT_CLI_NODE_VERSION" ]; then
+    echo 'Error: COPILOT_CLI_NODE_VERSION is not set.';
+    return 1;
+  fi
+
+  local args=();
+  local subshell_script=$(cat <<EOF
+    set -e;
+    cp ${HOME}/.agents/AGENTS.md ${HOME}/.copilot/copilot-instructions.md;
+    nvm use ${COPILOT_CLI_NODE_VERSION};
+    $NVM_DIR/versions/node/${COPILOT_CLI_NODE_VERSION}/bin/copilot ${args[@]} $@;
+EOF
+  );
+
+  zsh -ci "$subshell_script";
+}

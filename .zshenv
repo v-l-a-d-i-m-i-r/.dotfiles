@@ -22,6 +22,9 @@ export KUBE_EDITOR="$NVIM_PATH"
 export MANPAGER="$NVIM_PATH +Man!"
 export ZVM_CURSOR_STYLE_ENABLED=false
 
+export GEMINI_CLI_NODE_VERSION='v24.11.1'
+export COPILOT_CLI_NODE_VERSION='v24.11.1'
+
 export PATH="$HOME/.cache/activestate/bin:$PATH"
 export PATH="$HOME/.bin/:$PATH"
 export PATH="/usr/lib/ccache/bin/:$PATH"

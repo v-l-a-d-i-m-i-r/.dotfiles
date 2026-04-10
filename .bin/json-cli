@@ -1,0 +1,222 @@
+#!/usr/bin/env node
+
+import fs from "fs";
+import path from "path";
+import { parseArgs } from "util";
+
+/**
+ * ---------- HELP TEXT ----------
+ */
+const HELP_TEXT = `
+JSON CLI Utility (no dependencies)
+
+USAGE:
+  json-cli --file <path> [operation]
+
+OPERATIONS:
+  --get <path>         Get value by dot-path (a.b.c)
+  --set <path>         Set value by dot-path (requires --value)
+  --delete <path>      Delete value by dot-path
+  --exists <path>      Check if path exists (exit code based)
+  --find <value>       Find all paths matching value
+
+OPTIONS:
+  --file, -f <path>    JSON file (local / relative / absolute)
+  --value <value>      Value for --set (auto-parsed)
+  --pretty             Pretty-print JSON when writing (default: true)
+  --help, -h           Show this help
+
+VALUE PARSING:
+  true | false         → boolean
+  42                   → number
+  {"a":1}              → JSON object
+  [1,2,3]              → JSON array
+  hello                → string
+
+EXAMPLES:
+  json-cli -f data.json --get a.b.c
+  json-cli -f data.json --set a.b.c --value true
+  json-cli -f data.json --delete users.2
+  json-cli -f data.json --exists config.debug
+  json-cli -f data.json --find false
+
+EXIT CODES:
+  0  Success / path exists
+  1  Error / path does not exist
+`;
+
+/**
+ * ---------- CLI ARGUMENTS ----------
+ */
+const { values } = parseArgs({
+  options: {
+    file: { type: "string", short: "f" },
+    get: { type: "string" },
+    set: { type: "string" },
+    delete: { type: "string" },
+    exists: { type: "string" },
+    find: { type: "string" },
+    value: { type: "string" },
+    pretty: { type: "boolean", default: true },
+    help: { type: "boolean", short: "h" }
+  }
+});
+
+/**
+ * ---------- HELP ----------
+ */
+if (values.help) {
+  console.log(HELP_TEXT.trim());
+  process.exit(0);
+}
+
+/**
+ * ---------- FILE HANDLING ----------
+ */
+if (!values.file) {
+  console.error("❌ --file is required (use --help)");
+  process.exit(1);
+}
+
+
+function getAbsolutePath(inputPath) {
+  if (inputPath.startsWith('~')) {
+    return path.join(os.homedir(), inputPath.slice(1));
+  }
+  return path.resolve(process.cwd(), inputPath);
+}
+
+// const filePath = path.resolve(process.cwd(), values.file);
+const filePath = getAbsolutePath(values.file);
+
+if (!fs.existsSync(filePath)) {
+  console.error(`❌ File not found: ${filePath}`);
+  process.exit(1);
+}
+
+const json = JSON.parse(fs.readFileSync(filePath, "utf8"));
+
+/**
+ * ---------- HELPERS ----------
+ */
+function getByPath(obj, pathStr) {
+  return pathStr.split(".").reduce((o, k) => (o ? o[k] : undefined), obj);
+}
+
+function existsByPath(obj, pathStr) {
+  let cur = obj;
+  for (const key of pathStr.split(".")) {
+    if (cur === null || typeof cur !== "object" || !(key in cur)) {
+      return false;
+    }
+    cur = cur[key];
+  }
+  return true;
+}
+
+function setByPath(obj, pathStr, value) {
+  const keys = pathStr.split(".");
+  let cur = obj;
+  for (let i = 0; i < keys.length - 1; i++) {
+    cur[keys[i]] ??= {};
+    cur = cur[keys[i]];
+  }
+  cur[keys.at(-1)] = value;
+}
+
+function deleteByPath(obj, pathStr) {
+  const keys = pathStr.split(".");
+  let cur = obj;
+
+  for (let i = 0; i < keys.length - 1; i++) {
+    if (!(keys[i] in cur)) {
+      throw new Error(`Path not found: ${pathStr}`);
+    }
+    cur = cur[keys[i]];
+  }
+
+  const lastKey = keys.at(-1);
+
+  if (Array.isArray(cur)) {
+    const index = Number(lastKey);
+    if (Number.isNaN(index)) {
+      throw new Error(`Invalid array index: ${lastKey}`);
+    }
+    cur.splice(index, 1);
+  } else if (typeof cur === "object" && cur !== null) {
+    if (!(lastKey in cur)) {
+      throw new Error(`Path not found: ${pathStr}`);
+    }
+    delete cur[lastKey];
+  } else {
+    throw new Error(`Cannot delete from non-object at path: ${pathStr}`);
+  }
+}
+
+function parseValue(val) {
+  if (val === "true") return true;
+  if (val === "false") return false;
+  if (!isNaN(val)) return Number(val);
+  try {
+    return JSON.parse(val);
+  } catch {
+    return val;
+  }
+}
+
+function findPathsByValue(obj, target, base = "", result = []) {
+  if (obj === target) {
+    result.push(base || ".");
+  }
+  if (typeof obj === "object" && obj !== null) {
+    for (const [key, val] of Object.entries(obj)) {
+      const p = base ? `${base}.${key}` : key;
+      findPathsByValue(val, target, p, result);
+    }
+  }
+  return result;
+}
+
+/**
+ * ---------- OPERATIONS ----------
+ */
+try {
+  if (values.get) {
+    console.log(getByPath(json, values.get));
+    process.exit(0);
+  }
+
+  if (values.exists) {
+    const ok = existsByPath(json, values.exists);
+    console.log(ok);
+    process.exit(ok ? 0 : 1);
+  }
+
+  if (values.set) {
+    if (values.value === undefined) {
+      throw new Error("--value is required with --set");
+    }
+    setByPath(json, values.set, parseValue(values.value));
+    fs.writeFileSync(filePath, JSON.stringify(json, null, values.pretty ? 2 : 0));
+    console.log("✅ Value set");
+    process.exit(0);
+  }
+
+  if (values.delete) {
+    deleteByPath(json, values.delete);
+    fs.writeFileSync(filePath, JSON.stringify(json, null, values.pretty ? 2 : 0));
+    console.log("🗑️  Path deleted");
+    process.exit(0);
+  }
+
+  if (values.find) {
+    console.log(findPathsByValue(json, parseValue(values.find)).join("\n"));
+    process.exit(0);
+  }
+
+  throw new Error("No operation specified (use --help)");
+} catch (err) {
+  console.error("❌", err.message);
+  process.exit(1);
+}
+
