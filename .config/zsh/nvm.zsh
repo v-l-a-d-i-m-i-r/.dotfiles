@@ -9,6 +9,16 @@ function _nvm_use() {
     return
   fi
 
+  if [[ "$version" == '16' ]]; then
+    version='v16.20.2'
+  elif [[ "$version" == '18' ]]; then
+    version='v18.17.1'
+  elif [[ "$version" == '14' ]]; then
+    version='v14.19.2'
+  elif [[ ! "$version" == v* ]]; then
+    version="v$version"
+  fi
+
   if [ ! -d "${NVM_DIR}/versions/node/${version}/bin" ]; then
     echo "node ${version} is not available";
 
@@ -27,6 +37,7 @@ function _nvm_use() {
   done
 
   export PATH="${NVM_DIR}/versions/node/${version}/bin${NEW_PATH}"
+  export NODE_PATH="${NVM_DIR}/versions/node/${version}/lib/node_modules"
 }
 
 function _nvm_list () {
@@ -99,29 +110,11 @@ function _handle_nvmrc () {
   fi
 
   local node_version=$(cat .nvmrc)
-
-  if [[ $node_version == '16' ]]; then
-    nvm use 'v16.20.2'
-    return
-  fi
-  if [[ $node_version == '18' ]]; then
-    nvm use 'v18.17.1'
-    return
-  fi
-  if [[ $node_version == '14' ]]; then
-    nvm use 'v14.19.2'
-    return
-  fi
-
-  if [[ $node_version == v* ]]; then
-    nvm use $node_version
-  else
-    nvm use "v$node_version"
-  fi
+  nvm use $node_version
 }
 
 autoload -Uz add-zsh-hook
 add-zsh-hook chpwd _handle_nvmrc
 
-nvm use v14.19.2
+nvm use v20.19.4
 _handle_nvmrc
