@@ -56,6 +56,7 @@ packages=(
   python
   python-pip
   watchman-bin
+  tree-sitter-cli
   ### Providers
   cpanminus
   shellcheck-bin
