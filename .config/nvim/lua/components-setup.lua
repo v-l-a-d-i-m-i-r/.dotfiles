@@ -279,15 +279,15 @@ c.add_component({
 })
 
 c.add_component({
-  name = 'indent_blankline',
+  name = 'ibl',
   install_script = function()
     return u.clone_git_repo({
       url = 'https://github.com/lukas-reineke/indent-blankline.nvim',
-      tag = 'v2.20.6',
+      tag = 'v3.9.1',
     })
   end,
   on_init = function()
-    c.load_plugin('indent_blankline')
+    c.load_plugin('ibl')
     require('indent-blankline-setup')
   end,
 })
@@ -351,18 +351,18 @@ c.add_component({
   end,
 })
 
--- https://github.com/Kaiser-Yang/blink-cmp-avante
-
+-- https://www.qu8n.com/posts/treesitter-migration-guide-for-nvim-0-12
 c.add_component({
-  name = 'playground',
+  name = 'nvim-treesitter',
   install_script = function()
     return u.clone_git_repo({
-      url = 'https://github.com/nvim-treesitter/playground',
-      commit = '01c27f37a1f067200680cacfb7b96f5ad2fa5cd6',
+      url = 'https://github.com/nvim-treesitter/nvim-treesitter',
+      commit = '4916d6592ede8c07973490d9322f187e07dfefac',
     })
   end,
   on_init = function()
-    c.load_plugin('playground')
+    c.load_plugin('nvim-treesitter')
+    require('nvim-treesitter-setup')
   end,
 })
 
@@ -371,27 +371,13 @@ c.add_component({
   install_script = function()
     return u.clone_git_repo({
       url = 'https://github.com/nvim-treesitter/nvim-treesitter-context',
-      -- commit = '05aa871a41078ae82158a37940972f6fea057c01',
-      -- commit = '2aba92ceb1479485953007f4d5adf34d0b66917e', -- last used with nvim 0.10
-      commit = '93b29a32d5f4be10e39226c6b796f28d68a8b483',
+      -- commit = '93b29a32d5f4be10e39226c6b796f28d68a8b483',
+      tag = 'v1.0.0',
     })
   end,
   on_init = function()
     c.load_plugin('nvim-treesitter-context')
-  end,
-})
-
-c.add_component({
-  name = 'nvim-treesitter',
-  install_script = function()
-    return u.clone_git_repo({
-      url = 'https://github.com/nvim-treesitter/nvim-treesitter',
-      tag = 'v0.10.0',
-    })
-  end,
-  on_init = function()
-    c.load_plugin('nvim-treesitter')
-    require('nvim-treesitter-setup')
+    require('nvim-treesitter-context-setup')
   end,
 })
 
@@ -415,7 +401,8 @@ c.add_component({
     return u.clone_git_repo({
       url = 'https://github.com/folke/trouble.nvim',
       -- tag = 'v2.8.0', -- last used with nvim 0.10
-      tag = 'v3.7.1',
+      -- tag = 'v3.7.1', -- last used with nvim 0.11
+      commit = 'bd67efe408d4816e25e8491cc5ad4088e708a69a',
     })
   end,
   on_init = function()
@@ -728,7 +715,7 @@ c.add_component({
   install_script = function()
     return u.clone_git_repo({
       url = 'https://github.com/v-l-a-d-i-m-i-r/nvim-themes',
-      commit = 'd39fae3f434b9afccb74465a9efc46ddad573c93',
+      commit = '576ee09dabd44d47d04287b7bdd83814d1730533',
     })
   end,
   on_init = function()
