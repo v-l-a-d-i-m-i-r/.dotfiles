@@ -1,5 +1,6 @@
-require('indent_blankline').setup({
-  show_current_context = true,
-  show_current_context_start = true,
-  char = '▏',
+require('ibl').setup({
+  indent = {
+    char = '▏',
+    smart_indent_cap = false,
+  },
 })
