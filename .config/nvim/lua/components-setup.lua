@@ -588,7 +588,7 @@ c.add_component({
   install_script = function()
     return u.clone_git_repo({
       url = 'https://github.com/stevearc/aerial.nvim',
-      tag = 'v1.1.0',
+      tag = 'v3.1.0',
     })
   end,
   on_init = function()
