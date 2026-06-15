@@ -207,6 +207,23 @@ c.add_component({
   end,
 })
 
+c.add_component({
+  name = 'just-lsp',
+  binaries_directory = '',
+  install_script = function()
+    local version = '0.4.5'
+
+    return u.cli_pipe({
+      'curl -L https://github.com/terror/just-lsp/releases/download/'
+        .. version
+        .. '/just-lsp-'
+        .. version
+        .. '-x86_64-unknown-linux-gnu.tar.gz',
+      'tar -xz',
+    })
+  end,
+})
+
 -- Nvim Plugin Dependencies --
 
 c.add_component({

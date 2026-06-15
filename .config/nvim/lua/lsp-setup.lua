@@ -365,6 +365,23 @@ nvim_lsp.add_server({
   end,
 })
 
+nvim_lsp.add_server({
+  name = 'just-lsp',
+  filetypes = {
+    'just',
+  },
+  root_markers = {
+    '.git',
+  },
+  on_file_type = function()
+    return {
+      cmd = {
+        c.get_component('just-lsp').bin('just-lsp'),
+      },
+    }
+  end,
+})
+
 nvim_lsp.start_servers()
 
 function get_current_script_path()

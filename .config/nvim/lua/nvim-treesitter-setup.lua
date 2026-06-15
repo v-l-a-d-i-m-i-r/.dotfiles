@@ -26,6 +26,7 @@ local ensure_installed = {
   'http',
   'javascript',
   'json',
+  'just',
   'lua',
   'make',
   'markdown',
