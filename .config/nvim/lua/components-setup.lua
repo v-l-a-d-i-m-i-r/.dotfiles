@@ -32,10 +32,6 @@ c.setup({
 -- Binaries --
 
 add_nodejs({
-  version = '16.14.2',
-})
-
-add_nodejs({
   version = '18.19.1',
 })
 
@@ -48,8 +44,8 @@ c.add_component({
   binaries_directory = '/node_modules/.bin',
   install_script = function()
     local version = '1.22.18'
-    local node = c.get_component('node-16.14.2').bin('node')
-    local npm = c.get_component('node-16.14.2').bin('npm')
+    local node = c.get_component('node-22.21.0').bin('node')
+    local npm = c.get_component('node-22.21.0').bin('npm')
 
     return u.cli_and({
       'npm init -y',
@@ -89,7 +85,7 @@ c.add_component({
   name = 'typescript-language-server',
   binaries_directory = '/node_modules/.bin',
   install_script = function()
-    local version = '5.1.3'
+    local version = '5.3.0'
     local node = c.get_component('node-22.21.0').bin('node')
     local yarn = c.get_component('yarn').bin('yarn')
 
@@ -104,7 +100,7 @@ c.add_component({
   name = 'tsgo',
   binaries_directory = '/node_modules/.bin',
   install_script = function()
-    local version = '7.0.0-dev.20260312.1'
+    local version = '7.0.0-dev.20260618.1'
     local node = c.get_component('node-22.21.0').bin('node')
     local yarn = c.get_component('yarn').bin('yarn')
 
@@ -119,7 +115,7 @@ c.add_component({
   name = 'angular-language-server',
   binaries_directory = '/node_modules/.bin',
   install_script = function()
-    local version = '20.2.2'
+    local version = '21.2.17'
     local node = c.get_component('node-22.21.0').bin('node')
     local yarn = c.get_component('yarn').bin('yarn')
 
@@ -134,12 +130,12 @@ c.add_component({
   name = 'vscode-langservers-extracted',
   binaries_directory = '/node_modules/.bin',
   install_script = function()
-    local version = '4.8.0'
-    local path = c.get_component('node-16.14.2').bin('') .. ':$PATH'
+    local version = '2.0.1'
+    local path = c.get_component('node-22.21.0').bin('') .. ':$PATH'
 
     return u.cli_and({
       'npm init -y',
-      'PATH=' .. path .. ' npm install --save-exact ' .. 'vscode-langservers-extracted@' .. version,
+      'PATH=' .. path .. ' npm install --save-exact ' .. '@t1ckbase/vscode-langservers-extracted@' .. version,
     })
   end,
 })
@@ -148,7 +144,7 @@ c.add_component({
   name = 'emmet-language-server',
   binaries_directory = '/node_modules/.bin',
   install_script = function()
-    local version = '2.6.1'
+    local version = '2.8.0'
     local node = c.get_component('node-18.19.1').bin('node')
     local yarn = c.get_component('yarn').bin('yarn')
 
@@ -163,9 +159,8 @@ c.add_component({
   name = 'bash-language-server',
   binaries_directory = '/node_modules/.bin',
   install_script = function()
-    -- local version = '3.0.3'
-    local version = '5.4.3'
-    local node = c.get_component('node-18.19.1').bin('node')
+    local version = '5.6.0'
+    local node = c.get_component('node-22.21.0').bin('node')
     local yarn = c.get_component('yarn').bin('yarn')
 
     return u.cli_and({
@@ -179,7 +174,7 @@ c.add_component({
   name = 'lua-language-server',
   binaries_directory = '/bin',
   install_script = function()
-    local version = '3.13.9'
+    local version = '3.18.2'
 
     return u.cli_pipe({
       'curl -L https://github.com/LuaLS/lua-language-server/releases/download/'
@@ -196,7 +191,7 @@ c.add_component({
   name = 'kulala-ls',
   binaries_directory = '/node_modules/.bin',
   install_script = function()
-    local version = '1.10.0'
+    local version = '1.11.1'
     local node = c.get_component('node-18.19.1').bin('node')
     local yarn = c.get_component('yarn').bin('yarn')
 

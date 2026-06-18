@@ -62,7 +62,6 @@ nvim_lsp.add_server({
     'lua',
   },
   root_markers = {
-    '.git',
     '.luacheckrc',
     '.luarc.json',
     '.luarc.jsonc',
@@ -317,7 +316,7 @@ nvim_lsp.add_server({
   on_file_type = function()
     return {
       cmd = {
-        c.get_component('node-16.14.2').bin('node'),
+        c.get_component('node-22.21.0').bin('node'),
         c.get_component('bash-language-server').bin('bash-language-server'),
         'start',
       },
