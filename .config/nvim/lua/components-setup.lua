@@ -2,7 +2,7 @@ local NVIM_CONFIG_ROOT = require('config').NVIM_CONFIG_ROOT
 
 local components_path = NVIM_CONFIG_ROOT .. '/components'
 local components_plugin_url = 'https://github.com/v-l-a-d-i-m-i-r/nvim-components'
-local components_plugin_commit = 'c5c8084ce304f2be8d109bf6058cff231fc4f9fd'
+local components_plugin_commit = 'd258ad519a22bc3b3b032c2942f89d351a0da22e'
 local components_plugin_name = 'components-nvim-' .. components_plugin_commit
 -- local components_plugin_path = '/data/projects/nvim-components'
 local components_plugin_path = components_path .. '/' .. components_plugin_name
@@ -224,7 +224,7 @@ c.add_component({
 c.add_component({
   name = 'plenary',
   install_script = function()
-    return u.clone_git_repo({
+    return u.clone_git_repo_at_tag({
       url = 'https://github.com/nvim-lua/plenary.nvim',
       tag = 'v0.1.4',
     })
@@ -237,7 +237,7 @@ c.add_component({
 c.add_component({
   name = 'nvim-web-devicons',
   install_script = function()
-    return u.clone_git_repo({
+    return u.clone_git_repo_at_commit({
       url = 'https://github.com/nvim-tree/nvim-web-devicons',
       commit = 'c90dee4e930ab9f49fa6d77f289bff335b49e972',
     })
@@ -252,7 +252,7 @@ c.add_component({
 c.add_component({
   name = 'lualine',
   install_script = function()
-    return u.clone_git_repo({
+    return u.clone_git_repo_at_commit({
       url = 'https://github.com/nvim-lualine/lualine.nvim',
       commit = 'de2c4beaf50552647273b5eaa33095e90a6d00a0',
     })
@@ -266,7 +266,7 @@ c.add_component({
 c.add_component({
   name = 'ibl',
   install_script = function()
-    return u.clone_git_repo({
+    return u.clone_git_repo_at_tag({
       url = 'https://github.com/lukas-reineke/indent-blankline.nvim',
       tag = 'v3.9.1',
     })
@@ -280,7 +280,7 @@ c.add_component({
 c.add_component({
   name = 'nvim-highlight-colors',
   install_script = function()
-    return u.clone_git_repo({
+    return u.clone_git_repo_at_commit({
       url = 'https://github.com/brenoprata10/nvim-highlight-colors',
       commit = 'b42a5ccec7457b44e89f7ed3b3afb1b375bb2093',
     })
@@ -298,7 +298,7 @@ c.add_component({
 c.add_component({
   name = 'luasnip',
   install_script = function()
-    return u.clone_git_repo({
+    return u.clone_git_repo_at_tag({
       url = 'https://github.com/L3MON4D3/LuaSnip',
       tag = 'v2.4.1',
     })
@@ -312,7 +312,7 @@ c.add_component({
 c.add_component({
   name = 'blink.cmp',
   install_script = function()
-    return u.clone_git_repo({
+    return u.clone_git_repo_at_tag({
       url = 'https://github.com/Saghen/blink.cmp',
       tag = 'v1.10.1',
     })
@@ -327,7 +327,7 @@ c.add_component({
 c.add_component({
   name = 'nvim-treesitter',
   install_script = function()
-    return u.clone_git_repo({
+    return u.clone_git_repo_at_commit({
       url = 'https://github.com/nvim-treesitter/nvim-treesitter',
       commit = '4916d6592ede8c07973490d9322f187e07dfefac',
     })
@@ -341,7 +341,7 @@ c.add_component({
 c.add_component({
   name = 'nvim-treesitter-context',
   install_script = function()
-    return u.clone_git_repo({
+    return u.clone_git_repo_at_tag({
       url = 'https://github.com/nvim-treesitter/nvim-treesitter-context',
       -- commit = '93b29a32d5f4be10e39226c6b796f28d68a8b483',
       tag = 'v1.0.0',
@@ -356,7 +356,7 @@ c.add_component({
 c.add_component({
   name = 'nvim-tree',
   install_script = function()
-    return u.clone_git_repo({
+    return u.clone_git_repo_at_tag({
       url = 'https://github.com/nvim-tree/nvim-tree.lua',
       tag = 'v1.14.0',
     })
@@ -370,7 +370,7 @@ c.add_component({
 c.add_component({
   name = 'trouble.nvim',
   install_script = function()
-    return u.clone_git_repo({
+    return u.clone_git_repo_at_commit({
       url = 'https://github.com/folke/trouble.nvim',
       -- tag = 'v2.8.0', -- last used with nvim 0.10
       -- tag = 'v3.7.1', -- last used with nvim 0.11
@@ -387,7 +387,7 @@ c.add_component({
   name = 'telescope-fzf-native.nvim',
   install_script = function()
     return u.cli_and({
-      u.clone_git_repo({
+      u.clone_git_repo_at_commit({
         url = 'https://github.com/nvim-telescope/telescope-fzf-native.nvim',
         commit = '6a33ecefa9b3d9ade654f9a7a6396a00c3758ca6',
       }),
@@ -405,7 +405,7 @@ c.add_component({
 c.add_component({
   name = 'telescope-live-grep-args.nvim',
   install_script = function()
-    return u.clone_git_repo({
+    return u.clone_git_repo_at_commit({
       url = 'https://github.com/nvim-telescope/telescope-live-grep-args.nvim',
       commit = '53e9df55b3651dd7cf77e172f1e8c9a17407acca',
     })
@@ -418,7 +418,7 @@ c.add_component({
 c.add_component({
   name = 'telescope',
   install_script = function()
-    return u.clone_git_repo({
+    return u.clone_git_repo_at_tag({
       url = 'https://github.com/nvim-telescope/telescope.nvim',
       tag = 'v0.2.1',
     })
@@ -432,7 +432,7 @@ c.add_component({
 c.add_component({
   name = 'diffview.nvim',
   install_script = function()
-    return u.clone_git_repo({
+    return u.clone_git_repo_at_commit({
       url = 'https://github.com/v-l-a-d-i-m-i-r/diffview.nvim',
       commit = '6809cc581423ae8d3c8ce5d7a05414b8f1265acd',
       -- commit = '6ca4cce071d527fa16c27781f98b843774ae84a7', -- last used with nvim 0.10
@@ -449,7 +449,7 @@ c.add_component({
 c.add_component({
   name = 'gitsigns',
   install_script = function()
-    return u.clone_git_repo({
+    return u.clone_git_repo_at_tag({
       url = 'https://github.com/lewis6991/gitsigns.nvim',
       tag = 'v0.6',
     })
@@ -463,7 +463,7 @@ c.add_component({
 c.add_component({
   name = 'vim-fugitive',
   install_script = function()
-    return u.clone_git_repo({
+    return u.clone_git_repo_at_tag({
       url = 'https://github.com/tpope/vim-fugitive',
       tag = 'v3.7',
     })
@@ -476,7 +476,7 @@ c.add_component({
 c.add_component({
   name = 'conflict-marker.vim',
   install_script = function()
-    return u.clone_git_repo({
+    return u.clone_git_repo_at_commit({
       url = 'https://github.com/rhysd/conflict-marker.vim',
       commit = '11a4d42244755505b66b15cd4496a150432eb5e3',
     })
@@ -490,7 +490,7 @@ c.add_component({
 c.add_component({
   name = 'vim-repeat',
   install_script = function()
-    return u.clone_git_repo({
+    return u.clone_git_repo_at_tag({
       url = 'https://github.com/tpope/vim-repeat',
       tag = 'v1.2',
     })
@@ -503,7 +503,7 @@ c.add_component({
 c.add_component({
   name = 'nvim-autopairs',
   install_script = function()
-    return u.clone_git_repo({
+    return u.clone_git_repo_at_commit({
       url = 'https://github.com/windwp/nvim-autopairs',
       commit = '59df87a84c80a357ca8d8fe86e451b93ac476ccc',
     })
@@ -517,7 +517,7 @@ c.add_component({
 c.add_component({
   name = 'ts_context_commentstring',
   install_script = function()
-    return u.clone_git_repo({
+    return u.clone_git_repo_at_commit({
       url = 'https://github.com/JoosepAlviste/nvim-ts-context-commentstring',
       commit = '6141a40173c6efa98242dc951ed4b6f892c97027',
     })
@@ -531,7 +531,7 @@ c.add_component({
 c.add_component({
   name = 'todo-comments.nvim',
   install_script = function()
-    return u.clone_git_repo({
+    return u.clone_git_repo_at_tag({
       url = 'https://github.com/folke/todo-comments.nvim',
       tag = 'v1.1.0',
     })
@@ -545,7 +545,7 @@ c.add_component({
 c.add_component({
   name = 'vim-startuptime',
   install_script = function()
-    return u.clone_git_repo({
+    return u.clone_git_repo_at_tag({
       url = 'https://github.com/dstein64/vim-startuptime',
       tag = 'v4.4.0',
     })
@@ -558,7 +558,7 @@ c.add_component({
 c.add_component({
   name = 'aerial.nvim',
   install_script = function()
-    return u.clone_git_repo({
+    return u.clone_git_repo_at_tag({
       url = 'https://github.com/stevearc/aerial.nvim',
       tag = 'v3.1.0',
     })
@@ -572,7 +572,7 @@ c.add_component({
 c.add_component({
   name = 'nvim-lsp',
   install_script = function()
-    return u.clone_git_repo({
+    return u.clone_git_repo_at_commit({
       url = 'https://github.com/v-l-a-d-i-m-i-r/nvim-lsp',
       commit = '91a89404a41b4a8057e78e4f74aad7037f4e3cb2',
     })
@@ -588,7 +588,7 @@ c.add_component({
 c.add_component({
   name = 'vim-tmux-navigator',
   install_script = function()
-    return u.clone_git_repo({
+    return u.clone_git_repo_at_commit({
       url = 'https://github.com/christoomey/vim-tmux-navigator',
       commit = '424b5caa154bff34dc258ee53cec5a8e36cf7ea8',
     })
@@ -601,7 +601,7 @@ c.add_component({
 c.add_component({
   name = 'better-vim-tmux-resizer',
   install_script = function()
-    return u.clone_git_repo({
+    return u.clone_git_repo_at_commit({
       url = 'https://github.com/RyanMillerC/better-vim-tmux-resizer',
       commit = 'a791fe5b4433ac43a4dad921e94b7b5f88751048',
     })
@@ -614,7 +614,7 @@ c.add_component({
 c.add_component({
   name = 'render-markdown.nvim',
   install_script = function()
-    return u.clone_git_repo({
+    return u.clone_git_repo_at_tag({
       url = 'https://github.com/MeanderingProgrammer/render-markdown.nvim',
       tag = 'v8.4.0',
     })
@@ -629,7 +629,7 @@ c.add_component({
 c.add_component({
   name = 'kulala.nvim',
   install_script = function()
-    return u.clone_git_repo({
+    return u.clone_git_repo_at_tag({
       url = 'https://github.com/mistweaverco/kulala.nvim',
       tag = 'v5.3.3',
     })
@@ -643,7 +643,7 @@ c.add_component({
 c.add_component({
   name = 'csvview',
   install_script = function()
-    return u.clone_git_repo({
+    return u.clone_git_repo_at_tag({
       url = 'https://github.com/hat0uma/csvview.nvim',
       tag = 'v1.3.0',
     })
@@ -657,7 +657,7 @@ c.add_component({
 c.add_component({
   name = 'nvim-themes',
   install_script = function()
-    return u.clone_git_repo({
+    return u.clone_git_repo_at_commit({
       url = 'https://github.com/v-l-a-d-i-m-i-r/nvim-themes',
       commit = '576ee09dabd44d47d04287b7bdd83814d1730533',
     })
@@ -673,7 +673,7 @@ c.add_component({
 c.add_component({
   name = 'nvim-tabline',
   install_script = function()
-    return u.clone_git_repo({
+    return u.clone_git_repo_at_commit({
       url = 'https://github.com/v-l-a-d-i-m-i-r/nvim-tabline',
       commit = '1f790cf95c43394119ce08f7f7adc505ff1c13e8',
     })
