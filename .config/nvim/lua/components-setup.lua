@@ -1,11 +1,11 @@
--- vim.opt.rtp:append(vim.fn.stdpath('config') .. '/plugins/components')
 local NVIM_CONFIG_ROOT = require('config').NVIM_CONFIG_ROOT
 
 local components_path = NVIM_CONFIG_ROOT .. '/components'
 local components_plugin_url = 'https://github.com/v-l-a-d-i-m-i-r/nvim-components'
-local components_plugin_commit = '21711de1320811f0ccdd67789a945c6f56edf718'
+local components_plugin_commit = 'c5c8084ce304f2be8d109bf6058cff231fc4f9fd'
+local components_plugin_name = 'components-nvim-' .. components_plugin_commit
 -- local components_plugin_path = '/data/projects/nvim-components'
-local components_plugin_path = components_path .. '/components-nvim-' .. components_plugin_commit
+local components_plugin_path = components_path .. '/' .. components_plugin_name
 
 if not (vim.uv or vim.loop).fs_stat(components_plugin_path) then
   local command = {
@@ -26,7 +26,7 @@ local add_nodejs = utils.install_node
 
 c.setup({
   components_path = components_path,
-  lazy_install = true,
+  self_name = components_plugin_name,
 })
 
 -- Binaries --
@@ -627,6 +627,8 @@ c.add_component({
     require('lsp-setup')
   end,
 })
+-- vim.opt.rtp:append('/data/projects/nvim-lsp')
+-- require('lsp-setup')
 
 c.add_component({
   name = 'vim-tmux-navigator',
@@ -727,6 +729,8 @@ c.add_component({
     require('colorscheme-setup')
   end,
 })
+-- vim.opt.rtp:append('/data/projects/nvim-themes')
+-- require('colorscheme-setup')
 
 c.add_component({
   name = 'nvim-tabline',
@@ -742,10 +746,6 @@ c.add_component({
   end,
 })
 
--- vim.opt.rtp:append('/data/projects/nvim-themes')
--- require('colorscheme-setup')
-
+c.sync_components()
 -- vim.opt.rtp:append('/data/projects/nvim-tabline')
 -- require('tabline-setup')
-
--- vim.opt.rtp:append(vim.fn.stdpath('config') .. '/plugins/components')
