@@ -24,10 +24,16 @@ export ZVM_CURSOR_STYLE_ENABLED=false
 
 export GEMINI_CLI_NODE_VERSION='v24.11.1'
 export COPILOT_CLI_NODE_VERSION='v24.11.1'
+export CODEX_CLI_NODE_VERSION='v24.11.1'
+export PI_CLI_NODE_VERSION='v24.11.1'
+export QWEN_CLI_NODE_VERSION='v24.11.1'
 
 export PATH="$HOME/.cache/activestate/bin:$PATH"
 export PATH="$HOME/.bin/:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 export PATH="/usr/lib/ccache/bin/:$PATH"
+export PATH="$HOME/.grok/bin:$PATH"
+
 # export XDG_SESSION_TYPE="X11"
 export DOCKER_OPTS="--dns=8.8.8.8"
 export COMPOSE_DOCKER_CLI_BUILD=1

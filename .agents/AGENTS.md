@@ -67,15 +67,49 @@ When a request requires me to write or modify code, I must respond using this ex
 - When fixing a bug, add a test that reproduces the bug and proves the fix.
 - Always include tests for edge cases and potential failure scenarios.
 
-## Node.js Version Management
-- **Policy:** When executing `npm`, `yarn`, `pnpm` or `node` commands, the Node.js version specified in the project's `.nvmrc` file should be used if the file exists.
-- **Execution:** All `npm`, `yarn`, `pnpm` or `node` commands will be wrapped in `zsh -cie`.
-    - **If `.nvmrc` exists in the current directory:** The command will be prefixed with `nvm use $(cat .nvmrc) && `.
-    - **If `.nvmrc` does not exist:** The command will be executed directly within the `zsh -cie` wrapper without `nvm use`.
+## Node.js Version & Package Manager Management
+- **Node.js Version Policy:** When executing `npm`, `yarn`, `pnpm`, or `node` commands, use the Node.js version specified in the project's `.nvmrc` file if it exists.
+- **Package Manager Detection Policy:** Automatically select the package manager based on lock files in the project root (priority order matters):
+    - `pnpm-lock.yaml` → use `pnpm`
+    - `yarn.lock` → use `yarn`
+    - `package-lock.json` → use `npm`
+    - If no lock file is found → default to `npm`
+- **Execution:** Wrap all commands in `zsh -cie`.
+    - **If `.nvmrc` exists in the current directory:** prefix the command with `nvm use $(cat .nvmrc) &&`
+    - **If `.nvmrc` does not exist:** execute the command directly within the `zsh -cie` wrapper.
 
-**Agent Behavior Example:**
-When asked to run `npm test`:
-- If a `.nvmrc` file containing `v18.12.0` is found, I will execute:
-  `zsh -cie "nvm use v18.12.0 && npm test"`
-- If no `.nvmrc` file is found, I will execute:
-  `zsh -cie "npm test"`
+### Agent Behavior Examples
+- **Running tests (`test` script):**
+    - With `.nvmrc` (`v18.12.0`) and `pnpm-lock.yaml`: `zsh -cie "nvm use v18.12.0 && pnpm test"`
+    - With `.nvmrc` and `yarn.lock`: `zsh -cie "nvm use $(cat .nvmrc) && yarn test"`
+    - With `.nvmrc` and `package-lock.json`: `zsh -cie "nvm use $(cat .nvmrc) && npm test"`
+    - Without `.nvmrc` and with `yarn.lock`: `zsh -cie "yarn test"`
+    - Without any lock file: `zsh -cie "npm test"`
+
+### Notes
+- Lock file detection takes precedence over any previously assumed package manager.
+- Priority order matters — if multiple lock files exist, the first match in the list is used.
+- Always prefer the package manager tied to the lock file to ensure deterministic installs and script execution.
+- This logic applies consistently to all commands (`install`, `run`, `exec`, etc.), not just `test`.
+
+## Code Intelligence
+
+Prefer LSP over Grep/Glob/Read for code navigation:
+- `goToDefinition` / `goToImplementation` to jump to source
+- `findReferences` to see all usages across the codebase
+- `workspaceSymbol` to find where something is defined
+- `documentSymbol` to list all symbols in a file
+- `hover` for type info without reading the file
+- `incomingCalls` / `outgoingCalls` for call hierarchy
+
+Before renaming or changing a function signature, use `findReferences` to find all call sites first.
+Use Grep/Glob only for text/pattern searches (comments, strings, config values) where LSP doesn't help.
+After writing or editing code, check LSP diagnostics before moving on. Fix any type errors or missing imports immediately.
+
+## Response Formatting & Style
+- **Zero Preamble:** Do not use introductory phrases, pleasantries, or acknowledgments (e.g., "Certainly," "I understand," or "Here is...").
+- **Brevity:** Deliver the minimum amount of text required for a complete answer. Strictly avoid "fluff" or redundant context.
+- **Structural Priority:** Use **Markdown tables** and **bulleted lists** as the default format. Avoid paragraphs longer than two sentences.
+- **No Unsolicited Explanations:** Provide results only. Do not explain the logic, background, or reasoning unless explicitly requested with phrases like "Explain" or "Why".
+- **Minimalist Code:** Provide only the essential code requested. Use 2-space indentation (except for Go, which uses tabs).
+- **No Post-amble:** Do not include summaries, tips, or follow-up suggestions at the end of the response.
