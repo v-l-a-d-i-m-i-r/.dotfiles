@@ -247,33 +247,6 @@ c.add_component({
   end,
 })
 
--- c.add_component({
---   name = 'dressing.nvim',
---   install_script = function()
---     return u.clone_git_repo({
---       url = 'https://github.com/stevearc/dressing.nvim',
---       tag = 'v3.1.1',
---     })
---   end,
---   on_init = function()
---     c.load_plugin('dressing.nvim')
---     require('dressing-setup')
---   end,
--- })
-
-c.add_component({
-  name = 'nui.nvim',
-  install_script = function()
-    return u.clone_git_repo({
-      url = 'https://github.com/MunifTanjim/nui.nvim',
-      tag = '0.4.0',
-    })
-  end,
-  on_init = function()
-    c.load_plugin('nui.nvim')
-  end,
-})
-
 -- Nvim Plugins
 
 c.add_component({
@@ -347,19 +320,6 @@ c.add_component({
   on_init = function()
     c.load_plugin('blink.cmp')
     require('blink-setup')
-  end,
-})
-
-c.add_component({
-  name = 'blink-cmp-avante',
-  install_script = function()
-    return u.clone_git_repo({
-      url = 'https://github.com/Kaiser-Yang/blink-cmp-avante',
-      tag = 'v0.1.0',
-    })
-  end,
-  on_init = function()
-    c.load_plugin('blink-cmp-avante')
   end,
 })
 
@@ -662,23 +622,6 @@ c.add_component({
   on_init = function()
     c.load_plugin('render-markdown.nvim')
     require('render-markdown-setup')
-  end,
-})
-
-c.add_component({
-  name = 'avante.nvim',
-  install_script = function()
-    return u.cli_and({
-      u.clone_git_repo({
-        url = 'https://github.com/yetone/avante.nvim',
-        tag = 'v0.0.27',
-      }),
-      'make',
-    })
-  end,
-  on_init = function()
-    c.load_plugin('avante.nvim')
-    require('avante-setup')
   end,
 })
 
