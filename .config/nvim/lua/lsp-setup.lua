@@ -341,6 +341,18 @@ nvim_lsp.add_server({
       },
       capabilities = capabilities,
       on_attach = on_attach,
+      settings = {
+        gopls = {
+          gofumpt = true,
+          analyses = {
+            unusedparams = true,
+          },
+          staticcheck = true,
+          codelenses = {
+            vendor = true,
+          },
+        },
+      },
     }
   end,
 })

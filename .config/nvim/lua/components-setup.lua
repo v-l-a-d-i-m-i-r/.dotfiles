@@ -58,7 +58,7 @@ c.add_component({
   name = 'go',
   binaries_directory = '/bin',
   install_script = function()
-    local version = '1.18.2'
+    local version = '1.25.0'
 
     return u.cli_pipe({
       'curl -L https://go.dev/dl/go' .. version .. '.linux-amd64.tar.gz',
@@ -71,7 +71,7 @@ c.add_component({
   name = 'gotools',
   binaries_directory = '/bin',
   install_script = function()
-    local version = '0.12.4'
+    local version = '0.22.0'
 
     return u.cli_and({
       'git clone --depth 1 --branch gopls/v' .. version .. '  https://github.com/golang/tools.git .',
