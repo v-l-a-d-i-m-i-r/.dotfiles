@@ -1,4 +1,6 @@
 -- https://github.com/ChristianChiarulli/nvim/blob/master/lua/user/options.lua
+local assets = require('assets')
+
 local function join(list, separator)
   return table.concat(list, separator or ',')
 end
@@ -38,6 +40,7 @@ vim.opt.guicursor = join({
 })
 vim.opt.signcolumn = 'yes:1'
 vim.opt.autoread = true
+vim.opt.listchars:append({ tab = assets.indent.tab .. ' ' })
 -- vim.opt.listchars = join({
 --   "tab: ──",
 --   "space:·",

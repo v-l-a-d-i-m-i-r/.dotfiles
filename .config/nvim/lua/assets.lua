@@ -61,10 +61,15 @@ local border_types = {
   single = 'single',
 }
 
+local indent = {
+  tab = '▏',
+}
+
 return {
   kind_icons = kind_icons,
   diagnostic_icons = diagnostic_icons,
   git_signs = git_signs,
   borders = borders,
   border_types = border_types,
+  indent = indent,
 }
