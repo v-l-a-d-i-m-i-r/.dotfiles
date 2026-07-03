@@ -219,6 +219,36 @@ c.add_component({
   end,
 })
 
+c.add_component({
+  name = 'protols',
+  binaries_directory = '',
+  install_script = function()
+    local version = '0.14.0'
+
+    return u.cli_pipe({
+      'curl -L https://github.com/coder3101/protols/releases/download/'
+        .. version
+        .. '/protols-x86_64-unknown-linux-gnu.tar.gz',
+      'tar -xz',
+    })
+  end,
+})
+
+c.add_component({
+  name = 'basedpyright',
+  binaries_directory = '/node_modules/.bin',
+  install_script = function()
+    local version = '1.39.9'
+    local node = c.get_component('node-22.21.0').bin('node')
+    local yarn = c.get_component('yarn').bin('yarn')
+
+    return u.cli_and({
+      'npm init -y',
+      node .. ' ' .. yarn .. ' add basedpyright@' .. version,
+    })
+  end,
+})
+
 -- Nvim Plugin Dependencies --
 
 c.add_component({

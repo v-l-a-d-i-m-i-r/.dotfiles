@@ -381,6 +381,56 @@ nvim_lsp.add_server({
   end,
 })
 
+nvim_lsp.add_server({
+  name = 'protols',
+  filetypes = {
+    'proto',
+  },
+  root_markers = {
+    '.git',
+  },
+  on_file_type = function()
+    return {
+      cmd = {
+        c.get_component('protols').bin('protols'),
+      },
+    }
+  end,
+})
+
+nvim_lsp.add_server({
+  name = 'basedpyright',
+  filetypes = {
+    'python',
+  },
+  root_markers = {
+    'pyrightconfig.json',
+    'pyproject.toml',
+    'setup.py',
+    'setup.cfg',
+    'requirements.txt',
+    'Pipfile',
+    '.git',
+  },
+  on_file_type = function()
+    return {
+      cmd = {
+        c.get_component('node-22.21.0').bin('node'),
+        c.get_component('basedpyright').bin('basedpyright-langserver'),
+        '--stdio',
+      },
+      settings = {
+        basedpyright = {
+          analysis = {
+            autoSearchPaths = true,
+            diagnosticMode = 'openFilesOnly',
+          },
+        },
+      },
+    }
+  end,
+})
+
 nvim_lsp.start_servers()
 
 function get_current_script_path()
