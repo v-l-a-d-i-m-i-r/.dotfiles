@@ -249,6 +249,22 @@ c.add_component({
   end,
 })
 
+
+c.add_component({
+  name = 'yamlls',
+  binaries_directory = '/node_modules/.bin',
+  install_script = function()
+    local version = '1.23.0'
+    local node = c.get_component('node-22.21.0').bin('node')
+    local yarn = c.get_component('yarn').bin('yarn')
+
+    return u.cli_and({
+      'npm init -y',
+      node .. ' ' .. yarn .. ' add yaml-language-server@' .. version,
+    })
+  end,
+})
+
 -- Nvim Plugin Dependencies --
 
 c.add_component({

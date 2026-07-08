@@ -443,6 +443,23 @@ nvim_lsp.add_server({
   end,
 })
 
+nvim_lsp.add_server({
+  name = 'yamlls',
+  filetypes = { "yaml", "yaml.docker-compose", "yaml.gitlab", "yaml.helm-values" },
+  root_markers = {
+    '.git',
+  },
+  on_file_type = function()
+    return {
+      cmd = {
+        c.get_component('node-22.21.0').bin('node'),
+        c.get_component('yamlls').bin('yaml-language-server'),
+        '--stdio',
+      },
+    }
+  end,
+})
+
 nvim_lsp.start_servers()
 
 function get_current_script_path()
