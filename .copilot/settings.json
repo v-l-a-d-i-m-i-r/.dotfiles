@@ -1,0 +1,14 @@
+{
+  "disabledSkills": [],
+  "model": "claude-sonnet-4.6",
+  "footer": {
+    "showAgent": true,
+    "showBranch": false,
+    "showCodeChanges": false,
+    "showContextWindow": true,
+    "showDirectory": true,
+    "showModelEffort": true,
+    "showQuota": true
+  },
+  "colorMode": "default"
+}

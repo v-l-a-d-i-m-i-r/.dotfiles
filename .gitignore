@@ -96,3 +96,12 @@
 !.urxvt/
 
 !.agents/
+
+!.copilot/
+.copilot/*
+!.copilot/settings.json
+
+!.claude/
+.claude/*
+!.claude/settings.json
+!.claude/statusline-command.sh
