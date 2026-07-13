@@ -4,33 +4,32 @@
 
 set +e
 
-if [[ $# -eq 1 ]]; then
-  selected=$1
-else
-  # selected=$(echo "$@" | sed 's/ /\n/g' | fzf --reverse)
-  selected=$(echo "$@" | sed 's/ /\n/g' | awk '{ $0 = $0 sprintf("%500s", ""); print }' | fzf | xargs echo -n)
-fi
+folder_path="$1"
+session_name="$2"
 
-if [[ -z $selected ]]; then
+if [ -z "${folder_path}" ]; then
   exit 0
 fi
 
-selected_name=$(basename "$selected" | tr . _)
+if [ -z "${session_name}" ]; then
+  session_name=$(basename "$folder_path" | tr . _)
+fi
+
 tmux_running=$(pgrep tmux)
 
-if [[ -z $tmux_running ]]; then
-  tmux new-session -s $selected_name -c $selected
+if [ -z "${tmux_running}" ]; then
+  tmux new-session -s "$session_name" -c "$folder_path"
   exit 0
 fi
 
 # create new session if not exists
-tmux has-session -t="${selected_name}" 2> /dev/null || tmux new-session -ds "${selected_name}" -c "${selected}" 2> /dev/null
+tmux has-session -t="${session_name}" 2>/dev/null || tmux new-session -ds "${session_name}" -c "${folder_path}" 2>/dev/null
 
 # script called inside tmux
-if [[ ! -z $TMUX ]]; then
-  tmux switch-client -t $selected_name
+if [ -n "${TMUX}" ]; then
+  tmux switch-client -t "$session_name"
   exit 0
 fi
 
 # script called outside tmux
-tmux a -t $selected_name
+tmux a -t "$session_name"

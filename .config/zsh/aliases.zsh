@@ -174,33 +174,103 @@ function ta() {
   ~/.bin/tmux-sessionizer "${session_name}";
 }
 function ts() {
-  if [[ $# -eq 0 ]]; then
-    folders=(
-      ~/.config/i3
-      ~/.config/nvim
-      ~/scripts/tools/*
-    )
+  local folder_path="$1";
 
-    if [ -d /data/projects ]; then
-      folders+=(/data/projects/*)
-    fi
+  if [[ ! -z "$folder_path" ]]; then
+    ~/.bin/tmux-sessionizer $folder_path;
 
-    if [ -d /data/projects/monorepo ]; then
-      folders+=(/data/projects/monorepo/*)
-    fi
-
-    ~/.bin/tmux-sessionizer ${folders[@]}
-  else
-    ~/.bin/tmux-sessionizer $1
+    return;
   fi
+
+  local -a expanded_paths=();
+
+  expanded_paths+=(~/.config/nvim);
+
+  if [ -d /data/projects ]; then
+    expanded_paths+=(/data/projects/*);
+  fi
+
+  if [ -d /data/projects/monorepo ]; then
+    expanded_paths+=(/data/projects/monorepo/*);
+  fi
+
+  if [ -d /data/projects/scaffolder ]; then
+    expanded_paths+=(/data/projects/scaffolder/projects/*);
+  fi
+
+  local -a folders=();
+
+  for expanded_path in $expanded_paths; do
+    if [[ ! -d "$expanded_path" ]]; then
+      continue;
+    fi
+
+    if [[ -f "$expanded_path/.git" ]]; then
+      local git_branch=$(git -C "$expanded_path" branch --show-current 2>/dev/null);
+      local folder=" ${expanded_path} ${git_branch}";
+
+      folders+=($folder);
+      continue;
+
+    fi
+
+    if [[ -d "$expanded_path/.git" ]]; then
+      local folder=" ${expanded_path}";
+
+      folders+=($folder);
+      continue;
+    fi
+
+    local folder=" ${expanded_path}";
+
+    folders+=($folder);
+  done
+
+  local selected=$(print -l $folders | sort | fzf-styled);
+  local folder_path=$(echo $selected | awk '{print $2}');
+
+  ~/.bin/tmux-sessionizer $folder_path;
 }
 alias tsh='ts ~'
 function tsf() {
-  if [[ $# -eq 0 ]]; then
-    ~/.bin/tmux-sessionizer /data/projects/flip/* 
-  else
-    ~/.bin/tmux-sessionizer $1
+  if [[ -z "${COMMERCIAL_PROJECT_PATHS}" ]]; then
+    echo 'Error: COMMERCIAL_PROJECT_PATHS is not set.';
+
+    return 1;
   fi
+
+  local expanded_paths=(${~COMMERCIAL_PROJECT_PATHS});
+  local folders=();
+
+  for expanded_path in $expanded_paths; do
+    if [[ ! -d "$expanded_path" ]]; then
+      continue;
+    fi
+
+    if [[ -f "$expanded_path/.git" ]]; then
+      local git_branch=$(git -C "$expanded_path" branch --show-current 2>/dev/null);
+      local folder=" ${expanded_path} ${git_branch}";
+
+      folders+=($folder);
+      continue;
+    fi
+
+    if [[ -d "$expanded_path/.git" ]]; then
+      local folder=" ${expanded_path}";
+
+      folders+=($folder);
+      continue;
+    fi
+
+    local folder=" ${expanded_path}";
+
+    folders+=($folder);
+  done
+
+  local selected=$(print -l $folders | sort | fzf-styled);
+  local folder_path=$(echo $selected | awk '{print $2}');
+
+  ~/.bin/tmux-sessionizer $folder_path;
 }
 
 # npm
@@ -275,3 +345,4 @@ join-files () {
 
 alias dua='du -d 1 -h | sort -h -r'
 alias gem='gemini'
+alias fzf-styled='fzf --highlight-line'
