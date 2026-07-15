@@ -44,6 +44,7 @@ local ensure_installed = {
   'vim',
   'vimdoc', -- help
   'yaml',
+  'zsh',
 }
 
 local already_installed = treesitter_config.get_installed()

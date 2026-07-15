@@ -2,9 +2,9 @@ local c = require('components')
 local config = require('config')
 
 vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufRead' }, {
-  pattern = { '.zshrc', '*.zsh' },
+  pattern = { '.zshrc' },
   callback = function()
-    vim.cmd('set filetype=bash')
+    vim.cmd('set filetype=zsh')
   end,
 })
 
