@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+set -e
+
+jq -S 'walk(if type == "array" then sort else . end)' "$1" | sponge "$1"

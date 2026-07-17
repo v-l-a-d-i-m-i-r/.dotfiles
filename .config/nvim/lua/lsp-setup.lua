@@ -445,7 +445,7 @@ nvim_lsp.add_server({
 
 nvim_lsp.add_server({
   name = 'yamlls',
-  filetypes = { "yaml", "yaml.docker-compose", "yaml.gitlab", "yaml.helm-values" },
+  filetypes = { 'yaml', 'yaml.docker-compose', 'yaml.gitlab', 'yaml.helm-values' },
   root_markers = {
     '.git',
   },

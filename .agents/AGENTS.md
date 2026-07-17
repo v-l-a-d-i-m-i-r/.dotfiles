@@ -80,7 +80,7 @@ When a request requires me to write or modify code, I must respond using this ex
 
 ### Agent Behavior Examples
 - **Running tests (`test` script):**
-    - With `.nvmrc` (`v18.12.0`) and `pnpm-lock.yaml`: `zsh -cie "nvm use v18.12.0 && pnpm test"`
+    - With `.nvmrc` and `pnpm-lock.yaml`: `zsh -cie "nvm use $(cat .nvmrc) && pnpm test"`
     - With `.nvmrc` and `yarn.lock`: `zsh -cie "nvm use $(cat .nvmrc) && yarn test"`
     - With `.nvmrc` and `package-lock.json`: `zsh -cie "nvm use $(cat .nvmrc) && npm test"`
     - Without `.nvmrc` and with `yarn.lock`: `zsh -cie "yarn test"`

@@ -1,0 +1,16 @@
+#!/usr/bin/env sh
+
+set -e
+
+staged=$(git diff --cached --name-only --diff-filter=ACM)
+
+if echo "$staged" | grep -qx '.claude/settings.json'; then
+	./.bin/pretify-json ./.claude/settings.json
+	git add ./.claude/settings.json
+fi
+
+lua_files=$(echo "$staged" | grep '^\.config/nvim/.*\.lua$' || true)
+if [ -n "$lua_files" ]; then
+	echo "$lua_files" | xargs stylua --
+	echo "$lua_files" | xargs git add --
+fi

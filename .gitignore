@@ -1,6 +1,8 @@
 /*
 !.gitignore
 !.gitconfig
+!.githooks/
+!justfile
 !README.md
 
 !.bin/

@@ -1,9 +1,45 @@
 {
-  "model": "sonnet",
-  "theme": "auto",
+  "disableArtifact": true,
+  "disableBundledSkills": true,
+  "disableClaudeAiConnectors": true,
+  "disableRemoteControl": true,
+  "disableWorkflows": true,
   "effortLevel": "medium",
+  "model": "sonnet",
+  "permissions": {
+    "allow": [
+      "Bash(awk *)",
+      "Bash(git *)",
+      "Bash(git:*)",
+      "Bash(just refs *)",
+      "Bash(tmux show-*)",
+      "Bash(tmux source-file *)",
+      "Bash(zsh -cie \"nvm use \\\\$\\(cat .nvmrc\\) && npm *)",
+      "Bash(zsh -cie \"nvm use \\\\$\\(cat .nvmrc\\) && npx *)",
+      "Bash(zsh -cie \"nvm use \\\\$\\(cat .nvmrc\\) && yarn *)"
+    ],
+    "deny": [
+      "AskUserQuestion",
+      "Bash(git push *)",
+      "Bash(git push:*)",
+      "CronCreate",
+      "CronDelete",
+      "CronList",
+      "DesignSync",
+      "EnterPlanMode",
+      "ExitPlanMode",
+      "NotebookEdit",
+      "PushNotification",
+      "RemoteTrigger",
+      "ReportFindings",
+      "ScheduleWakeup",
+      "SendMessage"
+    ]
+  },
+  "spinnerTipsEnabled": false,
   "statusLine": {
-    "type": "command",
-    "command": "bash ~/.claude/statusline-command.sh"
-  }
+    "command": "bash ~/.claude/statusline-command.sh",
+    "type": "command"
+  },
+  "theme": "auto"
 }
