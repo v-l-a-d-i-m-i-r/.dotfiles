@@ -249,7 +249,6 @@ c.add_component({
   end,
 })
 
-
 c.add_component({
   name = 'yamlls',
   binaries_directory = '/node_modules/.bin',
@@ -579,12 +578,12 @@ c.add_component({
   install_script = function()
     return u.clone_git_repo_at_tag({
       url = 'https://github.com/folke/todo-comments.nvim',
-      tag = 'v1.1.0',
+      tag = 'v1.5.0',
     })
   end,
   on_init = function()
     c.load_plugin('todo-comments.nvim')
-    require('todo-comments').setup()
+    require('todo-comments-setup')
   end,
 })
 

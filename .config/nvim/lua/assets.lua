@@ -65,6 +65,10 @@ local indent = {
   tab = '▏',
 }
 
+local comment_icons = {
+  comment = '󱜾',
+}
+
 return {
   kind_icons = kind_icons,
   diagnostic_icons = diagnostic_icons,
@@ -72,4 +76,5 @@ return {
   borders = borders,
   border_types = border_types,
   indent = indent,
+  comment_icons = comment_icons,
 }
