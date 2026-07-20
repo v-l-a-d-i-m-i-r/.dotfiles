@@ -75,7 +75,7 @@ alias gplc='git pull origin `git rev-parse --abbrev-ref HEAD`'
 alias gpsc='git push origin `git rev-parse --abbrev-ref HEAD`'
 alias gco='git checkout '
 alias gcob='git checkout -b '
-alias gcof='git checkout $(g branch | fzf)'
+alias gcof='git checkout $(g branch | fzf-styled)'
 alias gm='git merge '
 alias gg='git branch -a | tr -d \* | sed "/->/d" | xargs git grep '
 function ggf() {
@@ -88,7 +88,57 @@ function ggf() {
 alias gl='git log --abbrev=8 --pretty=format:"%C(yellow)%h%C(reset)%<|(30) %C(blue)%an%C(reset)%<|(47) %C(green)%ad%C(reset) %s" --graph --date=format-local:"%Y-%m-%d %H:%M:%S"'
 alias gla='gl --all'
 alias gs='git status'
+alias gwt='git worktree'
 
+# Worktree
+function wta() {
+  local work_tree_branch="$1";
+  local work_tree_path=$(git worktree list | grep "\[${work_tree_branch}\]" | awk '{print $1}');
+
+  if [[ ! -z "$work_tree_path" ]]; then
+    ~/.bin/tmux-sessionizer $work_tree_path;
+
+    return;
+  fi
+
+  local timestamp_sec=$(date +%s);
+  local timestamp_hex=$(printf '%x\n' $timestamp_sec);
+  local pwd_basename=$(basename $PWD);
+  local work_tree_path="${PWD:h}/${pwd_basename}-${timestamp_hex}";
+  local branch_exists=$(git show-ref --verify --quiet "refs/heads/${work_tree_branch}" && echo 0 || echo 1);
+
+  if (( branch_exists == 0 )); then
+    git worktree add $work_tree_path $work_tree_branch;
+  fi
+
+  if (( branch_exists != 0 )); then
+    git worktree add -b $work_tree_branch $work_tree_path;
+  fi
+
+  ~/.bin/tmux-sessionizer $work_tree_path;
+}
+
+function wtd() {
+  local work_tree_path="$(realpath "${1:-$PWD}")";
+  local git_common_dir=$(git -C "$work_tree_path" rev-parse --git-common-dir 2>/dev/null);
+
+  if [[ -z "$git_common_dir" ]]; then
+    echo "Error: Not inside a git repository.";
+
+    return 1;
+  fi
+
+  local main_repo_path=$(dirname "$(realpath "$git_common_dir")");
+  local session_name=$(basename "$work_tree_path" | tr . _);
+
+  ~/.bin/tmux-sessionizer "$main_repo_path";
+
+  git worktree remove "$work_tree_path";
+
+  if tmux has-session -t="$session_name" 2>/dev/null; then
+    tmux kill-session -t "$session_name";
+  fi
+}
 
 # function fzf-git-branch() {
 #   git rev-parse HEAD > /dev/null 2>&1 || return
@@ -168,9 +218,8 @@ alias gs='git status'
 
 # tmux
 alias t='tmux '
-# alias ta='~/.bin/tmux-sessionizer $(t ls | fzf | cut -d ':' -f1)'
 function ta() {
-  local session_name=$(tmux list-sessions -F '#{session_id}: #S' | sort| awk '{print $2}' | awk '{print NR-1 ": " $0}' | fzf | awk '{print $2}');
+  local session_name=$(tmux list-sessions -F '#{session_id}: #S' | sort| awk '{print $2}' | awk '{print NR-1 ": " $0}' | fzf-styled | awk '{print $2}');
   ~/.bin/tmux-sessionizer "${session_name}";
 }
 function ts() {
@@ -271,6 +320,12 @@ function tsf() {
   local folder_path=$(echo $selected | awk '{print $2}');
 
   ~/.bin/tmux-sessionizer $folder_path;
+}
+function tsw() {
+  local work_tree_item=$(gwt list | fzf-styled);
+  local work_tree_path=$(echo "${work_tree_item}" | awk '{print $1}');
+
+  ~/.bin/tmux-sessionizer $work_tree_path;
 }
 
 # npm
