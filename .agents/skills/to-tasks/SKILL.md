@@ -1,9 +1,9 @@
 ---
 name: to-tasks
-description: Break a plan, spec, or PRD into independently-grabbable tasks using tracer-bullet vertical slices. Use when user wants to convert a plan into issues, create implementation tickets, or break down work into issues.
+description: Break a plan, spec, or PRD into independently-grabbable tasks using tracer-bullet vertical slices. Use when user wants to convert a plan into task files, create implementation tickets, or break down work into tasks.
 ---
 
-# To Issues
+# To Tasks
 
 Break a plan into independently-grabbable tasks using vertical slices (tracer bullets).
 
@@ -19,7 +19,7 @@ If you have not already explored the codebase, do so to understand the current s
 
 ### 3. Draft vertical slices
 
-Break the plan into **tracer bullet** issues. Each issue is a thin vertical slice that cuts through ALL integration layers end-to-end, NOT a horizontal slice of one layer.
+Break the plan into **tracer bullet** tasks. Each task is a thin vertical slice that cuts through ALL integration layers end-to-end, NOT a horizontal slice of one layer.
 
 Slices may be 'HITL' or 'AFK'. HITL slices require human interaction, such as an architectural decision or a design review. AFK slices can be implemented and merged without human interaction. Prefer AFK over HITL where possible.
 
@@ -47,20 +47,33 @@ Ask the user:
 
 Iterate until the user approves the breakdown.
 
-### 5. Create the tasks
+### 5. Determine where tasks should live
 
-For each approved slice, create a task. Use the issue body template below.
+Derive the level from the source PRD's location:
 
-Create issues in dependency order (blockers first) so you can reference real issue numbers in the "Blocked by" field.
+- PRD lives in `./.work-items/prds/` (project level) → tasks go to `./.work-items/tasks/todo/`
+- PRD lives in `~/.work-items/prds/` (user level) → tasks go to `~/.work-items/tasks/todo/`
 
-<issue-template>
+If the source material isn't a PRD file at that path (e.g. it's an ad-hoc plan from conversation), ask the user whether tasks should be stored at the project level or the user level.
+
+### 6. Create the tasks
+
+For each approved slice, create a task file. Use the task body template below.
+
+Generate a work item id for each task by running `~/.bin/work-item-id`. Name each file `task-<work-item-id>-<slug>.md` and write it to the directory chosen in step 5.
+
+Create tasks in dependency order (blockers first) so you can reference real task filenames in the "Blocked by" field.
+
+Write each task assuming the implementer is a low-capability AI model with no access to this conversation and minimal ability to infer intent. Spell out file paths, function/module names, data shapes, and step-by-step behavior rather than summarizing at a high level. Do not assume the implementer will explore the codebase or fill in gaps correctly — resolve ambiguity in the task itself.
+
+<task-template>
 ## Parent
 
-#<parent-issue-number> (if the source plan or PRD with id, otherwise omit this section)
+<path-to-parent-plan-or-prd> (if the source plan or PRD is a file, otherwise omit this section)
 
 ## What to build
 
-A concise description of this vertical slice. Describe the end-to-end behavior, not layer-by-layer implementation.
+A detailed, explicit description of this vertical slice, written for a low-capability AI model with no other context. Describe the end-to-end behavior (not layer-by-layer implementation), spelling out relevant file paths, function/module names, inputs/outputs, and edge cases so the task is doable without additional clarification.
 
 ## Acceptance criteria
 
@@ -70,8 +83,8 @@ A concise description of this vertical slice. Describe the end-to-end behavior, 
 
 ## Blocked by
 
-- Blocked by <ticket-number> (if any)
+- Blocked by <task-file> (if any)
 
 Or "None - can start immediately" if no blockers.
 
-</issue-template>
+</task-template>

@@ -1,3 +1,5 @@
+typeset -U path PATH
+
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_FIND_NO_DUPS
 
@@ -22,17 +24,19 @@ export KUBE_EDITOR="$NVIM_PATH"
 export MANPAGER="$NVIM_PATH +Man!"
 export ZVM_CURSOR_STYLE_ENABLED=false
 
-export GEMINI_CLI_NODE_VERSION='v24.11.1'
-export COPILOT_CLI_NODE_VERSION='v24.11.1'
+export CLAUDE_CLI_NODE_VERSION='v24.11.1'
 export CODEX_CLI_NODE_VERSION='v24.11.1'
+export COPILOT_CLI_NODE_VERSION='v24.11.1'
+export GEMINI_CLI_NODE_VERSION='v24.11.1'
+export OPENCODE_CLI_NODE_VERSION='v24.11.1'
 export PI_CLI_NODE_VERSION='v24.11.1'
 export QWEN_CLI_NODE_VERSION='v24.11.1'
 
 export PATH="$HOME/.cache/activestate/bin:$PATH"
-export PATH="$HOME/.bin/:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="/usr/lib/ccache/bin/:$PATH"
 export PATH="$HOME/.grok/bin:$PATH"
+export PATH="$HOME/.bin:$PATH"
 
 # export XDG_SESSION_TYPE="X11"
 export DOCKER_OPTS="--dns=8.8.8.8"

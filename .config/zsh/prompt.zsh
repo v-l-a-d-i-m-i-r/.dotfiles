@@ -36,6 +36,10 @@ setopt prompt_subst
 function preexec() {
   # timer=$(date +%s%3N)
   vcs_info
+
+  # Set window title
+  # ${2%% *} extracts only the first word of the expanded command
+  print -Pn "\e]2;${2%% *}\a"
 }
 
 function precmd() {
@@ -91,6 +95,9 @@ function precmd() {
   fi
 
   RPROMPT="${prompt_elapsed}${prompt_node}${prompt_go}${prompt_git}${prompt_k8s}"
+
+  # Reset window title
+  print -Pn "\e]2;zsh\a"
 }
 
 function make_cursor_as_blinking_block() {

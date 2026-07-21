@@ -125,10 +125,3 @@ vibe-ralph() {
     --trust \
     $@;
 }
-
-claude() {
-  cp ${HOME}/.agents/AGENTS.md ${HOME}/.claude/CLAUDE.md;
-  rsync -a --delete "${HOME}/.agents/skills/" "${HOME}/.claude/skills/";
-
-  ${HOME}/.local/bin/claude;
-}

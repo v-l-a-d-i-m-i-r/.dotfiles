@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+exec "${HOME}/.bin/claude" \
+  --model sonnet \
+  --effort low \
+  --permission-mode acceptEdits \
+  --add-dir "${HOME}/.work-items/tasks" \
+  --allowedTools "Bash(mv ${HOME}/.work-items/tasks/*)" \
+  "$@"
