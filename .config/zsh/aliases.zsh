@@ -131,9 +131,13 @@ function wtd() {
   local main_repo_path=$(dirname "$(realpath "$git_common_dir")");
   local session_name=$(basename "$work_tree_path" | tr . _);
 
-  ~/.bin/tmux-sessionizer "$main_repo_path";
+  if ! git -C "$main_repo_path" worktree remove "$work_tree_path"; then
+    echo "Error: Failed to remove worktree '${work_tree_path}'.";
 
-  git worktree remove "$work_tree_path";
+    return 1;
+  fi
+
+  ~/.bin/tmux-sessionizer "$main_repo_path";
 
   if tmux has-session -t="$session_name" 2>/dev/null; then
     tmux kill-session -t "$session_name";
