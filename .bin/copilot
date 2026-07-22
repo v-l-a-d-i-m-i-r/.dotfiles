@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+# https://github.com/github/copilot-cli
+
+if [ -z "$COPILOT_CLI_NODE_VERSION" ]; then
+  echo 'Error: COPILOT_CLI_NODE_VERSION is not set.'
+  exit 1
+fi
+
+cp "${HOME}/.agents/AGENTS.md" "${HOME}/.copilot/copilot-instructions.md"
+
+PATH="$NVM_DIR/versions/node/${COPILOT_CLI_NODE_VERSION}/bin:$PATH" \
+  exec "$NVM_DIR/versions/node/${COPILOT_CLI_NODE_VERSION}/bin/copilot" "$@"

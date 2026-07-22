@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# https://docs.github.com/en/copilot/how-tos/copilot-cli/set-up-copilot-cli/configure-copilot-cli
+
+exec "${HOME}/.bin/copilot" \
+  --allow-all-tools \
+  --allow-all-paths \
+  --deny-tool='shell(rm)' \
+  --deny-tool='shell(git push)' \
+  --silent \
+  "$@"

@@ -1,0 +1,59 @@
+#!/bin/bash
+set -e
+
+EXECUTOR="$1"
+PRD_PATH="$2"
+if [ -z "$EXECUTOR" ] || [ -z "$PRD_PATH" ]; then
+  echo "Usage: $0 <executor> <path-to-prd>" >&2
+  exit 1
+fi
+
+command -v "$EXECUTOR" >/dev/null 2>&1 || {
+  echo "Error: executor '$EXECUTOR' not found on PATH" >&2
+  exit 1
+}
+
+PRD_REALPATH="$(realpath "$PRD_PATH")"
+USER_PRDS_DIR="$(realpath -m "$HOME/.work-items/prds")"
+PROJECT_PRDS_DIR="$(realpath -m "$PWD/.work-items/prds")"
+
+case "$PRD_REALPATH" in
+  "$USER_PRDS_DIR"/*)
+    TODO_DIR="$HOME/.work-items/tasks/todo"
+    DONE_DIR="$HOME/.work-items/tasks/done"
+    ;;
+  "$PROJECT_PRDS_DIR"/*)
+    TODO_DIR="./.work-items/tasks/todo"
+    DONE_DIR="./.work-items/tasks/done"
+    ;;
+  *)
+    echo "Error: PRD path must be under ./.work-items/prds/ (project level) or ~/.work-items/prds/ (user level)" >&2
+    exit 1
+    ;;
+esac
+
+PRD_NAME="$(basename "$PRD_PATH")"
+
+build_prompt() {
+  local file="$1"
+  echo "read file @$file
+- check for blockers: a task is blocked if it references other tasks that are not in @$DONE_DIR
+- if it is not blocked:
+  - do what is described;
+  - check all requirements pass (lint, tests, build, etc.);
+  - move the task file to @$DONE_DIR then commit changes using proper commit message described in AGENTS.md;
+- if it is blocked: skip it"
+}
+
+for file in "$TODO_DIR"/*.md; do
+  [ -f "$file" ] || continue
+  grep -qF "$PRD_NAME" "$file" || continue
+
+  echo "Processing: $file"
+  prompt=$(build_prompt "$file")
+  output=$("$EXECUTOR" -p "$prompt")
+
+  tg "$output"
+done
+
+tg "PRD $PRD_NAME done"

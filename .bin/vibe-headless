@@ -1,0 +1,13 @@
+#!/usr/bin/env sh
+
+cp "${HOME}/.agents/AGENTS.md" "${HOME}/.vibe/AGENTS.md"
+
+# ignores cofig from $VIBE_HOME/config.toml
+# VIBE_HOME="${HOME}/.vibe-ralph" \
+# --enabled-tools/--disabled-tools (glob or 're:' regex) match only the
+# tool name (e.g. "bash"), not its arguments, so a copilot-ralph style
+# --deny-tool='shell(rm)' per-command deny isn't expressible here
+exec "${HOME}/.local/bin/vibe" \
+  --trust \
+  "$@"
+  # --auto-approve \

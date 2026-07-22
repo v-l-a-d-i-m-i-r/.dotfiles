@@ -1,6 +1,6 @@
 {
+  "colorMode": "default",
   "disabledSkills": [],
-  "model": "claude-sonnet-4.6",
   "footer": {
     "showAgent": true,
     "showBranch": false,
@@ -10,5 +10,5 @@
     "showModelEffort": true,
     "showQuota": true
   },
-  "colorMode": "default"
+  "model": "claude-sonnet-4.6"
 }

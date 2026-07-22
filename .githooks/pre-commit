@@ -9,6 +9,11 @@ if echo "$staged" | grep -qx '.claude/settings.json'; then
 	git add ./.claude/settings.json
 fi
 
+if echo "$staged" | grep -qx '.copilot/settings.json'; then
+	./.bin/pretify-json ./.copilot/settings.json
+	git add ./.copilot/settings.json
+fi
+
 lua_files=$(echo "$staged" | grep '^\.config/nvim/.*\.lua$' || true)
 if [ -n "$lua_files" ]; then
 	echo "$lua_files" | xargs stylua --

@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+cp "${HOME}/.agents/AGENTS.md" "${HOME}/.vibe/AGENTS.md"
+
+exec "${HOME}/.local/bin/vibe" "$@"

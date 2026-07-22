@@ -2,8 +2,13 @@
 
 # requires typescript-language-server and typescript to be installed globally to make LSP work
 
+if [ -z "$CLAUDE_CLI_NODE_VERSION" ]; then
+  echo 'Error: CLAUDE_CLI_NODE_VERSION is not set.'
+  exit 1
+fi
+
 cp "${HOME}/.agents/AGENTS.md" "${HOME}/.claude/CLAUDE.md"
 rsync -a --delete "${HOME}/.agents/skills/" "${HOME}/.claude/skills/"
 
-PATH="$NVM_DIR/versions/node/${OPENCODE_CLI_NODE_VERSION}/bin:$PATH" \
+PATH="$NVM_DIR/versions/node/${CLAUDE_CLI_NODE_VERSION}/bin:$PATH" \
   exec "${HOME}/.local/bin/claude" "$@"
