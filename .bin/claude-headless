@@ -6,4 +6,5 @@ exec "${HOME}/.bin/claude" \
   --permission-mode acceptEdits \
   --add-dir "${HOME}/.work-items/tasks" \
   --allowedTools "Bash(mv ${HOME}/.work-items/tasks/*)" \
+  --allowedTools "Bash(npm:*)" \
   "$@"
