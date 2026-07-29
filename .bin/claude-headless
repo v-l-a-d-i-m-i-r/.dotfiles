@@ -1,10 +1,35 @@
 #!/usr/bin/env bash
 
+settings_files=(
+  "${HOME}/.claude/settings.json"
+  "${HOME}/.claude/settings.local.json"
+  "./.claude/settings.json"
+  "./.claude/settings.local.json"
+)
+
+existing_settings_files=()
+for f in "${settings_files[@]}"; do
+  [ -f "$f" ] && existing_settings_files+=("$f")
+done
+
+merged_permissions=$(jq -s '{
+  allow: ([.[].permissions.allow[]?] | unique),
+  deny: ([.[].permissions.deny[]?] | unique)
+}' "${existing_settings_files[@]}" 2>/dev/null)
+
+extra_allow='[]'
+extra_deny='[]'
+
+session_settings=$(jq -n \
+  --argjson permissions "$merged_permissions" \
+  --argjson extra_allow "$extra_allow" \
+  --argjson extra_deny "$extra_deny" \
+  '{permissions: {allow: (($permissions.allow + $extra_allow) | unique), deny: (($permissions.deny + $extra_deny) | unique)}}')
+
 exec "${HOME}/.bin/claude" \
   --model sonnet \
   --effort low \
   --permission-mode acceptEdits \
   --add-dir "${HOME}/.work-items/tasks" \
-  --allowedTools "Bash(mv ${HOME}/.work-items/tasks/*)" \
-  --allowedTools "Bash(npm:*)" \
+  --settings "$session_settings" \
   "$@"
