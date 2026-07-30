@@ -21,10 +21,12 @@ case "$PRD_REALPATH" in
   "$USER_PRDS_DIR"/*)
     TODO_DIR="$HOME/.work-items/tasks/todo"
     DONE_DIR="$HOME/.work-items/tasks/done"
+    PRD_DONE_DIR="$HOME/.work-items/prds/done"
     ;;
   "$PROJECT_PRDS_DIR"/*)
     TODO_DIR="./.work-items/tasks/todo"
     DONE_DIR="./.work-items/tasks/done"
+    PRD_DONE_DIR="./.work-items/prds/done"
     ;;
   *)
     echo "Error: PRD path must be under ./.work-items/prds/ (project level) or ~/.work-items/prds/ (user level)" >&2
@@ -40,7 +42,8 @@ build_prompt() {
 - check for blockers: a task is blocked if it references other tasks that are not in @$DONE_DIR
 - if it is not blocked:
   - do what is described;
-  - check all requirements pass (lint, tests, build, etc.);
+  - check all requirements pass (lint, tests, build, etc.), running them exactly as prescribed in AGENTS.md's command execution rules — those are the pre-approved commands for this unattended session;
+  - this session runs unattended with no one available to approve permission prompts: if a command is blocked pending approval, retry it using the exact execution method described in AGENTS.md before giving up; if it is still blocked, stop and report the blocker instead of waiting;
   - move the task file to @$DONE_DIR then commit changes using proper commit message described in AGENTS.md;
 - if it is blocked: skip it"
 }
@@ -54,6 +57,26 @@ for file in "$TODO_DIR"/*.md; do
   output=$("$EXECUTOR" -p "$prompt")
 
   tg "$output"
+
+  if [ ! -f "$DONE_DIR/$(basename "$file")" ]; then
+    echo "Error: task '$file' was not moved to $DONE_DIR, stopping" >&2
+    exit 1
+  fi
 done
 
-tg "PRD $PRD_NAME done"
+remaining=0
+for file in "$TODO_DIR"/*.md; do
+  [ -f "$file" ] || continue
+  grep -qF "$PRD_NAME" "$file" || continue
+  remaining=$((remaining + 1))
+done
+
+if [ "$remaining" -eq 0 ]; then
+  if [ -f "$PRD_REALPATH" ]; then
+    mkdir -p "$PRD_DONE_DIR"
+    mv "$PRD_REALPATH" "$PRD_DONE_DIR/"
+  fi
+  tg "PRD $PRD_NAME done"
+else
+  tg "PRD $PRD_NAME not done: $remaining task(s) remaining"
+fi

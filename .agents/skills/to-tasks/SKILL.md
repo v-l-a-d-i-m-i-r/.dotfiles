@@ -51,8 +51,8 @@ Iterate until the user approves the breakdown.
 
 Derive the level from the source PRD's location:
 
-- PRD lives in `./.work-items/prds/` (project level) → tasks go to `./.work-items/tasks/todo/`
-- PRD lives in `~/.work-items/prds/` (user level) → tasks go to `~/.work-items/tasks/todo/`
+- PRD lives under `./.work-items/prds/todo` (project level) → tasks go to `./.work-items/tasks/todo/`
+- PRD lives under `~/.work-items/prds/todo` (user level) → tasks go to `~/.work-items/tasks/todo/`
 
 If the source material isn't a PRD file at that path (e.g. it's an ad-hoc plan from conversation), ask the user whether tasks should be stored at the project level or the user level.
 
@@ -73,7 +73,7 @@ Write each task assuming the implementer is a low-capability AI model with no ac
 
 ## What to build
 
-A detailed, explicit description of this vertical slice, written for a low-capability AI model with no other context. Describe the end-to-end behavior (not layer-by-layer implementation), spelling out relevant file paths, function/module names, inputs/outputs, and edge cases so the task is doable without additional clarification.
+A detailed, explicit description of this vertical slice, written for a low-capability AI model with no other context. Describe the end-to-end behavior (not layer-by-layer implementation), spelling out relevant file paths, function/module names, inputs/outputs, and edge cases so the task is doable without additional clarification. Do not specify exact CLI commands (e.g. `npm test`, `npm run build`); instead name the check by intent (lint, tests, build) and let the implementer run it per the project's own conventions. If the project has a `Makefile` or `justfile`, its recipes are the project's convention — the implementer should prefer them over invoking underlying tools directly.
 
 ## Acceptance criteria
 

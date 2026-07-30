@@ -19,8 +19,8 @@ Check with the user that these modules match their expectations. Check with the 
 
 5. Ask the user whether the PRD should be stored at the **project level** or the **user level**:
 
-- Project level: `./.work-items/prds/`
-- User level: `~/.work-items/prds/`
+- Project level: `./.work-items/prds/todo/`
+- User level: `~/.work-items/prds/todo/`
 
 Use their answer to determine the output directory in the next step.
 
