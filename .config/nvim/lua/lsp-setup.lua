@@ -5,6 +5,9 @@ local c = require('components')
 local borders = require('assets').borders
 local utils = require('utils')
 
+-- disable core LSP background color highlight (e.g. css-lsp), we use nvim-highlight-colors instead
+vim.lsp.document_color.enable(false)
+
 vim.keymap.set('n', 'gd', function()
   vim.lsp.buf.definition({
     on_list = function(opts)

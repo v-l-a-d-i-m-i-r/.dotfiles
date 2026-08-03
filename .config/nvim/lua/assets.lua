@@ -69,6 +69,10 @@ local comment_icons = {
   comment = '󱜾',
 }
 
+local highlight_color_icons = {
+  virtual_symbol = '󰏘',
+}
+
 return {
   kind_icons = kind_icons,
   diagnostic_icons = diagnostic_icons,
@@ -77,4 +81,5 @@ return {
   border_types = border_types,
   indent = indent,
   comment_icons = comment_icons,
+  highlight_color_icons = highlight_color_icons,
 }

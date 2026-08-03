@@ -327,16 +327,12 @@ c.add_component({
   install_script = function()
     return u.clone_git_repo_at_commit({
       url = 'https://github.com/brenoprata10/nvim-highlight-colors',
-      commit = 'b42a5ccec7457b44e89f7ed3b3afb1b375bb2093',
+      commit = 'e4c7af0211866162d999ce0bdd6a029302e19139',
     })
   end,
   on_init = function()
     c.load_plugin('nvim-highlight-colors')
-    require('nvim-highlight-colors').setup({
-      exclude_filetypes = {
-        'csv',
-      },
-    })
+    require('nvim-highlight-colors-setup')
   end,
 })
 
