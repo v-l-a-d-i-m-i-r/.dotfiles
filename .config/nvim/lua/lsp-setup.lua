@@ -42,6 +42,25 @@ vim.keymap.set('n', 'gr', function()
     include_declaration = false,
     jump_type = 'never',
   }
+  local seen = {}
+  local make_entry = require('telescope.make_entry').gen_from_quickfix(opts)
+
+  opts.entry_maker = function(item)
+    local key = table.concat({
+      item.filename or '',
+      item.lnum or 0,
+      item.col or 0,
+      item.end_lnum or 0,
+      item.end_col or 0,
+    }, ':')
+
+    if seen[key] then
+      return nil
+    end
+
+    seen[key] = true
+    return make_entry(item)
+  end
 
   require('telescope.builtin').lsp_references(opts)
 end)
