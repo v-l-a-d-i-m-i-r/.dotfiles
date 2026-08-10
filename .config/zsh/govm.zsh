@@ -59,27 +59,9 @@ function _govm_list () {
 function _govm_install () {
   local version="$1"
 
-  # if [ -z "${version}" ]; then
-  #   local page=1;
-
-  #   while : ; do
-  #     versions_per_page=$(curl -s "https://api.github.com/repos/golang/go/tags?page=${page}" | jq '.[].name' | sed 's/"go//' | sed 's/"//');
-  #     versions_pre_page_length=$(echo "$versions_per_page" | wc -l);
-  #     echo $page;
-  #     echo $versions_per_page;
-  #     echo $versions_pre_page_length;
-
-  #     echo '\n';
-
-  #     if [ -z "${versions_pre_page_length}" ]; then
-  #       break;
-  #     fi
-
-  #     page=$((page+1));
-  #   done
-
-  #   return
-  # fi
+  if [ -z "${version}" ]; then
+    version=$(docker-hub-image-tags library golang | grep -v '-' | sort | fzf --reverse)
+  fi
 
   if [ -z "${version}" ]; then
     return
@@ -130,5 +112,5 @@ function chpwd() {
   _handle_govmrc
 }
 
-govm use 1.20.2
+govm use 1.23.4
 _handle_govmrc
