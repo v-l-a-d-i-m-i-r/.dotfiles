@@ -10,7 +10,7 @@ export SAVEHIST=10000000
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#797979'
 
 export NVIM_APPNAME='nvim' # config folder
-export NVIM_VERSION='0.12.2'
+export NVIM_VERSION='0.12.4'
 export NVIM_ARCH='linux-x86_64'
 export NVIM_DIR="$HOME/.config/$NVIM_APPNAME/.editors/$NVIM_VERSION"
 export NVIM_PATH="$NVIM_DIR/bin/nvim"
@@ -64,3 +64,6 @@ export GO111MODULE=on
 export BROWSER="$HOME/.bin/url-logger"
 
 export AZCOPY_AUTO_LOGIN_TYPE=AZCLI
+
+export npm_config_cache='/tmp/.npm'
+export YARN_CACHE_FOLDER='/tmp/yarn'
