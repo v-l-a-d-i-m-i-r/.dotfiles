@@ -29,6 +29,7 @@
   line-numbers-minus-style = "#5e434e"
   line-numbers-plus-style = "#556259"
   ; end colors
+  tabs = 2
 
 ; [merge]
 ;   conflictstyle = diff3
