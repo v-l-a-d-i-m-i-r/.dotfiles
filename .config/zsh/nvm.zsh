@@ -84,6 +84,12 @@ function _nvm_install () {
   curl -L https://nodejs.org/download/release/${version}/node-${version}-${NVM_ARCH}.tar.gz | tar -xz --strip-components=1 -C $output_dir
 }
 
+function _nvm_uninstall () {
+  local version="$1"
+
+  rm -rf "${NVM_DIR}/versions/node/${version}"
+}
+
 function nvm () {
   if [ -z "${NVM_DIR}" ]; then
     echo 'NVM_DIR not set!'
@@ -100,6 +106,9 @@ function nvm () {
   ;;
   "install")
     _nvm_install $2
+  ;;
+  "uninstall")
+    _nvm_uninstall $2
   ;;
   esac
 }
