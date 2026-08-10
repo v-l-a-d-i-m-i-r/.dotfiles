@@ -341,7 +341,7 @@ c.add_component({
   install_script = function()
     return u.clone_git_repo_at_tag({
       url = 'https://github.com/L3MON4D3/LuaSnip',
-      tag = 'v2.4.1',
+      tag = 'v2.5.0',
     })
   end,
   on_init = function()

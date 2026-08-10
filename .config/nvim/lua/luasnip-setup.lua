@@ -45,15 +45,27 @@ local stt_snippet = snippet({
   }),
 })
 
+local sleep_snippet = snippet({
+  trig = 'sleep',
+  namr = 'Sleep promise',
+  dscr = 'await new Promise((resolve) => setTimeout(resolve, ms))',
+}, {
+  text_node('await new Promise((resolve) => setTimeout(resolve, '),
+  insert_node(1, 'ms'),
+  text_node('));'),
+})
+
 luasnip.add_snippets(nil, {
   typescript = {
     cl_snippet,
     clj_snippet,
     stt_snippet,
+    sleep_snippet,
   },
   javascript = {
     cl_snippet,
     clj_snippet,
     stt_snippet,
+    sleep_snippet,
   },
 })
