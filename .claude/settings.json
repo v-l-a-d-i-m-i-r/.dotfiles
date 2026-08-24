@@ -15,6 +15,7 @@
   },
   "inputNeededNotifEnabled": true,
   "model": "sonnet",
+  "outputStyle": "ASD-STE100",
   "permissions": {
     "allow": [
       "Bash(awk *)",
@@ -45,6 +46,7 @@
       "Bash(zsh -cie \"nvm use \\\\$\\(cat .nvmrc\\) && npx *)",
       "Bash(zsh -cie \"nvm use \\\\$\\(cat .nvmrc\\) && yarn *)",
       "Bash(~/.bin/work-item-id)",
+      "Edit(/tmp/**)",
       "Read(~/.work-items/**)"
     ],
     "deny": [
@@ -68,7 +70,7 @@
   },
   "spinnerTipsEnabled": false,
   "statusLine": {
-    "command": "bash ~/.claude/statusline-command.sh",
+    "command": "~/.bin/claude-status-line",
     "type": "command"
   },
   "theme": "auto"

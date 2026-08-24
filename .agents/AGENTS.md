@@ -1,5 +1,9 @@
 # Agent Instructions
 
+## Language
+- Write all output text in ASD-STE100 Simplified Technical English.
+- Use the ubiquitous language from `CONTEXT.md` if this file is in the project.
+
 ## Code Style and Conventions
 - **Analyze First:** Before writing or modifying code, always analyze the surrounding files to identify the project's established conventions.
 - **Adhere to Existing Patterns:** Rigorously follow the conventions you identify, including:
