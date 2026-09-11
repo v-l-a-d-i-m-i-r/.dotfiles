@@ -15,6 +15,17 @@ vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufRead' }, {
   end,
 })
 
+-- zx scripts have no extension; detect by shebang and reuse the javascript treesitter parser
+vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufRead' }, {
+  pattern = '*',
+  callback = function()
+    local first_line = vim.fn.getline(1)
+    if first_line:match('^#!') and first_line:match('%f[%w]zx%f[%W]$') then
+      vim.bo.filetype = 'javascript'
+    end
+  end,
+})
+
 vim.api.nvim_create_autocmd({ 'TextYankPost' }, {
   pattern = { '*' },
   callback = function()
@@ -72,6 +83,16 @@ vim.api.nvim_create_autocmd('Signal', {
 --     -- vim.api.nvim_command('write')
 --   end
 -- })
+
+-- reload buffers changed on disk (e.g. by an AI agent) and let LSP servers see the change
+vim.api.nvim_create_autocmd({ 'FocusGained', 'BufEnter', 'CursorHold', 'CursorHoldI' }, {
+  pattern = '*',
+  callback = function()
+    if vim.fn.mode() ~= 'c' then
+      vim.cmd('checktime')
+    end
+  end,
+})
 
 vim.api.nvim_create_autocmd('BufWritePost', {
   pattern = '*.go',

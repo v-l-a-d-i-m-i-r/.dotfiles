@@ -89,6 +89,8 @@ alias gl='git log --abbrev=8 --pretty=format:"%C(yellow)%h%C(reset)%<|(30) %C(bl
 alias gla='gl --all'
 alias gs='git status'
 alias gwt='git worktree'
+alias gsh='git stash'
+alias gsha='git stash apply'
 
 # Worktree
 function wta() {
@@ -338,6 +340,13 @@ function nri() {
   npm uninstall $@ && npm install $@;
 }
 
+# yarn
+alias yb='yarn build'
+alias yi='yarn install'
+alias yif='yarn install --frozen-lockfile'
+alias ytc='yarn test:cov --forceExit'
+alias yte='yarn test:e2e --forceExit'
+
 #Kowl
 function kowl() { docker run --rm -ti --network=host -p 8080:8080 -e KAFKA_BROKERS=$1 quay.io/cloudhut/kowl:master }
 
@@ -354,7 +363,7 @@ pgadmin4-docker() {
     sudo chmod -R 770 "${working_dir}";
   fi
 
-  docker run --rm -ti \
+  exec docker run --rm -ti --init \
     -p 5050:5050 \
     -e "PGADMIN_DEFAULT_EMAIL=user@domain.com" \
     -e "PGADMIN_DEFAULT_PASSWORD=SuperSecret" \
@@ -362,6 +371,21 @@ pgadmin4-docker() {
     -v "$working_dir:/var/lib/pgadmin" \
     --network host \
     dpage/pgadmin4:9.1.0;
+}
+
+#RedisInsight
+redisinsight-docker() {
+  local working_dir="$HOME/.redisinsight-docker";
+
+  if [ ! -d "${working_dir}" ]; then
+    mkdir -p "$working_dir";
+  fi
+
+  exec docker run --rm -ti --init \
+    -p 5540:5540 \
+    -v "$working_dir:/data" \
+    --network host \
+    redis/redisinsight:3.8.0;
 }
 
 #IP
@@ -392,7 +416,8 @@ function pinfo() {
 }
 
 alias pott='f() { xdg-open ${1/https:\/\/teams.microsoft.com/msteams:} }; f'
-alias youtube-dl='docker run --rm -ti -e PGID=$(id -g) -e PUID=$(id -u) -v "$(pwd)":/workdir:rw mikenye/youtube-dl:2025.10.22'
+alias youtube-dl='docker run --rm -ti -e PGID=$(id -g) -e PUID=$(id -u) -v "$(pwd)":/workdir:rw mikenye/youtube-dl:2026.08.19'
+alias yt-dlp='docker run --rm -ti -e PGID=$(id -g) -e PUID=$(id -u) jauderho/yt-dlp:2026.03.17'
 
 join-files () {
   fd \
@@ -402,6 +427,23 @@ join-files () {
     -c 'echo -e "\nfile_name: {}\n\nfile_content:\n"; cat {}'
 }
 
+function prd() {
+  local -aU prd_dirs=();
+
+  [ -d "$PWD/.work-items/prds" ] && prd_dirs+=("$PWD/.work-items/prds");
+  [ -d "$HOME/.work-items/prds" ] && prd_dirs+=("$HOME/.work-items/prds");
+
+  if [ ${#prd_dirs[@]} -eq 0 ]; then
+    echo "Error: no .work-items/prds directory found.";
+
+    return 1;
+  fi
+
+  { find "${prd_dirs[@]}" -type f -not -path '*/done/*' | sort;
+    find "${prd_dirs[@]}" -type f -path '*/done/*' | sort; } | fzf-styled;
+}
+
 alias dua='du -d 1 -h | sort -h -r'
 alias gem='gemini'
 alias fzf-styled='fzf --highlight-line'
+alias print-path='echo $PATH | tr ":" "\n"'
