@@ -9,6 +9,11 @@ if echo "$staged" | grep -qx '.claude/settings.json'; then
 	git add ./.claude/settings.json
 fi
 
+if echo "$staged" | grep -qx '.claude/keybindings.json'; then
+	./.bin/pretify-json ./.claude/keybindings.json
+	git add ./.claude/keybindings.json
+fi
+
 if echo "$staged" | grep -qx '.copilot/settings.json'; then
 	./.bin/pretify-json ./.copilot/settings.json
 	git add ./.copilot/settings.json

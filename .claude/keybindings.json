@@ -1,0 +1,362 @@
+{
+  "$docs": "https://code.claude.com/docs/en/keybindings",
+  "$schema": "https://www.schemastore.org/claude-code-keybindings.json",
+  "bindings": [
+    {
+      "bindings": {
+        "/": "settings:search",
+        "ctrl+n": "select:next",
+        "ctrl+p": "select:previous",
+        "ctrl+u": "scroll:halfPageUp",
+        "d": "settings:periodDay",
+        "down": "select:next",
+        "enter": "select:accept",
+        "escape": "confirm:no",
+        "j": "select:next",
+        "k": "select:previous",
+        "r": "settings:retry",
+        "space": "select:accept",
+        "t": "settings:sortByTokens",
+        "up": "select:previous",
+        "w": "settings:periodWeek"
+      },
+      "context": "Settings"
+    },
+    {
+      "bindings": {
+        "alt+v": "chat:imagePaste",
+        "cmd+k": "chat:clearScreen",
+        "ctrl+-": "chat:undo",
+        "ctrl+_": "chat:undo",
+        "ctrl+g": "chat:externalEditor",
+        "ctrl+j": "chat:newline",
+        "ctrl+l": "chat:clearInput",
+        "ctrl+s": "chat:stash",
+        "ctrl+shift+-": "chat:undo",
+        "ctrl+shift+_": "chat:undo",
+        "ctrl+v": "chat:imagePaste",
+        "ctrl+x ctrl+a": "abovePrompt:toggle",
+        "ctrl+x ctrl+e": "chat:externalEditor",
+        "ctrl+x ctrl+k": "chat:killAgents",
+        "ctrl+x enter": "chat:queueSubmit",
+        "ctrl+x tab": "abovePrompt:focus",
+        "down": "history:next",
+        "enter": "chat:submit",
+        "escape": "chat:cancel",
+        "meta+o": "chat:fastMode",
+        "meta+p": "chat:modelPicker",
+        "meta+t": "chat:thinkingToggle",
+        "meta+w": "chat:workflowKeywordToggle",
+        "shift+tab": "chat:cycleMode",
+        "space": "voice:pushToTalk",
+        "up": "history:previous"
+      },
+      "context": "Chat"
+    },
+    {
+      "bindings": {
+        "b": "scroll:fullPageUp",
+        "ctrl+b": "scroll:fullPageUp",
+        "ctrl+e": "transcript:toggleShowAll",
+        "ctrl+f": "scroll:fullPageDown",
+        "ctrl+n": "scroll:lineDown",
+        "ctrl+p": "scroll:lineUp",
+        "ctrl+u": "scroll:halfPageUp",
+        "down": "scroll:lineDown",
+        "end": "scroll:bottom",
+        "escape": "transcript:exit",
+        "g": "scroll:top",
+        "home": "scroll:top",
+        "j": "scroll:lineDown",
+        "k": "scroll:lineUp",
+        "q": "transcript:exit",
+        "shift+g": "scroll:bottom",
+        "space": "scroll:fullPageDown",
+        "up": "scroll:lineUp"
+      },
+      "context": "Transcript"
+    },
+    {
+      "bindings": {
+        "b": "scroll:fullPageUp",
+        "down": "diff:nextFile",
+        "end": "scroll:bottom",
+        "enter": "diff:viewDetails",
+        "escape": "diff:dismiss",
+        "g": "scroll:top",
+        "home": "scroll:top",
+        "j": "diff:nextFile",
+        "k": "diff:previousFile",
+        "left": "diff:previousSource",
+        "pagedown": "scroll:pageDown",
+        "pageup": "scroll:pageUp",
+        "right": "diff:nextSource",
+        "shift+g": "scroll:bottom",
+        "shift+space": "scroll:fullPageUp",
+        "space": "scroll:fullPageDown",
+        "up": "diff:previousFile"
+      },
+      "context": "DiffDialog"
+    },
+    {
+      "bindings": {
+        "backspace": "footer:dismiss",
+        "ctrl+n": "footer:down",
+        "ctrl+p": "footer:up",
+        "delete": "footer:dismiss",
+        "down": "footer:down",
+        "enter": "footer:openSelected",
+        "escape": "footer:clearSelection",
+        "left": "footer:previous",
+        "right": "footer:next",
+        "up": "footer:up",
+        "x": "footer:close"
+      },
+      "context": "Footer"
+    },
+    {
+      "bindings": {
+        "backspace": "attachments:remove",
+        "delete": "attachments:remove",
+        "down": "attachments:exit",
+        "escape": "attachments:exit",
+        "left": "attachments:previous",
+        "right": "attachments:next"
+      },
+      "context": "Attachments"
+    },
+    {
+      "bindings": {
+        "cmd+c": "selection:copy",
+        "ctrl+end": "scroll:bottom",
+        "ctrl+home": "scroll:top",
+        "ctrl+shift+c": "selection:copy",
+        "pagedown": "scroll:pageDown",
+        "pageup": "scroll:pageUp",
+        "shift+down": "selection:extendDown",
+        "shift+end": "selection:extendLineEnd",
+        "shift+home": "selection:extendLineStart",
+        "shift+left": "selection:extendLeft",
+        "shift+right": "selection:extendRight",
+        "shift+up": "selection:extendUp",
+        "wheeldown": "scroll:lineDown",
+        "wheelup": "scroll:lineUp"
+      },
+      "context": "Scroll"
+    },
+    {
+      "bindings": {
+        "ctrl+]": "app:openArtifact",
+        "ctrl+down": "app:diffFileListDown",
+        "ctrl+o": "app:toggleTranscript",
+        "ctrl+r": "history:search",
+        "ctrl+shift+b": "app:toggleBrief",
+        "ctrl+t": "app:toggleTodos",
+        "ctrl+up": "app:diffFileListUp",
+        "meta+down": "app:diffFileListDown",
+        "meta+up": "app:diffFileListUp"
+      },
+      "context": "Global"
+    },
+    {
+      "bindings": {
+        "ctrl+b": "task:background",
+        "ctrl+x ctrl+b": "task:background"
+      },
+      "context": "Task"
+    },
+    {
+      "bindings": {
+        "ctrl+down": "messageSelector:bottom",
+        "ctrl+n": "messageSelector:down",
+        "ctrl+p": "messageSelector:up",
+        "ctrl+up": "messageSelector:top",
+        "down": "messageSelector:down",
+        "enter": "messageSelector:select",
+        "j": "messageSelector:down",
+        "k": "messageSelector:up",
+        "meta+down": "messageSelector:bottom",
+        "meta+up": "messageSelector:top",
+        "shift+down": "messageSelector:bottom",
+        "shift+j": "messageSelector:bottom",
+        "shift+k": "messageSelector:top",
+        "shift+up": "messageSelector:top",
+        "up": "messageSelector:up"
+      },
+      "context": "MessageSelector"
+    },
+    {
+      "bindings": {
+        "ctrl+e": "theme:editCustom",
+        "ctrl+t": "theme:toggleSyntaxHighlighting"
+      },
+      "context": "ThemePicker"
+    },
+    {
+      "bindings": {
+        "ctrl+n": "select:next",
+        "ctrl+p": "select:previous",
+        "down": "select:next",
+        "end": "select:last",
+        "enter": "select:accept",
+        "escape": "select:cancel",
+        "home": "select:first",
+        "j": "select:next",
+        "k": "select:previous",
+        "pagedown": "select:pageDown",
+        "pageup": "select:pageUp",
+        "up": "select:previous"
+      },
+      "context": "Select"
+    },
+    {
+      "bindings": {
+        "ctrl+r": "historySearch:next",
+        "ctrl+s": "historySearch:cycleScope",
+        "enter": "historySearch:execute",
+        "escape": "historySearch:accept",
+        "tab": "historySearch:accept"
+      },
+      "context": "HistorySearch"
+    },
+    {
+      "bindings": {
+        "ctrl+s": "agents:switchView",
+        "ctrl+t": "agents:togglePin"
+      },
+      "context": "Agents"
+    },
+    {
+      "bindings": {
+        "ctrl+x b": "app:cycleDiffBase"
+      },
+      "context": "DiffPanel"
+    },
+    {
+      "bindings": {
+        "ctrl+x down": "pane:shrink",
+        "ctrl+x left": "pane:grow",
+        "ctrl+x right": "pane:shrink",
+        "ctrl+x up": "pane:grow",
+        "ctrl+x x": "pane:close",
+        "down": "pane:scrollDown",
+        "end": "pane:bottom",
+        "enter": "abovePrompt:press",
+        "escape": "abovePrompt:leave",
+        "home": "pane:top",
+        "pagedown": "pane:pageDown",
+        "pageup": "pane:pageUp",
+        "shift+tab": "abovePrompt:previous",
+        "tab": "abovePrompt:next",
+        "up": "pane:scrollUp"
+      },
+      "context": "Pane"
+    },
+    {
+      "bindings": {
+        "ctrl+x x": "pane:close"
+      },
+      "context": "PaneField"
+    },
+    {
+      "bindings": {
+        "down": "pane:scrollDown",
+        "end": "pane:bottom",
+        "enter": "abovePrompt:press",
+        "escape": "abovePrompt:leave",
+        "home": "pane:top",
+        "left": "abovePrompt:previous",
+        "pagedown": "pane:pageDown",
+        "pageup": "pane:pageUp",
+        "right": "abovePrompt:next",
+        "shift+tab": "abovePrompt:previous",
+        "space": "abovePrompt:press",
+        "tab": "abovePrompt:next",
+        "up": "pane:scrollUp"
+      },
+      "context": "AbovePrompt"
+    },
+    {
+      "bindings": {
+        "down": "confirm:next",
+        "enter": "confirm:yes",
+        "escape": "confirm:no",
+        "n": "confirm:no",
+        "shift+tab": "confirm:cycleMode",
+        "space": "confirm:toggle",
+        "tab": "confirm:nextField",
+        "up": "confirm:previous",
+        "y": "confirm:yes"
+      },
+      "context": "Confirmation"
+    },
+    {
+      "bindings": {
+        "down": "abovePrompt:highlightNext",
+        "enter": "abovePrompt:press",
+        "escape": "abovePrompt:leave",
+        "shift+tab": "abovePrompt:previous",
+        "tab": "abovePrompt:next",
+        "up": "abovePrompt:highlightPrevious"
+      },
+      "context": "AbovePromptSelect"
+    },
+    {
+      "bindings": {
+        "down": "abovePrompt:next",
+        "enter": "abovePrompt:press",
+        "escape": "abovePrompt:leave",
+        "shift+tab": "abovePrompt:previous",
+        "tab": "abovePrompt:next",
+        "up": "abovePrompt:previous"
+      },
+      "context": "AbovePromptInput"
+    },
+    {
+      "bindings": {
+        "down": "autocomplete:next",
+        "escape": "autocomplete:dismiss",
+        "tab": "autocomplete:accept",
+        "up": "autocomplete:previous"
+      },
+      "context": "Autocomplete"
+    },
+    {
+      "bindings": {
+        "escape": "help:dismiss"
+      },
+      "context": "Help"
+    },
+    {
+      "bindings": {
+        "f": "plugin:favorite",
+        "i": "plugin:install",
+        "space": "plugin:toggle"
+      },
+      "context": "Plugin"
+    },
+    {
+      "bindings": {
+        "left": "modelPicker:decreaseEffort",
+        "right": "modelPicker:increaseEffort",
+        "s": "modelPicker:thisSessionOnly"
+      },
+      "context": "ModelPicker"
+    },
+    {
+      "bindings": {
+        "left": "tabs:previous",
+        "right": "tabs:next",
+        "shift+tab": "tabs:previous",
+        "tab": "tabs:next"
+      },
+      "context": "Tabs"
+    },
+    {
+      "bindings": {
+        "s": "effortSlider:thisSessionOnly"
+      },
+      "context": "EffortSlider"
+    }
+  ]
+}

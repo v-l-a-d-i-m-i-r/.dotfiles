@@ -106,5 +106,6 @@
 !.claude/
 .claude/*
 !.claude/settings.json
+!.claude/keybindings.json
 !.claude/statusline-command.sh
 !.claude/output-styles/
