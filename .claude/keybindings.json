@@ -128,9 +128,11 @@
     {
       "bindings": {
         "cmd+c": "selection:copy",
+        "ctrl+d": "scroll:halfPageDown",
         "ctrl+end": "scroll:bottom",
         "ctrl+home": "scroll:top",
         "ctrl+shift+c": "selection:copy",
+        "ctrl+u": "scroll:halfPageUp",
         "pagedown": "scroll:pageDown",
         "pageup": "scroll:pageUp",
         "shift+down": "selection:extendDown",
