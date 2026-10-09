@@ -1,0 +1,13 @@
+#!/bin/bash
+# dbus-notify-i3-focus — run on the host machine (where the notification daemon and i3 run).
+# When the "Open" button of a Claude Code notification is clicked, focus the i3 window whose
+# title ends with "@<host name of the remote tmux>" (see set-titles-string in .tmux.conf).
+
+gdbus monitor --session \
+  --dest org.freedesktop.Notifications \
+  --object-path /org/freedesktop/Notifications |
+while read -r line; do
+  if [[ $line =~ ActionInvoked.*\'open:([^\']+)\' ]]; then
+    i3-msg "[title=\"@${BASH_REMATCH[1]}\$\"] focus" > /dev/null
+  fi
+done

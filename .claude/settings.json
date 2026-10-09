@@ -11,10 +11,57 @@
     "typescript-lsp@claude-plugins-official": true
   },
   "env": {
+    "CLAUDE_CODE_SUBAGENT_MODEL": "sonnet",
     "ENABLE_LSP_TOOL": "1"
+  },
+  "hooks": {
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "command": "~/.claude/hooks/dbus-notify-on-notification/dbus-notify-on-notification.sh",
+            "type": "command"
+          },
+          {
+            "command": "~/.claude/hooks/send-bell/send-bell.sh",
+            "type": "command"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "hooks": [
+          {
+            "command": "~/.claude/hooks/block-shell-edits/block-shell-edits.sh",
+            "type": "command"
+          }
+        ],
+        "matcher": "Bash"
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "command": "~/.claude/hooks/dbus-notify-on-stop/dbus-notify-on-stop.sh",
+            "type": "command"
+          },
+          {
+            "command": "~/.claude/hooks/send-bell/send-bell.sh",
+            "type": "command"
+          }
+        ]
+      }
+    ]
   },
   "inputNeededNotifEnabled": true,
   "model": "sonnet",
+  "modelSettings": {
+    "claude-sonnet-5-5": {
+      "effortLevel": "medium"
+    }
+  },
   "outputStyle": "ASD-STE100",
   "permissions": {
     "allow": [
@@ -36,19 +83,26 @@
       "Bash(zsh -cie \"nvm use $(cat .nvmrc) && ./setup-test-env.sh yarn *)",
       "Bash(zsh -cie \"nvm use $(cat .nvmrc) && npm *)",
       "Bash(zsh -cie \"nvm use $(cat .nvmrc) && npx *)",
+      "Bash(zsh -cie \"nvm use $(cat .nvmrc) && yalc *)",
       "Bash(zsh -cie \"nvm use $(cat .nvmrc) && yarn *)",
       "Bash(zsh -cie \"nvm use \\$(cat .nvmrc) && ./setup-test-env.sh yarn *)",
       "Bash(zsh -cie \"nvm use \\$(cat .nvmrc) && npm *)",
       "Bash(zsh -cie \"nvm use \\$(cat .nvmrc) && npx *)",
+      "Bash(zsh -cie \"nvm use \\$(cat .nvmrc) && yalc *)",
       "Bash(zsh -cie \"nvm use \\$(cat .nvmrc) && yarn *)",
       "Bash(zsh -cie \"nvm use \\\\$\\(cat .nvmrc\\) && ./setup-test-env.sh yarn *)",
       "Bash(zsh -cie \"nvm use \\\\$\\(cat .nvmrc\\) && npm *)",
       "Bash(zsh -cie \"nvm use \\\\$\\(cat .nvmrc\\) && npx *)",
+      "Bash(zsh -cie \"nvm use \\\\$\\(cat .nvmrc\\) && yalc *)",
       "Bash(zsh -cie \"nvm use \\\\$\\(cat .nvmrc\\) && yarn *)",
       "Bash(~/.bin/work-item-id)",
       "Edit(/tmp/**)",
-      "Read(~/.work-items/**)"
+      "Edit(~/projects/**)",
+      "Read(~/.work-items/**)",
+      "Read(~/projects/**)",
+      "Read(~/prompts/**)"
     ],
+    "defaultMode": "acceptEdits",
     "deny": [
       "AskUserQuestion",
       "Bash(git push *)",

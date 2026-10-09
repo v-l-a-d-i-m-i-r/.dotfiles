@@ -109,3 +109,5 @@
 !.claude/keybindings.json
 !.claude/statusline-command.sh
 !.claude/output-styles/
+!.claude/hooks/
+!.claude/lib/
