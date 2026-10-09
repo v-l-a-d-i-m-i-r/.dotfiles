@@ -1,6 +1,10 @@
 ---
 name: to-tasks
 description: Break a plan, spec, or PRD into independently-grabbable tasks using tracer-bullet vertical slices. Use when user wants to convert a plan into task files, create implementation tickets, or break down work into tasks.
+metadata:
+    credits:
+        author: Matt Pocock
+        url: https://github.com/mattpocock/skills
 ---
 
 # To Tasks
