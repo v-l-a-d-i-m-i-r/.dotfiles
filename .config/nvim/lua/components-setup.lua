@@ -36,16 +36,17 @@ add_nodejs({
 })
 
 add_nodejs({
-  version = '22.21.0',
+  version = '24.22.1',
 })
 
+-- https://www.npmjs.com/package/yarn
 c.add_component({
   name = 'yarn',
   binaries_directory = '/node_modules/.bin',
   install_script = function()
     local version = '1.22.18'
-    local node = c.get_component('node-22.21.0').bin('node')
-    local npm = c.get_component('node-22.21.0').bin('npm')
+    local node = c.get_component('node-24.22.1').bin('node')
+    local npm = c.get_component('node-24.22.1').bin('npm')
 
     return u.cli_and({
       'npm init -y',
@@ -54,11 +55,12 @@ c.add_component({
   end,
 })
 
+-- https://github.com/golang/go
 c.add_component({
   name = 'go',
   binaries_directory = '/bin',
   install_script = function()
-    local version = '1.27.1'
+    local version = '1.27.3'
 
     return u.cli_pipe({
       'curl -L https://go.dev/dl/go' .. version .. '.linux-amd64.tar.gz',
@@ -67,11 +69,12 @@ c.add_component({
   end,
 })
 
+-- https://github.com/golang/tools
 c.add_component({
   name = 'gotools',
   binaries_directory = '/bin',
   install_script = function()
-    local version = '0.23.0'
+    local version = '0.24.0'
 
     return u.cli_and({
       'git clone --depth 1 --branch gopls/v' .. version .. '  https://github.com/golang/tools.git .',
@@ -81,57 +84,61 @@ c.add_component({
   end,
 })
 
+-- https://www.npmjs.com/package/typescript-language-server
 c.add_component({
   name = 'typescript-language-server',
   binaries_directory = '/node_modules/.bin',
   install_script = function()
-    local version = '5.3.0'
-    local node = c.get_component('node-22.21.0').bin('node')
+    local version = '6.0.2'
+    local node = c.get_component('node-24.22.1').bin('node')
     local yarn = c.get_component('yarn').bin('yarn')
 
     return u.cli_and({
       'npm init -y',
-      node .. ' ' .. yarn .. ' add typescript-language-server@' .. version .. ' typescript@5.7.2',
+      node .. ' ' .. yarn .. ' add typescript-language-server@' .. version .. ' typescript@6.0.3',
     })
   end,
 })
 
+-- https://www.npmjs.com/package/typescript
 c.add_component({
-  name = 'tsgo',
+  name = 'typescript',
   binaries_directory = '/node_modules/.bin',
   install_script = function()
-    local version = '7.0.0-dev.20260618.1'
-    local node = c.get_component('node-22.21.0').bin('node')
+    local version = '7.0.2'
+    local node = c.get_component('node-24.22.1').bin('node')
     local yarn = c.get_component('yarn').bin('yarn')
 
     return u.cli_and({
       'npm init -y',
-      node .. ' ' .. yarn .. ' add @typescript/native-preview@' .. version,
+      node .. ' ' .. yarn .. ' add typescript@' .. version,
     })
   end,
 })
 
+-- https://www.npmjs.com/package/@angular/language-server
 c.add_component({
   name = 'angular-language-server',
   binaries_directory = '/node_modules/.bin',
   install_script = function()
-    local version = '21.2.17'
-    local node = c.get_component('node-22.21.0').bin('node')
+    local version = '22.2.3'
+    local node = c.get_component('node-24.22.1').bin('node')
     local yarn = c.get_component('yarn').bin('yarn')
 
     return u.cli_and({
       'npm init -y',
-      node .. ' ' .. yarn .. ' add @angular/language-server@' .. version .. ' typescript@5.7.2',
+      node .. ' ' .. yarn .. ' add @angular/language-server@' .. version .. ' typescript@6.0.3',
     })
   end,
 })
 
+-- https://www.npmjs.com/package/@t1ckbase/vscode-langservers-extracted
 c.add_component({
   name = 'vscode-langservers-extracted',
   binaries_directory = '/node_modules/.bin',
   install_script = function()
-    local version = '2.0.1'
-    local path = c.get_component('node-22.21.0').bin('') .. ':$PATH'
+    local version = '2.0.5'
+    local path = c.get_component('node-24.22.1').bin('') .. ':$PATH'
 
     return u.cli_and({
       'npm init -y',
@@ -140,6 +147,7 @@ c.add_component({
   end,
 })
 
+-- https://www.npmjs.com/package/@olrtg/emmet-language-server
 c.add_component({
   name = 'emmet-language-server',
   binaries_directory = '/node_modules/.bin',
@@ -150,17 +158,18 @@ c.add_component({
 
     return u.cli_and({
       'npm init -y',
-      node .. ' ' .. yarn .. ' add @olrtg/emmet-language-server@' .. version .. ' typescript@5.7.2',
+      node .. ' ' .. yarn .. ' add @olrtg/emmet-language-server@' .. version .. ' typescript@6.0.3',
     })
   end,
 })
 
+-- https://github.com/bash-lsp/bash-language-server
 c.add_component({
   name = 'bash-language-server',
   binaries_directory = '/node_modules/.bin',
   install_script = function()
-    local version = '5.6.0'
-    local node = c.get_component('node-22.21.0').bin('node')
+    local version = '5.8.1'
+    local node = c.get_component('node-24.22.1').bin('node')
     local yarn = c.get_component('yarn').bin('yarn')
 
     return u.cli_and({
@@ -170,11 +179,12 @@ c.add_component({
   end,
 })
 
+-- https://github.com/LuaLS/lua-language-server
 c.add_component({
   name = 'lua-language-server',
   binaries_directory = '/bin',
   install_script = function()
-    local version = '3.18.2'
+    local version = '3.19.2'
 
     return u.cli_pipe({
       'curl -L https://github.com/LuaLS/lua-language-server/releases/download/'
@@ -187,12 +197,13 @@ c.add_component({
   end,
 })
 
+-- https://www.npmjs.com/package/@mistweaverco/kulala-ls
 c.add_component({
   name = 'kulala-ls',
   binaries_directory = '/node_modules/.bin',
   install_script = function()
     local version = '1.11.1'
-    local node = c.get_component('node-18.19.1').bin('node')
+    local node = c.get_component('node-24.22.1').bin('node')
     local yarn = c.get_component('yarn').bin('yarn')
 
     return u.cli_and({
@@ -202,11 +213,12 @@ c.add_component({
   end,
 })
 
+-- https://github.com/terror/just-lsp
 c.add_component({
   name = 'just-lsp',
   binaries_directory = '',
   install_script = function()
-    local version = '0.4.5'
+    local version = '0.10.0'
 
     return u.cli_pipe({
       'curl -L https://github.com/terror/just-lsp/releases/download/'
@@ -223,7 +235,7 @@ c.add_component({
   name = 'protols',
   binaries_directory = '',
   install_script = function()
-    local version = '0.14.0'
+    local version = '0.14.1'
 
     return u.cli_pipe({
       'curl -L https://github.com/coder3101/protols/releases/download/'
@@ -234,12 +246,13 @@ c.add_component({
   end,
 })
 
+-- https://www.npmjs.com/package/basedpyright
 c.add_component({
   name = 'basedpyright',
   binaries_directory = '/node_modules/.bin',
   install_script = function()
-    local version = '1.39.9'
-    local node = c.get_component('node-22.21.0').bin('node')
+    local version = '1.40.2'
+    local node = c.get_component('node-24.22.1').bin('node')
     local yarn = c.get_component('yarn').bin('yarn')
 
     return u.cli_and({
@@ -249,12 +262,13 @@ c.add_component({
   end,
 })
 
+-- https://www.npmjs.com/package/yaml-language-server
 c.add_component({
   name = 'yamlls',
   binaries_directory = '/node_modules/.bin',
   install_script = function()
-    local version = '1.23.0'
-    local node = c.get_component('node-22.21.0').bin('node')
+    local version = '2.0.0'
+    local node = c.get_component('node-24.22.1').bin('node')
     local yarn = c.get_component('yarn').bin('yarn')
 
     return u.cli_and({

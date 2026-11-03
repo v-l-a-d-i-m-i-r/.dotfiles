@@ -3,7 +3,6 @@ local nvim_lsp = require('nvim-lsp')
 local blink = require('blink.cmp')
 local c = require('components')
 local borders = require('assets').borders
-local utils = require('utils')
 
 -- disable core LSP background color highlight (e.g. css-lsp), we use nvim-highlight-colors instead
 vim.lsp.document_color.enable(false)
@@ -72,10 +71,25 @@ vim.keymap.set('n', '<leader>ca', function()
 end)
 
 local capabilities = blink.get_lsp_capabilities(vim.lsp.capabilities)
+capabilities.workspace = vim.tbl_deep_extend('force', capabilities.workspace or {}, {
+  didChangeWatchedFiles = { dynamicRegistration = true },
+})
 
 local function on_attach(lsp_client, buffer_number) end
 local function check_angular_project(root_dir)
-  return root_dir ~= nil and utils.fs_exists(root_dir .. '/angular.json')
+  if root_dir == nil then
+    return false
+  end
+
+  -- In monorepos angular.json is in a sub-project, not in root_dir
+  local file_dir = vim.fs.dirname(vim.api.nvim_buf_get_name(0))
+  local found = vim.fs.find('angular.json', {
+    upward = true,
+    path = file_dir,
+    stop = vim.fs.dirname(root_dir),
+  })
+
+  return #found > 0
 end
 
 nvim_lsp.add_server({
@@ -148,7 +162,7 @@ nvim_lsp.add_server({
 
     return {
       cmd = {
-        c.get_component('node-22.21.0').bin('node'),
+        c.get_component('node-24.22.1').bin('node'),
         c.get_component('typescript-language-server').bin('typescript-language-server'),
         '--stdio',
       },
@@ -169,13 +183,11 @@ nvim_lsp.add_server({
 })
 
 nvim_lsp.add_server({
-  name = 'tsgo',
+  name = 'tsc',
   filetypes = {
     'javascript',
-    'javascript.jsx',
     'javascriptreact',
     'typescript',
-    'typescript.tsx',
     'typescriptreact',
   },
   root_markers = {
@@ -194,18 +206,47 @@ nvim_lsp.add_server({
 
     return {
       cmd = {
-        c.get_component('tsgo').bin('tsgo'),
+        c.get_component('typescript').bin('tsc'),
         '--lsp',
         '--stdio',
       },
       flags = {
         debounce_text_changes = 100,
       },
-      init_options = {
-        preferences = {
-          importModuleSpecifierPreference = 'relative',
-          -- importModuleSpecifierEnding = 'minimal',
-          quotePreference = 'single',
+      -- init_options = {
+      --   preferences = {
+      --     importModuleSpecifierPreference = 'relative',
+      --     -- importModuleSpecifierEnding = 'minimal',
+      --     quotePreference = 'single',
+      --   },
+      -- },
+      settings = {
+        ['js/ts'] = {
+          preferences = {
+            importModuleSpecifier = 'relative',
+            -- importModuleSpecifierEnding = 'minimal',
+            quoteStyle = 'single',
+          },
+          --     inlayHints = {
+          --       parameterNames = {
+          --         enabled = 'literals',
+          --         suppressWhenArgumentMatchesName = true,
+          --       },
+          --       parameterTypes = { enabled = true },
+          --       variableTypes = { enabled = true },
+          --       propertyDeclarationTypes = { enabled = true },
+          --       functionLikeReturnTypes = { enabled = true },
+          --       enumMemberValues = { enabled = true },
+          --     },
+          --     referencesCodeLens = {
+          --       enabled = true,
+          --       showOnAllFunctions = true,
+          --     },
+          --     implementationsCodeLens = {
+          --       enabled = true,
+          --       showOnInterfaceMethods = true,
+          --       showOnAllClassMethods = true,
+          --     },
         },
       },
       capabilities = capabilities,
@@ -228,18 +269,18 @@ nvim_lsp.add_server({
   },
   on_file_type = function(opts)
     -- This approach does not work when angular.json is not in root_dir
-    -- local root_dir = opts.root_dir
-    -- local is_angular_project = root_dir ~= nil and utils.fs_exists(root_dir .. '/angular.json')
+    local root_dir = opts.root_dir
+    local is_angular_project = check_angular_project(root_dir)
 
-    -- if not is_angular_project then
-    --   return
-    -- end
+    if not is_angular_project then
+      return
+    end
 
     local project_library_path = c.get_component('angular-language-server').bin()
 
     return {
       cmd = {
-        c.get_component('node-22.21.0').bin('node'),
+        c.get_component('node-24.22.1').bin('node'),
         c.get_component('angular-language-server').bin('ngserver'),
         '--stdio',
         '--tsProbeLocations',
@@ -262,7 +303,7 @@ nvim_lsp.add_server({
   on_file_type = function()
     return {
       cmd = {
-        c.get_component('node-18.19.1').bin('node'),
+        c.get_component('node-24.22.1').bin('node'),
         c.get_component('vscode-langservers-extracted').bin('vscode-json-language-server'),
         '--stdio',
       },
@@ -286,7 +327,7 @@ nvim_lsp.add_server({
   on_file_type = function()
     return {
       cmd = {
-        c.get_component('node-18.19.1').bin('node'),
+        c.get_component('node-24.22.1').bin('node'),
         c.get_component('vscode-langservers-extracted').bin('vscode-css-language-server'),
         '--stdio',
       },
@@ -338,7 +379,7 @@ nvim_lsp.add_server({
   on_file_type = function()
     return {
       cmd = {
-        c.get_component('node-22.21.0').bin('node'),
+        c.get_component('node-24.22.1').bin('node'),
         c.get_component('bash-language-server').bin('bash-language-server'),
         'start',
       },
@@ -390,10 +431,11 @@ nvim_lsp.add_server({
   on_file_type = function()
     return {
       cmd = {
-        c.get_component('node-18.19.1').bin('node'),
+        c.get_component('node-24.22.1').bin('node'),
         c.get_component('kulala-ls').bin('kulala-ls'),
         '--stdio',
       },
+      capabilities = capabilities,
     }
   end,
 })
@@ -411,6 +453,7 @@ nvim_lsp.add_server({
       cmd = {
         c.get_component('just-lsp').bin('just-lsp'),
       },
+      capabilities = capabilities,
     }
   end,
 })
@@ -428,6 +471,7 @@ nvim_lsp.add_server({
       cmd = {
         c.get_component('protols').bin('protols'),
       },
+      capabilities = capabilities,
     }
   end,
 })
@@ -449,10 +493,11 @@ nvim_lsp.add_server({
   on_file_type = function()
     return {
       cmd = {
-        c.get_component('node-22.21.0').bin('node'),
+        c.get_component('node-24.22.1').bin('node'),
         c.get_component('basedpyright').bin('basedpyright-langserver'),
         '--stdio',
       },
+      capabilities = capabilities,
       settings = {
         basedpyright = {
           analysis = {
@@ -474,10 +519,11 @@ nvim_lsp.add_server({
   on_file_type = function()
     return {
       cmd = {
-        c.get_component('node-22.21.0').bin('node'),
+        c.get_component('node-24.22.1').bin('node'),
         c.get_component('yamlls').bin('yaml-language-server'),
         '--stdio',
       },
+      capabilities = capabilities,
     }
   end,
 })

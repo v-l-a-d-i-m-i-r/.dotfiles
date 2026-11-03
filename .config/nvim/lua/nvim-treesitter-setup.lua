@@ -36,6 +36,7 @@ local ensure_installed = {
   'query',
   'rust',
   'scss',
+  'sql',
   'terraform',
   'tmux',
   'toml',
