@@ -17,6 +17,7 @@ export NVIM_PATH="$NVIM_DIR/bin/nvim"
 
 export NVM_DIR="$HOME/.nvm"
 export NVM_ARCH="linux-x64"
+export NVM_DEFAULT_VERSION="v20.19.4"
 export GOVM_DIR="$HOME/.govm"
 export GOVM_ARCH="linux-amd64"
 export EDITOR="$NVIM_PATH"

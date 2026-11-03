@@ -72,15 +72,10 @@ When a request requires me to write or modify code, I must respond using this ex
 - Always include tests for edge cases and potential failure scenarios.
 
 ## Node.js Version & Package Manager Management
-- **Node.js Version Policy:** When executing `npm`, `yarn`, `pnpm`, or `node` commands, use the Node.js version specified in the project's `.nvmrc` file if it exists.
-- **Package Manager Detection Policy:** Automatically select the package manager based on lock files in the project root (priority order matters):
-    - `pnpm-lock.yaml` → use `pnpm`
-    - `yarn.lock` → use `yarn`
-    - `package-lock.json` → use `npm`
-    - If no lock file is found → default to `npm`
-- **Execution:** Wrap all commands in `zsh -cie`.
-    - **If `.nvmrc` exists in the current directory:** prefix the command with `nvm use $(cat .nvmrc) &&`
-    - **If `.nvmrc` does not exist:** execute the command directly within the `zsh -cie` wrapper.
+
+- Run `node`, `yarn`, `npm`, `pnpm`, and `npx` only as `~/.bin/nvmx <command>`, in the session directory.
+- Choose the package manager from the lock file: `pnpm-lock.yaml` for `pnpm`, `yarn.lock` for `yarn`, `package-lock.json` or no lock file for `npm`.
+- Examples: `~/.bin/nvmx node -v`, `~/.bin/nvmx yarn test`, `~/.bin/nvmx npx tsc --noEmit`.
 
 ### Agent Behavior Examples
 - **Running tests (`test` script):**

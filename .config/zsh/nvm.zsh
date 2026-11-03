@@ -9,20 +9,10 @@ function _nvm_use() {
     return
   fi
 
-  if [[ "$version" == '16' ]]; then
-    version='v16.20.2'
-  elif [[ "$version" == '18' ]]; then
-    version='v18.17.1'
-  elif [[ "$version" == '14' ]]; then
-    version='v14.19.2'
-  elif [[ ! "$version" == v* ]]; then
-    version="v$version"
-  fi
-
   if [ ! -d "${NVM_DIR}/versions/node/${version}/bin" ]; then
-    echo "node ${version} is not available";
+    echo "node ${version} is not available" >&2
 
-    return
+    return 1
   fi
 
   local NEW_PATH=""
@@ -90,6 +80,37 @@ function _nvm_uninstall () {
   rm -rf "${NVM_DIR}/versions/node/${version}"
 }
 
+function _nvm_resolve () {
+  local dir="$PWD"
+  local version="${NVM_DEFAULT_VERSION}"
+
+  while true; do
+    if [ -f "${dir}/.nvmrc" ]; then
+      version=$(cat "${dir}/.nvmrc")
+
+      break
+    fi
+
+    if [ "$dir" = '/' ]; then
+      break
+    fi
+
+    dir="${dir:h}"
+  done
+
+  if [[ "$version" == '16' ]]; then
+    version='v16.20.2'
+  elif [[ "$version" == '18' ]]; then
+    version='v18.17.1'
+  elif [[ "$version" == '14' ]]; then
+    version='v14.19.2'
+  elif [[ -n "$version" && ! "$version" == v* ]]; then
+    version="v$version"
+  fi
+
+  echo "$version"
+}
+
 function nvm () {
   if [ -z "${NVM_DIR}" ]; then
     echo 'NVM_DIR not set!'
@@ -110,20 +131,17 @@ function nvm () {
   "uninstall")
     _nvm_uninstall $2
   ;;
+  "resolve")
+    _nvm_resolve
+  ;;
   esac
 }
 
-function _handle_nvmrc () {
-  if [ ! -f '.nvmrc' ]; then
-    return
-  fi
-
-  local node_version=$(cat .nvmrc)
-  nvm use $node_version
+function _nvm_auto_use () {
+  nvm use "$(nvm resolve)"
 }
 
 autoload -Uz add-zsh-hook
-add-zsh-hook chpwd _handle_nvmrc
+add-zsh-hook chpwd _nvm_auto_use
 
-nvm use v20.19.4
-_handle_nvmrc
+_nvm_auto_use

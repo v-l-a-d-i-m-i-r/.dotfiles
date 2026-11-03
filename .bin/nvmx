@@ -1,0 +1,6 @@
+#!/bin/zsh
+
+# Usage: nvmx <command> [args]  e.g. nvmx node -v, nvmx npm test, nvmx yarn build
+# Sourcing nvm.zsh selects the Node version from the closest .nvmrc, or the default version.
+source ~/.config/zsh/nvm.zsh >&2 || exit 1
+exec "$@"
