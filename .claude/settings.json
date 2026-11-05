@@ -1,4 +1,8 @@
 {
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
   "autoMemoryEnabled": false,
   "disableArtifact": true,
   "disableBundledSkills": true,
@@ -64,9 +68,15 @@
   },
   "outputStyle": "ASD-STE100",
   "permissions": {
+    "additionalDirectories": [
+      "~/projects"
+    ],
     "allow": [
       "Bash(awk *)",
+      "Bash(az monitor log-analytics query *)",
       "Bash(chmod +x *)",
+      "Bash(docker logs *)",
+      "Bash(docker restart *)",
       "Bash(git *)",
       "Bash(git:*)",
       "Bash(go build *)",
@@ -82,11 +92,16 @@
       "Bash(tmux source-file *)",
       "Bash(~/.bin/nvmx *)",
       "Bash(~/.bin/work-item-id)",
+      "Edit(//tmp/**)",
       "Edit(/tmp/**)",
       "Edit(~/projects/**)",
+      "Read(//tmp/**)",
+      "Read(/tmp/**)",
       "Read(~/.work-items/**)",
       "Read(~/projects/**)",
-      "Read(~/prompts/**)"
+      "Read(~/prompts/**)",
+      "Write(//tmp/**)",
+      "Write(/tmp/**)"
     ],
     "defaultMode": "acceptEdits",
     "deny": [

@@ -3,6 +3,7 @@
 !.gitconfig
 !.githooks/
 !justfile
+!.prettierrc
 !README.md
 
 !.bin/

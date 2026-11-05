@@ -19,6 +19,12 @@ if echo "$staged" | grep -qx '.copilot/settings.json'; then
 	git add ./.copilot/settings.json
 fi
 
+md_files=$(echo "$staged" | grep '\.md$' || true)
+if [ -n "$md_files" ]; then
+	echo "$md_files" | tr '\n' '\0' | xargs -0 npx --yes prettier --write
+	echo "$md_files" | tr '\n' '\0' | xargs -0 git add --
+fi
+
 lua_files=$(echo "$staged" | grep '^\.config/nvim/.*\.lua$' || true)
 if [ -n "$lua_files" ]; then
 	echo "$lua_files" | xargs stylua --
