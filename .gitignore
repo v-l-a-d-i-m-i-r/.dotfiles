@@ -74,6 +74,7 @@
 
 !.config/zsh/
 .config/zsh/private-env.zsh
+.config/zsh/.plugins/
 
 !.config/kitty/
 !.config/xresources/
